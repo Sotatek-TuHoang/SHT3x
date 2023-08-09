@@ -1,4 +1,5 @@
 Dự án ESP32 với Cảm biến SHT3x, Smart Config, MQTT và Chế độ Power Save
+
 Giới thiệu
 Dự án này là một ứng dụng sử dụng vi điều khiển ESP32 và framework ESP-IDF để thu thập dữ liệu từ cảm biến nhiệt độ và độ ẩm SHT3x. Dữ liệu sau đó được gửi đến máy chủ MQTT thông qua giao thức MQTT. Dự án cũng tích hợp chế độ tiết kiệm năng lượng để giảm tiêu thụ năng lượng của ESP32.
 
