@@ -14,12 +14,14 @@ Yêu cầu
 Kit phát triển ESP32.
 ESP-IDF Framework đã được cài đặt.
 Cảm biến nhiệt độ và độ ẩm SHT3x.
-Máy chủ MQTT để nhận dữ liệu.
+Máy chủ MQTT để nhận và gửi dữ liệu.
 Công cụ phát triển và môi trường phát triển ESP-IDF.
+
 Cài đặt và Cấu hình
+
 Sao chép mã nguồn từ thư mục src vào dự án của bạn sử dụng ESP-IDF.
 
-Đảm bảo rằng bạn đã cài đặt các thư viện cần thiết và cấu hình WiFi trong tệp main.c.
+Đảm bảo rằng bạn đã cài đặt các thư viện cần thiết và cấu hình WiFi trong tệp bee_wifi.c.
 
 Cấu hình địa chỉ và thông số kết nối của máy chủ MQTT trong tệp main.c.
 
