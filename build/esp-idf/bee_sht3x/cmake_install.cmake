@@ -1,4 +1,4 @@
-# Install script for directory: E:/SHT3x_project/components/bee_sht3x
+# Install script for directory: E:/SHT3x_Powersave/components/bee_sht3x
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
