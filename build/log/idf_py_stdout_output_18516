@@ -1,0 +1,461 @@
+[1/14] Performing build step for 'bootloader'
+[1/1] cmd.exe /C "cd /D E:\SHT3x_project\build\bootloader\esp-idf\esptool_py && C:\Espressif\python_env\idf5.1_py3.11_env\Scripts\python.exe C:/Espressif/frameworks/esp-idf-v5.1/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 E:/SHT3x_project/build/bootloader/bootloader.bin"
+Bootloader binary size 0x6810 bytes. 0x7f0 bytes (7%) free.
+[2/12] Building C object esp-idf/bee_sht3x/CMakeFiles/__idf_bee_sht3x.dir/bee_sht3x.c.obj
+FAILED: esp-idf/bee_sht3x/CMakeFiles/__idf_bee_sht3x.dir/bee_sht3x.c.obj 
+ccache C:\Espressif\tools\xtensa-esp32-elf\esp-12.2.0_20230208\xtensa-esp32-elf\bin\xtensa-esp32-elf-gcc.exe -DESP_PLATFORM -DIDF_VER=\"v5.1-dirty\" -DSOC_MMU_PAGE_SIZE=CONFIG_MMU_PAGE_SIZE -D_GNU_SOURCE -D_POSIX_READER_WRITER_LOCKS -IE:/SHT3x_project/build/config -IE:/SHT3x_project/components/bee_sht3x -IC:/Espressif/frameworks/esp-idf-v5.1/components/newlib/platform_include -IC:/Espressif/frameworks/esp-idf-v5.1/components/freertos/FreeRTOS-Kernel/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/freertos/FreeRTOS-Kernel/portable/xtensa/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/freertos/esp_additions/include/freertos -IC:/Espressif/frameworks/esp-idf-v5.1/components/freertos/esp_additions/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/freertos/esp_additions/arch/xtensa/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_hw_support/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_hw_support/include/soc -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_hw_support/include/soc/esp32 -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_hw_support/port/esp32/. -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_hw_support/port/esp32/private_include -IC:/Espressif/frameworks/esp-idf-v5.1/components/heap/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/log/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/soc/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/soc/esp32 -IC:/Espressif/frameworks/esp-idf-v5.1/components/soc/esp32/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/hal/esp32/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/hal/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/hal/platform_port/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_rom/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_rom/include/esp32 -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_rom/esp32 -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_common/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/soc -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/include/private -IC:/Espressif/frameworks/esp-idf-v5.1/components/xtensa/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/xtensa/esp32/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/include/apps -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/include/apps/sntp -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/lwip/src/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/port/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/port/freertos/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/port/esp32xx/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/port/esp32xx/include/arch -IE:/SHT3x_project/components/bee_i2c -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/deprecated -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/analog_comparator/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/dac/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/gpio/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/gptimer/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/i2c/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/i2s/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/ledc/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/mcpwm/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/parlio/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/pcnt/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/rmt/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/sdio_slave/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/sdmmc/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/sigma_delta/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/spi/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/temperature_sensor/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/touch_sensor/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/twai/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/uart/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/usb_serial_jtag/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/touch_sensor/esp32/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_pm/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_ringbuf/include -mlongcalls -Wno-frame-address  -fdiagnostics-color=always -ffunction-sections -fdata-sections -Wall -Werror=all -Wno-error=unused-function -Wno-error=unused-variable -Wno-error=unused-but-set-variable -Wno-error=deprecated-declarations -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-enum-conversion -gdwarf-4 -ggdb -Og -fmacro-prefix-map=E:/SHT3x_project=. -fmacro-prefix-map=C:/Espressif/frameworks/esp-idf-v5.1=/IDF -fstrict-volatile-bitfields -fno-jump-tables -fno-tree-switch-conversion -DconfigENABLE_FREERTOS_DEBUG_OCDAWARE=1 -std=gnu17 -Wno-old-style-declaration -MD -MT esp-idf/bee_sht3x/CMakeFiles/__idf_bee_sht3x.dir/bee_sht3x.c.obj -MF esp-idf\bee_sht3x\CMakeFiles\__idf_bee_sht3x.dir\bee_sht3x.c.obj.d -o esp-idf/bee_sht3x/CMakeFiles/__idf_bee_sht3x.dir/bee_sht3x.c.obj -c E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c
+In file included from E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:6:
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h: In function 'read_sht3x':
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:47:17: error: storage class specified for parameter 'sht3x_raw_data_t'
+   47 | typedef uint8_t sht3x_raw_data_t [SHT3x_RAW_DATA_SIZE];
+      |                 ^~~~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:60:3: error: storage class specified for parameter 'sht3x_mode_t'
+   60 | } sht3x_mode_t;
+      |   ^~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:70:3: error: storage class specified for parameter 'sht3x_repeat_t'
+   70 | } sht3x_repeat_t;
+      |   ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:82:5: error: expected specifier-qualifier-list before 'sht3x_mode_t'
+   82 |     sht3x_mode_t    mode;            // used measurement mode
+      |     ^~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:89:3: error: storage class specified for parameter 'sht3x_sensor_t'
+   89 | } sht3x_sensor_t;
+      |   ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:102:1: error: expected declaration specifiers before 'sht3x_sensor_t'
+  102 | sht3x_sensor_t* sht3x_init_sensor (uint8_t bus, uint8_t addr);
+      | ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:127:21: error: expected declaration specifiers or '...' before 'sht3x_sensor_t'
+  127 | bool sht3x_measure (sht3x_sensor_t* dev, float* temperature, float* humidity);
+      |                     ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:156:31: error: expected declaration specifiers or '...' before 'sht3x_sensor_t'
+  156 | bool sht3x_start_measurement (sht3x_sensor_t* dev, sht3x_mode_t mode,
+      |                               ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:156:52: error: expected declaration specifiers or '...' before 'sht3x_mode_t'
+  156 | bool sht3x_start_measurement (sht3x_sensor_t* dev, sht3x_mode_t mode,
+      |                                                    ^~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:157:31: error: expected declaration specifiers or '...' before 'sht3x_repeat_t'
+  157 |                               sht3x_repeat_t repeat);
+      |                               ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:174:41: error: expected declaration specifiers or '...' before 'sht3x_repeat_t'
+  174 | uint8_t sht3x_get_measurement_duration (sht3x_repeat_t repeat);
+      |                                         ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:196:25: error: expected declaration specifiers or '...' before 'sht3x_sensor_t'
+  196 | bool sht3x_get_raw_data(sht3x_sensor_t* dev, sht3x_raw_data_t raw_data);
+      |                         ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:196:46: error: expected declaration specifiers or '...' before 'sht3x_raw_data_t'
+  196 | bool sht3x_get_raw_data(sht3x_sensor_t* dev, sht3x_raw_data_t raw_data);
+      |                                              ^~~~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:207:28: error: expected declaration specifiers or '...' before 'sht3x_raw_data_t'
+  207 | bool sht3x_compute_values (sht3x_raw_data_t raw_data,
+      |                            ^~~~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:224:25: error: expected declaration specifiers or '...' before 'sht3x_sensor_t'
+  224 | bool sht3x_get_results (sht3x_sensor_t* dev,
+      |                         ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:14:1: error: parameter 'SHT3x_MEASURE_CMD' is initialized
+   14 | const uint16_t SHT3x_MEASURE_CMD[6][3] = {
+      | ^~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:15:9: warning: braces around scalar initializer
+   15 |         {0x2400,0x240b,0x2416},    // [SINGLE_SHOT][H,M,L] without clock stretching
+      |         ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:15:9: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:15:10: warning: initialization of 'const uint16_t (*)[3]' {aka 'const short unsigned int (*)[3]'} from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   15 |         {0x2400,0x240b,0x2416},    // [SINGLE_SHOT][H,M,L] without clock stretching
+      |          ^~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:15:10: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:15:17: warning: excess elements in scalar initializer
+   15 |         {0x2400,0x240b,0x2416},    // [SINGLE_SHOT][H,M,L] without clock stretching
+      |                 ^~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:15:17: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:15:24: warning: excess elements in scalar initializer
+   15 |         {0x2400,0x240b,0x2416},    // [SINGLE_SHOT][H,M,L] without clock stretching
+      |                        ^~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:15:24: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:16:9: warning: braces around scalar initializer
+   16 |         {0x2032,0x2024,0x202f},    // [PERIODIC_05][H,M,L]
+      |         ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:16:9: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:16:10: warning: initialization of 'const uint16_t (*)[3]' {aka 'const short unsigned int (*)[3]'} from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   16 |         {0x2032,0x2024,0x202f},    // [PERIODIC_05][H,M,L]
+      |          ^~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:16:10: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:16:17: warning: excess elements in scalar initializer
+   16 |         {0x2032,0x2024,0x202f},    // [PERIODIC_05][H,M,L]
+      |                 ^~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:16:17: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:16:24: warning: excess elements in scalar initializer
+   16 |         {0x2032,0x2024,0x202f},    // [PERIODIC_05][H,M,L]
+      |                        ^~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:16:24: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:16:9: warning: excess elements in scalar initializer
+   16 |         {0x2032,0x2024,0x202f},    // [PERIODIC_05][H,M,L]
+      |         ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:16:9: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:17:9: warning: braces around scalar initializer
+   17 |         {0x2130,0x2126,0x212d},    // [PERIODIC_1 ][H,M,L]
+      |         ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:17:9: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:17:10: warning: initialization of 'const uint16_t (*)[3]' {aka 'const short unsigned int (*)[3]'} from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   17 |         {0x2130,0x2126,0x212d},    // [PERIODIC_1 ][H,M,L]
+      |          ^~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:17:10: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:17:17: warning: excess elements in scalar initializer
+   17 |         {0x2130,0x2126,0x212d},    // [PERIODIC_1 ][H,M,L]
+      |                 ^~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:17:17: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:17:24: warning: excess elements in scalar initializer
+   17 |         {0x2130,0x2126,0x212d},    // [PERIODIC_1 ][H,M,L]
+      |                        ^~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:17:24: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:17:9: warning: excess elements in scalar initializer
+   17 |         {0x2130,0x2126,0x212d},    // [PERIODIC_1 ][H,M,L]
+      |         ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:17:9: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:18:9: warning: braces around scalar initializer
+   18 |         {0x2236,0x2220,0x222b},    // [PERIODIC_2 ][H,M,L]
+      |         ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:18:9: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:18:10: warning: initialization of 'const uint16_t (*)[3]' {aka 'const short unsigned int (*)[3]'} from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   18 |         {0x2236,0x2220,0x222b},    // [PERIODIC_2 ][H,M,L]
+      |          ^~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:18:10: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:18:17: warning: excess elements in scalar initializer
+   18 |         {0x2236,0x2220,0x222b},    // [PERIODIC_2 ][H,M,L]
+      |                 ^~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:18:17: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:18:24: warning: excess elements in scalar initializer
+   18 |         {0x2236,0x2220,0x222b},    // [PERIODIC_2 ][H,M,L]
+      |                        ^~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:18:24: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:18:9: warning: excess elements in scalar initializer
+   18 |         {0x2236,0x2220,0x222b},    // [PERIODIC_2 ][H,M,L]
+      |         ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:18:9: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:19:9: warning: braces around scalar initializer
+   19 |         {0x2234,0x2322,0x2329},    // [PERIODIC_4 ][H,M,L]
+      |         ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:19:9: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:19:10: warning: initialization of 'const uint16_t (*)[3]' {aka 'const short unsigned int (*)[3]'} from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   19 |         {0x2234,0x2322,0x2329},    // [PERIODIC_4 ][H,M,L]
+      |          ^~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:19:10: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:19:17: warning: excess elements in scalar initializer
+   19 |         {0x2234,0x2322,0x2329},    // [PERIODIC_4 ][H,M,L]
+      |                 ^~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:19:17: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:19:24: warning: excess elements in scalar initializer
+   19 |         {0x2234,0x2322,0x2329},    // [PERIODIC_4 ][H,M,L]
+      |                        ^~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:19:24: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:19:9: warning: excess elements in scalar initializer
+   19 |         {0x2234,0x2322,0x2329},    // [PERIODIC_4 ][H,M,L]
+      |         ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:19:9: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:20:9: warning: braces around scalar initializer
+   20 |         {0x2737,0x2721,0x272a} };  // [PERIODIC_10][H,M,L]
+      |         ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:20:9: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:20:10: warning: initialization of 'const uint16_t (*)[3]' {aka 'const short unsigned int (*)[3]'} from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   20 |         {0x2737,0x2721,0x272a} };  // [PERIODIC_10][H,M,L]
+      |          ^~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:20:10: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:20:17: warning: excess elements in scalar initializer
+   20 |         {0x2737,0x2721,0x272a} };  // [PERIODIC_10][H,M,L]
+      |                 ^~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:20:17: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:20:24: warning: excess elements in scalar initializer
+   20 |         {0x2737,0x2721,0x272a} };  // [PERIODIC_10][H,M,L]
+      |                        ^~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:20:24: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:20:9: warning: excess elements in scalar initializer
+   20 |         {0x2737,0x2721,0x272a} };  // [PERIODIC_10][H,M,L]
+      |         ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:20:9: note: (near initialization for 'SHT3x_MEASURE_CMD')
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:32:1: error: parameter 'SHT3x_MEAS_DURATION_US' is initialized
+   32 | const uint16_t SHT3x_MEAS_DURATION_US[3] = { SHT3x_MEAS_DURATION_REP_HIGH   * 1000,
+      | ^~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:27:40: warning: initialization of 'const uint16_t *' {aka 'const short unsigned int *'} from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   27 | #define SHT3x_MEAS_DURATION_REP_HIGH   15
+      |                                        ^~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:32:46: note: in expansion of macro 'SHT3x_MEAS_DURATION_REP_HIGH'
+   32 | const uint16_t SHT3x_MEAS_DURATION_US[3] = { SHT3x_MEAS_DURATION_REP_HIGH   * 1000,
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:27:40: note: (near initialization for 'SHT3x_MEAS_DURATION_US')
+   27 | #define SHT3x_MEAS_DURATION_REP_HIGH   15
+      |                                        ^~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:32:46: note: in expansion of macro 'SHT3x_MEAS_DURATION_REP_HIGH'
+   32 | const uint16_t SHT3x_MEAS_DURATION_US[3] = { SHT3x_MEAS_DURATION_REP_HIGH   * 1000,
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:28:40: warning: excess elements in scalar initializer
+   28 | #define SHT3x_MEAS_DURATION_REP_MEDIUM 6
+      |                                        ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:33:46: note: in expansion of macro 'SHT3x_MEAS_DURATION_REP_MEDIUM'
+   33 |                                              SHT3x_MEAS_DURATION_REP_MEDIUM * 1000,
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:28:40: note: (near initialization for 'SHT3x_MEAS_DURATION_US')
+   28 | #define SHT3x_MEAS_DURATION_REP_MEDIUM 6
+      |                                        ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:33:46: note: in expansion of macro 'SHT3x_MEAS_DURATION_REP_MEDIUM'
+   33 |                                              SHT3x_MEAS_DURATION_REP_MEDIUM * 1000,
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:29:40: warning: excess elements in scalar initializer
+   29 | #define SHT3x_MEAS_DURATION_REP_LOW    4
+      |                                        ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:34:46: note: in expansion of macro 'SHT3x_MEAS_DURATION_REP_LOW'
+   34 |                                              SHT3x_MEAS_DURATION_REP_LOW    * 1000 };
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:29:40: note: (near initialization for 'SHT3x_MEAS_DURATION_US')
+   29 | #define SHT3x_MEAS_DURATION_REP_LOW    4
+      |                                        ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:34:46: note: in expansion of macro 'SHT3x_MEAS_DURATION_REP_LOW'
+   34 |                                              SHT3x_MEAS_DURATION_REP_LOW    * 1000 };
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:37:1: error: parameter 'SHT3x_MEAS_DURATION_TICKS' is initialized
+   37 | const uint8_t SHT3x_MEAS_DURATION_TICKS[3] = { TIME_TO_TICKS(SHT3x_MEAS_DURATION_REP_HIGH),
+      | ^~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:25:27: warning: initialization of 'const uint8_t *' {aka 'const unsigned char *'} from 'long unsigned int' makes pointer from integer without a cast [-Wint-conversion]
+   25 | #define TIME_TO_TICKS(ms) (1 + ((ms) + (portTICK_PERIOD_MS-1) + portTICK_PERIOD_MS/2 ) / portTICK_PERIOD_MS)
+      |                           ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:37:48: note: in expansion of macro 'TIME_TO_TICKS'
+   37 | const uint8_t SHT3x_MEAS_DURATION_TICKS[3] = { TIME_TO_TICKS(SHT3x_MEAS_DURATION_REP_HIGH),
+      |                                                ^~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:25:27: note: (near initialization for 'SHT3x_MEAS_DURATION_TICKS')
+   25 | #define TIME_TO_TICKS(ms) (1 + ((ms) + (portTICK_PERIOD_MS-1) + portTICK_PERIOD_MS/2 ) / portTICK_PERIOD_MS)
+      |                           ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:37:48: note: in expansion of macro 'TIME_TO_TICKS'
+   37 | const uint8_t SHT3x_MEAS_DURATION_TICKS[3] = { TIME_TO_TICKS(SHT3x_MEAS_DURATION_REP_HIGH),
+      |                                                ^~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:25:27: warning: excess elements in scalar initializer
+   25 | #define TIME_TO_TICKS(ms) (1 + ((ms) + (portTICK_PERIOD_MS-1) + portTICK_PERIOD_MS/2 ) / portTICK_PERIOD_MS)
+      |                           ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:38:48: note: in expansion of macro 'TIME_TO_TICKS'
+   38 |                                                TIME_TO_TICKS(SHT3x_MEAS_DURATION_REP_MEDIUM),
+      |                                                ^~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:25:27: note: (near initialization for 'SHT3x_MEAS_DURATION_TICKS')
+   25 | #define TIME_TO_TICKS(ms) (1 + ((ms) + (portTICK_PERIOD_MS-1) + portTICK_PERIOD_MS/2 ) / portTICK_PERIOD_MS)
+      |                           ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:38:48: note: in expansion of macro 'TIME_TO_TICKS'
+   38 |                                                TIME_TO_TICKS(SHT3x_MEAS_DURATION_REP_MEDIUM),
+      |                                                ^~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:25:27: warning: excess elements in scalar initializer
+   25 | #define TIME_TO_TICKS(ms) (1 + ((ms) + (portTICK_PERIOD_MS-1) + portTICK_PERIOD_MS/2 ) / portTICK_PERIOD_MS)
+      |                           ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:39:48: note: in expansion of macro 'TIME_TO_TICKS'
+   39 |                                                TIME_TO_TICKS(SHT3x_MEAS_DURATION_REP_LOW) };
+      |                                                ^~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:25:27: note: (near initialization for 'SHT3x_MEAS_DURATION_TICKS')
+   25 | #define TIME_TO_TICKS(ms) (1 + ((ms) + (portTICK_PERIOD_MS-1) + portTICK_PERIOD_MS/2 ) / portTICK_PERIOD_MS)
+      |                           ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:39:48: note: in expansion of macro 'TIME_TO_TICKS'
+   39 |                                                TIME_TO_TICKS(SHT3x_MEAS_DURATION_REP_LOW) };
+      |                                                ^~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:60:34: error: expected declaration specifiers or '...' before 'sht3x_sensor_t'
+   60 | static bool sht3x_is_measuring  (sht3x_sensor_t*);
+      |                                  ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:61:34: error: expected declaration specifiers or '...' before 'sht3x_sensor_t'
+   61 | static bool sht3x_send_command  (sht3x_sensor_t*, uint16_t);
+      |                                  ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:62:34: error: expected declaration specifiers or '...' before 'sht3x_sensor_t'
+   62 | static bool sht3x_read_data     (sht3x_sensor_t*, uint8_t*,  uint32_t);
+      |                                  ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:63:34: error: expected declaration specifiers or '...' before 'sht3x_sensor_t'
+   63 | static bool sht3x_get_status    (sht3x_sensor_t*, uint16_t*);
+      |                                  ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:64:34: error: expected declaration specifiers or '...' before 'sht3x_sensor_t'
+   64 | static bool sht3x_reset         (sht3x_sensor_t*);
+      |                                  ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:66:16: error: storage class specified for parameter 'crc8'
+   66 | static uint8_t crc8 (uint8_t data[], int len);
+      |                ^~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:71:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+   71 | {
+      | ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:76:1: error: expected declaration specifiers before 'sht3x_sensor_t'
+   76 | sht3x_sensor_t* sht3x_init_sensor(uint8_t bus, uint8_t addr)
+      | ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:112:21: error: expected declaration specifiers or '...' before 'sht3x_sensor_t'
+  112 | bool sht3x_measure (sht3x_sensor_t* dev, float* temperature, float* humidity)
+      |                     ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:130:31: error: expected declaration specifiers or '...' before 'sht3x_sensor_t'
+  130 | bool sht3x_start_measurement (sht3x_sensor_t* dev, sht3x_mode_t mode, sht3x_repeat_t repeat)
+      |                               ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:130:52: error: expected declaration specifiers or '...' before 'sht3x_mode_t'
+  130 | bool sht3x_start_measurement (sht3x_sensor_t* dev, sht3x_mode_t mode, sht3x_repeat_t repeat)
+      |                                                    ^~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:130:71: error: expected declaration specifiers or '...' before 'sht3x_repeat_t'
+  130 | bool sht3x_start_measurement (sht3x_sensor_t* dev, sht3x_mode_t mode, sht3x_repeat_t repeat)
+      |                                                                       ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:154:41: error: expected declaration specifiers or '...' before 'sht3x_repeat_t'
+  154 | uint8_t sht3x_get_measurement_duration (sht3x_repeat_t repeat)
+      |                                         ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:160:25: error: expected declaration specifiers or '...' before 'sht3x_sensor_t'
+  160 | bool sht3x_get_raw_data(sht3x_sensor_t* dev, sht3x_raw_data_t raw_data)
+      |                         ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:160:46: error: expected declaration specifiers or '...' before 'sht3x_raw_data_t'
+  160 | bool sht3x_get_raw_data(sht3x_sensor_t* dev, sht3x_raw_data_t raw_data)
+      |                                              ^~~~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:223:28: error: expected declaration specifiers or '...' before 'sht3x_raw_data_t'
+  223 | bool sht3x_compute_values (sht3x_raw_data_t raw_data, float* temperature, float* humidity)
+      |                            ^~~~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:237:25: error: expected declaration specifiers or '...' before 'sht3x_sensor_t'
+  237 | bool sht3x_get_results (sht3x_sensor_t* dev, float* temperature, float* humidity)
+      |                         ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:251:33: error: expected declaration specifiers or '...' before 'sht3x_sensor_t'
+  251 | static bool sht3x_is_measuring (sht3x_sensor_t* dev)
+      |                                 ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:269:32: error: expected declaration specifiers or '...' before 'sht3x_sensor_t'
+  269 | static bool sht3x_send_command(sht3x_sensor_t* dev, uint16_t cmd)
+      |                                ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:289:29: error: expected declaration specifiers or '...' before 'sht3x_sensor_t'
+  289 | static bool sht3x_read_data(sht3x_sensor_t* dev, uint8_t *data,  uint32_t len)
+      |                             ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:313:26: error: expected declaration specifiers or '...' before 'sht3x_sensor_t'
+  313 | static bool sht3x_reset (sht3x_sensor_t* dev)
+      |                          ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:340:31: error: expected declaration specifiers or '...' before 'sht3x_sensor_t'
+  340 | static bool sht3x_get_status (sht3x_sensor_t* dev, uint16_t* status)
+      |                               ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:360:1: error: parameter 'g_polynom' is initialized
+  360 | const uint8_t g_polynom = 0x31;
+      | ^~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:363:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  363 | {
+      | ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:360:15: error: declaration for parameter 'g_polynom' but no such parameter
+  360 | const uint8_t g_polynom = 0x31;
+      |               ^~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:66:16: error: declaration for parameter 'crc8' but no such parameter
+   66 | static uint8_t crc8 (uint8_t data[], int len);
+      |                ^~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:37:15: error: declaration for parameter 'SHT3x_MEAS_DURATION_TICKS' but no such parameter
+   37 | const uint8_t SHT3x_MEAS_DURATION_TICKS[3] = { TIME_TO_TICKS(SHT3x_MEAS_DURATION_REP_HIGH),
+      |               ^~~~~~~~~~~~~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:32:16: error: declaration for parameter 'SHT3x_MEAS_DURATION_US' but no such parameter
+   32 | const uint16_t SHT3x_MEAS_DURATION_US[3] = { SHT3x_MEAS_DURATION_REP_HIGH   * 1000,
+      |                ^~~~~~~~~~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:14:16: error: declaration for parameter 'SHT3x_MEASURE_CMD' but no such parameter
+   14 | const uint16_t SHT3x_MEASURE_CMD[6][3] = {
+      |                ^~~~~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:89:3: error: declaration for parameter 'sht3x_sensor_t' but no such parameter
+   89 | } sht3x_sensor_t;
+      |   ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:70:3: error: declaration for parameter 'sht3x_repeat_t' but no such parameter
+   70 | } sht3x_repeat_t;
+      |   ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:60:3: error: declaration for parameter 'sht3x_mode_t' but no such parameter
+   60 | } sht3x_mode_t;
+      |   ^~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:47:17: error: declaration for parameter 'sht3x_raw_data_t' but no such parameter
+   47 | typedef uint8_t sht3x_raw_data_t [SHT3x_RAW_DATA_SIZE];
+      |                 ^~~~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.c:384: error: expected '{' at end of input
+[3/12] Building C object esp-idf/bee_i2c/CMakeFiles/__idf_bee_i2c.dir/bee_i2c.c.obj
+FAILED: esp-idf/bee_i2c/CMakeFiles/__idf_bee_i2c.dir/bee_i2c.c.obj 
+ccache C:\Espressif\tools\xtensa-esp32-elf\esp-12.2.0_20230208\xtensa-esp32-elf\bin\xtensa-esp32-elf-gcc.exe -DESP_PLATFORM -DIDF_VER=\"v5.1-dirty\" -DSOC_MMU_PAGE_SIZE=CONFIG_MMU_PAGE_SIZE -D_GNU_SOURCE -D_POSIX_READER_WRITER_LOCKS -IE:/SHT3x_project/build/config -IE:/SHT3x_project/components/bee_i2c -IC:/Espressif/frameworks/esp-idf-v5.1/components/newlib/platform_include -IC:/Espressif/frameworks/esp-idf-v5.1/components/freertos/FreeRTOS-Kernel/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/freertos/FreeRTOS-Kernel/portable/xtensa/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/freertos/esp_additions/include/freertos -IC:/Espressif/frameworks/esp-idf-v5.1/components/freertos/esp_additions/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/freertos/esp_additions/arch/xtensa/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_hw_support/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_hw_support/include/soc -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_hw_support/include/soc/esp32 -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_hw_support/port/esp32/. -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_hw_support/port/esp32/private_include -IC:/Espressif/frameworks/esp-idf-v5.1/components/heap/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/log/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/soc/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/soc/esp32 -IC:/Espressif/frameworks/esp-idf-v5.1/components/soc/esp32/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/hal/esp32/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/hal/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/hal/platform_port/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_rom/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_rom/include/esp32 -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_rom/esp32 -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_common/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/soc -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/include/private -IC:/Espressif/frameworks/esp-idf-v5.1/components/xtensa/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/xtensa/esp32/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/include/apps -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/include/apps/sntp -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/lwip/src/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/port/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/port/freertos/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/port/esp32xx/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/port/esp32xx/include/arch -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/deprecated -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/analog_comparator/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/dac/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/gpio/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/gptimer/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/i2c/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/i2s/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/ledc/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/mcpwm/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/parlio/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/pcnt/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/rmt/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/sdio_slave/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/sdmmc/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/sigma_delta/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/spi/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/temperature_sensor/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/touch_sensor/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/twai/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/uart/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/usb_serial_jtag/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/touch_sensor/esp32/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_pm/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_ringbuf/include -mlongcalls -Wno-frame-address  -fdiagnostics-color=always -ffunction-sections -fdata-sections -Wall -Werror=all -Wno-error=unused-function -Wno-error=unused-variable -Wno-error=unused-but-set-variable -Wno-error=deprecated-declarations -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-enum-conversion -gdwarf-4 -ggdb -Og -fmacro-prefix-map=E:/SHT3x_project=. -fmacro-prefix-map=C:/Espressif/frameworks/esp-idf-v5.1=/IDF -fstrict-volatile-bitfields -fno-jump-tables -fno-tree-switch-conversion -DconfigENABLE_FREERTOS_DEBUG_OCDAWARE=1 -std=gnu17 -Wno-old-style-declaration -MD -MT esp-idf/bee_i2c/CMakeFiles/__idf_bee_i2c.dir/bee_i2c.c.obj -MF esp-idf\bee_i2c\CMakeFiles\__idf_bee_i2c.dir\bee_i2c.c.obj.d -o esp-idf/bee_i2c/CMakeFiles/__idf_bee_i2c.dir/bee_i2c.c.obj -c E:/SHT3x_project/components/bee_i2c/bee_i2c.c
+E:/SHT3x_project/components/bee_i2c/bee_i2c.c: In function 'read_sht3x':
+E:/SHT3x_project/components/bee_i2c/bee_i2c.c:12:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+   12 | {
+      | ^
+E:/SHT3x_project/components/bee_i2c/bee_i2c.c:19:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+   19 | {
+      | ^
+E:/SHT3x_project/components/bee_i2c/bee_i2c.c:35:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+   35 | {
+      | ^
+E:/SHT3x_project/components/bee_i2c/bee_i2c.c:52:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+   52 | {
+      | ^
+E:/SHT3x_project/components/bee_i2c/bee_i2c.c:79: error: expected '{' at end of input
+[4/12] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj
+FAILED: esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj 
+ccache C:\Espressif\tools\xtensa-esp32-elf\esp-12.2.0_20230208\xtensa-esp32-elf\bin\xtensa-esp32-elf-gcc.exe -DESP_PLATFORM -DIDF_VER=\"v5.1-dirty\" -DMBEDTLS_CONFIG_FILE=\"mbedtls/esp_config.h\" -DSOC_MMU_PAGE_SIZE=CONFIG_MMU_PAGE_SIZE -DUNITY_INCLUDE_CONFIG_H -D_GNU_SOURCE -D_POSIX_READER_WRITER_LOCKS -IE:/SHT3x_project/build/config -IE:/SHT3x_project/main -IC:/Espressif/frameworks/esp-idf-v5.1/components/newlib/platform_include -IC:/Espressif/frameworks/esp-idf-v5.1/components/freertos/FreeRTOS-Kernel/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/freertos/FreeRTOS-Kernel/portable/xtensa/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/freertos/esp_additions/include/freertos -IC:/Espressif/frameworks/esp-idf-v5.1/components/freertos/esp_additions/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/freertos/esp_additions/arch/xtensa/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_hw_support/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_hw_support/include/soc -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_hw_support/include/soc/esp32 -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_hw_support/port/esp32/. -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_hw_support/port/esp32/private_include -IC:/Espressif/frameworks/esp-idf-v5.1/components/heap/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/log/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/soc/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/soc/esp32 -IC:/Espressif/frameworks/esp-idf-v5.1/components/soc/esp32/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/hal/esp32/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/hal/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/hal/platform_port/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_rom/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_rom/include/esp32 -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_rom/esp32 -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_common/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/soc -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/include/private -IC:/Espressif/frameworks/esp-idf-v5.1/components/xtensa/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/xtensa/esp32/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/include/apps -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/include/apps/sntp -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/lwip/src/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/port/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/port/freertos/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/port/esp32xx/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/lwip/port/esp32xx/include/arch -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_ringbuf/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/efuse/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/efuse/esp32/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/deprecated -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/analog_comparator/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/dac/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/gpio/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/gptimer/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/i2c/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/i2s/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/ledc/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/mcpwm/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/parlio/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/pcnt/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/rmt/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/sdio_slave/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/sdmmc/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/sigma_delta/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/spi/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/temperature_sensor/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/touch_sensor/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/twai/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/uart/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/usb_serial_jtag/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/driver/touch_sensor/esp32/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_pm/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/mbedtls/port/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/mbedtls/mbedtls/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/mbedtls/mbedtls/library -IC:/Espressif/frameworks/esp-idf-v5.1/components/mbedtls/esp_crt_bundle/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_app_format/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/bootloader_support/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/bootloader_support/bootloader_flash/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_partition/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/app_update/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_mm/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/spi_flash/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/pthread/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_timer/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/app_trace/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_event/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/nvs_flash/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_phy/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_phy/esp32/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/vfs/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_netif/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/wpa_supplicant/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/wpa_supplicant/port/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/wpa_supplicant/esp_supplicant/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_coex/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_wifi/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_wifi/wifi_apps/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/unity/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/unity/unity/src -IC:/Espressif/frameworks/esp-idf-v5.1/components/cmock/CMock/src -IC:/Espressif/frameworks/esp-idf-v5.1/components/console -IC:/Espressif/frameworks/esp-idf-v5.1/components/http_parser -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp-tls -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp-tls/esp-tls-crypto -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_adc/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_adc/interface -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_adc/esp32/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_adc/deprecated/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_eth/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_gdbstub/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_hid/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/tcp_transport/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_http_client/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_http_server/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_https_ota/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_psram/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_lcd/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_lcd/interface -IC:/Espressif/frameworks/esp-idf-v5.1/components/protobuf-c/protobuf-c -IC:/Espressif/frameworks/esp-idf-v5.1/components/protocomm/include/common -IC:/Espressif/frameworks/esp-idf-v5.1/components/protocomm/include/security -IC:/Espressif/frameworks/esp-idf-v5.1/components/protocomm/include/transports -IC:/Espressif/frameworks/esp-idf-v5.1/components/esp_local_ctrl/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/espcoredump/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/espcoredump/include/port/xtensa -IC:/Espressif/frameworks/esp-idf-v5.1/components/wear_levelling/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/sdmmc/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/fatfs/diskio -IC:/Espressif/frameworks/esp-idf-v5.1/components/fatfs/vfs -IC:/Espressif/frameworks/esp-idf-v5.1/components/fatfs/src -IC:/Espressif/frameworks/esp-idf-v5.1/components/idf_test/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/idf_test/include/esp32 -IC:/Espressif/frameworks/esp-idf-v5.1/components/ieee802154/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/json/cJSON -IC:/Espressif/frameworks/esp-idf-v5.1/components/mqtt/esp-mqtt/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/perfmon/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/spiffs/include -IC:/Espressif/frameworks/esp-idf-v5.1/components/ssd_1306 -IC:/Espressif/frameworks/esp-idf-v5.1/components/wifi_provisioning/include -IE:/SHT3x_project/components/bee_i2c -IE:/SHT3x_project/components/bee_sht3x -mlongcalls -Wno-frame-address  -fdiagnostics-color=always -ffunction-sections -fdata-sections -Wall -Werror=all -Wno-error=unused-function -Wno-error=unused-variable -Wno-error=unused-but-set-variable -Wno-error=deprecated-declarations -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-enum-conversion -gdwarf-4 -ggdb -Og -fmacro-prefix-map=E:/SHT3x_project=. -fmacro-prefix-map=C:/Espressif/frameworks/esp-idf-v5.1=/IDF -fstrict-volatile-bitfields -fno-jump-tables -fno-tree-switch-conversion -DconfigENABLE_FREERTOS_DEBUG_OCDAWARE=1 -std=gnu17 -Wno-old-style-declaration -MD -MT esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj -MF esp-idf\main\CMakeFiles\__idf_main.dir\main.c.obj.d -o esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj -c E:/SHT3x_project/main/main.c
+In file included from C:/Espressif/frameworks/esp-idf-v5.1/components/newlib/platform_include/errno.h:10,
+                 from E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:10,
+                 from E:/SHT3x_project/main/main.c:2:
+c:\espressif\tools\xtensa-esp32-elf\esp-12.2.0_20230208\xtensa-esp32-elf\xtensa-esp32-elf\sys-include\errno.h: In function 'read_sht3x':
+c:\espressif\tools\xtensa-esp32-elf\esp-12.2.0_20230208\xtensa-esp32-elf\xtensa-esp32-elf\sys-include\errno.h:5:13: error: storage class specified for parameter 'error_t'
+    5 | typedef int error_t;
+      |             ^~~~~~~
+In file included from c:\espressif\tools\xtensa-esp32-elf\esp-12.2.0_20230208\xtensa-esp32-elf\xtensa-esp32-elf\sys-include\errno.h:9:
+c:\espressif\tools\xtensa-esp32-elf\esp-12.2.0_20230208\xtensa-esp32-elf\xtensa-esp32-elf\sys-include\sys\errno.h:15:13: error: storage class specified for parameter '__errno'
+   15 | extern int *__errno (void);
+      |             ^~~~~~~
+c:\espressif\tools\xtensa-esp32-elf\esp-12.2.0_20230208\xtensa-esp32-elf\xtensa-esp32-elf\sys-include\sys\errno.h:20:36: error: storage class specified for parameter '_sys_errlist'
+   20 | extern __IMPORT const char * const _sys_errlist[];
+      |                                    ^~~~~~~~~~~~
+c:\espressif\tools\xtensa-esp32-elf\esp-12.2.0_20230208\xtensa-esp32-elf\xtensa-esp32-elf\sys-include\sys\errno.h:21:21: error: storage class specified for parameter '_sys_nerr'
+   21 | extern __IMPORT int _sys_nerr;
+      |                     ^~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:47:17: error: storage class specified for parameter 'sht3x_raw_data_t'
+   47 | typedef uint8_t sht3x_raw_data_t [SHT3x_RAW_DATA_SIZE];
+      |                 ^~~~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:60:3: error: storage class specified for parameter 'sht3x_mode_t'
+   60 | } sht3x_mode_t;
+      |   ^~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:70:3: error: storage class specified for parameter 'sht3x_repeat_t'
+   70 | } sht3x_repeat_t;
+      |   ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:82:5: error: expected specifier-qualifier-list before 'sht3x_mode_t'
+   82 |     sht3x_mode_t    mode;            // used measurement mode
+      |     ^~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:89:3: error: storage class specified for parameter 'sht3x_sensor_t'
+   89 | } sht3x_sensor_t;
+      |   ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:102:1: error: expected declaration specifiers before 'sht3x_sensor_t'
+  102 | sht3x_sensor_t* sht3x_init_sensor (uint8_t bus, uint8_t addr);
+      | ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:127:21: error: expected declaration specifiers or '...' before 'sht3x_sensor_t'
+  127 | bool sht3x_measure (sht3x_sensor_t* dev, float* temperature, float* humidity);
+      |                     ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:156:31: error: expected declaration specifiers or '...' before 'sht3x_sensor_t'
+  156 | bool sht3x_start_measurement (sht3x_sensor_t* dev, sht3x_mode_t mode,
+      |                               ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:156:52: error: expected declaration specifiers or '...' before 'sht3x_mode_t'
+  156 | bool sht3x_start_measurement (sht3x_sensor_t* dev, sht3x_mode_t mode,
+      |                                                    ^~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:157:31: error: expected declaration specifiers or '...' before 'sht3x_repeat_t'
+  157 |                               sht3x_repeat_t repeat);
+      |                               ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:174:41: error: expected declaration specifiers or '...' before 'sht3x_repeat_t'
+  174 | uint8_t sht3x_get_measurement_duration (sht3x_repeat_t repeat);
+      |                                         ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:196:25: error: expected declaration specifiers or '...' before 'sht3x_sensor_t'
+  196 | bool sht3x_get_raw_data(sht3x_sensor_t* dev, sht3x_raw_data_t raw_data);
+      |                         ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:196:46: error: expected declaration specifiers or '...' before 'sht3x_raw_data_t'
+  196 | bool sht3x_get_raw_data(sht3x_sensor_t* dev, sht3x_raw_data_t raw_data);
+      |                                              ^~~~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:207:28: error: expected declaration specifiers or '...' before 'sht3x_raw_data_t'
+  207 | bool sht3x_compute_values (sht3x_raw_data_t raw_data,
+      |                            ^~~~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:224:25: error: expected declaration specifiers or '...' before 'sht3x_sensor_t'
+  224 | bool sht3x_get_results (sht3x_sensor_t* dev,
+      |                         ^~~~~~~~~~~~~~
+E:/SHT3x_project/main/main.c:5:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+    5 | {
+      | ^
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:89:3: error: declaration for parameter 'sht3x_sensor_t' but no such parameter
+   89 | } sht3x_sensor_t;
+      |   ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:70:3: error: declaration for parameter 'sht3x_repeat_t' but no such parameter
+   70 | } sht3x_repeat_t;
+      |   ^~~~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:60:3: error: declaration for parameter 'sht3x_mode_t' but no such parameter
+   60 | } sht3x_mode_t;
+      |   ^~~~~~~~~~~~
+E:/SHT3x_project/components/bee_sht3x/bee_sht3x.h:47:17: error: declaration for parameter 'sht3x_raw_data_t' but no such parameter
+   47 | typedef uint8_t sht3x_raw_data_t [SHT3x_RAW_DATA_SIZE];
+      |                 ^~~~~~~~~~~~~~~~
+c:\espressif\tools\xtensa-esp32-elf\esp-12.2.0_20230208\xtensa-esp32-elf\xtensa-esp32-elf\sys-include\sys\errno.h:21:21: error: declaration for parameter '_sys_nerr' but no such parameter
+   21 | extern __IMPORT int _sys_nerr;
+      |                     ^~~~~~~~~
+c:\espressif\tools\xtensa-esp32-elf\esp-12.2.0_20230208\xtensa-esp32-elf\xtensa-esp32-elf\sys-include\sys\errno.h:20:36: error: declaration for parameter '_sys_errlist' but no such parameter
+   20 | extern __IMPORT const char * const _sys_errlist[];
+      |                                    ^~~~~~~~~~~~
+c:\espressif\tools\xtensa-esp32-elf\esp-12.2.0_20230208\xtensa-esp32-elf\xtensa-esp32-elf\sys-include\sys\errno.h:15:13: error: declaration for parameter '__errno' but no such parameter
+   15 | extern int *__errno (void);
+      |             ^~~~~~~
+c:\espressif\tools\xtensa-esp32-elf\esp-12.2.0_20230208\xtensa-esp32-elf\xtensa-esp32-elf\sys-include\errno.h:5:13: error: declaration for parameter 'error_t' but no such parameter
+    5 | typedef int error_t;
+      |             ^~~~~~~
+E:/SHT3x_project/main/main.c:9: error: expected '{' at end of input
+ninja: build stopped: subcommand failed.

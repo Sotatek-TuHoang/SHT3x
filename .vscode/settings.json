@@ -1,0 +1,8 @@
+{
+    "idf.adapterTargetName": "esp32",
+    "files.associations": {
+        "bee_i2c.h": "c",
+        "bee_sht3x.h": "c"
+    },
+    "idf.portWin": "COM3"
+}
