@@ -1,35 +1,35 @@
-| Supported Targets | ESP32 | ESP32-C2 | ESP32-C3 | ESP32-C6 | ESP32-H2 | ESP32-S2 | ESP32-S3 |
-| ----------------- | ----- | -------- | -------- | -------- | -------- | -------- | -------- |
+Dự án ESP32 với Cảm biến SHT3x, Smart Config, MQTT và Chế độ Power Save
+Giới thiệu
+Dự án này là một ứng dụng sử dụng vi điều khiển ESP32 và framework ESP-IDF để thu thập dữ liệu từ cảm biến nhiệt độ và độ ẩm SHT3x. Dữ liệu sau đó được gửi đến máy chủ MQTT thông qua giao thức MQTT. Dự án cũng tích hợp chế độ tiết kiệm năng lượng để giảm tiêu thụ năng lượng của ESP32.
 
-# _Sample project_
+Tính năng
+Đọc dữ liệu nhiệt độ và độ ẩm từ cảm biến SHT3x.
+Gửi dữ liệu đọc được lên máy chủ MQTT.
+Sử dụng Smart Config để cấu hình thông số kết nối WiFi.
+Thực hiện chế độ Power Save để giảm tiêu thụ năng lượng.
+Yêu cầu
+Kit phát triển ESP32.
+ESP-IDF Framework đã được cài đặt.
+Cảm biến nhiệt độ và độ ẩm SHT3x.
+Máy chủ MQTT để nhận dữ liệu.
+Công cụ phát triển và môi trường phát triển ESP-IDF.
+Cài đặt và Cấu hình
+Sao chép mã nguồn từ thư mục src vào dự án của bạn sử dụng ESP-IDF.
 
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
+Đảm bảo rằng bạn đã cài đặt các thư viện cần thiết và cấu hình WiFi trong tệp main.c.
 
-This is the simplest buildable example. The example is used by command `idf.py create-project`
-that copies the project to user specified path and set it's name. For more information follow the [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project)
+Cấu hình địa chỉ và thông số kết nối của máy chủ MQTT trong tệp main.c.
 
+Tùy chỉnh các thiết lập chế độ Power Save trong tệp main.c nếu cần thiết.
 
+Sử dụng
+Chạy dự án trên kit phát triển ESP32.
+ESP32 sẽ thực hiện việc đọc dữ liệu từ cảm biến SHT3x và gửi dữ liệu lên máy chủ MQTT.
+Kiểm tra dữ liệu trên máy chủ MQTT để theo dõi nhiệt độ và độ ẩm.
+Đóng góp và Sự hỗ trợ
+Mọi đóng góp, báo lỗi hoặc yêu cầu tính năng đều được hoan nghênh. Xin vui lòng mở một issue trên GitHub của dự án.
 
-## How to use example
-We encourage the users to use the example as a template for the new projects.
-A recommended way is to follow the instructions on a [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project).
+Giấy phép
+Dự án này được phân phối dưới giấy phép MIT License.
 
-## Example folder contents
-
-The project **sample_project** contains one source file in C language [main.c](main/main.c). The file is located in folder [main](main).
-
-ESP-IDF projects are built using CMake. The project build configuration is contained in `CMakeLists.txt`
-files that provide set of directives and instructions describing the project's source files and targets
-(executable, library, or both). 
-
-Below is short explanation of remaining files in the project folder.
-
-```
-├── CMakeLists.txt
-├── main
-│   ├── CMakeLists.txt
-│   └── main.c
-└── README.md                  This is the file you are currently reading
-```
-Additionally, the sample project contains Makefile and component.mk files, used for the legacy Make based build system. 
-They are not used or needed when building with CMake and idf.py.
+Vui lòng thay đổi nội dung tùy theo yêu cầu của dự án và cấu hình của bạn. Hãy chắc chắn rằng bạn cung cấp đủ thông tin cho người sử dụng để hiểu về dự án và cách cài đặt, cấu hình và sử dụng nó.
