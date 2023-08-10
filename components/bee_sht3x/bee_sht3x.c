@@ -371,19 +371,18 @@ static uint8_t crc8 (uint8_t data[], int len)
     return crc;
 } 
 
+float fTemp;
+float fHumi;
 void read_sht3x_task (void *pvParameters)
 {
     sht3x_sensor_t* sensor = (sht3x_sensor_t*)pvParameters;
-    float fTemp;
-    float fHumi;
-
     vTaskDelay (sht3x_get_measurement_duration(sht3x_high));
 
     TickType_t last_wakeup = xTaskGetTickCount();
     
     for(;;) 
     {
-        if ((xTaskGetTickCount() - last_wakeup) > pdMS_TO_TICKS(2000))
+        if ((xTaskGetTickCount() - last_wakeup) > pdMS_TO_TICKS(10000))
         {
             last_wakeup = xTaskGetTickCount();
             

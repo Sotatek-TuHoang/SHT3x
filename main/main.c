@@ -1,5 +1,10 @@
 #include "bee_sht3x.h"
 #include "bee_i2c.h"
+#include "bee_wifi.h"
+#include "bee_mqtt.h"
+#include "bee_nvs.h"
+#include "bee_button.h"
+
 
 sht3x_sensor_t* sensor;    // sensor device data structure
 
@@ -12,11 +17,21 @@ void app_main(void)
     if ((sensor = sht3x_init_sensor (I2C_BUS, SHT3x_ADDR_1)))
     {
         // Create a user task that uses the sensors.
-        xTaskCreate(read_sht3x_task, "read_sht3x_task", 2048, sensor, 2, 0);
+        xTaskCreate(&read_sht3x_task, "read_sht3x_task", 2048, sensor, 20, 0);
         printf("Create task SHT30 OK\n");
     }
     else
     {
         printf("Could not initialize SHT3x sensor\n");
     }
+
+    button_init();
+    xTaskCreate(wifi_prov_button_isr, "wifi_prov_button_isr", 4096, NULL, 3, NULL);
+
+    nvs_flash_function_init();
+    wifi_init_func();
+    mqtt_app_start();
+    xTaskCreate(send_mqtt_data_task, "send_mqtt_data_task", 4096, NULL, 7, NULL);
+    //xTaskCreate(receive_mqtt_config_task, "receive_mqtt_config_task", 4096, NULL, 5, NULL);
+
 }
