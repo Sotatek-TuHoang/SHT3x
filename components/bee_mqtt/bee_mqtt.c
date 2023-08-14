@@ -9,6 +9,7 @@
 /****************************************************************************/
 /***        Include files                                                 ***/
 /****************************************************************************/
+
 #include "mqtt_client.h"
 #include "esp_wifi.h"
 #include "freertos/FreeRTOS.h"
@@ -58,6 +59,7 @@ static bool bMQTT_CONNECTED = false;
 /****************************************************************************/
 /***        Event Handler                                                 ***/
 /****************************************************************************/
+
 void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data)
 {
     esp_mqtt_event_handle_t event = event_data;
