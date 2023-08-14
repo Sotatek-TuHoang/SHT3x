@@ -413,8 +413,8 @@ void read_sht3x_task (void *pvParameters)
                 bSensor_status = true;
                 // Calculate temperature and humidity average
 
-                //giảm giá trị của các phần tử trong mảng u8Temp_array tại chỉ mục u8Temp_index
-                //khỏi tổng u16Temp_sum để chuẩn bị cho việc cộng các giá trị mới vào tổng
+                //giảm giá trị của các phần tử trong mảng Temp_array tại chỉ mục Temp_index
+                //khỏi tổng Temp_sum để chuẩn bị cho việc cộng các giá trị mới vào tổng
 
                 fTemp_sum -= fTemp_array[u8Temp_index]; 
                 fHumi_sum -= fHumi_array[u8Humi_index];
@@ -422,9 +422,9 @@ void read_sht3x_task (void *pvParameters)
                 fTemp_sum += fTemp; // Tính tổng các giá trị nhiệt độ
                 fHumi_sum += fHumi;
 
-                //gán giá trị nhiệt độ u8temp mới vào mảng u8Temp_array tại chỉ mục u8Temp_index.
+                //gán giá trị nhiệt độ temp mới vào mảng Temp_array tại chỉ mục Temp_index.
                 fTemp_array[u8Temp_index] = fTemp;
-                //cập nhật chỉ mục u8Temp_index để lưu trữ các giá trị mới nhất vào mảng.
+                //cập nhật chỉ mục Temp_index để lưu trữ các giá trị mới nhất vào mảng.
                 //Chỉ mục này sẽ được lặp lại từ 0 đến num_readings - 1 để duy trì kích thước của mảng. 
                 u8Temp_index = (u8Temp_index + 1) % num_readings;
 
