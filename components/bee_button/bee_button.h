@@ -6,6 +6,7 @@
  * @brief	module for project cotrol by button
  *
  ***************************************************************************/
+
 #ifndef BEE_BUTTON_H
 #define BEE_BUTTON_H
 
@@ -20,22 +21,21 @@
  *
  * @note The WIFI_PROV_BUTTON GPIO pin and other related configurations should be defined
  *       before calling this function.
- *
- * @return None
  */
-void button_init();
+void button_init(void);
 
 /**
- * @brief ISR handler for the Wi-Fi provisioning button.
+ * @brief WiFi Provisioning Button ISR Handler
  *
- * This ISR handler is triggered when the Wi-Fi provisioning button is clicked.
- * It receives events from the provisioning event queue and initiates the Wi-Fi provisioning process.
- * Additionally, it logs a message indicating that the button has been clicked.
+ * This function is the Interrupt Service Routine (ISR) handler for the WiFi provisioning button.
+ * It is executed when the WiFi provisioning button is clicked, and it triggers the WiFi provisioning process.
  *
- * @param arg Pointer to the argument associated with the ISR handler (not used).
- *
- * @return None
+ * @param arg - Pointer to any additional data that needs to be passed to the ISR (not used in this context).
  */
 void wifi_prov_button_isr(void* arg);
 
 #endif
+
+/****************************************************************************/
+/***        END OF FILE                                                   ***/
+/****************************************************************************/

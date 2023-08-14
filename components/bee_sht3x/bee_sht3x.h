@@ -146,7 +146,6 @@ sht3x_sensor_t* sht3x_init_sensor (uint8_t bus, uint8_t addr);
  */
 bool sht3x_measure (sht3x_sensor_t* device, float* fTemp, float* fHumi);
 
-
 /**
  * @brief	Start the measurement in single shot or periodic mode
  *
@@ -215,7 +214,6 @@ uint8_t sht3x_get_measurement_duration (sht3x_repeat_t repeat);
  */
 bool sht3x_get_raw_data(sht3x_sensor_t* device, sht3x_raw_data_t raw_data);
 
-
 /**
  * @brief	Computes sensor values from raw data
  *
@@ -226,7 +224,6 @@ bool sht3x_get_raw_data(sht3x_sensor_t* device, sht3x_raw_data_t raw_data);
  */
 bool sht3x_compute_values (sht3x_raw_data_t raw_data, 
                            float* fTemp, float* fHumi);
-
 
 /**
  * @brief	Get measurement results in form of sensor values
@@ -244,8 +241,6 @@ bool sht3x_compute_values (sht3x_raw_data_t raw_data,
 bool sht3x_get_results (sht3x_sensor_t* device, 
                         float* fTemp, float* fHumi);
 
-
-
 /**
  * @brief	Get measurement results in form of sensor values and caculate different
  *
@@ -262,3 +257,7 @@ bool sht3x_get_results (sht3x_sensor_t* device,
 void read_sht3x_task (void *pvParameters);
 
 #endif /* __SHT3x_H__ */
+
+/****************************************************************************/
+/***        END OF FILE                                                   ***/
+/****************************************************************************/

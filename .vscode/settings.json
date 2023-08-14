@@ -1,9 +1,18 @@
 {
     "idf.adapterTargetName": "esp32",
     "files.associations": {
+        "bee_button.h": "c",
         "bee_i2c.h": "c",
         "bee_sht3x.h": "c",
-        "bee_wifi.h": "c"
+        "bee_mqtt.h": "c",
+        "bee_nvs.h": "c",
+        "errno.h": "c",
+        "stdbool.h": "c",
+        "freertos.h": "c",
+        "task.h": "c",
+        "queue.h": "c",
+        "esp_err.h": "c",
+        "i2c.h": "c",
+        "mqtt_client.h": "c"
     },
-    "idf.portWin": "COM3"
 }

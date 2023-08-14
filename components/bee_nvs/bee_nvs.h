@@ -62,3 +62,7 @@ void save_wifi_cred_to_nvs(const char *cSsid, const char *cPassword);
 void load_old_wifi_cred(char *cSsid, char *cPassword);
 
 #endif /* BEE_NVS_H */
+
+/****************************************************************************/
+/***        END OF FILE                                                   ***/
+/****************************************************************************/

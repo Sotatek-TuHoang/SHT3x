@@ -237,8 +237,6 @@ static void cnt_timeout(uint8_t *u8time)
 /***        initializing wifi function                                    ***/
 /****************************************************************************/
 
-/** Hàm kiểm soát việc cài đặt cấu hình TCP/IP, đăng ký event handle
- *  Init các cấu hình liên quan phục vụ cho cấu hình cho wifi        */
 void wifi_func_init(void)
 {
     ESP_ERROR_CHECK(esp_netif_init()); /* Initialize TCP/IP */
@@ -364,6 +362,7 @@ void prov_fail_task(void* pvParameters)
 
     vTaskDelete(prov_fail_handle); // Xóa task khi hoàn thành
 }
+
 /****************************************************************************/
 /***        END OF FILE                                                   ***/
 /****************************************************************************/

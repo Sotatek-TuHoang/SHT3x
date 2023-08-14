@@ -14,6 +14,7 @@
 #include "driver/gpio.h"
 #include <esp_log.h>
 
+#include "bee_button.h"
 #include "bee_wifi.h"
 
 static const char *TAG = "Button";
@@ -43,7 +44,8 @@ void wifi_prov_button_isr(void* arg)
     }
 }
 
-void button_init()
+
+void button_init(void)
 {
     gpio_install_isr_service(0);
     gpio_isr_handler_add(WIFI_PROV_BUTTON, wifi_prov_button_isr_handler, (void*) WIFI_PROV_BUTTON);
@@ -57,3 +59,7 @@ void button_init()
 
     wifi_prov_evt_queue = xQueueCreate(5, sizeof(uint8_t));
 }
+
+/****************************************************************************/
+/***        END OF FILE                                                   ***/
+/****************************************************************************/

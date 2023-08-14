@@ -388,16 +388,19 @@ static uint8_t crc8 (uint8_t data[], int len)
     }
 
     return crc;
-} 
+}
 
+/**Exported variable*/
 float fTemp;
 float fHumi;
 float fTemp_diff;
 float fHumi_diff;
 uint8_t u8error_cnt = 0;
 const uint8_t u8max_error_cnt = 10;
+
+/**Static variable*/
 static uint8_t u8count_caculate_diff = 0;
-const uint8_t num_readings = 5;
+static const uint8_t num_readings = 5;
 static uint8_t u8Temp_index = 0;
 static uint8_t u8Humi_index = 0;
 static float fTemp_sum = 0;
@@ -474,6 +477,9 @@ void read_sht3x_task (void *pvParameters)
                 }
             }
         }
-        vTaskDelay(pdMS_TO_TICKS(100));
+        vTaskDelay(pdMS_TO_TICKS(50));
     }
 }
+/****************************************************************************/
+/***        END OF FILE                                                   ***/
+/****************************************************************************/
