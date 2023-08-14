@@ -1,0 +1,167 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7084
+ho 0 tail 12 room 4
+load:0x40078000,len:15576
+ho 0 tail 12 room 4
+load:0x40080400,len:4
+load:0x40080404,len:3876
+entry 0x4008064c
+[0;32mI (33) boot: ESP-IDF v5.1-dirty 2nd stage bootloader[0m
+[0;32mI (33) boot: compile time Aug 10 2023 18:13:03[0m
+[0;32mI (33) boot: Multicore bootloader[0m
+[0;32mI (38) boot: chip revision: v3.0[0m
+[0;32mI (41) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (46) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (51) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (55) boot: Enabling RNG early entropy source...[0m
+[0;32mI (61) boot: Partition Table:[0m
+[0;32mI (64) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (71) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (79) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (86) boot:  2 factory          factory app      00 00 00010000 00177000[0m
+[0;32mI (94) boot: End of partition table[0m
+[0;32mI (98) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=313b0h (201648) map[0m
+[0;32mI (179) esp_image: segment 1: paddr=000413d8 vaddr=3ffbdb60 size=05534h ( 21812) load[0m
+[0;32mI (188) esp_image: segment 2: paddr=00046914 vaddr=40080000 size=09704h ( 38660) load[0m
+[0;32mI (204) esp_image: segment 3: paddr=00050020 vaddr=400d0020 size=ce5fch (845308) map[0m
+[0;32mI (510) esp_image: segment 4: paddr=0011e624 vaddr=40089704 size=11bcch ( 72652) load[0m
+[0;32mI (554) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (554) boot: Disabling RNG early entropy source...[0m
+[0;32mI (566) cpu_start: Multicore app[0m
+[0;32mI (566) cpu_start: Pro cpu up.[0m
+[0;32mI (566) cpu_start: Starting app cpu, entry point is 0x40081608[0m
+[0;32mI (0) cpu_start: App cpu up.[0m
+[0;32mI (584) cpu_start: Pro cpu start user code[0m
+[0;32mI (584) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (584) cpu_start: Application information:[0m
+[0;32mI (589) cpu_start: Project name:     main[0m
+[0;32mI (593) cpu_start: App version:      edc7cc2-dirty[0m
+[0;32mI (599) cpu_start: Compile time:     Aug 10 2023 18:12:52[0m
+[0;32mI (605) cpu_start: ELF file SHA256:  4f5192e15604bacb...[0m
+[0;32mI (611) cpu_start: ESP-IDF:          v5.1-dirty[0m
+[0;32mI (616) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (621) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (626) cpu_start: Chip rev:         v3.0[0m
+[0;32mI (631) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (638) heap_init: At 3FFAFF10 len 000000F0 (0 KiB): DRAM[0m
+[0;32mI (644) heap_init: At 3FFB6388 len 00001C78 (7 KiB): DRAM[0m
+[0;32mI (650) heap_init: At 3FFB9A20 len 00004108 (16 KiB): DRAM[0m
+[0;32mI (656) heap_init: At 3FFC9EC8 len 00016138 (88 KiB): DRAM[0m
+[0;32mI (662) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (668) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (675) heap_init: At 4009B2D0 len 00004D30 (19 KiB): IRAM[0m
+[0;32mI (683) spi_flash: detected chip: generic[0m
+[0;32mI (686) spi_flash: flash io: dio[0m
+[0;33mW (690) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (704) coexist: coex firmware version: ebddf30[0m
+[0;32mI (709) app_start: Starting scheduler on CPU0[0m
+[0;32m[0;32mI (713) app_start: Starting scheduler on CPU1[0m
+I (713) main_task: Started on CPU0[0m
+[0;32mI (723) main_task: Calling app_main()[0m
+Create task SHT30 OK
+I (853) wifi:wifi driver task: 3ffcfb50, prio:23, stack:6656, core=0
+I (853) wifi:wifi firmware version: b2f1f86
+I (853) wifi:wifi certification version: v7.0
+I (853) wifi:config NVS flash: enabled
+I (853) wifi:config nano formating: disabled
+I (863) wifi:Init data frame dynamic rx buffer num: 32
+I (863) wifi:Init management frame dynamic rx buffer num: 32
+I (873) wifi:Init management short buffer num: 32
+I (873) wifi:Init dynamic tx buffer num: 32
+I (883) wifi:Init static rx buffer size: 1600
+I (883) wifi:Init static rx buffer num: 10
+I (883) wifi:Init dynamic rx buffer num: 32
+[0;32mI (893) wifi_init: rx ba win: 4[0m
+[0;32mI (893) wifi_init: tcpip mbox: 32[0m
+[0;32mI (893) wifi_init: udp mbox: 6[0m
+[0;32mI (903) wifi_init: tcp mbox: 6[0m
+[0;32mI (903) wifi_init: tcp tx win: 5744[0m
+[0;32mI (913) wifi_init: tcp rx win: 5744[0m
+[0;32mI (913) wifi_init: tcp mss: 1440[0m
+[0;32mI (923) wifi_prov_scheme_ble: BT memory released[0m
+[0;32mI (923) phy_init: phy_version 4670,719f9f6,Feb 18 2021,17:07:07[0m
+I (1033) wifi:mode : sta (b8:d6:1a:69:5a:cc)
+I (1043) wifi:enable tsf
+[0;32mI (1043) BTDM_INIT: BT controller compile version [ad2b7cd][0m
+[0;32mI (1293) protocomm_nimble: BLE Host Task Started[0m
+[0;32mI (1303) wifi_prov_mgr: Provisioning started with service name : BEE_695ACC [0m
+[0;32mI (1303) Wifi prov: Provisioning started[0m
+SHT3x Sensor: 31.19 °C, 81.66 %
+SHT3x Sensor: 31.22 °C, 81.64 %
+SHT3x Sensor: 31.16 °C, 81.64 %
+[0;32mI (31313) Wifi prov: TIMEOUT!!!
+[0m
+Error opening NVS handle! (ESP_ERR_NVS_NOT_FOUND)
+[0;32mI (32323) wifi_prov_mgr: Provisioning stopped[0m
+[0;32mI (32323) wifi_prov_scheme_ble: BTDM memory released[0m
+SHT3x Sensor: 31.15 °C, 81.69 %
+SHT3x Sensor: 31.16 °C, 81.76 %
+SHT3x Sensor: 31.12 °C, 81.77 %
+SHT3x Sensor: 31.15 °C, 81.82 %
+SHT3x Sensor: 31.16 °C, 81.80 %
+SHT3x Sensor: 31.20 °C, 81.73 %
+SHT3x Sensor: 31.19 °C, 81.68 %
+SHT3x Sensor: 31.20 °C, 81.65 %
+SHT3x Sensor: 31.18 °C, 81.63 %
+SHT3x Sensor: 31.15 °C, 81.66 %
+SHT3x Sensor: 31.16 °C, 81.68 %
+SHT3x Sensor: 31.16 °C, 81.73 %
+SHT3x Sensor: 31.16 °C, 81.78 %
+SHT3x Sensor: 31.15 °C, 81.77 %
+SHT3x Sensor: 31.18 °C, 81.76 %
+SHT3x Sensor: 31.20 °C, 81.74 %
+SHT3x Sensor: 31.23 °C, 81.69 %
+SHT3x Sensor: 31.22 °C, 81.60 %
+SHT3x Sensor: 31.25 °C, 81.54 %
+SHT3x Sensor: 31.28 °C, 81.53 %
+SHT3x Sensor: 31.25 °C, 81.42 %
+SHT3x Sensor: 31.28 °C, 81.42 %
+SHT3x Sensor: 31.30 °C, 81.41 %
+SHT3x Sensor: 31.32 °C, 81.36 %
+SHT3x Sensor: 31.36 °C, 81.28 %
+SHT3x Sensor: 31.30 °C, 81.23 %
+SHT3x Sensor: 31.26 °C, 81.21 %
+SHT3x Sensor: 31.20 °C, 81.30 %
+SHT3x Sensor: 31.16 °C, 81.43 %
+SHT3x Sensor: 31.18 °C, 81.47 %
+SHT3x Sensor: 31.18 °C, 81.48 %
+SHT3x Sensor: 31.18 °C, 81.52 %
+SHT3x Sensor: 31.15 °C, 81.52 %
+SHT3x Sensor: 31.15 °C, 81.52 %
+SHT3x Sensor: 31.13 °C, 81.52 %
+SHT3x Sensor: 31.12 °C, 81.53 %
+SHT3x Sensor: 31.12 °C, 81.54 %
+SHT3x Sensor: 31.10 °C, 81.58 %
+SHT3x Sensor: 31.10 °C, 81.64 %
+SHT3x Sensor: 31.12 °C, 81.64 %
+SHT3x Sensor: 31.12 °C, 81.70 %
+SHT3x Sensor: 31.10 °C, 81.69 %
+SHT3x Sensor: 31.08 °C, 81.65 %
+SHT3x Sensor: 31.06 °C, 81.67 %
+SHT3x Sensor: 31.05 °C, 81.76 %
+SHT3x Sensor: 31.03 °C, 81.76 %
+SHT3x Sensor: 31.00 °C, 81.81 %
+SHT3x Sensor: 31.05 °C, 81.83 %
+SHT3x Sensor: 31.05 °C, 81.77 %
+SHT3x Sensor: 31.03 °C, 81.76 %
+SHT3x Sensor: 31.05 °C, 81.81 %
+SHT3x Sensor: 31.06 °C, 81.79 %
+SHT3x Sensor: 31.09 °C, 81.79 %
+SHT3x Sensor: 31.10 °C, 81.74 %
+SHT3x Sensor: 31.13 °C, 81.70 %
+SHT3x Sensor: 31.15 °C, 81.64 %
+SHT3x Sensor: 31.16 °C, 81.64 %
+SHT3x Sensor: 31.10 °C, 81.61 %
+SHT3x Sensor: 31.09 °C, 81.66 %
+SHT3x Sensor: 31.05 °C, 81.69 %
+SHT3x Sensor: 31.03 °C, 81.93 %
+SHT3x Sensor: 30.96 °C, 81.89 %
+SHT3x Sensor: 30.99 °C, 81.90 %
+SHT3x Sensor: 31.00 °C, 81.95 %
+SHT3x Sensor: 30.99 °C, 81.94 %
+SHT3x Sensor: 31.02 °C, 81.98 %

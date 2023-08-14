@@ -1,0 +1,128 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7084
+ho 0 tail 12 room 4
+load:0x40078000,len:15576
+ho 0 tail 12 room 4
+load:0x40080400,len:4
+load:0x40080404,len:3876
+entry 0x4008064c
+[0;32mI (33) boot: ESP-IDF v5.1-dirty 2nd stage bootloader[0m
+[0;32mI (33) boot: compile time Aug 10 2023 18:13:03[0m
+[0;32mI (33) boot: Multicore bootloader[0m
+[0;32mI (38) boot: chip revision: v3.0[0m
+[0;32mI (41) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (46) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (51) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (55) boot: Enabling RNG early entropy source...[0m
+[0;32mI (61) boot: Partition Table:[0m
+[0;32mI (64) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (71) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (79) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (86) boot:  2 factory          factory app      00 00 00010000 00177000[0m
+[0;32mI (94) boot: End of partition table[0m
+[0;32mI (98) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=31388h (201608) map[0m
+[0;32mI (179) esp_image: segment 1: paddr=000413b0 vaddr=3ffbdb60 size=05534h ( 21812) load[0m
+[0;32mI (188) esp_image: segment 2: paddr=000468ec vaddr=40080000 size=0972ch ( 38700) load[0m
+[0;32mI (204) esp_image: segment 3: paddr=00050020 vaddr=400d0020 size=ce4d8h (845016) map[0m
+[0;32mI (510) esp_image: segment 4: paddr=0011e500 vaddr=4008972c size=11ba4h ( 72612) load[0m
+[0;32mI (554) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (554) boot: Disabling RNG early entropy source...[0m
+[0;32mI (566) cpu_start: Multicore app[0m
+[0;32mI (566) cpu_start: Pro cpu up.[0m
+[0;32mI (566) cpu_start: Starting app cpu, entry point is 0x40081608[0m
+[0;32mI (0) cpu_start: App cpu up.[0m
+[0;32mI (584) cpu_start: Pro cpu start user code[0m
+[0;32mI (584) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (584) cpu_start: Application information:[0m
+[0;32mI (589) cpu_start: Project name:     main[0m
+[0;32mI (593) cpu_start: App version:      edc7cc2-dirty[0m
+[0;32mI (599) cpu_start: Compile time:     Aug 10 2023 18:12:52[0m
+[0;32mI (605) cpu_start: ELF file SHA256:  7909cea286db7696...[0m
+[0;32mI (611) cpu_start: ESP-IDF:          v5.1-dirty[0m
+[0;32mI (616) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (621) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (626) cpu_start: Chip rev:         v3.0[0m
+[0;32mI (630) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (638) heap_init: At 3FFAFF10 len 000000F0 (0 KiB): DRAM[0m
+[0;32mI (643) heap_init: At 3FFB6388 len 00001C78 (7 KiB): DRAM[0m
+[0;32mI (650) heap_init: At 3FFB9A20 len 00004108 (16 KiB): DRAM[0m
+[0;32mI (656) heap_init: At 3FFC9EC8 len 00016138 (88 KiB): DRAM[0m
+[0;32mI (662) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (668) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (675) heap_init: At 4009B2D0 len 00004D30 (19 KiB): IRAM[0m
+[0;32mI (682) spi_flash: detected chip: generic[0m
+[0;32mI (686) spi_flash: flash io: dio[0m
+[0;33mW (689) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (703) coexist: coex firmware version: ebddf30[0m
+[0;32mI (709) app_start: Starting scheduler on CPU0[0m
+[0;32m[0;32mI (713) app_start: Starting scheduler on CPU1[0m
+I (713) main_task: Started on CPU0[0m
+[0;32mI (723) main_task: Calling app_main()[0m
+Create task SHT30 OK
+I (863) wifi:wifi driver task: 3ffcfd80, prio:23, stack:6656, core=0
+I (873) wifi:wifi firmware version: b2f1f86
+I (873) wifi:wifi certification version: v7.0
+I (873) wifi:config NVS flash: enabled
+I (883) wifi:config nano formating: disabled
+I (883) wifi:Init data frame dynamic rx buffer num: 32
+I (883) wifi:Init management frame dynamic rx buffer num: 32
+I (893) wifi:Init management short buffer num: 32
+I (893) wifi:Init dynamic tx buffer num: 32
+I (903) wifi:Init static rx buffer size: 1600
+I (903) wifi:Init static rx buffer num: 10
+I (913) wifi:Init dynamic rx buffer num: 32
+[0;32mI (913) wifi_init: rx ba win: 4[0m
+[0;32mI (913) wifi_init: tcpip mbox: 32[0m
+[0;32mI (923) wifi_init: udp mbox: 6[0m
+[0;32mI (923) wifi_init: tcp mbox: 6[0m
+[0;32mI (923) wifi_init: tcp tx win: 5744[0m
+[0;32mI (933) wifi_init: tcp rx win: 5744[0m
+[0;32mI (933) wifi_init: tcp mss: 1440[0m
+[0;32mI (943) wifi_prov_scheme_ble: BT memory released[0m
+[0;32mI (943) Wifi prov: Already provisioned, starting Wi-Fi STA[0m
+[0;32mI (953) phy_init: phy_version 4670,719f9f6,Feb 18 2021,17:07:07[0m
+I (1063) wifi:mode : sta (b8:d6:1a:69:5a:cc)
+I (1063) wifi:enable tsf
+I (1083) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+I (1083) wifi:state: init -> auth (b0)
+I (1083) wifi:state: auth -> assoc (0)
+I (1093) wifi:state: assoc -> run (10)
+I (1103) wifi:connected with TUPEO, aid = 7, channel 1, BW20, bssid = b2:7d:64:d8:92:71
+I (1103) wifi:security: WPA2-PSK, phy: bgn, rssi: -40
+I (1113) wifi:pm start, type: 1
+
+I (1163) wifi:AP's beacon interval = 102400 us, DTIM period = 3
+[0;32mI (2113) Wifi prov: Connected with IP Address:192.168.137.31[0m
+[0;32mI (2113) esp_netif_handlers: sta ip: 192.168.137.31, mask: 255.255.255.0, gw: 192.168.137.1[0m
+[0;32mI (2123) MQTT: Other event id:7[0m
+[0;32mI (2123) MQTT: Topic publish: VB/DMP/VBEEON/CUSTOM/SMH/B8D61A695ACC/telemetry
+[0m
+[0;32mI (2133) MQTT: Topic subscribe: VB/DMP/VBEEON/CUSTOM/SMH/B8D61A695ACC/Command
+[0m
+[0;32mI (2133) main_task: Returned from app_main()[0m
+I (2813) wifi:<ba-add>idx:0 (ifx:0, b2:7d:64:d8:92:71), tid:0, ssn:6, winSize:64
+[0;32mI (2813) MQTT: MQTT_EVENT_CONNECTED[0m
+[0;32mI (3123) MQTT: MQTT_EVENT_SUBSCRIBED, msg_id=26497[0m
+SHT3x Sensor: 28.10 °C, 71.60 %
+SHT3x Sensor: 28.10 °C, 71.60 %
+SHT3x Sensor: 28.16 °C, 71.61 %
+[0;32mI (32203) MQTT: MQTT_EVENT_PUBLISHED, msg_id=16797[0m
+[0;32mI (32613) MQTT: MQTT_EVENT_PUBLISHED, msg_id=58212[0m
+[0;32mI (62203) MQTT: MQTT_EVENT_PUBLISHED, msg_id=2736[0m
+[0;32mI (62313) MQTT: MQTT_EVENT_PUBLISHED, msg_id=24638[0m
+[0;32mI (62723) MQTT: MQTT_EVENT_PUBLISHED, msg_id=22783[0m
+[0;32mI (92523) MQTT: MQTT_EVENT_PUBLISHED, msg_id=8271[0m
+[0;32mI (92823) MQTT: MQTT_EVENT_PUBLISHED, msg_id=19411[0m
+[0;32mI (122633) MQTT: MQTT_EVENT_PUBLISHED, msg_id=25342[0m
+[0;32mI (122933) MQTT: MQTT_EVENT_PUBLISHED, msg_id=36210[0m
+[0;32mI (123243) MQTT: MQTT_EVENT_PUBLISHED, msg_id=45270[0m
+[0;32mI (152423) MQTT: MQTT_EVENT_PUBLISHED, msg_id=25301[0m
+[0;32mI (152733) MQTT: MQTT_EVENT_PUBLISHED, msg_id=39892[0m
+[0;32mI (182533) MQTT: MQTT_EVENT_PUBLISHED, msg_id=35631[0m
+[0;32mI (182843) MQTT: MQTT_EVENT_PUBLISHED, msg_id=59212[0m
+[0;32mI (183143) MQTT: MQTT_EVENT_PUBLISHED, msg_id=3521[0m

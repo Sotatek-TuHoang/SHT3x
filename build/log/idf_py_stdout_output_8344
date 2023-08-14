@@ -1,0 +1,695 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7084
+ho 0 tail 12 room 4
+load:0x40078000,len:15576
+ho 0 tail 12 room 4
+load:0x40080400,len:4
+load:0x40080404,len:3876
+entry 0x4008064c
+[0;32mI (33) boot: ESP-IDF v5.1-dirty 2nd stage bootloader[0m
+[0;32mI (33) boot: compile time Aug 10 2023 18:13:03[0m
+[0;32mI (33) boot: Multicore bootloader[0m
+[0;32mI (38) boot: chip revision: v3.0[0m
+[0;32mI (41) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (46) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (51) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (55) boot: Enabling RNG early entropy source...[0m
+[0;32mI (61) boot: Partition Table:[0m
+[0;32mI (64) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (71) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (79) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (86) boot:  2 factory          factory app      00 00 00010000 00177000[0m
+[0;32mI (94) boot: End of partition table[0m
+[0;32mI (98) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=31388h (201608) map[0m
+[0;32mI (179) esp_image: segment 1: paddr=000413b0 vaddr=3ffbdb60 size=05534h ( 21812) load[0m
+[0;32mI (188) esp_image: segment 2: paddr=000468ec vaddr=40080000 size=0972ch ( 38700) load[0m
+[0;32mI (204) esp_image: segment 3: paddr=00050020 vaddr=400d0020 size=ce4d8h (845016) map[0m
+[0;32mI (510) esp_image: segment 4: paddr=0011e500 vaddr=4008972c size=11ba4h ( 72612) load[0m
+[0;32mI (554) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (554) boot: Disabling RNG early entropy source...[0m
+[0;32mI (566) cpu_start: Multicore app[0m
+[0;32mI (566) cpu_start: Pro cpu up.[0m
+[0;32mI (566) cpu_start: Starting app cpu, entry point is 0x40081608[0m
+[0;32mI (0) cpu_start: App cpu up.[0m
+[0;32mI (584) cpu_start: Pro cpu start user code[0m
+[0;32mI (584) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (584) cpu_start: Application information:[0m
+[0;32mI (589) cpu_start: Project name:     main[0m
+[0;32mI (593) cpu_start: App version:      edc7cc2-dirty[0m
+[0;32mI (599) cpu_start: Compile time:     Aug 10 2023 18:12:52[0m
+[0;32mI (605) cpu_start: ELF file SHA256:  422c7057f1298ca4...[0m
+[0;32mI (611) cpu_start: ESP-IDF:          v5.1-dirty[0m
+[0;32mI (616) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (621) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (626) cpu_start: Chip rev:         v3.0[0m
+[0;32mI (630) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (638) heap_init: At 3FFAFF10 len 000000F0 (0 KiB): DRAM[0m
+[0;32mI (643) heap_init: At 3FFB6388 len 00001C78 (7 KiB): DRAM[0m
+[0;32mI (650) heap_init: At 3FFB9A20 len 00004108 (16 KiB): DRAM[0m
+[0;32mI (656) heap_init: At 3FFC9EC8 len 00016138 (88 KiB): DRAM[0m
+[0;32mI (662) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (668) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (675) heap_init: At 4009B2D0 len 00004D30 (19 KiB): IRAM[0m
+[0;32mI (682) spi_flash: detected chip: generic[0m
+[0;32mI (686) spi_flash: flash io: dio[0m
+[0;33mW (689) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (703) coexist: coex firmware version: ebddf30[0m
+[0;32mI (709) app_start: Starting scheduler on CPU0[0m
+[0;32m[0;32mI (713) app_start: Starting scheduler on CPU1[0m
+I (713) main_task: Started on CPU0[0m
+[0;32mI (723) main_task: Calling app_main()[0m
+Create task SHT30 OK
+I (863) wifi:wifi driver task: 3ffcfbd4, prio:23, stack:6656, core=0
+I (873) wifi:wifi firmware version: b2f1f86
+I (873) wifi:wifi certification version: v7.0
+I (873) wifi:config NVS flash: enabled
+I (873) wifi:config nano formating: disabled
+I (883) wifi:Init data frame dynamic rx buffer num: 32
+I (883) wifi:Init management frame dynamic rx buffer num: 32
+I (893) wifi:Init management short buffer num: 32
+I (893) wifi:Init dynamic tx buffer num: 32
+I (903) wifi:Init static rx buffer size: 1600
+I (903) wifi:Init static rx buffer num: 10
+I (903) wifi:Init dynamic rx buffer num: 32
+[0;32mI (913) wifi_init: rx ba win: 4[0m
+[0;32mI (913) wifi_init: tcpip mbox: 32[0m
+[0;32mI (923) wifi_init: udp mbox: 6[0m
+[0;32mI (923) wifi_init: tcp mbox: 6[0m
+[0;32mI (923) wifi_init: tcp tx win: 5744[0m
+[0;32mI (933) wifi_init: tcp rx win: 5744[0m
+[0;32mI (933) wifi_init: tcp mss: 1440[0m
+[0;32mI (943) wifi_prov_scheme_ble: BT memory released[0m
+[0;32mI (943) Wifi prov: Already provisioned, starting Wi-Fi STA[0m
+[0;32mI (953) phy_init: phy_version 4670,719f9f6,Feb 18 2021,17:07:07[0m
+I (1063) wifi:mode : sta (b8:d6:1a:69:5a:cc)
+I (1063) wifi:enable tsf
+[0;32mI (3483) Wifi prov: Disconnected. Connecting to the AP again...[0m
+[0;32mI (5903) Wifi prov: Disconnected. Connecting to the AP again...[0m
+[0;32mI (8323) Wifi prov: Disconnected. Connecting to the AP again...[0m
+[0;32mI (10743) Wifi prov: Disconnected. Connecting to the AP again...[0m
+SHT3x Sensor: 28.19 °C, 71.14 %
+[0;32mI (13043) Wifi prov: Start prov
+[0m
+[0;32mI (13043) BTDM_INIT: BT controller compile version [ad2b7cd][0m
+[0;32mI (13053) wifi_prov_mgr: Provisioning started with service name : BEE_695ACC [0m
+[0;32mI (13053) Button: Wifi prov button clicked[0m
+[0;32mI (13293) protocomm_nimble: BLE Host Task Started[0m
+[0;32mI (13293) Wifi prov: Provisioning started[0m
+SHT3x Sensor: 28.19 °C, 71.52 %
+[0;32mI (24763) Wifi prov: BLE transport: Connected![0m
+[0;32mI (24973) protocomm_nimble: mtu update event; conn_handle=0 cid=4 mtu=185
+[0m
+SHT3x Sensor: 28.20 °C, 71.14 %
+[0;32mI (33243) Wifi prov: BLE transport: Disconnected![0m
+[0;32mI (33253) Wifi prov: BLE transport: Disconnected![0m
+[0;32mI (33933) Wifi prov: BLE transport: Connected![0m
+[0;32mI (34143) protocomm_nimble: mtu update event; conn_handle=0 cid=4 mtu=185
+[0m
+SHT3x Sensor: 28.23 °C, 71.28 %
+[0;32mI (47863) Wifi prov: Received Wi-Fi credentials
+	SSID     : BEE 2.4G
+	Password : 0988182139[0m
+SHT3x Sensor: 28.23 °C, 71.42 %
+I (52253) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+I (52253) wifi:state: init -> auth (b0)
+I (53803) wifi:state: auth -> init (600)
+I (53823) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+[0;32mI (53823) Wifi prov: Disconnected. Connecting to the AP again...[0m
+[0;31mE (53833) wifi_prov_mgr: STA Disconnected[0m
+[0;31mE (53833) wifi_prov_mgr: Disconnect reason : 202[0m
+[0;31mE (53833) wifi_prov_mgr: STA Auth Error[0m
+[0;31mE (53843) Wifi prov: Provisioning failed!
+	Reason : Wi-Fi station authentication failed
+	Please reset to factory and retry provisioning[0m
+[0;32mI (57213) Wifi prov: Disconnected. Connecting to the AP again...[0m
+SHT3x Sensor: 28.24 °C, 71.43 %
+SHT3x Sensor: 28.26 °C, 71.31 %
+SHT3x Sensor: 28.30 °C, 71.59 %
+SHT3x Sensor: 28.33 °C, 72.79 %
+[0;32mI (91513) Button: Wifi prov button clicked[0m
+SHT3x Sensor: 28.27 °C, 72.63 %
+SHT3x Sensor: 28.24 °C, 72.33 %
+[0;32mI (113873) Wifi prov: TIMEOUT!!!
+[0m
+Error opening NVS handle! (ESP_ERR_NVS_NOT_FOUND)
+[0;31mE (114933) protocomm_nimble: Error setting advertisement data; rc = 30[0m
+[0;32mI (114943) wifi_prov_mgr: Provisioning stopped[0m
+[0;32mI (114943) Wifi prov: BLE transport: Disconnected![0m
+[0;32mI (114943) Wifi prov: BLE transport: Disconnected![0m
+SHT3x Sensor: 28.24 °C, 72.59 %
+[0;32mI (121843) Wifi prov: Start prov
+[0m
+[0;32mI (121843) BTDM_INIT: BT controller compile version [ad2b7cd][0m
+[0;32mI (121853) wifi_prov_mgr: Provisioning started with service name : BEE_695ACC [0m
+[0;32mI (121863) Button: Wifi prov button clicked[0m
+[0;32mI (122083) protocomm_nimble: BLE Host Task Started[0m
+[0;32mI (122093) Wifi prov: Provisioning started[0m
+[0;32mI (126583) Wifi prov: BLE transport: Connected![0m
+[0;32mI (127433) protocomm_nimble: mtu update event; conn_handle=0 cid=4 mtu=256
+[0m
+SHT3x Sensor: 28.20 °C, 72.82 %
+SHT3x Sensor: 28.20 °C, 72.77 %
+[0;32mI (149183) Wifi prov: BLE transport: Disconnected![0m
+[0;32mI (149183) Wifi prov: BLE transport: Disconnected![0m
+SHT3x Sensor: 28.17 °C, 72.61 %
+SHT3x Sensor: 28.16 °C, 72.36 %
+[0;32mI (163923) Wifi prov: BLE transport: Connected![0m
+[0;32mI (164083) protocomm_nimble: mtu update event; conn_handle=0 cid=4 mtu=185
+[0m
+SHT3x Sensor: 28.13 °C, 72.20 %
+[0;32mI (172053) Wifi prov: BLE transport: Disconnected![0m
+[0;32mI (172053) Wifi prov: BLE transport: Disconnected![0m
+[0;32mI (172073) Wifi prov: BLE transport: Connected![0m
+[0;32mI (172263) protocomm_nimble: mtu update event; conn_handle=0 cid=4 mtu=185
+[0m
+SHT3x Sensor: 28.10 °C, 71.93 %
+[0;32mI (181863) Wifi prov: TIMEOUT!!!
+[0m
+Error opening NVS handle! (ESP_ERR_NVS_NOT_FOUND)
+[0;31mE (182913) protocomm_nimble: Error setting advertisement data; rc = 30[0m
+[0;32mI (182913) wifi_prov_mgr: Provisioning stopped[0m
+[0;32mI (182913) Wifi prov: BLE transport: Disconnected![0m
+[0;32mI (182913) Wifi prov: BLE transport: Disconnected![0m
+SHT3x Sensor: 28.12 °C, 71.73 %
+[0;32mI (192923) Wifi prov: Start prov
+[0m
+[0;32mI (192933) BTDM_INIT: BT controller compile version [ad2b7cd][0m
+[0;32mI (192943) wifi_prov_mgr: Provisioning started with service name : BEE_695ACC [0m
+[0;32mI (192943) Button: Wifi prov button clicked[0m
+[0;32mI (193173) protocomm_nimble: BLE Host Task Started[0m
+[0;32mI (193173) Wifi prov: Provisioning started[0m
+SHT3x Sensor: 28.08 °C, 71.68 %
+SHT3x Sensor: 28.03 °C, 71.29 %
+[0;32mI (213843) Wifi prov: BLE transport: Connected![0m
+[0;32mI (214063) protocomm_nimble: mtu update event; conn_handle=0 cid=4 mtu=185
+[0m
+SHT3x Sensor: 27.99 °C, 70.85 %
+[0;32mI (223743) Wifi prov: BLE transport: Disconnected![0m
+[0;32mI (223743) Wifi prov: BLE transport: Disconnected![0m
+[0;32mI (224413) Wifi prov: BLE transport: Connected![0m
+[0;32mI (224613) protocomm_nimble: mtu update event; conn_handle=0 cid=4 mtu=185
+[0m
+SHT3x Sensor: 27.96 °C, 70.62 %
+[0;32mI (236893) Wifi prov: Received Wi-Fi credentials
+	SSID     : BEE
+	Password : 0988182139[0m
+I (241283) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+I (241283) wifi:state: init -> auth (b0)
+SHT3x Sensor: 27.93 °C, 70.42 %
+I (242923) wifi:state: auth -> assoc (0)
+I (242953) wifi:state: assoc -> run (10)
+SHT3x Sensor: 27.93 °C, 70.25 %
+[0;32mI (252953) Wifi prov: TIMEOUT!!!
+[0m
+Error opening NVS handle! (ESP_ERR_NVS_NOT_FOUND)
+I (252953) wifi:state: run -> init (cc00)
+I (252953) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+[0;32mI (252963) Wifi prov: Disconnected. Connecting to the AP again...[0m
+[0;31mE (254013) protocomm_nimble: Error setting advertisement data; rc = 30[0m
+[0;32mI (254013) wifi_prov_mgr: Provisioning stopped[0m
+[0;32mI (254013) Wifi prov: BLE transport: Disconnected![0m
+[0;32mI (254013) Wifi prov: BLE transport: Disconnected![0m
+[0;32mI (255983) Wifi prov: Disconnected. Connecting to the AP again...[0m
+I (258403) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+I (258403) wifi:state: init -> auth (b0)
+I (259873) wifi:state: auth -> assoc (0)
+I (259883) wifi:state: assoc -> run (10)
+I (259903) wifi:connected with BEE, aid = 4, channel 1, BW20, bssid = f0:61:c0:ab:6f:82
+I (259903) wifi:security: WPA3-SAE, phy: bgn, rssi: -60
+I (259923) wifi:pm start, type: 1
+
+I (259933) wifi:AP's beacon interval = 102400 us, DTIM period = 1
+SHT3x Sensor: 27.89 °C, 70.08 %
+[0;32mI (261933) Wifi prov: Connected with IP Address:192.168.0.132[0m
+[0;32mI (261933) esp_netif_handlers: sta ip: 192.168.0.132, mask: 255.255.255.0, gw: 192.168.0.1[0m
+[0;32mI (261943) MQTT: Other event id:7[0m
+[0;32mI (261943) MQTT: Topic publish: VB/DMP/VBEEON/CUSTOM/SMH/B8D61A695ACC/telemetry
+[0m
+I (261953) wifi:<ba-add>idx:0 (ifx:0, f0:61:c0:ab:6f:82), tid:0, ssn:5, winSize:64
+[0;32mI (261953) MQTT: Topic subscribe: VB/DMP/VBEEON/CUSTOM/SMH/B8D61A695ACC/Command
+[0m
+[0;32mI (261963) main_task: Returned from app_main()[0m
+[0;32mI (262043) MQTT: MQTT_EVENT_CONNECTED[0m
+[0;32mI (262093) MQTT: MQTT_EVENT_SUBSCRIBED, msg_id=25044[0m
+SHT3x Sensor: 27.92 °C, 69.92 %
+[0;32mI (276223) Wifi prov: Start prov
+[0m
+I (276223) wifi:state: run -> init (0)
+I (276233) wifi:pm stop, total sleep time: 14169729 us / 16301706 us
+
+I (276233) wifi:<ba-del>idx:0, tid:0
+I (276233) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+[0;32mI (276233) Wifi prov: Disconnected. Connecting to the AP again...[0m
+[0;32mI (276243) BTDM_INIT: BT controller compile version [ad2b7cd][0m
+[0;31mE (276243) transport_base: poll_read select error 113, errno = Software caused connection abort, fd = 54[0m
+[0;31mE (276263) mqtt_client: Poll read error: 119, aborting connection[0m
+[0;32mI (276263) MQTT: MQTT_EVENT_DISCONNECTED[0m
+[0;32mI (276273) wifi_prov_mgr: Provisioning started with service name : BEE_695ACC [0m
+[0;32mI (276283) Button: Wifi prov button clicked[0m
+[0;32mI (276493) protocomm_nimble: BLE Host Task Started[0m
+[0;32mI (276493) Wifi prov: Provisioning started[0m
+SHT3x Sensor: 27.92 °C, 69.67 %
+[0;32mI (286273) MQTT: Other event id:7[0m
+[0;31mE (286273) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[0;31mE (286273) transport_base: Failed to open a new connection: 32772[0m
+[0;31mE (286273) mqtt_client: Error transport connect[0m
+[0;32mI (286283) MQTT: MQTT_EVENT_ERROR[0m
+[0;32mI (286283) MQTT: MQTT_EVENT_DISCONNECTED[0m
+[0;32mI (287293) Wifi prov: BLE transport: Connected![0m
+[0;32mI (287493) protocomm_nimble: mtu update event; conn_handle=0 cid=4 mtu=185
+[0m
+SHT3x Sensor: 27.90 °C, 69.69 %
+[0;32mI (296293) MQTT: Other event id:7[0m
+[0;31mE (296293) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[0;31mE (296293) transport_base: Failed to open a new connection: 32772[0m
+[0;31mE (296293) mqtt_client: Error transport connect[0m
+[0;32mI (296303) MQTT: MQTT_EVENT_ERROR[0m
+[0;32mI (296303) MQTT: MQTT_EVENT_DISCONNECTED[0m
+[0;32mI (297183) Wifi prov: BLE transport: Disconnected![0m
+[0;32mI (297183) Wifi prov: BLE transport: Disconnected![0m
+[0;32mI (297363) Wifi prov: BLE transport: Connected![0m
+[0;32mI (297573) protocomm_nimble: mtu update event; conn_handle=0 cid=4 mtu=185
+[0m
+SHT3x Sensor: 27.89 °C, 69.92 %
+[0;32mI (306313) MQTT: Other event id:7[0m
+[0;31mE (306313) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[0;31mE (306313) transport_base: Failed to open a new connection: 32772[0m
+[0;31mE (306313) mqtt_client: Error transport connect[0m
+[0;32mI (306323) MQTT: MQTT_EVENT_ERROR[0m
+[0;32mI (306323) MQTT: MQTT_EVENT_DISCONNECTED[0m
+SHT3x Sensor: 27.83 °C, 69.76 %
+[0;32mI (316333) MQTT: Other event id:7[0m
+[0;31mE (316333) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[0;31mE (316333) transport_base: Failed to open a new connection: 32772[0m
+[0;31mE (316333) mqtt_client: Error transport connect[0m
+[0;32mI (316343) MQTT: MQTT_EVENT_ERROR[0m
+[0;32mI (316343) MQTT: MQTT_EVENT_DISCONNECTED[0m
+SHT3x Sensor: 27.83 °C, 69.71 %
+[0;32mI (326353) MQTT: Other event id:7[0m
+[0;31mE (326353) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[0;31mE (326353) transport_base: Failed to open a new connection: 32772[0m
+[0;31mE (326353) mqtt_client: Error transport connect[0m
+[0;32mI (326363) MQTT: MQTT_EVENT_ERROR[0m
+[0;32mI (326363) MQTT: MQTT_EVENT_DISCONNECTED[0m
+SHT3x Sensor: 27.80 °C, 69.52 %
+[0;32mI (334993) Wifi prov: Received Wi-Fi credentials
+	SSID     : BEE 2.4G
+	Password : 0988182139[0m
+[0;32mI (336283) Wifi prov: TIMEOUT!!!
+[0m
+Error opening NVS handle! (ESP_ERR_NVS_NOT_FOUND)
+[0;32mI (336373) MQTT: Other event id:7[0m
+[0;31mE (336373) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[0;31mE (336373) transport_base: Failed to open a new connection: 32772[0m
+[0;31mE (336373) mqtt_client: Error transport connect[0m
+[0;32mI (336383) MQTT: MQTT_EVENT_ERROR[0m
+[0;32mI (336383) MQTT: MQTT_EVENT_DISCONNECTED[0m
+[0;31mE (337353) protocomm_nimble: Error setting advertisement data; rc = 30[0m
+[0;32mI (337353) wifi_prov_mgr: Provisioning stopped[0m
+[0;32mI (337363) Wifi prov: BLE transport: Disconnected![0m
+[0;32mI (337363) Wifi prov: BLE transport: Disconnected![0m
+I (339133) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+I (339133) wifi:state: init -> auth (b0)
+I (340643) wifi:state: auth -> assoc (0)
+I (340653) wifi:state: assoc -> run (10)
+I (340673) wifi:connected with BEE 2.4G, aid = 6, channel 1, BW20, bssid = f0:61:c0:ab:6f:83
+I (340683) wifi:security: WPA3-SAE, phy: bgn, rssi: -58
+I (340693) wifi:pm start, type: 1
+
+I (340713) wifi:<ba-add>idx:0 (ifx:0, f0:61:c0:ab:6f:83), tid:0, ssn:2, winSize:64
+I (340733) wifi:AP's beacon interval = 102400 us, DTIM period = 1
+SHT3x Sensor: 27.80 °C, 69.87 %
+[0;32mI (342203) Wifi prov: Connected with IP Address:192.168.0.132[0m
+[0;32mI (342203) esp_netif_handlers: sta ip: 192.168.0.132, mask: 255.255.255.0, gw: 192.168.0.1[0m
+[0;32mI (346393) MQTT: Other event id:7[0m
+[0;32mI (346583) MQTT: MQTT_EVENT_CONNECTED[0m
+[0;32mI (346633) MQTT: MQTT_EVENT_SUBSCRIBED, msg_id=34460[0m
+[0;32mI (346683) MQTT: MQTT_EVENT_PUBLISHED, msg_id=60662[0m
+[0;32mI (346943) MQTT: MQTT_EVENT_PUBLISHED, msg_id=19066[0m
+[0;32mI (346943) MQTT: MQTT_EVENT_PUBLISHED, msg_id=54312[0m
+SHT3x Sensor: 27.78 °C, 69.34 %
+SHT3x Sensor: 27.78 °C, 69.09 %
+SHT3x Sensor: 27.72 °C, 68.55 %
+[0;32mI (376663) MQTT: MQTT_EVENT_PUBLISHED, msg_id=63169[0m
+[0;32mI (376793) MQTT: MQTT_EVENT_PUBLISHED, msg_id=42245[0m
+SHT3x Sensor: 27.72 °C, 68.68 %
+SHT3x Sensor: 27.65 °C, 68.37 %
+SHT3x Sensor: 27.65 °C, 68.06 %
+[0;32mI (406673) MQTT: MQTT_EVENT_PUBLISHED, msg_id=22802[0m
+[0;32mI (406713) MQTT: MQTT_EVENT_PUBLISHED, msg_id=4723[0m
+[0;32mI (406753) MQTT: MQTT_EVENT_PUBLISHED, msg_id=5107[0m
+SHT3x Sensor: 27.64 °C, 68.07 %
+SHT3x Sensor: 27.65 °C, 67.66 %
+SHT3x Sensor: 27.66 °C, 67.48 %
+[0;32mI (436683) MQTT: MQTT_EVENT_PUBLISHED, msg_id=44677[0m
+[0;32mI (436723) MQTT: MQTT_EVENT_PUBLISHED, msg_id=3294[0m
+SHT3x Sensor: 27.62 °C, 67.17 %
+SHT3x Sensor: 27.61 °C, 67.14 %
+SHT3x Sensor: 27.59 °C, 66.77 %
+[0;32mI (466693) MQTT: MQTT_EVENT_PUBLISHED, msg_id=29418[0m
+[0;32mI (466733) MQTT: MQTT_EVENT_PUBLISHED, msg_id=23963[0m
+[0;32mI (466953) MQTT: MQTT_EVENT_PUBLISHED, msg_id=44250[0m
+SHT3x Sensor: 27.55 °C, 66.75 %
+SHT3x Sensor: 27.59 °C, 66.99 %
+SHT3x Sensor: 27.58 °C, 67.17 %
+[0;32mI (496703) MQTT: MQTT_EVENT_PUBLISHED, msg_id=64555[0m
+[0;32mI (496753) MQTT: MQTT_EVENT_PUBLISHED, msg_id=62961[0m
+SHT3x Sensor: 27.62 °C, 67.58 %
+SHT3x Sensor: 27.62 °C, 67.74 %
+SHT3x Sensor: 27.66 °C, 68.03 %
+[0;32mI (526723) MQTT: MQTT_EVENT_PUBLISHED, msg_id=31235[0m
+[0;32mI (526763) MQTT: MQTT_EVENT_PUBLISHED, msg_id=33389[0m
+[0;32mI (526933) MQTT: MQTT_EVENT_PUBLISHED, msg_id=18114[0m
+SHT3x Sensor: 27.73 °C, 68.57 %
+SHT3x Sensor: 27.79 °C, 69.36 %
+SHT3x Sensor: 27.85 °C, 69.76 %
+[0;32mI (556813) MQTT: MQTT_EVENT_PUBLISHED, msg_id=54790[0m
+[0;32mI (556873) MQTT: MQTT_EVENT_PUBLISHED, msg_id=63627[0m
+SHT3x Sensor: 27.88 °C, 69.78 %
+[0;32mI (564863) Wifi prov: Start prov
+[0m
+I (564873) wifi:state: run -> init (0)
+I (564873) wifi:pm stop, total sleep time: 197749450 us / 224176898 us
+
+I (564873) wifi:<ba-del>idx:0, tid:0
+I (564873) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+[0;32mI (564883) Wifi prov: Disconnected. Connecting to the AP again...[0m
+[0;31mE (564893) transport_base: poll_read select error 113, errno = Software caused connection abort, fd = 54[0m
+[0;32mI (564893) BTDM_INIT: BT controller compile version [ad2b7cd][0m
+[0;31mE (564903) mqtt_client: Poll read error: 119, aborting connection[0m
+[0;32mI (564913) MQTT: MQTT_EVENT_DISCONNECTED[0m
+[0;32mI (564923) wifi_prov_mgr: Provisioning started with service name : BEE_695ACC [0m
+[0;32mI (564923) Button: Wifi prov button clicked[0m
+[0;32mI (565173) protocomm_nimble: BLE Host Task Started[0m
+[0;32mI (565173) Wifi prov: Provisioning started[0m
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7084
+ho 0 tail 12 room 4
+load:0x40078000,len:15576
+ho 0 tail 12 room 4
+load:0x40080400,len:4
+load:0x40080404,len:3876
+entry 0x4008064c
+[0;32mI (33) boot: ESP-IDF v5.1-dirty 2nd stage bootloader[0m
+[0;32mI (33) boot: compile time Aug 10 2023 18:13:03[0m
+[0;32mI (33) boot: Multicore bootloader[0m
+[0;32mI (38) boot: chip revision: v3.0[0m
+[0;32mI (41) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (46) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (51) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (55) boot: Enabling RNG early entropy source...[0m
+[0;32mI (61) boot: Partition Table:[0m
+[0;32mI (64) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (71) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (79) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (86) boot:  2 factory          factory app      00 00 00010000 00177000[0m
+[0;32mI (94) boot: End of partition table[0m
+[0;32mI (98) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=31388h (201608) map[0m
+[0;32mI (179) esp_image: segment 1: paddr=000413b0 vaddr=3ffbdb60 size=05534h ( 21812) load[0m
+[0;32mI (188) esp_image: segment 2: paddr=000468ec vaddr=40080000 size=0972ch ( 38700) load[0m
+[0;32mI (204) esp_image: segment 3: paddr=00050020 vaddr=400d0020 size=ce4d8h (845016) map[0m
+[0;32mI (510) esp_image: segment 4: paddr=0011e500 vaddr=4008972c size=11ba4h ( 72612) load[0m
+[0;32mI (554) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (554) boot: Disabling RNG early entropy source...[0m
+[0;32mI (566) cpu_start: Multicore app[0m
+[0;32mI (566) cpu_start: Pro cpu up.[0m
+[0;32mI (566) cpu_start: Starting app cpu, entry point is 0x40081608[0m
+[0;32mI (0) cpu_start: App cpu up.[0m
+[0;32mI (584) cpu_start: Pro cpu start user code[0m
+[0;32mI (584) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (584) cpu_start: Application information:[0m
+[0;32mI (589) cpu_start: Project name:     main[0m
+[0;32mI (593) cpu_start: App version:      edc7cc2-dirty[0m
+[0;32mI (599) cpu_start: Compile time:     Aug 10 2023 18:12:52[0m
+[0;32mI (605) cpu_start: ELF file SHA256:  422c7057f1298ca4...[0m
+[0;32mI (611) cpu_start: ESP-IDF:          v5.1-dirty[0m
+[0;32mI (616) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (621) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (626) cpu_start: Chip rev:         v3.0[0m
+[0;32mI (630) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (638) heap_init: At 3FFAFF10 len 000000F0 (0 KiB): DRAM[0m
+[0;32mI (643) heap_init: At 3FFB6388 len 00001C78 (7 KiB): DRAM[0m
+[0;32mI (650) heap_init: At 3FFB9A20 len 00004108 (16 KiB): DRAM[0m
+[0;32mI (656) heap_init: At 3FFC9EC8 len 00016138 (88 KiB): DRAM[0m
+[0;32mI (662) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (668) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (675) heap_init: At 4009B2D0 len 00004D30 (19 KiB): IRAM[0m
+[0;32mI (682) spi_flash: detected chip: generic[0m
+[0;32mI (686) spi_flash: flash io: dio[0m
+[0;33mW (689) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (703) coexist: coex firmware version: ebddf30[0m
+[0;32mI (709) app_start: Starting scheduler on CPU0[0m
+[0;32m[0;32mI (713) app_start: Starting scheduler on CPU1[0m
+I (713) main_task: Started on CPU0[0m
+[0;32mI (723) main_task: Calling app_main()[0m
+Create task SHT30 OK
+I (863) wifi:wifi driver task: 3ffcfc58, prio:23, stack:6656, core=0
+I (873) wifi:wifi firmware version: b2f1f86
+I (873) wifi:wifi certification version: v7.0
+I (873) wifi:config NVS flash: enabled
+I (873) wifi:config nano formating: disabled
+I (883) wifi:Init data frame dynamic rx buffer num: 32
+I (883) wifi:Init management frame dynamic rx buffer num: 32
+I (893) wifi:Init management short buffer num: 32
+I (893) wifi:Init dynamic tx buffer num: 32
+I (903) wifi:Init static rx buffer size: 1600
+I (903) wifi:Init static rx buffer num: 10
+I (903) wifi:Init dynamic rx buffer num: 32
+[0;32mI (913) wifi_init: rx ba win: 4[0m
+[0;32mI (913) wifi_init: tcpip mbox: 32[0m
+[0;32mI (923) wifi_init: udp mbox: 6[0m
+[0;32mI (923) wifi_init: tcp mbox: 6[0m
+[0;32mI (923) wifi_init: tcp tx win: 5744[0m
+[0;32mI (933) wifi_init: tcp rx win: 5744[0m
+[0;32mI (933) wifi_init: tcp mss: 1440[0m
+[0;32mI (943) wifi_prov_scheme_ble: BT memory released[0m
+[0;32mI (943) Wifi prov: Already provisioned, starting Wi-Fi STA[0m
+[0;32mI (953) phy_init: phy_version 4670,719f9f6,Feb 18 2021,17:07:07[0m
+I (1063) wifi:mode : sta (b8:d6:1a:69:5a:cc)
+I (1063) wifi:enable tsf
+I (3483) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+I (3483) wifi:state: init -> auth (b0)
+I (4963) wifi:state: auth -> assoc (0)
+I (4973) wifi:state: assoc -> run (10)
+I (5013) wifi:connected with BEE 2.4G, aid = 6, channel 1, BW20, bssid = f0:61:c0:ab:6f:83
+I (5013) wifi:security: WPA3-SAE, phy: bgn, rssi: -67
+I (5023) wifi:pm start, type: 1
+
+I (5033) wifi:<ba-add>idx:0 (ifx:0, f0:61:c0:ab:6f:83), tid:0, ssn:2, winSize:64
+I (5103) wifi:AP's beacon interval = 102400 us, DTIM period = 1
+[0;32mI (6523) Wifi prov: Connected with IP Address:192.168.0.132[0m
+[0;32mI (6523) esp_netif_handlers: sta ip: 192.168.0.132, mask: 255.255.255.0, gw: 192.168.0.1[0m
+[0;32mI (6533) MQTT: Other event id:7[0m
+[0;32mI (6543) MQTT: Topic publish: VB/DMP/VBEEON/CUSTOM/SMH/B8D61A695ACC/telemetry
+[0m
+[0;32mI (6543) MQTT: Topic subscribe: VB/DMP/VBEEON/CUSTOM/SMH/B8D61A695ACC/Command
+[0m
+[0;32mI (6553) main_task: Returned from app_main()[0m
+[0;32mI (6623) MQTT: MQTT_EVENT_CONNECTED[0m
+[0;32mI (6663) MQTT: MQTT_EVENT_SUBSCRIBED, msg_id=65178[0m
+SHT3x Sensor: 27.93 °C, 69.88 %
+SHT3x Sensor: 27.96 °C, 70.08 %
+SHT3x Sensor: 28.00 °C, 70.40 %
+[0;32mI (36583) MQTT: MQTT_EVENT_PUBLISHED, msg_id=26220[0m
+[0;32mI (36613) MQTT: MQTT_EVENT_PUBLISHED, msg_id=36818[0m
+SHT3x Sensor: 27.99 °C, 70.44 %
+SHT3x Sensor: 28.06 °C, 70.45 %
+SHT3x Sensor: 28.09 °C, 70.70 %
+[0;32mI (66593) MQTT: MQTT_EVENT_PUBLISHED, msg_id=40890[0m
+[0;32mI (66623) MQTT: MQTT_EVENT_PUBLISHED, msg_id=21607[0m
+[0;32mI (66833) MQTT: MQTT_EVENT_PUBLISHED, msg_id=4950[0m
+SHT3x Sensor: 28.12 °C, 71.38 %
+SHT3x Sensor: 28.13 °C, 71.49 %
+SHT3x Sensor: 28.20 °C, 71.72 %
+[0;32mI (96623) MQTT: MQTT_EVENT_PUBLISHED, msg_id=42217[0m
+[0;32mI (96653) MQTT: MQTT_EVENT_PUBLISHED, msg_id=23128[0m
+SHT3x Sensor: 28.19 °C, 71.69 %
+SHT3x Sensor: 28.22 °C, 71.82 %
+SHT3x Sensor: 28.24 °C, 71.76 %
+[0;32mI (126613) MQTT: MQTT_EVENT_PUBLISHED, msg_id=29148[0m
+[0;32mI (126643) MQTT: MQTT_EVENT_PUBLISHED, msg_id=36578[0m
+[0;32mI (126813) MQTT: MQTT_EVENT_PUBLISHED, msg_id=59405[0m
+SHT3x Sensor: 28.19 °C, 71.77 %
+SHT3x Sensor: 28.20 °C, 71.67 %
+SHT3x Sensor: 28.16 °C, 71.64 %
+[0;32mI (156633) MQTT: MQTT_EVENT_PUBLISHED, msg_id=65453[0m
+[0;32mI (156673) MQTT: MQTT_EVENT_PUBLISHED, msg_id=3458[0m
+SHT3x Sensor: 28.19 °C, 71.69 %
+SHT3x Sensor: 28.16 °C, 71.88 %
+SHT3x Sensor: 28.16 °C, 72.05 %
+[0;32mI (186633) MQTT: MQTT_EVENT_PUBLISHED, msg_id=40678[0m
+[0;32mI (186663) MQTT: MQTT_EVENT_PUBLISHED, msg_id=44586[0m
+[0;32mI (186813) MQTT: MQTT_EVENT_PUBLISHED, msg_id=17103[0m
+SHT3x Sensor: 28.19 °C, 72.09 %
+SHT3x Sensor: 28.17 °C, 72.39 %
+SHT3x Sensor: 28.17 °C, 72.10 %
+[0;32mI (216643) MQTT: MQTT_EVENT_PUBLISHED, msg_id=36695[0m
+[0;32mI (216673) MQTT: MQTT_EVENT_PUBLISHED, msg_id=19170[0m
+SHT3x Sensor: 28.20 °C, 71.89 %
+SHT3x Sensor: 28.16 °C, 71.43 %
+SHT3x Sensor: 28.15 °C, 70.97 %
+[0;32mI (246653) MQTT: MQTT_EVENT_PUBLISHED, msg_id=54347[0m
+[0;32mI (246683) MQTT: MQTT_EVENT_PUBLISHED, msg_id=63409[0m
+[0;32mI (246813) MQTT: MQTT_EVENT_PUBLISHED, msg_id=14370[0m
+SHT3x Sensor: 28.10 °C, 70.58 %
+SHT3x Sensor: 28.09 °C, 70.38 %
+SHT3x Sensor: 28.03 °C, 70.16 %
+[0;32mI (276663) MQTT: MQTT_EVENT_PUBLISHED, msg_id=37000[0m
+[0;32mI (276693) MQTT: MQTT_EVENT_PUBLISHED, msg_id=53707[0m
+SHT3x Sensor: 28.05 °C, 69.58 %
+SHT3x Sensor: 28.05 °C, 69.46 %
+SHT3x Sensor: 28.03 °C, 69.28 %
+[0;32mI (306693) MQTT: MQTT_EVENT_PUBLISHED, msg_id=15137[0m
+[0;32mI (306723) MQTT: MQTT_EVENT_PUBLISHED, msg_id=20447[0m
+[0;32mI (306813) MQTT: MQTT_EVENT_PUBLISHED, msg_id=17531[0m
+SHT3x Sensor: 28.03 °C, 69.16 %
+SHT3x Sensor: 27.99 °C, 69.00 %
+SHT3x Sensor: 27.99 °C, 68.62 %
+[0;32mI (336693) MQTT: MQTT_EVENT_PUBLISHED, msg_id=35430[0m
+[0;32mI (336723) MQTT: MQTT_EVENT_PUBLISHED, msg_id=48157[0m
+SHT3x Sensor: 27.96 °C, 68.42 %
+SHT3x Sensor: 27.98 °C, 68.38 %
+SHT3x Sensor: 27.98 °C, 68.48 %
+[0;32mI (366693) MQTT: MQTT_EVENT_PUBLISHED, msg_id=18385[0m
+[0;32mI (366723) MQTT: MQTT_EVENT_PUBLISHED, msg_id=23906[0m
+[0;32mI (366813) MQTT: MQTT_EVENT_PUBLISHED, msg_id=15311[0m
+SHT3x Sensor: 27.93 °C, 68.33 %
+SHT3x Sensor: 27.90 °C, 68.35 %
+SHT3x Sensor: 27.86 °C, 67.85 %
+[0;32mI (396703) MQTT: MQTT_EVENT_PUBLISHED, msg_id=36893[0m
+[0;32mI (396733) MQTT: MQTT_EVENT_PUBLISHED, msg_id=42760[0m
+SHT3x Sensor: 27.85 °C, 67.72 %
+[0;32mI (408013) Wifi prov: Start prov
+[0m
+I (408013) wifi:state: run -> init (0)
+I (408023) wifi:pm stop, total sleep time: 353435901 us / 403000444 us
+
+I (408023) wifi:<ba-del>idx:0, tid:0
+I (408023) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+[0;32mI (408023) Wifi prov: Disconnected. Connecting to the AP again...[0m
+[0;32mI (408033) BTDM_INIT: BT controller compile version [ad2b7cd][0m
+[0;31mE (408043) transport_base: poll_read select error 113, errno = Software caused connection abort, fd = 54[0m
+[0;31mE (408053) mqtt_client: Poll read error: 119, aborting connection[0m
+[0;32mI (408053) MQTT: MQTT_EVENT_DISCONNECTED[0m
+[0;32mI (408063) wifi_prov_mgr: Provisioning started with service name : BEE_695ACC [0m
+[0;32mI (408073) Button: Wifi prov button clicked[0m
+[0;32mI (408283) protocomm_nimble: BLE Host Task Started[0m
+[0;32mI (408283) Wifi prov: Provisioning started[0m
+SHT3x Sensor: 27.80 °C, 67.40 %
+[0;32mI (417243) Wifi prov: BLE transport: Connected![0m
+[0;32mI (418043) protocomm_nimble: mtu update event; conn_handle=0 cid=4 mtu=256
+[0m
+[0;32mI (418063) MQTT: Other event id:7[0m
+[0;31mE (418063) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[0;31mE (418063) transport_base: Failed to open a new connection: 32772[0m
+[0;31mE (418063) mqtt_client: Error transport connect[0m
+[0;32mI (418073) MQTT: MQTT_EVENT_ERROR[0m
+[0;32mI (418073) MQTT: MQTT_EVENT_DISCONNECTED[0m
+SHT3x Sensor: 27.82 °C, 67.18 %
+[0;32mI (428083) MQTT: Other event id:7[0m
+[0;31mE (428083) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[0;31mE (428083) transport_base: Failed to open a new connection: 32772[0m
+[0;31mE (428083) mqtt_client: Error transport connect[0m
+[0;32mI (428093) MQTT: MQTT_EVENT_ERROR[0m
+[0;32mI (428093) MQTT: MQTT_EVENT_DISCONNECTED[0m
+SHT3x Sensor: 27.73 °C, 66.96 %
+[0;32mI (438103) MQTT: Other event id:7[0m
+[0;31mE (438103) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[0;31mE (438103) transport_base: Failed to open a new connection: 32772[0m
+[0;31mE (438103) mqtt_client: Error transport connect[0m
+[0;32mI (438113) MQTT: MQTT_EVENT_ERROR[0m
+[0;32mI (438113) MQTT: MQTT_EVENT_DISCONNECTED[0m
+[0;32mI (439743) Wifi prov: Received Wi-Fi credentials
+	SSID     : TUPEO
+	Password : tu123456[0m
+SHT3x Sensor: 27.73 °C, 66.79 %
+I (444133) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+I (445263) wifi:state: init -> auth (b0)
+I (445283) wifi:state: auth -> assoc (0)
+I (445283) wifi:state: assoc -> run (10)
+I (445313) wifi:connected with TUPEO, aid = 1, channel 1, BW20, bssid = b2:7d:64:d8:92:71
+I (445313) wifi:security: WPA2-PSK, phy: bgn, rssi: -37
+I (445323) wifi:pm start, type: 1
+
+I (445383) wifi:AP's beacon interval = 102400 us, DTIM period = 3
+I (445993) wifi:<ba-add>idx:0 (ifx:0, b2:7d:64:d8:92:71), tid:0, ssn:4, winSize:64
+[0;32mI (446333) Wifi prov: Connected with IP Address:192.168.137.31[0m
+[0;32mI (446333) esp_netif_handlers: sta ip: 192.168.137.31, mask: 255.255.255.0, gw: 192.168.137.1[0m
+[0;32mI (446333) wifi_prov_mgr: STA Got IP[0m
+[0;32mI (446343) Wifi prov: Provisioning successful[0m
+[0;32mI (448123) MQTT: Other event id:7[0m
+[0;32mI (448363) MQTT: MQTT_EVENT_CONNECTED[0m
+[0;32mI (448563) MQTT: MQTT_EVENT_SUBSCRIBED, msg_id=30331[0m
+[0;31mE (448573) protocomm_nimble: Error setting advertisement data; rc = 30[0m
+[0;32mI (448583) wifi_prov_mgr: Provisioning stopped[0m
+[0;32mI (448583) Wifi prov: BLE transport: Disconnected![0m
+[0;32mI (448583) Wifi prov: BLE transport: Disconnected![0m
+[0;32mI (448663) MQTT: MQTT_EVENT_PUBLISHED, msg_id=53145[0m
+[0;32mI (449173) MQTT: MQTT_EVENT_PUBLISHED, msg_id=40238[0m
+[0;32mI (449183) MQTT: MQTT_EVENT_PUBLISHED, msg_id=63874[0m
+SHT3x Sensor: 27.72 °C, 66.91 %
+SHT3x Sensor: 27.69 °C, 66.68 %
+SHT3x Sensor: 27.72 °C, 67.28 %
+[0;32mI (478673) MQTT: MQTT_EVENT_PUBLISHED, msg_id=4261[0m
+[0;32mI (478983) MQTT: MQTT_EVENT_PUBLISHED, msg_id=51138[0m
+SHT3x Sensor: 27.66 °C, 67.58 %
+SHT3x Sensor: 27.66 °C, 67.62 %
+SHT3x Sensor: 27.71 °C, 67.65 %
+[0;32mI (508463) MQTT: MQTT_EVENT_PUBLISHED, msg_id=64429[0m
+[0;32mI (508773) MQTT: MQTT_EVENT_PUBLISHED, msg_id=13256[0m
+[0;32mI (508873) MQTT: MQTT_EVENT_PUBLISHED, msg_id=59337[0m
+SHT3x Sensor: 27.69 °C, 68.12 %
+SHT3x Sensor: 27.69 °C, 68.31 %
+SHT3x Sensor: 27.72 °C, 68.43 %
+[0;32mI (538583) MQTT: MQTT_EVENT_PUBLISHED, msg_id=34543[0m
+[0;32mI (538883) MQTT: MQTT_EVENT_PUBLISHED, msg_id=42752[0m
+SHT3x Sensor: 27.72 °C, 68.53 %
+SHT3x Sensor: 27.75 °C, 68.96 %
+SHT3x Sensor: 27.79 °C, 69.50 %
+[0;32mI (568683) MQTT: MQTT_EVENT_PUBLISHED, msg_id=16890[0m
+[0;32mI (568993) MQTT: MQTT_EVENT_PUBLISHED, msg_id=2051[0m
+[0;32mI (569293) MQTT: MQTT_EVENT_PUBLISHED, msg_id=8914[0m
+SHT3x Sensor: 27.83 °C, 70.07 %
+SHT3x Sensor: 27.83 °C, 70.75 %
+SHT3x Sensor: 27.85 °C, 71.01 %
+[0;32mI (598793) MQTT: MQTT_EVENT_PUBLISHED, msg_id=41720[0m
+[0;32mI (599093) MQTT: MQTT_EVENT_PUBLISHED, msg_id=40294[0m
+SHT3x Sensor: 27.88 °C, 71.01 %
+SHT3x Sensor: 27.86 °C, 71.01 %
+SHT3x Sensor: 27.90 °C, 71.38 %
+[0;32mI (628893) MQTT: MQTT_EVENT_PUBLISHED, msg_id=48612[0m
+[0;32mI (628993) MQTT: MQTT_EVENT_PUBLISHED, msg_id=56388[0m
+[0;32mI (629513) MQTT: MQTT_EVENT_PUBLISHED, msg_id=41312[0m
+SHT3x Sensor: 27.90 °C, 71.29 %
+SHT3x Sensor: 27.95 °C, 71.44 %
+SHT3x Sensor: 27.95 °C, 71.49 %
+[0;32mI (658693) MQTT: MQTT_EVENT_PUBLISHED, msg_id=53002[0m
+[0;32mI (658793) MQTT: MQTT_EVENT_PUBLISHED, msg_id=34024[0m
+SHT3x Sensor: 27.96 °C, 71.65 %
+SHT3x Sensor: 27.99 °C, 71.84 %
+SHT3x Sensor: 27.98 °C, 71.88 %
+[0;32mI (688593) MQTT: MQTT_EVENT_PUBLISHED, msg_id=34894[0m
+[0;32mI (688803) MQTT: MQTT_EVENT_PUBLISHED, msg_id=45790[0m
+[0;32mI (689103) MQTT: MQTT_EVENT_PUBLISHED, msg_id=53741[0m
+SHT3x Sensor: 27.99 °C, 71.99 %
+SHT3x Sensor: 27.99 °C, 72.07 %
+SHT3x Sensor: 28.00 °C, 72.50 %
+[0;32mI (718913) MQTT: MQTT_EVENT_PUBLISHED, msg_id=27111[0m
+[0;32mI (719003) MQTT: MQTT_EVENT_PUBLISHED, msg_id=61597[0m
+SHT3x Sensor: 28.05 °C, 72.66 %
+SHT3x Sensor: 28.08 °C, 72.52 %
+SHT3x Sensor: 28.06 °C, 72.08 %
+[0;32mI (748603) MQTT: MQTT_EVENT_PUBLISHED, msg_id=48619[0m
+[0;32mI (748703) MQTT: MQTT_EVENT_PUBLISHED, msg_id=58483[0m
+[0;32mI (749323) MQTT: MQTT_EVENT_PUBLISHED, msg_id=30233[0m
+SHT3x Sensor: 28.02 °C, 71.55 %

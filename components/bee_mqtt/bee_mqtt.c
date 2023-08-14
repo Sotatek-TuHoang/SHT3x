@@ -25,11 +25,14 @@
 /****************************************************************************/
 extern float fTemp;
 extern float fHumi;
+extern float fTemp_diff;
+extern float fHumi_diff;
+extern uint8_t u8error_cnt;
+extern uint8_t u8max_error_cnt;
 /****************************************************************************/
 /***        Local Variables                                               ***/
 /****************************************************************************/
-
-#if 0 
+ 
 static uint8_t u8warning_values;
 static uint8_t u8tmp_warning_values;
 static bool bRead_status    = 0;
@@ -37,7 +40,7 @@ static bool bTemp_threshold = 0;
 static bool bHumi_threshold = 0;
 static bool bTemp_diff      = 0;
 static bool bHumi_diff      = 0;
-#endif
+
 
 static uint8_t u8mac[6];
 static char cMac_str[13];
@@ -155,7 +158,7 @@ static void pub_data(const char *object, float values)
 /****************************************************************************/
 /***        Local Functions                                               ***/
 /****************************************************************************/
-#if 0
+
 static void send_warning(void)
 {
     cJSON *json_warning = cJSON_CreateObject();
@@ -174,11 +177,11 @@ static void send_warning(void)
 
 static void check_warning(void)
 {
-    if (u8error_cnt == 10)
+    if (u8error_cnt == u8max_error_cnt)
     {
         bRead_status = 1;
     }
-    else if (u8status == DHT11_OK)
+    else if (u8error_cnt == 0)
     {
         bRead_status = 0;
         if (fTemp > TEMP_THRESHOLD)
@@ -225,7 +228,7 @@ static void check_warning(void)
         send_warning();
     }
 }
-#endif
+
 
 static void send_keep_alive(void)
 {
@@ -250,22 +253,25 @@ void send_mqtt_data_task(void *pvParameters)
 {
     TickType_t lt_send_data_mqtt = xTaskGetTickCount();
     TickType_t lt_send_keep_alive = xTaskGetTickCount();
-    TickType_t interval_data_mqtt = pdMS_TO_TICKS(15000);
-    TickType_t interval_keep_alive = pdMS_TO_TICKS(30000);
+    TickType_t interval_data_mqtt = pdMS_TO_TICKS(30000);
+    TickType_t interval_keep_alive = pdMS_TO_TICKS(60000);
 
     for(;;)
     {
         if (bMQTT_CONNECTED)
         {
-            interval_data_mqtt = pdMS_TO_TICKS(30000);
             if (((xTaskGetTickCount() - lt_send_data_mqtt) >= interval_data_mqtt))
             {
                 lt_send_data_mqtt = xTaskGetTickCount();
-                pub_data("bee_temp", fTemp);
-                pub_data("bee_humi", fHumi);
+                if (u8error_cnt == 0)
+                {
+                    pub_data("bee_temp", fTemp);
+                    pub_data("bee_humi", fHumi);
+                }
+
             }
 
-            //check_warning();
+            check_warning();
 
             if ((xTaskGetTickCount() - lt_send_keep_alive) >= interval_keep_alive)
             {
@@ -281,7 +287,6 @@ void send_mqtt_data_task(void *pvParameters)
     }
 }
 
-#if 0
 void receive_mqtt_config_task(void *pvParameters)
 {
     for (;;)
@@ -307,22 +312,12 @@ void receive_mqtt_config_task(void *pvParameters)
                 if ((strcmp(cCmd_name, "Bee.conf") == 0) && (strcmp(cObject_type, "data") == 0) && (values == 1))
                 {
                     pub_data("bee_temp", fTemp);
-                    MQTT_cmd_to_uart(values);
                     ESP_LOGI (TAG, "cmd temp ok\n");
                 }
                 else if ((strcmp(cCmd_name, "Bee.conf") == 0) && (strcmp(cObject_type, "data") == 0) && (values == 2))
                 {
                     pub_data("bee_humi", fHumi);
-                    MQTT_cmd_to_uart(values);
                     ESP_LOGI (TAG, "cmd humi ok\n");
-                }
-                else if ((strcmp(cCmd_name, "Bee.conf") == 0) && (strcmp(cObject_type, "cfg") == 0)
-                                                        && (values >= 10) && (values <= 240))
-                {
-                    u8data_interval_mqtt = values;
-                    MQTT_cmd_to_uart(values);
-                    save_mqtt_data_to_nvs(u8data_interval_mqtt);
-                    ESP_LOGI (TAG, "cmd interval ok\n");
                 }
                 else 
                 {
@@ -333,7 +328,6 @@ void receive_mqtt_config_task(void *pvParameters)
         }
     }
 }
-#endif
 /****************************************************************************/
 /***        END OF FILE                                                   ***/
 /****************************************************************************/

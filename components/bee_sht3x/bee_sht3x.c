@@ -1,6 +1,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <errno.h>
+#include "esp_log.h"
+#include "math.h"
 
 #include "bee_i2c.h"
 #include "bee_sht3x.h"
@@ -10,6 +12,8 @@
 #define SHT3x_RESET_CMD                0x30A2
 #define SHT3x_FETCH_DATA_CMD           0xE000
 #define SHT3x_HEATER_OFF_CMD           0x3066
+
+static const char *TAG = "SHT3x";
 
 const uint16_t SHT3x_MEASURE_CMD[6][3] = { 
         {0x2400,0x240b,0x2416},    // [SINGLE_SHOT][H,M,L] without clock stretching
@@ -373,28 +377,90 @@ static uint8_t crc8 (uint8_t data[], int len)
 
 float fTemp;
 float fHumi;
+float fTemp_diff;
+float fHumi_diff;
+bool bSensor_status;
+uint8_t u8error_cnt = 0;
+const uint8_t u8max_error_cnt = 10;
+static uint8_t u8count_caculate_diff = 0;
+const uint8_t num_readings = 5;
+static uint8_t u8Temp_index = 0;
+static uint8_t u8Humi_index = 0;
+static float fTemp_sum = 0;
+static float fHumi_sum = 0;
+static float fTemp_avr = 0;
+static float fHumi_avr = 0;
+
 void read_sht3x_task (void *pvParameters)
 {
     sht3x_sensor_t* sensor = (sht3x_sensor_t*)pvParameters;
     vTaskDelay (sht3x_get_measurement_duration(sht3x_high));
 
     TickType_t last_wakeup = xTaskGetTickCount();
+
+    float fTemp_array[num_readings];
+    float fHumi_array[num_readings];
     
     for(;;) 
     {
-        if ((xTaskGetTickCount() - last_wakeup) > pdMS_TO_TICKS(10000))
+        if ((xTaskGetTickCount() - last_wakeup) > pdMS_TO_TICKS(5000))
         {
             last_wakeup = xTaskGetTickCount();
             
             if (sht3x_measure (sensor, &fTemp, &fHumi))
             {
-                printf("SHT3x Sensor: %.2f °C, %.2f %%\n", fTemp, fHumi);
+                u8error_cnt = 0;
+                bSensor_status = true;
+                // Calculate temperature and humidity average
+
+                //giảm giá trị của các phần tử trong mảng u8Temp_array tại chỉ mục u8Temp_index
+                //khỏi tổng u16Temp_sum để chuẩn bị cho việc cộng các giá trị mới vào tổng
+
+                fTemp_sum -= fTemp_array[u8Temp_index]; 
+                fHumi_sum -= fHumi_array[u8Humi_index];
+
+                fTemp_sum += fTemp; // Tính tổng các giá trị nhiệt độ
+                fHumi_sum += fHumi;
+
+                //gán giá trị nhiệt độ u8temp mới vào mảng u8Temp_array tại chỉ mục u8Temp_index.
+                fTemp_array[u8Temp_index] = fTemp;
+                //cập nhật chỉ mục u8Temp_index để lưu trữ các giá trị mới nhất vào mảng.
+                //Chỉ mục này sẽ được lặp lại từ 0 đến num_readings - 1 để duy trì kích thước của mảng. 
+                u8Temp_index = (u8Temp_index + 1) % num_readings;
+
+                fHumi_array[u8Humi_index] = fHumi;
+                u8Humi_index = (u8Humi_index + 1) % num_readings;
+
+                // Tính giá trị nhiệt độ trung bình với num_readings lần đọc gần nhất
+                fTemp_avr = fTemp_sum / num_readings; 
+                fHumi_avr = fHumi_sum / num_readings;
+
+                if (u8count_caculate_diff >= num_readings) //Chỉ khi lấy được num_readings lần mới tính độ chênh lệch
+                {
+                // Tính độ chênh lệch nhiệt độ với trung bình num_readings lần gần nhất
+                fTemp_diff = fabs(fTemp - fTemp_avr);
+                fHumi_diff = fabs(fHumi - fHumi_avr);
+                }
+                else
+                {
+                    u8count_caculate_diff ++;
+                }
+                ESP_LOGI (TAG, "Temperature: %.2f °C, Humidity%.2f %%", fTemp, fHumi);
+                ESP_LOGI (TAG, "Temperature Different: %.2f °C, Humidity Different: %.2f%%\n", fTemp_diff, fHumi_diff);
             }
-            else
+            else 
             {
-
+                if (u8error_cnt < u8max_error_cnt)
+                {
+                    ESP_LOGI (TAG, "Can't read SHT3x, count :%d", u8error_cnt);
+                    bSensor_status = false;
+                    ++u8error_cnt;
+                }
+                else
+                {
+                    ESP_LOGI (TAG, "Can't read SHT3x");
+                }
             }
-
         }
         vTaskDelay(pdMS_TO_TICKS(100));
     }
