@@ -1,4 +1,4 @@
-Dự án ESP32 với Cảm biến SHT3x, Smart Config, MQTT và Chế độ Power Save
+Dự án ESP32 với Cảm biến SHT3x, Smart Config(BLE), MQTT.
 
 GIỚI THIỆU
 
