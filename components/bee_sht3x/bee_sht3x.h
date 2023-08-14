@@ -243,6 +243,7 @@ bool sht3x_get_results (sht3x_sensor_t* device,
  * @param   fTemp_diff     returns temperature differents
  * @param   fHumi_diff     returns humidity differents
  * @param   u8error_cnt    returns number of error count
+ * @return                 temperature and humidity on success, error count on error
  */
 void read_sht3x_task (void *pvParameters);
 
