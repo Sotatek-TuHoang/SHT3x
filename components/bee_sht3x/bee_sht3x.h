@@ -1,5 +1,20 @@
-#ifndef __SHT3x_H__
-#define __SHT3x_H__
+/***************************************************************************
+* @file         bee_sht3x.h
+* @author       tuha
+* @date         14 August 2023
+* @brief        SHT3x sensor driver implementation.
+*               This file contains the implementation of functions to
+*               interact with the Sensirion SHT3x series temperature and
+*               humidity sensor using the I2C communication protocol.
+*               It provides functions for initializing the sensor, starting
+*               measurements, reading raw data, computing temperature and
+*               humidity values, and handling errors. The driver supports
+*               both single-shot and periodic measurement modes.
+*
+****************************************************************************/
+
+#ifndef SHT3x_H
+#define SHT3x_H
 
 // Uncomment to enable debug output
 //#define SHT3x_DEBUG_LEVEL_1     // only error messages

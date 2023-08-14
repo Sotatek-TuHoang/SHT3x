@@ -1,3 +1,16 @@
+/***************************************************************************
+* @file         main.c
+* @author       tuha
+* @date         14 August 2023
+* @brief        Main application file for the Bee project
+*               This file initializes various components, tasks, and sensors
+*               to create a complete IoT system. It demonstrates the use of
+*               the SHT3x temperature and humidity sensor, I2C communication,
+*               Wi-Fi provisioning, MQTT communication, and non-volatile
+*               storage (NVS). The application configures tasks for sensor
+*               reading, Wi-Fi provisioning button handling, MQTT data
+*               publishing, and MQTT configuration receiving.
+****************************************************************************/
 #include "bee_sht3x.h"
 #include "bee_i2c.h"
 #include "bee_wifi.h"
