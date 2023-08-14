@@ -22,9 +22,23 @@
 #define USERNAME            "VBeeHome"
 #define PASSWORD            "123abcA@!"
 
-void mqtt_app_start(void);
+/**
+ * @brief   Initialize MQTT functionality and configuration.
+ *
+ * This function configures the MQTT client with the provided broker address URI, username, and password. It initializes the
+ * MQTT client, registers an event handler for MQTT events, and starts the MQTT client.
+ * Additionally, the function retrieves the MAC address of the Wi-Fi station interface, constructs the MQTT topics using the
+ * MAC address, and creates a message queue for handling MQTT commands.
+ *
+ * @note    The MQTT client is assumed to be a global variable accessible from the scope of this function.
+ *
+ * @param   None
+ * @return  None
+ */
+void mqtt_func_init(void);
 
 void send_mqtt_data_task(void* pvParameters);
+
 void receive_mqtt_config_task(void* pvParameters);
 
 #endif /* BEE_MQTT_H */

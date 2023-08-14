@@ -24,12 +24,41 @@
 #define NVS_WIFI_PASS           "wifi_pass"
 #define NVS_WIFI_SSID           "wifi_ssid"
 
-void nvs_flash_function_init();
-void save_uart_data_to_nvs(bool bsend_data, uint8_t u8data_interval_uart);
-void load_data_from_nvs(bool* bsend_data, uint8_t* u8data_interval_uart, uint8_t* u8data_interval_mqtt);
-void save_mqtt_data_to_nvs(uint8_t u8data_interval_mqtt);
+/**
+ * @brief   Initialize the Non-Volatile Storage (NVS) flash memory.
+ *
+ * This function initializes the NVS flash memory. If there are no free pages or a new version is found, it erases the NVS
+ * and then attempts to initialize it again. Any errors encountered during initialization are checked and handled.
+ *
+ * @note    The function assumes that NVS flash memory initialization is crucial for proper system operation.
+ *
+ * @param   None
+ * @return  None
+ */
+void nvs_flash_func_init();
 
+/**
+ * @brief   Save Wi-Fi credentials to Non-Volatile Storage (NVS).
+ *
+ * This function saves the provided Wi-Fi SSID and password to the NVS. It opens the NVS handle, stores the SSID and password
+ * using appropriate keys, and then closes the NVS handle. Any errors encountered during the process are logged.
+ *
+ * @param   cSsid Wi-Fi SSID to be saved.
+ * @param   cPassword Wi-Fi password to be saved.
+ * @return  None
+ */
 void save_wifi_cred_to_nvs(const char *cSsid, const char *cPassword);
+
+/**
+ * @brief   Load previously saved Wi-Fi credentials from Non-Volatile Storage (NVS).
+ *
+ * This function reads the previously saved Wi-Fi SSID and password from the NVS. It opens the NVS handle, retrieves the SSID
+ * and password using appropriate keys, and then closes the NVS handle. Any errors encountered during the process are logged.
+ *
+ * @param   cSsid Pointer to a character array to store the loaded Wi-Fi SSID.
+ * @param   cPassword Pointer to a character array to store the loaded Wi-Fi password.
+ * @return  None
+ */
 void load_old_wifi_cred(char *cSsid, char *cPassword);
 
 #endif /* BEE_NVS_H */

@@ -45,7 +45,6 @@
 
 #define SHT3x_RAW_DATA_SIZE 6
 
-void read_sht3x(void* pvParameters);
 
 /**
  * @brief	raw data type

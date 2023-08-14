@@ -379,7 +379,6 @@ float fTemp;
 float fHumi;
 float fTemp_diff;
 float fHumi_diff;
-bool bSensor_status;
 uint8_t u8error_cnt = 0;
 const uint8_t u8max_error_cnt = 10;
 static uint8_t u8count_caculate_diff = 0;
@@ -410,7 +409,6 @@ void read_sht3x_task (void *pvParameters)
             if (sht3x_measure (sensor, &fTemp, &fHumi))
             {
                 u8error_cnt = 0;
-                bSensor_status = true;
                 // Calculate temperature and humidity average
 
                 //giảm giá trị của các phần tử trong mảng Temp_array tại chỉ mục Temp_index
@@ -453,7 +451,6 @@ void read_sht3x_task (void *pvParameters)
                 if (u8error_cnt < u8max_error_cnt)
                 {
                     ESP_LOGI (TAG, "Can't read SHT3x, count :%d", u8error_cnt);
-                    bSensor_status = false;
                     ++u8error_cnt;
                 }
                 else

@@ -26,12 +26,17 @@ void app_main(void)
     }
 
     button_init();
+
     xTaskCreate(wifi_prov_button_isr, "wifi_prov_button_isr", 4096, NULL, 3, NULL);
 
-    nvs_flash_function_init();
-    wifi_init_func();
-    mqtt_app_start();
+    nvs_flash_func_init();
+
+    wifi_func_init();
+
+    mqtt_func_init();
+
     xTaskCreate(send_mqtt_data_task, "send_mqtt_data_task", 4096, NULL, 7, NULL);
+
     xTaskCreate(receive_mqtt_config_task, "receive_mqtt_config_task", 2048, NULL, 5, NULL);
 
 }

@@ -46,6 +46,7 @@ static TaskHandle_t prov_fail_handle = NULL;
 /****************************************************************************/
 /***        Event Handler                                                 ***/
 /****************************************************************************/
+
 static void event_handler(void* arg, esp_event_base_t event_base,
                           int32_t event_id, void* event_data)
 {
@@ -146,9 +147,28 @@ static void event_handler(void* arg, esp_event_base_t event_base,
     }
 }
 
+esp_err_t custom_prov_data_handler(uint32_t session_id, const uint8_t *inbuf, ssize_t inlen,
+                                          uint8_t **outbuf, ssize_t *outlen, void *priv_data)
+{
+    if (inbuf)
+    {
+        ESP_LOGI(TAG, "Received data: %.*s", inlen, (char *)inbuf);
+    }
+    char response[] = "SUCCESS";
+    *outbuf = (uint8_t *)strdup(response);
+    if (*outbuf == NULL)
+    {
+        ESP_LOGE(TAG, "System out of memory");
+        return ESP_ERR_NO_MEM;
+    }
+    *outlen = strlen(response) + 1; /* +1 for NULL terminating byte */
+    return ESP_OK;
+}
+
 /****************************************************************************/
 /***        Locale Functions                                              ***/
 /****************************************************************************/
+
 static void wifi_init_sta(void)
 {
     /* Start Wi-Fi in station mode */
@@ -165,6 +185,14 @@ static void get_device_service_name(char *service_name, size_t max)
              ssid_prefix, u8eth_mac[3], u8eth_mac[4], u8eth_mac[5]);
 }
 
+/**
+ * @brief   Reconnect to a previously configured Wi-Fi network.
+ *
+ * This function attempts to reconnect to a Wi-Fi network using the SSID and password that were previously saved in the
+ * Non-Volatile Storage (NVS). It reads the saved SSID and password, sets up the Wi-Fi configuration, initializes Wi-Fi in
+ * STA mode, and then initiates the connection process to the Wi-Fi network.
+ *
+ * @note    If no saved SSID is found, the function will not attempt to reconnect. **/
 static void reconnect_old_wifi(void)
 {
     wifi_config_t wifi_sta_cfg;
@@ -193,7 +221,7 @@ static void reconnect_old_wifi(void)
     }
 }
 
-void cnt_timeout(uint8_t *u8time)
+static void cnt_timeout(uint8_t *u8time)
 {
     TickType_t prov_current_time = xTaskGetTickCount();
     TickType_t prov_timeout = pdMS_TO_TICKS(*u8time * 1000); // Timeout period, adjust as needed
@@ -206,31 +234,12 @@ void cnt_timeout(uint8_t *u8time)
 }
 
 /****************************************************************************/
-/***        Event handler                                                 ***/
-/****************************************************************************/
-esp_err_t custom_prov_data_handler(uint32_t session_id, const uint8_t *inbuf, ssize_t inlen,
-                                          uint8_t **outbuf, ssize_t *outlen, void *priv_data)
-{
-    if (inbuf)
-    {
-        ESP_LOGI(TAG, "Received data: %.*s", inlen, (char *)inbuf);
-    }
-    char response[] = "SUCCESS";
-    *outbuf = (uint8_t *)strdup(response);
-    if (*outbuf == NULL)
-    {
-        ESP_LOGE(TAG, "System out of memory");
-        return ESP_ERR_NO_MEM;
-    }
-    *outlen = strlen(response) + 1; /* +1 for NULL terminating byte */
-    return ESP_OK;
-}
-/****************************************************************************/
 /***        initializing wifi function                                    ***/
 /****************************************************************************/
-/** @brief Hàm kiểm soát việc cài đặt cấu hình TCP/IP, đăng ký event handle
- *         Init các cấu hình liên quan phục vụ cho cấu hình cho wifi        */
-void wifi_init_func(void)
+
+/** Hàm kiểm soát việc cài đặt cấu hình TCP/IP, đăng ký event handle
+ *  Init các cấu hình liên quan phục vụ cho cấu hình cho wifi        */
+void wifi_func_init(void)
 {
     ESP_ERROR_CHECK(esp_netif_init()); /* Initialize TCP/IP */
 
@@ -278,7 +287,8 @@ void wifi_init_func(void)
 /****************************************************************************/
 /***        Global Functions                                              ***/
 /****************************************************************************/
-/** @brief Hàm kiểm soát việc cấu hình wifi */
+
+/**Hàm kiểm soát việc cấu hình wifi */
 void wifi_prov(void)
 {
     if (!bProv)
@@ -326,11 +336,12 @@ void wifi_prov(void)
 /****************************************************************************/
 /***        Tasks                                                         ***/
 /****************************************************************************/
-/** @brief Đếm thời gian tối đa cho việc cấu hình wifi là 60s
+
+/**Đếm thời gian tối đa cho việc cấu hình wifi là 60s
  * Hết thời gian tự động cấu hình lại bằng thông số wifi cũ */
 void prov_timeout_task(void* pvParameters)
 {
-    uint8_t u8timeout_set = 10; // Đơn vị tính bằng giây
+    uint8_t u8timeout_set = 60; // Đơn vị tính bằng giây
     cnt_timeout(&u8timeout_set);
     wifi_prov_mgr_stop_provisioning();
     reconnect_old_wifi();
@@ -338,8 +349,8 @@ void prov_timeout_task(void* pvParameters)
     vTaskDelete(prov_timeout_handle); // Xóa task khi hoàn thành
 }
 
-/** @brief Đếm thời gian tối đa cho việc cấu hình wifi thất bại là 60s
-*          Hết thời gian thì ngừng cấu hình*/
+/**Đếm thời gian tối đa cho việc cấu hình wifi thất bại là 60s
+*  Hết thời gian thì ngừng cấu hình*/
 void prov_fail_task(void* pvParameters)
 {
     wifi_prov_mgr_reset_sm_state_on_failure();

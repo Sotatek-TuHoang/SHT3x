@@ -10,6 +10,7 @@
 /****************************************************************************/
 /***        Include file                                                  ***/
 /****************************************************************************/
+
 #include "bee_nvs.h"
 #include "esp_system.h"
 #include "esp_err.h"
@@ -19,7 +20,8 @@
 /****************************************************************************/
 /***        Init Functions in App main                                    ***/
 /****************************************************************************/
-void nvs_flash_function_init()
+
+void nvs_flash_func_init()
 {
     esp_err_t err = nvs_flash_init(); // Initialize NVS
     if (err == ESP_ERR_NVS_NO_FREE_PAGES || err == ESP_ERR_NVS_NEW_VERSION_FOUND)
@@ -28,11 +30,11 @@ void nvs_flash_function_init()
     err = nvs_flash_init();
     }
     ESP_ERROR_CHECK( err );
-
 }
 /****************************************************************************/
 /***        NVS Functions                                                 ***/
 /****************************************************************************/
+
 void save_wifi_cred_to_nvs(const char *cSsid, const char *cPassword)
 {
     nvs_handle_t nvs_handle;

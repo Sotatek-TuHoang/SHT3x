@@ -23,6 +23,7 @@
 /****************************************************************************/
 /***        Extern Variables                                              ***/
 /****************************************************************************/
+
 extern float fTemp;
 extern float fHumi;
 extern float fTemp_diff;
@@ -40,7 +41,6 @@ static bool bTemp_threshold = 0;
 static bool bHumi_threshold = 0;
 static bool bTemp_diff      = 0;
 static bool bHumi_diff      = 0;
-
 
 static uint8_t u8mac[6];
 static char cMac_str[13];
@@ -111,7 +111,8 @@ void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event
 /****************************************************************************/
 /***        Init Functions in App main                                    ***/
 /****************************************************************************/
-void mqtt_app_start(void)
+
+void mqtt_func_init(void)
 {
     /*Config mqtt client*/
     esp_mqtt_client_config_t mqtt_cfg = {
@@ -132,8 +133,11 @@ void mqtt_app_start(void)
     ESP_LOGI(TAG, "Topic subscribe: %s\n", cTopic_sub);
 
     mqtt_cmd_queue = xQueueCreate(10, sizeof(cJSON*));
-
 }
+
+/****************************************************************************/
+/***        Local Functions                                               ***/
+/****************************************************************************/
 
 static void pub_data(const char *object, float values)
 {
@@ -152,12 +156,7 @@ static void pub_data(const char *object, float values)
         cJSON_Delete(json_data);
         free(json_str);
     }
-
 }
-
-/****************************************************************************/
-/***        Local Functions                                               ***/
-/****************************************************************************/
 
 static void send_warning(void)
 {
@@ -229,7 +228,6 @@ static void check_warning(void)
     }
 }
 
-
 static void send_keep_alive(void)
 {
     cJSON *json_keep_alive = cJSON_CreateObject();
@@ -249,6 +247,7 @@ static void send_keep_alive(void)
 /****************************************************************************/
 /***        Tasks                                                         ***/
 /****************************************************************************/
+
 void send_mqtt_data_task(void *pvParameters)
 {
     TickType_t lt_send_data_mqtt = xTaskGetTickCount();
