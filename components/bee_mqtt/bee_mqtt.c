@@ -176,6 +176,13 @@ static void send_warning(void)
     free(json_str);
 }
 
+/**
+ * @brief Checks sensor warnings and sends a warning message if conditions are met.
+ * This function evaluates sensor error conditions and threshold crossings for temperature and humidity.
+ * Depending on the conditions, it sets warning flags and triggers sending a warning message.
+ * The warning values are composed into a byte, and if they differ from the previous state,
+ * a warning message is sent using the `send_warning()` function.
+ */
 static void check_warning(void)
 {
     if (u8error_cnt == u8max_error_cnt)
@@ -230,6 +237,15 @@ static void check_warning(void)
     }
 }
 
+/**
+ * @brief Sends a keep-alive MQTT message to indicate device status.
+ *
+ * This function constructs a JSON message containing device status information such as the thing token,
+ * event type, and status. The message is then published to the MQTT broker using the configured client.
+ * The transmission code is also incremented for each message sent.
+ *
+ * @note The MQTT client (client) and topic (cTopic_pub) must be properly configured before calling this function.
+ */
 static void send_keep_alive(void)
 {
     cJSON *json_keep_alive = cJSON_CreateObject();
