@@ -303,48 +303,6 @@ void send_mqtt_data_task(void *pvParameters)
         }
     }
 }
-
-void receive_mqtt_config_task(void *pvParameters)
-{
-    for (;;)
-    {
-        if (xQueueReceive(mqtt_cmd_queue, &rxBuffer_MQTT, portMAX_DELAY))
-        {
-            cJSON *root = cJSON_Parse(rxBuffer_MQTT);
-            if (root != NULL)
-            {
-                char* cThing_token = cJSON_GetObjectItemCaseSensitive(root, "thing_token")->valuestring;
-                char* cCmd_name = cJSON_GetObjectItemCaseSensitive(root, "cmd_name")->valuestring;
-                char* cObject_type = cJSON_GetObjectItemCaseSensitive(root, "object_type")->valuestring;
-                int values = cJSON_GetObjectItemCaseSensitive(root, "values")->valueint;
-                int trans_code = cJSON_GetObjectItemCaseSensitive(root, "trans_code")->valueint;
-
-                ESP_LOGI(TAG, "\n Received MQTT command:");
-                ESP_LOGI(TAG, "thing_token: %s", cThing_token);
-                ESP_LOGI(TAG, "cmd_name: %s", cCmd_name);
-                ESP_LOGI(TAG, "object: %s", cObject_type);
-                ESP_LOGI(TAG, "values: %d", values);
-                ESP_LOGI(TAG, "trans_code: %d\n", trans_code);
-                
-                if ((strcmp(cCmd_name, "Bee.conf") == 0) && (strcmp(cObject_type, "data") == 0) && (values == 1))
-                {
-                    pub_data("bee_temp", fTemp);
-                    ESP_LOGI (TAG, "cmd temp ok\n");
-                }
-                else if ((strcmp(cCmd_name, "Bee.conf") == 0) && (strcmp(cObject_type, "data") == 0) && (values == 2))
-                {
-                    pub_data("bee_humi", fHumi);
-                    ESP_LOGI (TAG, "cmd humi ok\n");
-                }
-                else 
-                {
-                    ESP_LOGI (TAG, "wrong cmd\n");
-                }
-                cJSON_Delete(root);
-            }
-        }
-    }
-}
 /****************************************************************************/
 /***        END OF FILE                                                   ***/
 /****************************************************************************/

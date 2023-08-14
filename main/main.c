@@ -50,6 +50,4 @@ void app_main(void)
 
     xTaskCreate(send_mqtt_data_task, "send_mqtt_data_task", 4096, NULL, 7, NULL);
 
-    xTaskCreate(receive_mqtt_config_task, "receive_mqtt_config_task", 2048, NULL, 5, NULL);
-
 }
