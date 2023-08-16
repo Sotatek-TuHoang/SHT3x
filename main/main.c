@@ -18,7 +18,6 @@
 #include "bee_nvs.h"
 #include "bee_button.h"
 
-
 sht3x_sensor_t* sensor;    // sensor device data structure
 
 void app_main(void)

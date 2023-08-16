@@ -16,9 +16,17 @@
 #ifndef SHT3x_H
 #define SHT3x_H
 
+/****************************************************************************/
+/***        Macro Definitions                                             ***/
+/****************************************************************************/
+
 // Uncomment to enable debug output
 //#define SHT3x_DEBUG_LEVEL_1     // only error messages
 //#define SHT3x_DEBUG_LEVEL_2     // error and debug messages
+
+/****************************************************************************/
+/***        Include files                                                 ***/
+/****************************************************************************/
 
 #include "stdint.h"
 #include "stdbool.h"
@@ -27,6 +35,14 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/queue.h"
+
+/****************************************************************************/
+/***        Variable Definiti                                             ***/
+/****************************************************************************/
+
+/**Define variable*/
+#define u8max_error_cnt 10
+#define num_readings 5
 
 // definition of possible I2C slave addresses
 #define SHT3x_ADDR_1 0x44        // ADDR pin connected to GND/VSS (default)
@@ -60,6 +76,9 @@
 
 #define SHT3x_RAW_DATA_SIZE 6
 
+/****************************************************************************/
+/***        Type Definitions                                              ***/
+/****************************************************************************/
 
 /**
  * @brief	raw data type
@@ -108,6 +127,9 @@ typedef struct {
     
 } sht3x_sensor_t;    
 
+/****************************************************************************/
+/***        Exported Functions                                            ***/
+/****************************************************************************/
 
 /**
  * @brief	Initialize a SHT3x sensor
@@ -140,8 +162,8 @@ sht3x_sensor_t* sht3x_init_sensor (uint8_t bus, uint8_t addr);
  * is called from a software timer callback function.
  *
  * @param   device         pointer to sensor device data structure
- * @param   temperature returns temperature in degree Celsius   
- * @param   humidity    returns humidity in percent
+ * @param   fTemp returns temperature in degree Celsius   
+ * @param   fHumi    returns humidity in percent
  * @return              true on success, false on error
  */
 bool sht3x_measure (sht3x_sensor_t* device, float* fTemp, float* fHumi);
@@ -234,8 +256,8 @@ bool sht3x_compute_values (sht3x_raw_data_t raw_data,
  * In case that there are no results that can be read, the function fails.
  *
  * @param   device         pointer to sensor device data structure
- * @param   temperature returns temperature in degree Celsius   
- * @param   humidity    returns humidity in percent
+ * @param   fTemp returns temperature in degree Celsius   
+ * @param   fHumi    returns humidity in percent
  * @return              true on success, false on error
  */
 bool sht3x_get_results (sht3x_sensor_t* device, 
@@ -246,13 +268,12 @@ bool sht3x_get_results (sht3x_sensor_t* device,
  *
  * In case that there are no results that can be read, return number of error count.
  *
- * @param   device         pointer to sensor device data structure
- * @param   fTemp          returns temperature in degree Celsius   
- * @param   fHumi          returns humidity in percent
- * @param   fTemp_diff     returns temperature differents
- * @param   fHumi_diff     returns humidity differents
- * @param   u8error_cnt    returns number of error count
- * @return                 temperature and humidity on success, error count on error
+ * @result                          temperature and humidity on success, error count on error
+ *          @param   fTemp          returns temperature in degree Celsius   
+ *          @param   fHumi          returns humidity in percent
+ *          @param   fTemp_diff     returns temperature differents
+ *          @param   fHumi_diff     returns humidity differents
+ *          @param   u8error_cnt    returns number of error count
  */
 void read_sht3x_task (void *pvParameters);
 

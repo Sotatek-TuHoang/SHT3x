@@ -1,0 +1,454 @@
+[0;32mI (302282) MQTT: MQTT_EVENT_PUBLISHED, msg_id=15235[0m
+[0;32mI (302592) MQTT: MQTT_EVENT_PUBLISHED, msg_id=49623[0m
+[0;32mI (302702) SHT3x: Temperature: 28.73 °C, Humidity78.34 %[0m
+[0;32mI (302702) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.05%
+[0m
+[0;32mI (302902) MQTT: MQTT_EVENT_PUBLISHED, msg_id=9310[0m
+[0;32mI (307732) SHT3x: Temperature: 28.75 °C, Humidity78.47 %[0m
+[0;32mI (307732) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.07%
+[0m
+[0;32mI (312762) SHT3x: Temperature: 28.75 °C, Humidity78.59 %[0m
+[0;32mI (312762) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.15%
+[0m
+[0;32mI (317792) SHT3x: Temperature: 28.74 °C, Humidity78.55 %[0m
+[0;32mI (317792) SHT3x: Temperature Different: 0.00 °C, Humidity Different: 0.08%
+[0m
+[0;32mI (322822) SHT3x: Temperature: 28.75 °C, Humidity78.49 %[0m
+[0;32mI (322822) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.00%
+[0m
+[0;32mI (327852) SHT3x: Temperature: 28.75 °C, Humidity78.38 %[0m
+[0;32mI (327852) SHT3x: Temperature Different: 0.00 °C, Humidity Different: 0.12%
+[0m
+[0;32mI (332702) MQTT: MQTT_EVENT_PUBLISHED, msg_id=24490[0m
+[0;32mI (332882) SHT3x: Temperature: 28.73 °C, Humidity78.32 %[0m
+[0;32mI (332882) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.15%
+[0m
+[0;32mI (333012) MQTT: MQTT_EVENT_PUBLISHED, msg_id=31883[0m
+[0;32mI (337912) SHT3x: Temperature: 28.73 °C, Humidity78.04 %[0m
+[0;32mI (337912) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.32%
+[0m
+[0;32mI (342942) SHT3x: Temperature: 28.70 °C, Humidity77.78 %[0m
+[0;32mI (342942) SHT3x: Temperature Different: 0.03 °C, Humidity Different: 0.42%
+[0m
+[0;32mI (347972) SHT3x: Temperature: 28.70 °C, Humidity77.60 %[0m
+[0;32mI (347972) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.42%
+[0m
+[0;32mI (353002) SHT3x: Temperature: 28.71 °C, Humidity77.60 %[0m
+[0;32mI (353002) SHT3x: Temperature Different: 0.00 °C, Humidity Different: 0.27%
+[0m
+[0;32mI (358032) SHT3x: Temperature: 28.69 °C, Humidity77.54 %[0m
+[0;32mI (358032) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.17%
+[0m
+[0;32mI (362502) MQTT: MQTT_EVENT_PUBLISHED, msg_id=41085[0m
+[0;32mI (362812) MQTT: MQTT_EVENT_PUBLISHED, msg_id=36434[0m
+[0;32mI (363062) SHT3x: Temperature: 28.66 °C, Humidity77.16 %[0m
+[0;32mI (363062) SHT3x: Temperature Different: 0.03 °C, Humidity Different: 0.38%
+[0m
+[0;32mI (363112) MQTT: MQTT_EVENT_PUBLISHED, msg_id=63897[0m
+[0;32mI (368092) SHT3x: Temperature: 28.64 °C, Humidity76.96 %[0m
+[0;32mI (368092) SHT3x: Temperature Different: 0.04 °C, Humidity Different: 0.41%
+[0m
+[0;32mI (373122) SHT3x: Temperature: 28.63 °C, Humidity76.84 %[0m
+[0;32mI (373122) SHT3x: Temperature Different: 0.04 °C, Humidity Different: 0.38%
+[0m
+[0;32mI (378152) SHT3x: Temperature: 28.63 °C, Humidity76.78 %[0m
+[0;32mI (378152) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.28%
+[0m
+[0;32mI (383182) SHT3x: Temperature: 28.60 °C, Humidity76.53 %[0m
+[0;32mI (383182) SHT3x: Temperature Different: 0.03 °C, Humidity Different: 0.33%
+[0m
+[0;32mI (388212) SHT3x: Temperature: 28.59 °C, Humidity76.24 %[0m
+[0;32mI (388212) SHT3x: Temperature Different: 0.03 °C, Humidity Different: 0.43%
+[0m
+[0;32mI (392612) MQTT: MQTT_EVENT_PUBLISHED, msg_id=36802[0m
+[0;32mI (392702) MQTT: MQTT_EVENT_PUBLISHED, msg_id=52942[0m
+[0;32mI (393242) SHT3x: Temperature: 28.60 °C, Humidity76.26 %[0m
+[0;32mI (393242) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.27%
+[0m
+[0;32mI (398272) SHT3x: Temperature: 28.59 °C, Humidity76.48 %[0m
+[0;32mI (398272) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.02%
+[0m
+[0;32mI (403302) SHT3x: Temperature: 28.59 °C, Humidity76.46 %[0m
+[0;32mI (403302) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.07%
+[0m
+[0;32mI (408332) SHT3x: Temperature: 28.52 °C, Humidity76.19 %[0m
+[0;32mI (408332) SHT3x: Temperature Different: 0.05 °C, Humidity Different: 0.13%
+[0m
+[0;32mI (413362) SHT3x: Temperature: 28.55 °C, Humidity76.07 %[0m
+[0;32mI (413362) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.22%
+[0m
+[0;32mI (418392) SHT3x: Temperature: 28.54 °C, Humidity76.11 %[0m
+[0;32mI (418392) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.15%
+[0m
+[0;32mI (422292) MQTT: MQTT_EVENT_PUBLISHED, msg_id=53488[0m
+[0;32mI (422412) MQTT: MQTT_EVENT_PUBLISHED, msg_id=62781[0m
+[0;32mI (422712) MQTT: MQTT_EVENT_PUBLISHED, msg_id=64104[0m
+[0;32mI (423422) SHT3x: Temperature: 28.54 °C, Humidity76.13 %[0m
+[0;32mI (423422) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.06%
+[0m
+[0;32mI (428452) SHT3x: Temperature: 28.50 °C, Humidity76.07 %[0m
+[0;32mI (428452) SHT3x: Temperature Different: 0.03 °C, Humidity Different: 0.05%
+[0m
+[0;32mI (433482) SHT3x: Temperature: 28.50 °C, Humidity75.83 %[0m
+[0;32mI (433482) SHT3x: Temperature Different: 0.03 °C, Humidity Different: 0.21%
+[0m
+[0;32mI (438512) SHT3x: Temperature: 28.51 °C, Humidity75.82 %[0m
+[0;32mI (438512) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.17%
+[0m
+[0;32mI (443542) SHT3x: Temperature: 28.51 °C, Humidity75.89 %[0m
+[0;32mI (443542) SHT3x: Temperature Different: 0.00 °C, Humidity Different: 0.06%
+[0m
+[0;32mI (448572) SHT3x: Temperature: 28.50 °C, Humidity75.97 %[0m
+[0;32mI (448572) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.05%
+[0m
+[0;32mI (452512) MQTT: MQTT_EVENT_PUBLISHED, msg_id=59767[0m
+[0;32mI (452822) MQTT: MQTT_EVENT_PUBLISHED, msg_id=59216[0m
+[0;32mI (453602) SHT3x: Temperature: 28.47 °C, Humidity75.64 %[0m
+[0;32mI (453602) SHT3x: Temperature Different: 0.03 °C, Humidity Different: 0.19%
+[0m
+[0;32mI (458632) SHT3x: Temperature: 28.48 °C, Humidity75.40 %[0m
+[0;32mI (458632) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.34%
+[0m
+[0;32mI (463662) SHT3x: Temperature: 28.44 °C, Humidity75.31 %[0m
+[0;32mI (463662) SHT3x: Temperature Different: 0.04 °C, Humidity Different: 0.33%
+[0m
+[0;32mI (468692) SHT3x: Temperature: 28.44 °C, Humidity75.29 %[0m
+[0;32mI (468692) SHT3x: Temperature Different: 0.03 °C, Humidity Different: 0.23%
+[0m
+[0;32mI (473722) SHT3x: Temperature: 28.41 °C, Humidity75.00 %[0m
+[0;32mI (473722) SHT3x: Temperature Different: 0.04 °C, Humidity Different: 0.33%
+[0m
+[0;32mI (478752) SHT3x: Temperature: 28.37 °C, Humidity74.71 %[0m
+[0;32mI (478752) SHT3x: Temperature Different: 0.06 °C, Humidity Different: 0.43%
+[0m
+[0;32mI (482302) MQTT: MQTT_EVENT_PUBLISHED, msg_id=48285[0m
+[0;32mI (482622) MQTT: MQTT_EVENT_PUBLISHED, msg_id=30446[0m
+[0;32mI (482712) MQTT: MQTT_EVENT_PUBLISHED, msg_id=3640[0m
+[0;32mI (483782) SHT3x: Temperature: 28.39 °C, Humidity74.66 %[0m
+[0;32mI (483782) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.34%
+[0m
+[0;32mI (488812) SHT3x: Temperature: 28.34 °C, Humidity74.67 %[0m
+[0;32mI (488812) SHT3x: Temperature Different: 0.05 °C, Humidity Different: 0.20%
+[0m
+[0;32mI (493842) SHT3x: Temperature: 28.33 °C, Humidity74.69 %[0m
+[0;32mI (493842) SHT3x: Temperature Different: 0.04 °C, Humidity Different: 0.05%
+[0m
+[0;32mI (498872) SHT3x: Temperature: 28.29 °C, Humidity74.45 %[0m
+[0;32mI (498872) SHT3x: Temperature Different: 0.06 °C, Humidity Different: 0.18%
+[0m
+[0;32mI (503902) SHT3x: Temperature: 28.29 °C, Humidity74.28 %[0m
+[0;32mI (503902) SHT3x: Temperature Different: 0.04 °C, Humidity Different: 0.27%
+[0m
+[0;32mI (508932) SHT3x: Temperature: 28.27 °C, Humidity74.31 %[0m
+[0;32mI (508932) SHT3x: Temperature Different: 0.03 °C, Humidity Different: 0.17%
+[0m
+[0;32mI (512422) MQTT: MQTT_EVENT_PUBLISHED, msg_id=47411[0m
+[0;32mI (512512) MQTT: MQTT_EVENT_PUBLISHED, msg_id=30389[0m
+[0;32mI (513962) SHT3x: Temperature: 28.26 °C, Humidity74.29 %[0m
+[0;32mI (513962) SHT3x: Temperature Different: 0.03 °C, Humidity Different: 0.11%
+[0m
+[0;32mI (518992) SHT3x: Temperature: 28.23 °C, Humidity74.40 %[0m
+[0;32mI (518992) SHT3x: Temperature Different: 0.04 °C, Humidity Different: 0.06%
+[0m
+[0;32mI (524022) SHT3x: Temperature: 28.24 °C, Humidity74.48 %[0m
+[0;32mI (524022) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.13%
+[0m
+[0;32mI (529052) SHT3x: Temperature: 28.24 °C, Humidity74.58 %[0m
+[0;32mI (529052) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.17%
+[0m
+[0;32mI (534082) SHT3x: Temperature: 28.23 °C, Humidity74.62 %[0m
+[0;32mI (534082) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.15%
+[0m
+[0;32mI (539112) SHT3x: Temperature: 28.20 °C, Humidity74.63 %[0m
+[0;32mI (539112) SHT3x: Temperature Different: 0.03 °C, Humidity Different: 0.08%
+[0m
+[0;32mI (542522) MQTT: MQTT_EVENT_PUBLISHED, msg_id=26722[0m
+[0;32mI (542832) MQTT: MQTT_EVENT_PUBLISHED, msg_id=42725[0m
+[0;32mI (543142) MQTT: MQTT_EVENT_PUBLISHED, msg_id=53251[0m
+[0;32mI (544142) SHT3x: Temperature: 28.20 °C, Humidity74.86 %[0m
+[0;32mI (544142) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.23%
+[0m
+[0;32mI (549172) SHT3x: Temperature: 28.22 °C, Humidity75.07 %[0m
+[0;32mI (549172) SHT3x: Temperature Different: 0.00 °C, Humidity Different: 0.31%
+[0m
+[0;32mI (554202) SHT3x: Temperature: 28.20 °C, Humidity75.14 %[0m
+[0;32mI (554202) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.27%
+[0m
+[0;32mI (559232) SHT3x: Temperature: 28.23 °C, Humidity75.12 %[0m
+[0;32mI (559232) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.15%
+[0m
+[0;32mI (564262) SHT3x: Temperature: 28.22 °C, Humidity75.22 %[0m
+[0;32mI (564262) SHT3x: Temperature Different: 0.00 °C, Humidity Different: 0.14%
+[0m
+[0;32mI (569292) SHT3x: Temperature: 28.20 °C, Humidity75.41 %[0m
+[0;32mI (569292) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.22%
+[0m
+[0;32mI (572632) MQTT: MQTT_EVENT_PUBLISHED, msg_id=12408[0m
+[0;32mI (572722) MQTT: MQTT_EVENT_PUBLISHED, msg_id=19173[0m
+[0;32mI (574322) SHT3x: Temperature: 28.22 °C, Humidity75.55 %[0m
+[0;32mI (574322) SHT3x: Temperature Different: 0.00 °C, Humidity Different: 0.26%
+[0m
+[0;32mI (579352) SHT3x: Temperature: 28.22 °C, Humidity75.65 %[0m
+[0;32mI (579352) SHT3x: Temperature Different: 0.00 °C, Humidity Different: 0.26%
+[0m
+[0;32mI (584382) SHT3x: Temperature: 28.22 °C, Humidity75.74 %[0m
+[0;32mI (584382) SHT3x: Temperature Different: 0.00 °C, Humidity Different: 0.23%
+[0m
+[0;32mI (589412) SHT3x: Temperature: 28.22 °C, Humidity75.95 %[0m
+[0;32mI (589412) SHT3x: Temperature Different: 0.00 °C, Humidity Different: 0.29%
+[0m
+[0;32mI (594442) SHT3x: Temperature: 28.19 °C, Humidity76.05 %[0m
+[0;32mI (594442) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.26%
+[0m
+[0;32mI (599472) SHT3x: Temperature: 28.23 °C, Humidity76.14 %[0m
+[0;32mI (599472) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.24%
+[0m
+[0;32mI (602432) MQTT: MQTT_EVENT_PUBLISHED, msg_id=17774[0m
+[0;32mI (602522) MQTT: MQTT_EVENT_PUBLISHED, msg_id=20953[0m
+[0;32mI (602742) MQTT: MQTT_EVENT_PUBLISHED, msg_id=53053[0m
+[0;32mI (604502) SHT3x: Temperature: 28.22 °C, Humidity76.15 %[0m
+[0;32mI (604502) SHT3x: Temperature Different: 0.00 °C, Humidity Different: 0.14%
+[0m
+[0;32mI (609532) SHT3x: Temperature: 28.22 °C, Humidity76.21 %[0m
+[0;32mI (609532) SHT3x: Temperature Different: 0.00 °C, Humidity Different: 0.11%
+[0m
+[0;32mI (614562) SHT3x: Temperature: 28.23 °C, Humidity76.43 %[0m
+[0;32mI (614562) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.24%
+[0m
+[0;32mI (619592) SHT3x: Temperature: 28.20 °C, Humidity76.50 %[0m
+[0;32mI (619592) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.21%
+[0m
+[0;32mI (624622) SHT3x: Temperature: 28.20 °C, Humidity76.56 %[0m
+[0;32mI (624622) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.19%
+[0m
+[0;32mI (629652) SHT3x: Temperature: 28.22 °C, Humidity76.59 %[0m
+[0;32mI (629652) SHT3x: Temperature Different: 0.00 °C, Humidity Different: 0.13%
+[0m
+[0;32mI (632542) MQTT: MQTT_EVENT_PUBLISHED, msg_id=11123[0m
+[0;32mI (632842) MQTT: MQTT_EVENT_PUBLISHED, msg_id=51896[0m
+[0;32mI (634682) SHT3x: Temperature: 28.22 °C, Humidity76.77 %[0m
+[0;32mI (634682) SHT3x: Temperature Different: 0.00 °C, Humidity Different: 0.20%
+[0m
+[0;32mI (639712) SHT3x: Temperature: 28.22 °C, Humidity76.89 %[0m
+[0;32mI (639712) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.23%
+[0m
+[0;32mI (644742) SHT3x: Temperature: 28.20 °C, Humidity76.91 %[0m
+[0;32mI (644742) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.17%
+[0m
+[0;32mI (649772) SHT3x: Temperature: 28.20 °C, Humidity76.92 %[0m
+[0;32mI (649772) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.10%
+[0m
+[0;32mI (654802) SHT3x: Temperature: 28.20 °C, Humidity77.05 %[0m
+[0;32mI (654802) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.14%
+[0m
+[0;32mI (659832) SHT3x: Temperature: 28.19 °C, Humidity77.17 %[0m
+[0;32mI (659832) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.18%
+[0m
+[0;32mI (662652) MQTT: MQTT_EVENT_PUBLISHED, msg_id=3975[0m
+[0;32mI (662732) MQTT: MQTT_EVENT_PUBLISHED, msg_id=37646[0m
+[0;32mI (663262) MQTT: MQTT_EVENT_PUBLISHED, msg_id=22961[0m
+[0;32mI (664862) SHT3x: Temperature: 28.22 °C, Humidity77.24 %[0m
+[0;32mI (664862) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.18%
+[0m
+[0;32mI (669892) SHT3x: Temperature: 28.20 °C, Humidity77.29 %[0m
+[0;32mI (669892) SHT3x: Temperature Different: 0.00 °C, Humidity Different: 0.16%
+[0m
+[0;32mI (674922) SHT3x: Temperature: 28.19 °C, Humidity77.30 %[0m
+[0;32mI (674922) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.09%
+[0m
+[0;32mI (679952) SHT3x: Temperature: 28.20 °C, Humidity77.44 %[0m
+[0;32mI (679952) SHT3x: Temperature Different: 0.00 °C, Humidity Different: 0.15%
+[0m
+[0;32mI (684982) SHT3x: Temperature: 28.22 °C, Humidity77.52 %[0m
+[0;32mI (684982) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.16%
+[0m
+[0;32mI (690012) SHT3x: Temperature: 28.24 °C, Humidity77.58 %[0m
+[0;32mI (690012) SHT3x: Temperature Different: 0.03 °C, Humidity Different: 0.15%
+[0m
+[0;32mI (692442) MQTT: MQTT_EVENT_PUBLISHED, msg_id=859[0m
+[0;32mI (692752) MQTT: MQTT_EVENT_PUBLISHED, msg_id=17877[0m
+[0;32mI (695042) SHT3x: Temperature: 28.20 °C, Humidity77.60 %[0m
+[0;32mI (695042) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.11%
+[0m
+[0;32mI (700072) SHT3x: Temperature: 28.23 °C, Humidity77.68 %[0m
+[0;32mI (700072) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.12%
+[0m
+[0;32mI (705102) SHT3x: Temperature: 28.23 °C, Humidity77.81 %[0m
+[0;32mI (705102) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.17%
+[0m
+[0;32mI (710132) SHT3x: Temperature: 28.24 °C, Humidity78.00 %[0m
+[0;32mI (710132) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.27%
+[0m
+[0;32mI (715162) SHT3x: Temperature: 28.26 °C, Humidity78.05 %[0m
+[0;32mI (715162) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.22%
+[0m
+[0;32mI (720192) SHT3x: Temperature: 28.26 °C, Humidity78.10 %[0m
+[0;32mI (720192) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.17%
+[0m
+[0;32mI (722552) MQTT: MQTT_EVENT_PUBLISHED, msg_id=63277[0m
+[0;32mI (722862) MQTT: MQTT_EVENT_PUBLISHED, msg_id=40030[0m
+[0;32mI (723162) MQTT: MQTT_EVENT_PUBLISHED, msg_id=26090[0m
+[0;32mI (725222) SHT3x: Temperature: 28.26 °C, Humidity78.14 %[0m
+[0;32mI (725222) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.12%
+[0m
+[0;32mI (730252) SHT3x: Temperature: 28.30 °C, Humidity78.20 %[0m
+[0;32mI (730252) SHT3x: Temperature Different: 0.04 °C, Humidity Different: 0.10%
+[0m
+[0;32mI (735282) SHT3x: Temperature: 28.30 °C, Humidity78.22 %[0m
+[0;32mI (735282) SHT3x: Temperature Different: 0.03 °C, Humidity Different: 0.08%
+[0m
+[0;32mI (740312) SHT3x: Temperature: 28.30 °C, Humidity78.25 %[0m
+[0;32mI (740312) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.07%
+[0m
+[0;32mI (745342) SHT3x: Temperature: 28.30 °C, Humidity78.27 %[0m
+[0;32mI (745342) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.05%
+[0m
+[0;32mI (750372) SHT3x: Temperature: 28.30 °C, Humidity78.33 %[0m
+[0;32mI (750372) SHT3x: Temperature Different: 0.00 °C, Humidity Different: 0.08%
+[0m
+[0;32mI (752662) MQTT: MQTT_EVENT_PUBLISHED, msg_id=18559[0m
+[0;32mI (752962) MQTT: MQTT_EVENT_PUBLISHED, msg_id=33863[0m
+[0;32mI (755402) SHT3x: Temperature: 28.31 °C, Humidity78.36 %[0m
+[0;32mI (755402) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.08%
+[0m
+[0;32mI (760432) SHT3x: Temperature: 28.33 °C, Humidity78.44 %[0m
+[0;32mI (760432) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.11%
+[0m
+[0;32mI (765462) SHT3x: Temperature: 28.33 °C, Humidity78.47 %[0m
+[0;32mI (765462) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.09%
+[0m
+[0;32mI (770492) SHT3x: Temperature: 28.31 °C, Humidity78.47 %[0m
+[0;32mI (770492) SHT3x: Temperature Different: 0.00 °C, Humidity Different: 0.06%
+[0m
+[0;32mI (775522) SHT3x: Temperature: 28.34 °C, Humidity78.52 %[0m
+[0;32mI (775522) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.06%
+[0m
+[0;32mI (780552) SHT3x: Temperature: 28.31 °C, Humidity78.52 %[0m
+[0;32mI (780552) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.04%
+[0m
+[0;32mI (782462) MQTT: MQTT_EVENT_PUBLISHED, msg_id=22217[0m
+[0;32mI (782762) MQTT: MQTT_EVENT_PUBLISHED, msg_id=41985[0m
+[0;32mI (783072) MQTT: MQTT_EVENT_PUBLISHED, msg_id=12340[0m
+[0;32mI (785582) SHT3x: Temperature: 28.34 °C, Humidity78.55 %[0m
+[0;32mI (785582) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.05%
+[0m
+[0;32mI (790612) SHT3x: Temperature: 28.34 °C, Humidity78.66 %[0m
+[0;32mI (790612) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.12%
+[0m
+[0;32mI (795642) SHT3x: Temperature: 28.34 °C, Humidity78.72 %[0m
+[0;32mI (795642) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.13%
+[0m
+[0;32mI (800672) SHT3x: Temperature: 28.34 °C, Humidity78.73 %[0m
+[0;32mI (800672) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.09%
+[0m
+[0;32mI (805702) SHT3x: Temperature: 28.33 °C, Humidity78.73 %[0m
+[0;32mI (805702) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.05%
+[0m
+[0;32mI (810732) SHT3x: Temperature: 28.33 °C, Humidity78.77 %[0m
+[0;32mI (810732) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.04%
+[0m
+[0;32mI (812562) MQTT: MQTT_EVENT_PUBLISHED, msg_id=2437[0m
+[0;32mI (812872) MQTT: MQTT_EVENT_PUBLISHED, msg_id=27627[0m
+[0;32mI (815762) SHT3x: Temperature: 28.36 °C, Humidity78.86 %[0m
+[0;32mI (815762) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.10%
+[0m
+[0;32mI (820792) SHT3x: Temperature: 28.37 °C, Humidity78.93 %[0m
+[0;32mI (820792) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.13%
+[0m
+[0;32mI (825822) SHT3x: Temperature: 28.39 °C, Humidity78.92 %[0m
+[0;32mI (825822) SHT3x: Temperature Different: 0.03 °C, Humidity Different: 0.08%
+[0m
+[0;32mI (830852) SHT3x: Temperature: 28.40 °C, Humidity78.95 %[0m
+[0;32mI (830852) SHT3x: Temperature Different: 0.03 °C, Humidity Different: 0.06%
+[0m
+[0;32mI (835882) SHT3x: Temperature: 28.39 °C, Humidity79.00 %[0m
+[0;32mI (835882) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.07%
+[0m
+[0;32mI (840912) SHT3x: Temperature: 28.39 °C, Humidity79.07 %[0m
+[0;32mI (840912) SHT3x: Temperature Different: 0.00 °C, Humidity Different: 0.10%
+[0m
+[0;32mI (842672) MQTT: MQTT_EVENT_PUBLISHED, msg_id=62596[0m
+[0;32mI (842762) MQTT: MQTT_EVENT_PUBLISHED, msg_id=30020[0m
+[0;32mI (842962) MQTT: MQTT_EVENT_PUBLISHED, msg_id=13536[0m
+[0;32mI (845942) SHT3x: Temperature: 28.41 °C, Humidity79.10 %[0m
+[0;32mI (845942) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.10%
+[0m
+[0;32mI (850972) SHT3x: Temperature: 28.39 °C, Humidity79.10 %[0m
+[0;32mI (850972) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.05%
+[0m
+[0;32mI (856002) SHT3x: Temperature: 28.40 °C, Humidity79.13 %[0m
+[0;32mI (856002) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.05%
+[0m
+[0;32mI (861032) SHT3x: Temperature: 28.41 °C, Humidity79.14 %[0m
+[0;32mI (861032) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.03%
+[0m
+[0;32mI (866062) SHT3x: Temperature: 28.37 °C, Humidity79.36 %[0m
+[0;32mI (866062) SHT3x: Temperature Different: 0.03 °C, Humidity Different: 0.19%
+[0m
+[0;32mI (871092) SHT3x: Temperature: 28.40 °C, Humidity79.42 %[0m
+[0;32mI (871092) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.19%
+[0m
+[0;32mI (872782) MQTT: MQTT_EVENT_PUBLISHED, msg_id=39760[0m
+[0;32mI (873082) MQTT: MQTT_EVENT_PUBLISHED, msg_id=57923[0m
+[0;32mI (876122) SHT3x: Temperature: 28.41 °C, Humidity79.44 %[0m
+[0;32mI (876122) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.14%
+[0m
+[0;32mI (881152) SHT3x: Temperature: 28.41 °C, Humidity79.44 %[0m
+[0;32mI (881152) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.08%
+[0m
+[0;32mI (886182) SHT3x: Temperature: 28.41 °C, Humidity79.49 %[0m
+[0;32mI (886182) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.06%
+[0m
+[0;32mI (891212) SHT3x: Temperature: 28.40 °C, Humidity79.55 %[0m
+[0;32mI (891212) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.08%
+[0m
+[0;32mI (896242) SHT3x: Temperature: 28.41 °C, Humidity79.56 %[0m
+[0;32mI (896242) SHT3x: Temperature Different: 0.00 °C, Humidity Different: 0.06%
+[0m
+[0;32mI (901272) SHT3x: Temperature: 28.41 °C, Humidity79.57 %[0m
+[0;32mI (901272) SHT3x: Temperature Different: 0.00 °C, Humidity Different: 0.05%
+[0m
+[0;32mI (902572) MQTT: MQTT_EVENT_PUBLISHED, msg_id=47478[0m
+[0;32mI (902882) MQTT: MQTT_EVENT_PUBLISHED, msg_id=39455[0m
+[0;32mI (903192) MQTT: MQTT_EVENT_PUBLISHED, msg_id=48404[0m
+[0;32mI (906302) SHT3x: Temperature: 28.43 °C, Humidity79.62 %[0m
+[0;32mI (906302) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.06%
+[0m
+[0;32mI (911332) SHT3x: Temperature: 28.44 °C, Humidity79.63 %[0m
+[0;32mI (911332) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.04%
+[0m
+[0;32mI (916362) SHT3x: Temperature: 28.44 °C, Humidity79.64 %[0m
+[0;32mI (916362) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.03%
+[0m
+[0;32mI (921392) SHT3x: Temperature: 28.43 °C, Humidity79.67 %[0m
+[0;32mI (921392) SHT3x: Temperature Different: 0.00 °C, Humidity Different: 0.04%
+[0m
+[0;32mI (926422) SHT3x: Temperature: 28.43 °C, Humidity79.44 %[0m
+[0;32mI (926422) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.16%
+[0m
+[0;32mI (931452) SHT3x: Temperature: 28.43 °C, Humidity79.01 %[0m
+[0;32mI (931452) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.47%
+[0m
+[0;32mI (932682) MQTT: MQTT_EVENT_PUBLISHED, msg_id=60555[0m
+[0;32mI (932992) MQTT: MQTT_EVENT_PUBLISHED, msg_id=12998[0m
+[0;32mI (936482) SHT3x: Temperature: 28.40 °C, Humidity78.86 %[0m
+[0;32mI (936482) SHT3x: Temperature Different: 0.03 °C, Humidity Different: 0.47%
+[0m
+[0;32mI (941512) SHT3x: Temperature: 28.44 °C, Humidity78.80 %[0m
+[0;32mI (941512) SHT3x: Temperature Different: 0.02 °C, Humidity Different: 0.35%
+[0m
+[0;32mI (946542) SHT3x: Temperature: 28.41 °C, Humidity78.81 %[0m
+[0;32mI (946542) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.17%
+[0m
+[0;32mI (951572) SHT3x: Temperature: 28.41 °C, Humidity78.58 %[0m
+[0;32mI (951572) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.23%
+[0m
+[0;32mI (956602) SHT3x: Temperature: 28.41 °C, Humidity78.42 %[0m
+[0;32mI (956602) SHT3x: Temperature Different: 0.00 °C, Humidity Different: 0.28%
+[0m
+[0;32mI (961632) SHT3x: Temperature: 28.41 °C, Humidity78.32 %[0m
+[0;32mI (961632) SHT3x: Temperature Different: 0.01 °C, Humidity Different: 0.26%
+[0m
+[0;32mI (962482) MQTT: MQTT_EVENT_PUBLISHED, msg_id=25610[0m
+[0;32mI (962792) MQTT: MQTT_EVENT_PUBLISHED, msg_id=46821[0m
+[0;32mI (963092) MQTT: MQTT_EVENT_PUBLISHED, msg_id=10321[0m

@@ -13,6 +13,8 @@
         "queue.h": "c",
         "esp_err.h": "c",
         "i2c.h": "c",
-        "mqtt_client.h": "c"
+        "mqtt_client.h": "c",
+        "esp_log.h": "c",
+        "esp_pm.h": "c"
     },
 }

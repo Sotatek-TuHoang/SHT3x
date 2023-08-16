@@ -30,7 +30,6 @@ extern float fHumi;
 extern float fTemp_diff;
 extern float fHumi_diff;
 extern uint8_t u8error_cnt;
-extern uint8_t u8max_error_cnt;
 /****************************************************************************/
 /***        Local Variables                                               ***/
 /****************************************************************************/
@@ -270,8 +269,11 @@ void send_mqtt_data_task(void *pvParameters)
 {
     TickType_t lt_send_data_mqtt = xTaskGetTickCount();
     TickType_t lt_send_keep_alive = xTaskGetTickCount();
+    TickType_t lt_check_warning = xTaskGetTickCount();
+
     TickType_t interval_data_mqtt = pdMS_TO_TICKS(30000);
     TickType_t interval_keep_alive = pdMS_TO_TICKS(60000);
+    TickType_t interval_check_warning = pdMS_TO_TICKS(5000);
 
     for(;;)
     {
@@ -287,8 +289,11 @@ void send_mqtt_data_task(void *pvParameters)
                 }
 
             }
-
-            check_warning();
+            
+            if (((xTaskGetTickCount() - lt_check_warning) >= interval_check_warning))
+            {
+                check_warning();
+            }
 
             if ((xTaskGetTickCount() - lt_send_keep_alive) >= interval_keep_alive)
             {
