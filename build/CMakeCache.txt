@@ -160,7 +160,7 @@ CMAKE_INSTALL_MANDIR:PATH=
 CMAKE_INSTALL_OLDINCLUDEDIR:PATH=/usr/include
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/main
+CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/SHT3x_Powersave
 
 //Run-time variable data (LOCALSTATEDIR/run)
 CMAKE_INSTALL_RUNSTATEDIR:PATH=
@@ -216,7 +216,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=main
+CMAKE_PROJECT_NAME:STATIC=SHT3x_Powersave
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=C:/Espressif/tools/xtensa-esp32-elf/esp-12.2.0_20230208/xtensa-esp32-elf/bin/xtensa-esp32-elf-ranlib.exe
@@ -325,6 +325,15 @@ PYTHON:UNINITIALIZED=C:\Espressif\python_env\idf5.1_py3.11_env\Scripts\python.ex
 //No help, variable specified on the command line.
 PYTHON_DEPS_CHECKED:UNINITIALIZED=1
 
+//Value Computed by CMake
+SHT3x_Powersave_BINARY_DIR:STATIC=E:/SHT3x_Powersave/build
+
+//Value Computed by CMake
+SHT3x_Powersave_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+SHT3x_Powersave_SOURCE_DIR:STATIC=E:/SHT3x_Powersave
+
 //Allow unsafe builds. These builds ARE NOT SECURE.
 UNSAFE_BUILD:BOOL=OFF
 
@@ -342,15 +351,6 @@ esp-idf_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 esp-idf_SOURCE_DIR:STATIC=C:/Espressif/frameworks/esp-idf-v5.1
-
-//Value Computed by CMake
-main_BINARY_DIR:STATIC=E:/SHT3x_Powersave/build
-
-//Value Computed by CMake
-main_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-main_SOURCE_DIR:STATIC=E:/SHT3x_Powersave
 
 //Value Computed by CMake
 mbed TLS_BINARY_DIR:STATIC=E:/SHT3x_Powersave/build/esp-idf/mbedtls/mbedtls
@@ -516,7 +516,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=91
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=92
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -576,7 +576,7 @@ HAVE_TIME_T_SIZE:INTERNAL=TRUE
 //CHECK_TYPE_SIZE: sizeof(time_t)
 TIME_T_SIZE:INTERNAL=8
 //CMAKE_INSTALL_PREFIX during last run
-_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=C:/Program Files (x86)/main
+_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=C:/Program Files (x86)/SHT3x_Powersave
 _Python3_EXECUTABLE:INTERNAL=C:/Espressif/python_env/idf5.1_py3.11_env/Scripts/python.exe
 //Python3 Properties
 _Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;11;2;32;;;C:\Espressif\tools\idf-python\3.11.2\Lib;C:\Espressif\tools\idf-python\3.11.2\Lib;C:\Espressif\python_env\idf5.1_py3.11_env\Lib\site-packages;C:\Espressif\python_env\idf5.1_py3.11_env\Lib\site-packages

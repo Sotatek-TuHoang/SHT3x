@@ -115,9 +115,9 @@ MEMORY
   /* RTC fast memory (executable). Persists over deep sleep.
 
    */
-  rtc_iram_seg(RWX) : org = 0x400C0000, len = 0x2000 - 0
+  rtc_iram_seg(RWX) : org = 0x400C0000, len = 0x2000 - (0x10)
   /* RTC fast memory (same block as above), viewed from data bus */
-  rtc_data_seg(RW) : org = 0x3ff80000, len = 0x2000 - 0
+  rtc_data_seg(RW) : org = 0x3ff80000, len = 0x2000 - (0x10)
   /* RTC slow memory (data accessible). Persists over deep sleep.
 
 
@@ -125,7 +125,8 @@ MEMORY
      Start of RTC slow memory is reserved for ULP co-processor code + data, if enabled.
 
   */
-  rtc_slow_seg(RW) : org = 0x50000000, len = 0x2000
+  rtc_slow_seg(RW) : org = 0x50000000 + 512,
+                                     len = 0x2000 - 512
   /* external memory */
   extern_ram_seg(RWX) : org = 0x3F800000,
                                      len = 0x400000

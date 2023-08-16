@@ -263,22 +263,7 @@ bool sht3x_compute_values (sht3x_raw_data_t raw_data,
 bool sht3x_get_results (sht3x_sensor_t* device, 
                         float* fTemp, float* fHumi);
 
-/**
- * @brief	Get measurement results in form of sensor values and caculate different
- *
- * In case that there are no results that can be read, return number of error count.
- *
- * @result                          temperature and humidity on success, error count on error
- *          @param   fTemp          returns temperature in degree Celsius   
- *          @param   fHumi          returns humidity in percent
- *          @param   fTemp_diff     returns temperature differents
- *          @param   fHumi_diff     returns humidity differents
- *          @param   u8error_cnt    returns number of error count
- */
-void read_sht3x_task (void *pvParameters);
-
 #endif /* __SHT3x_H__ */
-
 /****************************************************************************/
 /***        END OF FILE                                                   ***/
 /****************************************************************************/

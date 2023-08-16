@@ -60,11 +60,13 @@ E:/SHT3x_Powersave/build/esp-idf/mqtt/libmqtt.a
 E:/SHT3x_Powersave/build/esp-idf/perfmon/libperfmon.a
 E:/SHT3x_Powersave/build/esp-idf/spiffs/libspiffs.a
 E:/SHT3x_Powersave/build/esp-idf/ssd_1306/libssd_1306.a
+E:/SHT3x_Powersave/build/esp-idf/ulp/libulp.a
 E:/SHT3x_Powersave/build/esp-idf/wifi_provisioning/libwifi_provisioning.a
 E:/SHT3x_Powersave/build/esp-idf/main/libmain.a
 E:/SHT3x_Powersave/build/esp-idf/bee_nvs/libbee_nvs.a
-E:/SHT3x_Powersave/build/esp-idf/bee_wifi/libbee_wifi.a
-E:/SHT3x_Powersave/build/esp-idf/bee_button/libbee_button.a
 E:/SHT3x_Powersave/build/esp-idf/bee_i2c/libbee_i2c.a
 E:/SHT3x_Powersave/build/esp-idf/bee_sht3x/libbee_sht3x.a
 E:/SHT3x_Powersave/build/esp-idf/bee_mqtt/libbee_mqtt.a
+E:/SHT3x_Powersave/build/esp-idf/bee_deep_sleep/libbee_deep_sleep.a
+E:/SHT3x_Powersave/build/esp-idf/bee_wifi/libbee_wifi.a
+E:/SHT3x_Powersave/build/esp-idf/bee_button/libbee_button.a

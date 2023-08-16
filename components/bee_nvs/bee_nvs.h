@@ -14,15 +14,12 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#define NVS_DATA_CONFIG         "data_config"
-#define NVS_SEND_DATA           "send_data"
-#define NVS_UART_INTERVAL       "uart_interval"
-#define NVS_MQTT_INTERVAL       "mqtt_interval"
-#define NVS_PROVISIONED         "provisioned"
-
 #define NVS_WIFI_CRED           "wifi_cred"
 #define NVS_WIFI_PASS           "wifi_pass"
 #define NVS_WIFI_SSID           "wifi_ssid"
+
+#define NVS_WARNING             "warn"
+#define NVS_WARNING_VALUES      "warn_vals"
 
 /**
  * @brief   Initialize the Non-Volatile Storage (NVS) flash memory.

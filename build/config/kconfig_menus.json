@@ -23310,7 +23310,10 @@
                                 "help": "Bytes of memory to reserve for ULP Co-processor firmware & data.\nData is reserved at the beginning of RTC slow memory.",
                                 "id": "ULP_COPROC_RESERVE_MEM",
                                 "name": "ULP_COPROC_RESERVE_MEM",
-                                "range": null,
+                                "range": [
+                                    32,
+                                    8176
+                                ],
                                 "title": "RTC slow memory reserved for coprocessor",
                                 "type": "int"
                             }

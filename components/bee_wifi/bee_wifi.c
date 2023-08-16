@@ -20,10 +20,12 @@
 #include <esp_event.h>
 #include <wifi_provisioning/manager.h>
 #include <wifi_provisioning/scheme_ble.h>
-
-
 #include "bee_wifi.h"
+
 #include "bee_nvs.h"
+#include "bee_deep_sleep.h"
+
+extern TaskHandle_t sleep_task_handle;
 
 /****************************************************************************/
 /***        Local Variables                                               ***/
@@ -119,8 +121,10 @@ static void event_handler(void* arg, esp_event_base_t event_base,
                 esp_wifi_connect();
                 break;
             case WIFI_EVENT_STA_DISCONNECTED:
-                ESP_LOGI(TAG, "Disconnected. Connecting to the AP again...");
                 esp_wifi_connect();
+                //esp_deep_sleep_start();
+                ESP_LOGI(TAG, "Disconnected. Connecting to the AP again...");
+                //
                 break;
         }
     }
@@ -279,7 +283,7 @@ void wifi_func_init(void)
       wifi_prov_mgr_stop_provisioning();
     }
     
-    xEventGroupWaitBits(wifi_event_group, WIFI_CONNECTED_EVENT, true, true, portMAX_DELAY);
+    xEventGroupWaitBits(wifi_event_group, WIFI_CONNECTED_EVENT, true, true, 500);
 }
 
 /****************************************************************************/

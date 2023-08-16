@@ -17,6 +17,9 @@
 #include "nvs_flash.h"
 #include "nvs.h"
 #include "stdint.h"
+#include "esp_log.h"
+
+static const char *TAG= "NVS";
 /****************************************************************************/
 /***        Init Functions in App main                                    ***/
 /****************************************************************************/
@@ -44,7 +47,7 @@ void save_wifi_cred_to_nvs(const char *cSsid, const char *cPassword)
     err = nvs_open(NVS_WIFI_CRED, NVS_READWRITE, &nvs_handle);
     if (err != ESP_OK)
     {
-        printf("Error opening NVS handle! (%s)\n", esp_err_to_name(err));
+        ESP_LOGE(TAG,"Error opening NVS handle! (%s)\n", esp_err_to_name(err));
         return;
     }
 
@@ -52,14 +55,14 @@ void save_wifi_cred_to_nvs(const char *cSsid, const char *cPassword)
     err = nvs_set_str(nvs_handle, NVS_WIFI_SSID, cSsid);
     if (err != ESP_OK)
     {
-        printf("Error saving wifi SSID to NVS! (%s)\n", esp_err_to_name(err));
+        ESP_LOGE(TAG,"Error saving wifi SSID to NVS! (%s)\n", esp_err_to_name(err));
     }
 
     // Lưu password wifi vào NVS
     err = nvs_set_str(nvs_handle, NVS_WIFI_PASS, cPassword);
     if (err != ESP_OK)
     {
-        printf("Error saving wifi password to NVS! (%s)\n", esp_err_to_name(err));
+        ESP_LOGE(TAG,"Error saving wifi password to NVS! (%s)\n", esp_err_to_name(err));
     }
 
     // Đóng NVS handle
@@ -75,7 +78,7 @@ void load_old_wifi_cred(char *cSsid, char *cPassword)
     err = nvs_open(NVS_WIFI_CRED, NVS_READONLY, &nvs_handle);
     if (err != ESP_OK)
     {
-        printf("Error opening NVS handle! (%s)\n", esp_err_to_name(err));
+        ESP_LOGE(TAG,"Error opening NVS handle! (%s)\n", esp_err_to_name(err));
         return;
     }
 
@@ -85,11 +88,11 @@ void load_old_wifi_cred(char *cSsid, char *cPassword)
 
     if (err == ESP_ERR_NVS_NOT_FOUND)
     {
-        printf("Error reading old SSID wifi from NVS! (%s)\n", esp_err_to_name(err));
+        ESP_LOGE(TAG,"Error reading old SSID wifi from NVS! (%s)\n", esp_err_to_name(err));
     }
     else if (err != ESP_OK)
     {
-        printf("Error reading wifi SSID from NVS! (%s)\n", esp_err_to_name(err));
+        ESP_LOGE(TAG,"Error reading wifi SSID from NVS! (%s)\n", esp_err_to_name(err));
     }
 
     // Đọc password wifi từ NVS
@@ -98,11 +101,11 @@ void load_old_wifi_cred(char *cSsid, char *cPassword)
 
     if (err == ESP_ERR_NVS_NOT_FOUND)
     {
-        printf("Error reading old wifi password from NVS! (%s)\n", esp_err_to_name(err));
+        ESP_LOGE(TAG,"Error reading old wifi password from NVS! (%s)\n", esp_err_to_name(err));
     }
     else if (err != ESP_OK)
     {
-        printf("Error reading wifi password from NVS! (%s)\n", esp_err_to_name(err));
+        ESP_LOGE(TAG,"Error reading wifi password from NVS! (%s)\n", esp_err_to_name(err));
     }
 
     // Đóng NVS handle

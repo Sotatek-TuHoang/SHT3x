@@ -60,11 +60,13 @@ $<TARGET_FILE:__idf_mqtt>
 $<TARGET_FILE:__idf_perfmon>
 $<TARGET_FILE:__idf_spiffs>
 $<TARGET_FILE:__idf_ssd_1306>
+$<TARGET_FILE:__idf_ulp>
 $<TARGET_FILE:__idf_wifi_provisioning>
 $<TARGET_FILE:__idf_main>
 $<TARGET_FILE:__idf_bee_nvs>
-$<TARGET_FILE:__idf_bee_wifi>
-$<TARGET_FILE:__idf_bee_button>
 $<TARGET_FILE:__idf_bee_i2c>
 $<TARGET_FILE:__idf_bee_sht3x>
 $<TARGET_FILE:__idf_bee_mqtt>
+$<TARGET_FILE:__idf_bee_deep_sleep>
+$<TARGET_FILE:__idf_bee_wifi>
+$<TARGET_FILE:__idf_bee_button>

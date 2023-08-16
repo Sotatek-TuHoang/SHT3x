@@ -13,10 +13,10 @@
 #define BEE_MQTT_H
 
 #define MAC_ADDR_SIZE        6
-#define TEMP_THRESHOLD       30
-#define HUMI_THRESHOLD       80
-#define TEMP_DIFF_THRESHOLD  2
-#define HUMI_DIFF_THRESHOLD  2
+#define H_TEMP_THRESHOLD       30
+#define H_HUMI_THRESHOLD       80
+#define L_TEMP_THRESHOLD       25
+#define L_HUMI_THRESHOLD       60
 
 #define BROKER_ADDRESS_URI  "mqtt://61.28.238.97:1993"
 #define USERNAME            "VBeeHome"
@@ -34,35 +34,28 @@
  */
 void mqtt_func_init(void);
 
+void pub_data(const char *object, float values);
+
 /**
- * @brief   Task to send MQTT data and keep-alive messages.
- *
- * This task is responsible for periodically sending MQTT data (temperature and humidity) and keep-alive messages to the broker.
- * It checks if the MQTT client is connected, and if so, sends the data and keep-alive messages based on the configured intervals.
- * It also handles a warning check. If the MQTT client is not connected, it waits for a brief period before checking again.
- *
- * @note    Ensure that the intervals (interval_data_mqtt and interval_keep_alive) are adjusted as needed for your application.
- * @note    The functions pub_data() and send_keep_alive() are assumed to be implemented elsewhere in the code.
- *
- * @param   pvParameters Pointer to task parameters (unused in this context).
+ * @brief Checks sensor warnings and sends a warning message if conditions are met.
+ * This function evaluates sensor error conditions and threshold crossings for temperature and humidity.
+ * Depending on the conditions, it sets warning flags and triggers sending a warning message.
+ * The warning values are composed into a byte, and if they differ from the previous state,
+ * a warning message is sent using the `send_warning()` function.
  */
-void send_mqtt_data_task(void* pvParameters);
+void check_warning();
 
 
 /**
- * @brief   Task to receive and process MQTT configuration commands.
+ * @brief Sends a keep-alive MQTT message to indicate device status.
  *
- * This task listens for incoming messages from the MQTT command queue and processes the received JSON data. It parses the JSON
- * data to extract relevant information such as thing_token, cmd_name, object_type, values, and trans_code. It then logs the
- * received command details and takes appropriate actions based on the received data. If the command corresponds to a specific
- * condition, it may publish relevant data using the pub_data function. If the command does not match any expected conditions,
- * it logs a message indicating a wrong command.
+ * This function constructs a JSON message containing device status information such as the thing token,
+ * event type, and status. The message is then published to the MQTT broker using the configured client.
+ * The transmission code is also incremented for each message sent.
  *
- * @note    The pub_data function is assumed to be implemented elsewhere in the code.
- *
- * @param   pvParameters Pointer to task parameters (unused in this context).
+ * @note The MQTT client (client) and topic (cTopic_pub) must be properly configured before calling this function.
  */
-void receive_mqtt_config_task(void* pvParameters);
+void pub_keep_alive(void);
 
 #endif /* BEE_MQTT_H */
 
