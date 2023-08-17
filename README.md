@@ -24,7 +24,6 @@ Sao chép mã nguồn từ thư mục src vào dự án của bạn sử dụng 
 
 Cấu hình địa chỉ và thông số kết nối của máy chủ MQTT trong tệp bee_mqtt.h.
 
-Tùy chỉnh các thiết lập chế độ Power Save trong tệp main.c nếu cần thiết.
 
 SỬ DỤNG
 
