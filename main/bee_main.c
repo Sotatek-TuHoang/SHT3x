@@ -10,9 +10,9 @@ TaskHandle_t sleep_task_handle = NULL;
 
 void app_main(void)
 {
-    i2c_init(I2C_BUS, 26, 18, I2C_FREQ);
+    i2c_init(I2C_BUS, I2C_SCL_PIN, I2C_SDA_PIN, I2C_FREQ);
 
-    button_init();
+    button_init(GPIO_NUM_2);
 
     xTaskCreate(wifi_prov_button_isr, "wifi_prov_button_isr", 4096, NULL, 3, NULL);
     
@@ -24,7 +24,7 @@ void app_main(void)
 
     deep_sleep_register_rtc_timer_wakeup();
 
-    deep_sleep_register_ext1_wakeup();
+    deep_sleep_register_ext1_wakeup(GPIO_NUM_2);
 
     xTaskCreate(deep_sleep_task, "deep_sleep_task", 4096, NULL, 19, &sleep_task_handle);
 }

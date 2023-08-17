@@ -45,17 +45,17 @@ void wifi_prov_button_isr(void* arg)
 }
 
 
-void button_init(void)
+void button_init(int gpio_num)
 {
     gpio_install_isr_service(0);
-    gpio_isr_handler_add(WIFI_PROV_BUTTON, wifi_prov_button_isr_handler, (void*) WIFI_PROV_BUTTON);
+    gpio_isr_handler_add(gpio_num, wifi_prov_button_isr_handler, (void*) gpio_num);
 
-    esp_rom_gpio_pad_select_gpio(WIFI_PROV_BUTTON);
+    esp_rom_gpio_pad_select_gpio(gpio_num);
 
-    gpio_set_direction(WIFI_PROV_BUTTON, GPIO_MODE_INPUT);
-    gpio_set_pull_mode(WIFI_PROV_BUTTON, GPIO_PULLUP_ONLY);
+    gpio_set_direction(gpio_num, GPIO_MODE_INPUT);
+    gpio_set_pull_mode(gpio_num, GPIO_PULLUP_ONLY);
 
-    gpio_set_intr_type(WIFI_PROV_BUTTON, GPIO_INTR_POSEDGE);
+    gpio_set_intr_type(gpio_num, GPIO_INTR_POSEDGE);
 
     wifi_prov_evt_queue = xQueueCreate(5, sizeof(uint8_t));
 }

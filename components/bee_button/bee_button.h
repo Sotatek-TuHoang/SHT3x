@@ -10,19 +10,18 @@
 #ifndef BEE_BUTTON_H
 #define BEE_BUTTON_H
 
-#define WIFI_PROV_BUTTON        GPIO_NUM_2
-
 /**
  * @brief Initializes the Wi-Fi provisioning button.
  *
  * This function sets up the GPIO and interrupt settings for the Wi-Fi provisioning button.
  * It installs the ISR service, sets up the ISR handler, and configures the GPIO settings
  * for the button pin. It also creates a queue to handle provisioning events.
+ * @param gpio_num gpio set to provisioning wifi
  *
  * @note The WIFI_PROV_BUTTON GPIO pin and other related configurations should be defined
  *       before calling this function.
  */
-void button_init(void);
+void button_init(int gpio_num);
 
 /**
  * @brief WiFi Provisioning Button ISR Handler
