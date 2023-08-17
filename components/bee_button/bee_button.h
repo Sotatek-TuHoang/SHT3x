@@ -10,7 +10,7 @@
 #ifndef BEE_BUTTON_H
 #define BEE_BUTTON_H
 
-#define WIFI_PROV_BUTTON        GPIO_NUM_0
+#define WIFI_PROV_BUTTON        GPIO_NUM_2
 
 /**
  * @brief Initializes the Wi-Fi provisioning button.

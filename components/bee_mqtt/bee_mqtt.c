@@ -16,28 +16,18 @@
 #include "freertos/task.h"
 #include "cJSON.h"
 #include "esp_log.h"
-#include "driver/rtc_io.h"
 #include "driver/gpio.h"
 
 #include "bee_mqtt.h"
-#include "bee_deep_sleep.h"
 
 /****************************************************************************/
 /***        Local Variables                                               ***/
 /****************************************************************************/
 
-RTC_NOINIT_ATTR static uint8_t u8warning_values;
-static uint8_t u8tmp_warning_values;
-
-static bool bH_Temp_threshold = 0;
-static bool bH_Humi_threshold = 0;
-static bool bL_Temp_threshold = 0;
-static bool bL_Humi_threshold = 0;
-
-static uint8_t u8mac[6];
+static RTC_DATA_ATTR uint8_t u8warning_values;
 static char cMac_str[13];
 static char cTopic_pub[64] = "VB/DMP/VBEEON/CUSTOM/SMH/DeviceID/telemetry";
-static uint8_t u8trans_code = 0;
+static RTC_DATA_ATTR uint8_t u8trans_code = 0;
 
 static const char *TAG_MQTT = "MQTT";
 
@@ -92,29 +82,11 @@ void mqtt_func_init(void)
     esp_mqtt_client_start(client);
 
     /* Get mac Address and set topic*/
+    uint8_t u8mac[6];
     esp_wifi_get_mac(ESP_IF_WIFI_STA, u8mac);
     snprintf(cMac_str, sizeof(cMac_str), "%02X%02X%02X%02X%02X%02X", u8mac[0], u8mac[1], u8mac[2], u8mac[3], u8mac[4], u8mac[5]);
     snprintf(cTopic_pub, sizeof(cTopic_pub), "VB/DMP/VBEEON/CUSTOM/SMH/%s/telemetry", cMac_str);
     ESP_LOGI(TAG_MQTT, "Topic publish: %s\n", cTopic_pub);
-}
-
-/****************************************************************************/
-/***        Local Functions                                               ***/
-/****************************************************************************/
-static void pub_warning(void)
-{
-    cJSON *json_warning = cJSON_CreateObject();
-    cJSON_AddStringToObject(json_warning, "thing_token", cMac_str);
-    cJSON_AddStringToObject(json_warning, "cmd_name", "Bee.data");
-    cJSON_AddStringToObject(json_warning, "object_type", "bee_warning");
-    cJSON_AddNumberToObject(json_warning, "values", u8warning_values);
-    cJSON_AddNumberToObject(json_warning, "trans_code", ++u8trans_code);
-    
-    char *json_str = cJSON_Print(json_warning);
-    esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, 1, 0);
-
-    cJSON_Delete(json_warning);
-    free(json_str);
 }
 
 /****************************************************************************/
@@ -129,7 +101,7 @@ void pub_data(const char *object, float values)
     cJSON_AddStringToObject(json_data, "cmd_name", "Bee.data");
     cJSON_AddStringToObject(json_data, "object_type", object);
     cJSON_AddNumberToObject(json_data, "values", values);
-    cJSON_AddNumberToObject(json_data, "trans_code", ++u8trans_code);
+    cJSON_AddNumberToObject(json_data, "trans_code", u8trans_code++);
 
     char *json_str = cJSON_Print(json_data);
     esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, 1, 0);
@@ -143,6 +115,13 @@ void check_warning(void)
     extern float fTemp;
     extern float fHumi;
     extern bool bSHT3x_status;
+
+    bool bH_Temp_threshold = 0;
+    bool bH_Humi_threshold = 0;
+    bool bL_Temp_threshold = 0;
+    bool bL_Humi_threshold = 0;
+
+    uint8_t u8tmp_warning_values;
 
     if (fTemp > H_TEMP_THRESHOLD)
     {
@@ -185,7 +164,7 @@ void check_warning(void)
     if (u8tmp_warning_values != u8warning_values)
     {
         u8warning_values = u8tmp_warning_values;
-        pub_warning();
+        pub_data("bee_warnings", u8warning_values);
     }
 }
 
@@ -196,7 +175,7 @@ void pub_keep_alive(void)
     cJSON *json_values = cJSON_AddObjectToObject(json_keep_alive, "values");
     cJSON_AddStringToObject(json_values, "eventType", "refresh");
     cJSON_AddStringToObject(json_values, "status", "ONLINE");
-    cJSON_AddNumberToObject(json_keep_alive, "trans_code", ++u8trans_code);
+    cJSON_AddNumberToObject(json_keep_alive, "trans_code", u8trans_code++);
 
     char *json_str = cJSON_Print(json_keep_alive);
     esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, 1, 0);

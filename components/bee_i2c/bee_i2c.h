@@ -19,7 +19,7 @@
 
 #define I2C_ACK_VAL  0x0
 #define I2C_NACK_VAL 0x1
-#define I2C_FREQ     100000
+#define I2C_FREQ     400000
 #define I2C_BUS      0
 #define I2C_SCL_PIN  22
 #define I2C_SDA_PIN  21
@@ -28,15 +28,6 @@
 /***        Exported Functions                                            ***/
 /****************************************************************************/
 
-/**
- * @brief Get the system time in microseconds.
- *
- * This function retrieves the current system time in microseconds since an arbitrary reference point.
- * It uses the gettimeofday() function to obtain the time.
- *
- * @return The current system time in microseconds.
- */
-uint32_t sdk_system_get_time();
 
 /**
  * @brief Initialize the I2C bus with the specified configuration.

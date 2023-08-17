@@ -18,6 +18,7 @@
 #include <errno.h>
 #include "esp_log.h"
 #include "math.h"
+#include <sys/time.h>
 
 #include "bee_i2c.h"
 #include "bee_sht3x.h"
@@ -119,6 +120,12 @@ sht3x_sensor_t* sht3x_init_sensor(uint8_t bus, uint8_t addr)
     return device;
 }
 
+uint32_t sdk_system_get_time()
+{
+    struct timeval time;
+    gettimeofday(&time,0);
+    return time.tv_sec*1e6 + time.tv_usec;
+}
 
 bool sht3x_measure (sht3x_sensor_t* device, float* fTemp, float* fHumi)
 {
@@ -308,13 +315,13 @@ static bool sht3x_read_data(sht3x_sensor_t* device, uint8_t *data,  uint32_t len
         return false;
     }
 
-#   ifdef SHT3x_DEBUG_LEVEL_2
+    #ifdef SHT3x_DEBUG_LEVEL_2
     printf("SHT3x %s: bus %d, addr %02x - read following bytes: ", 
            __FUNCTION__, device->bus, device->addr);
     for (int i=0; i < len; i++)
         printf("%02x ", data[i]);
     printf("\n");
-#   endif // ifdef SHT3x_DEBUG_LEVEL_2
+    #endif // ifdef SHT3x_DEBUG_LEVEL_2
 
     return true;
 }

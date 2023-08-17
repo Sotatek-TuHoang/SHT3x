@@ -21,13 +21,6 @@
 /***        Exported Functions                                            ***/
 /****************************************************************************/
 
-uint32_t sdk_system_get_time()
-{
-    struct timeval time;
-    gettimeofday(&time,0);
-    return time.tv_sec*1e6 + time.tv_usec;
-}
-
 void i2c_init (int bus, gpio_num_t scl, gpio_num_t sda, uint32_t freq)
 {
     static i2c_config_t conf;

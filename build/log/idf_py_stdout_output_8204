@@ -1,0 +1,862 @@
+ets Jun  8 2016 00:22:57
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7284
+load:0x40078000,len:15884
+load:0x40080400,len:4
+load:0x40080404,len:3880
+entry 0x4008064c
+[0;32mI (29) boot: ESP-IDF v5.1-dirty 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Aug 17 2023 15:00:07[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (34) boot: chip revision: v1.0[0m
+[0;32mI (37) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (42) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (46) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (51) boot: Enabling RNG early entropy source...[0m
+[0;32mI (56) boot: Partition Table:[0m
+[0;32mI (60) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (67) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (75) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (82) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (90) boot: End of partition table[0m
+[0;32mI (94) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=30aa4h (199332) map[0m
+[0;32mI (174) esp_image: segment 1: paddr=00040acc vaddr=3ff80063 size=00008h (     8) load[0m
+[0;32mI (175) esp_image: segment 2: paddr=00040adc vaddr=3ffb0000 size=03870h ( 14448) load[0m
+[0;32mI (186) esp_image: segment 3: paddr=00044354 vaddr=40080000 size=0bcc4h ( 48324) load[0m
+[0;32mI (209) esp_image: segment 4: paddr=00050020 vaddr=400d0020 size=b1d44h (728388) map[0m
+[0;32mI (472) esp_image: segment 5: paddr=00101d6c vaddr=4008bcc4 size=0bdfch ( 48636) load[0m
+[0;32mI (492) esp_image: segment 6: paddr=0010db70 vaddr=400c0000 size=00064h (   100) load[0m
+[0;32mI (493) esp_image: segment 7: paddr=0010dbdc vaddr=50000200 size=00018h (    24) load[0m
+[0;32mI (510) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (510) boot: Disabling RNG early entropy source...[0m
+[0;32mI (523) cpu_start: Multicore app[0m
+[0;32mI (524) cpu_start: Pro cpu up.[0m
+[0;32mI (524) cpu_start: Starting app cpu, entry point is 0x400815e0[0m
+[0;32mI (0) cpu_start: App cpu up.[0m
+[0;32mI (541) cpu_start: Pro cpu start user code[0m
+[0;32mI (541) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (542) cpu_start: Application information:[0m
+[0;32mI (546) cpu_start: Project name:     SHT3x_Powersave[0m
+[0;32mI (552) cpu_start: App version:      177945f-dirty[0m
+[0;32mI (557) cpu_start: Compile time:     Aug 17 2023 14:59:53[0m
+[0;32mI (563) cpu_start: ELF file SHA256:  46946461adb0e089...[0m
+[0;32mI (569) cpu_start: ESP-IDF:          v5.1-dirty[0m
+[0;32mI (575) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (579) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (584) cpu_start: Chip rev:         v1.0[0m
+[0;32mI (589) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (596) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (602) heap_init: At 3FFB7FE0 len 00028020 (160 KiB): DRAM[0m
+[0;32mI (608) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (615) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (621) heap_init: At 40097AC0 len 00008540 (33 KiB): IRAM[0m
+[0;32mI (629) spi_flash: detected chip: generic[0m
+[0;32mI (632) spi_flash: flash io: dio[0m
+[0;32mI (637) app_start: Starting scheduler on CPU0[0m
+[0;32mI (641) app_start: Starting scheduler on CPU1[0m
+[0;32mI (641) main_task: Started on CPU0[0m
+[0;32mI (651) main_task: Calling app_main()[0m
+I (691) wifi:wifi driver task: 3ffc1764, prio:23, stack:6656, core=0
+I (701) wifi:wifi firmware version: b2f1f86
+I (701) wifi:wifi certification version: v7.0
+I (701) wifi:config NVS flash: enabled
+I (701) wifi:config nano formating: disabled
+I (711) wifi:Init data frame dynamic rx buffer num: 32
+I (711) wifi:Init management frame dynamic rx buffer num: 32
+I (721) wifi:Init management short buffer num: 32
+I (721) wifi:Init dynamic tx buffer num: 32
+I (731) wifi:Init static rx buffer size: 1600
+I (731) wifi:Init static rx buffer num: 10
+I (731) wifi:Init dynamic rx buffer num: 32
+[0;32mI (741) wifi_init: rx ba win: 6[0m
+[0;32mI (741) wifi_init: tcpip mbox: 32[0m
+[0;32mI (751) wifi_init: udp mbox: 6[0m
+[0;32mI (751) wifi_init: tcp mbox: 6[0m
+[0;32mI (751) wifi_init: tcp tx win: 5744[0m
+[0;32mI (761) wifi_init: tcp rx win: 5744[0m
+[0;32mI (761) wifi_init: tcp mss: 1440[0m
+[0;32mI (761) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (771) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (771) Wifi prov: Already provisioned, starting Wi-Fi STA[0m
+[0;32mI (781) phy_init: phy_version 4670,719f9f6,Feb 18 2021,17:07:07[0m
+I (891) wifi:mode : sta (c8:c9:a3:d0:65:bc)
+I (891) wifi:enable tsf
+I (1001) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+I (1011) wifi:state: init -> auth (b0)
+I (1011) wifi:state: auth -> assoc (0)
+I (1021) wifi:state: assoc -> run (10)
+I (1031) wifi:connected with TUPEO, aid = 2, channel 1, BW20, bssid = b2:7d:64:d8:92:71
+I (1031) wifi:security: WPA2-PSK, phy: bgn, rssi: -44
+I (1031) wifi:pm start, type: 1
+
+I (1101) wifi:AP's beacon interval = 102400 us, DTIM period = 3
+[0;32mI (2041) Wifi prov: Connected with IP Address:192.168.137.138[0m
+[0;32mI (2041) esp_netif_handlers: sta ip: 192.168.137.138, mask: 255.255.255.0, gw: 192.168.137.1[0m
+[0;32mI (2051) MQTT: Other event id:7[0m
+[0;32mI (2051) MQTT: Topic publish: VB/DMP/VBEEON/CUSTOM/SMH/C8C9A3D065BC/telemetry
+[0m
+[0;32mI (2061) POWER MODE: Enabling timer wakeup, 30s
+[0m
+[0;32mI (2061) POWER MODE: Not a deep sleep reset
+[0m
+[0;32mI (2071) POWER MODE: Entering normal mode
+[0m
+[0;32mI (2071) main_task: Returned from app_main()[0m
+[0;32mI (2231) SHT3x: Temperature: 28.74 °C, Humidity: 76.75 %[0m
+[0;32mI (2651) MQTT: MQTT_EVENT_CONNECTED[0m
+I (2731) wifi:<ba-add>idx:0 (ifx:0, b2:7d:64:d8:92:71), tid:0, ssn:9, winSize:64
+[0;32mI (2741) MQTT: MQTT_EVENT_PUBLISHED, msg_id=17369[0m
+[0;32mI (2841) MQTT: MQTT_EVENT_PUBLISHED, msg_id=17267[0m
+[0;32mI (3661) POWER MODE: Entering deep sleep again
+[0m
+ets Jun  8 2016 00:22:57
+
+rst:0x5 (DEEPSLEEP_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7284
+load:0x40078000,len:15884
+load:0x40080400,len:4
+load:0x40080404,len:3880
+entry 0x4008064c
+[0;32mI (29) boot: ESP-IDF v5.1-dirty 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Aug 17 2023 15:00:07[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (34) boot: chip revision: v1.0[0m
+[0;32mI (38) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (42) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (47) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (52) boot: Enabling RNG early entropy source...[0m
+[0;32mI (57) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=30aa4h (199332) map[0m
+[0;32mI (65) esp_image: segment 1: paddr=00040acc vaddr=3ff80063 size=00008h (     8) [0m
+[0;32mI (73) esp_image: segment 2: paddr=00040adc vaddr=3ffb0000 size=03870h ( 14448) load[0m
+[0;32mI (84) esp_image: segment 3: paddr=00044354 vaddr=40080000 size=0bcc4h ( 48324) load[0m
+[0;32mI (98) esp_image: segment 4: paddr=00050020 vaddr=400d0020 size=b1d44h (728388) map[0m
+[0;32mI (98) esp_image: segment 5: paddr=00101d6c vaddr=4008bcc4 size=0bdfch ( 48636) load[0m
+[0;32mI (115) esp_image: segment 6: paddr=0010db70 vaddr=400c0000 size=00064h (   100) [0m
+[0;32mI (115) esp_image: segment 7: paddr=0010dbdc vaddr=50000200 size=00018h (    24) [0m
+[0;32mI (123) boot: Fast booting app from partition at offset 0x10000[0m
+[0;32mI (130) boot: Disabling RNG early entropy source...[0m
+[0;32mI (146) cpu_start: Multicore app[0m
+[0;32mI (147) cpu_start: Pro cpu up.[0m
+[0;32mI (147) cpu_start: Starting app cpu, entry point is 0x400815e0[0m
+[0;32mI (0) cpu_start: App cpu up.[0m
+[0;32mI (165) cpu_start: Pro cpu start user code[0m
+[0;32mI (165) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (165) cpu_start: Application information:[0m
+[0;32mI (170) cpu_start: Project name:     SHT3x_Powersave[0m
+[0;32mI (175) cpu_start: App version:      177945f-dirty[0m
+[0;32mI (181) cpu_start: Compile time:     Aug 17 2023 14:59:53[0m
+[0;32mI (187) cpu_start: ELF file SHA256:  46946461adb0e089...[0m
+[0;32mI (193) cpu_start: ESP-IDF:          v5.1-dirty[0m
+[0;32mI (198) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (203) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (207) cpu_start: Chip rev:         v1.0[0m
+[0;32mI (212) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (220) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (226) heap_init: At 3FFB7FE0 len 00028020 (160 KiB): DRAM[0m
+[0;32mI (232) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (238) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (245) heap_init: At 40097AC0 len 00008540 (33 KiB): IRAM[0m
+[0;32mI (252) spi_flash: detected chip: generic[0m
+[0;32mI (255) spi_flash: flash io: dio[0m
+[0;32mI (260) app_start: Starting scheduler on CPU0[0m
+[0;32mI (264) app_start: Starting scheduler on CPU1[0m
+[0;32mI (264) main_task: Started on CPU0[0m
+[0;32mI (274) main_task: Calling app_main()[0m
+I (314) wifi:wifi driver task: 3ffc1764, prio:23, stack:6656, core=0
+I (324) wifi:wifi firmware version: b2f1f86
+I (324) wifi:wifi certification version: v7.0
+I (324) wifi:config NVS flash: enabled
+I (324) wifi:config nano formating: disabled
+I (334) wifi:Init data frame dynamic rx buffer num: 32
+I (334) wifi:Init management frame dynamic rx buffer num: 32
+I (344) wifi:Init management short buffer num: 32
+I (344) wifi:Init dynamic tx buffer num: 32
+I (354) wifi:Init static rx buffer size: 1600
+I (354) wifi:Init static rx buffer num: 10
+I (354) wifi:Init dynamic rx buffer num: 32
+[0;32mI (364) wifi_init: rx ba win: 6[0m
+[0;32mI (364) wifi_init: tcpip mbox: 32[0m
+[0;32mI (374) wifi_init: udp mbox: 6[0m
+[0;32mI (374) wifi_init: tcp mbox: 6[0m
+[0;32mI (374) wifi_init: tcp tx win: 5744[0m
+[0;32mI (384) wifi_init: tcp rx win: 5744[0m
+[0;32mI (384) wifi_init: tcp mss: 1440[0m
+[0;32mI (384) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (394) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (394) Wifi prov: Already provisioned, starting Wi-Fi STA[0m
+[0;32mI (404) phy_init: phy_version 4670,719f9f6,Feb 18 2021,17:07:07[0m
+I (424) wifi:mode : sta (c8:c9:a3:d0:65:bc)
+I (424) wifi:enable tsf
+I (434) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+I (444) wifi:state: init -> auth (b0)
+I (444) wifi:state: auth -> assoc (0)
+I (454) wifi:state: assoc -> run (10)
+I (514) wifi:connected with TUPEO, aid = 3, channel 1, BW20, bssid = b2:7d:64:d8:92:71
+I (514) wifi:security: WPA2-PSK, phy: bgn, rssi: -41
+I (514) wifi:pm start, type: 1
+
+I (614) wifi:AP's beacon interval = 102400 us, DTIM period = 3
+[0;32mI (1524) Wifi prov: Connected with IP Address:192.168.137.138[0m
+[0;32mI (1524) esp_netif_handlers: sta ip: 192.168.137.138, mask: 255.255.255.0, gw: 192.168.137.1[0m
+[0;32mI (1534) MQTT: Other event id:7[0m
+[0;32mI (1544) MQTT: Topic publish: VB/DMP/VBEEON/CUSTOM/SMH/C8C9A3D065BC/telemetry
+[0m
+[0;32mI (1544) POWER MODE: Enabling timer wakeup, 30s
+[0m
+Wake up from GPIO 0
+[0;32mI (1544) POWER MODE: Entering normal mode
+[0m
+[0;32mI (1554) main_task: Returned from app_main()[0m
+[0;32mI (1714) SHT3x: Temperature: 28.75 °C, Humidity: 76.79 %[0m
+I (1834) wifi:<ba-add>idx:0 (ifx:0, b2:7d:64:d8:92:71), tid:0, ssn:6, winSize:64
+[0;32mI (2054) MQTT: MQTT_EVENT_CONNECTED[0m
+[0;32mI (2144) MQTT: MQTT_EVENT_PUBLISHED, msg_id=7790[0m
+[0;32mI (2244) MQTT: MQTT_EVENT_PUBLISHED, msg_id=27998[0m
+[0;32mI (2344) MQTT: MQTT_EVENT_PUBLISHED, msg_id=38846[0m
+[0;32mI (3064) POWER MODE: Entering deep sleep again
+[0m
+ets Jun  8 2016 00:22:57
+
+rst:0x5 (DEEPSLEEP_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7284
+load:0x40078000,len:15884
+load:0x40080400,len:4
+load:0x40080404,len:3880
+entry 0x4008064c
+[0;32mI (29) boot: ESP-IDF v5.1-dirty 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Aug 17 2023 15:00:07[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (34) boot: chip revision: v1.0[0m
+[0;32mI (38) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (42) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (47) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (52) boot: Enabling RNG early entropy source...[0m
+[0;32mI (57) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=30aa4h (199332) map[0m
+[0;32mI (65) esp_image: segment 1: paddr=00040acc vaddr=3ff80063 size=00008h (     8) [0m
+[0;32mI (73) esp_image: segment 2: paddr=00040adc vaddr=3ffb0000 size=03870h ( 14448) load[0m
+[0;32mI (84) esp_image: segment 3: paddr=00044354 vaddr=40080000 size=0bcc4h ( 48324) load[0m
+[0;32mI (98) esp_image: segment 4: paddr=00050020 vaddr=400d0020 size=b1d44h (728388) map[0m
+[0;32mI (98) esp_image: segment 5: paddr=00101d6c vaddr=4008bcc4 size=0bdfch ( 48636) load[0m
+[0;32mI (115) esp_image: segment 6: paddr=0010db70 vaddr=400c0000 size=00064h (   100) [0m
+[0;32mI (115) esp_image: segment 7: paddr=0010dbdc vaddr=50000200 size=00018h (    24) [0m
+[0;32mI (123) boot: Fast booting app from partition at offset 0x10000[0m
+[0;32mI (130) boot: Disabling RNG early entropy source...[0m
+[0;32mI (146) cpu_start: Multicore app[0m
+[0;32mI (147) cpu_start: Pro cpu up.[0m
+[0;32mI (147) cpu_start: Starting app cpu, entry point is 0x400815e0[0m
+[0;32mI (0) cpu_start: App cpu up.[0m
+[0;32mI (165) cpu_start: Pro cpu start user code[0m
+[0;32mI (165) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (165) cpu_start: Application information:[0m
+[0;32mI (170) cpu_start: Project name:     SHT3x_Powersave[0m
+[0;32mI (175) cpu_start: App version:      177945f-dirty[0m
+[0;32mI (181) cpu_start: Compile time:     Aug 17 2023 14:59:53[0m
+[0;32mI (187) cpu_start: ELF file SHA256:  46946461adb0e089...[0m
+[0;32mI (193) cpu_start: ESP-IDF:          v5.1-dirty[0m
+[0;32mI (198) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (203) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (207) cpu_start: Chip rev:         v1.0[0m
+[0;32mI (212) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (220) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (226) heap_init: At 3FFB7FE0 len 00028020 (160 KiB): DRAM[0m
+[0;32mI (232) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (238) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (245) heap_init: At 40097AC0 len 00008540 (33 KiB): IRAM[0m
+[0;32mI (252) spi_flash: detected chip: generic[0m
+[0;32mI (255) spi_flash: flash io: dio[0m
+[0;32mI (260) app_start: Starting scheduler on CPU0[0m
+[0;32mI (264) app_start: Starting scheduler on CPU1[0m
+[0;32mI (264) main_task: Started on CPU0[0m
+[0;32mI (274) main_task: Calling app_main()[0m
+I (314) wifi:wifi driver task: 3ffc1764, prio:23, stack:6656, core=0
+I (324) wifi:wifi firmware version: b2f1f86
+I (324) wifi:wifi certification version: v7.0
+I (324) wifi:config NVS flash: enabled
+I (324) wifi:config nano formating: disabled
+I (334) wifi:Init data frame dynamic rx buffer num: 32
+I (334) wifi:Init management frame dynamic rx buffer num: 32
+I (344) wifi:Init management short buffer num: 32
+I (344) wifi:Init dynamic tx buffer num: 32
+I (354) wifi:Init static rx buffer size: 1600
+I (354) wifi:Init static rx buffer num: 10
+I (354) wifi:Init dynamic rx buffer num: 32
+[0;32mI (364) wifi_init: rx ba win: 6[0m
+[0;32mI (364) wifi_init: tcpip mbox: 32[0m
+[0;32mI (374) wifi_init: udp mbox: 6[0m
+[0;32mI (374) wifi_init: tcp mbox: 6[0m
+[0;32mI (374) wifi_init: tcp tx win: 5744[0m
+[0;32mI (384) wifi_init: tcp rx win: 5744[0m
+[0;32mI (384) wifi_init: tcp mss: 1440[0m
+[0;32mI (384) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (394) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (394) Wifi prov: Already provisioned, starting Wi-Fi STA[0m
+[0;32mI (404) phy_init: phy_version 4670,719f9f6,Feb 18 2021,17:07:07[0m
+I (424) wifi:mode : sta (c8:c9:a3:d0:65:bc)
+I (424) wifi:enable tsf
+I (434) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+I (444) wifi:state: init -> auth (b0)
+I (454) wifi:state: auth -> assoc (0)
+I (464) wifi:state: assoc -> run (10)
+I (474) wifi:connected with TUPEO, aid = 4, channel 1, BW20, bssid = b2:7d:64:d8:92:71
+I (474) wifi:security: WPA2-PSK, phy: bgn, rssi: -42
+I (474) wifi:pm start, type: 1
+
+I (504) wifi:AP's beacon interval = 102400 us, DTIM period = 3
+[0;32mI (1484) Wifi prov: Connected with IP Address:192.168.137.138[0m
+[0;32mI (1484) esp_netif_handlers: sta ip: 192.168.137.138, mask: 255.255.255.0, gw: 192.168.137.1[0m
+[0;32mI (1494) MQTT: Other event id:7[0m
+[0;32mI (1494) MQTT: Topic publish: VB/DMP/VBEEON/CUSTOM/SMH/C8C9A3D065BC/telemetry
+[0m
+[0;32mI (1494) POWER MODE: Enabling timer wakeup, 30s
+[0m
+[0;32mI (1504) main_task: Returned from app_main()[0m
+Wake up from GPIO 0
+[0;32mI (1514) POWER MODE: Entering normal mode
+[0m
+[0;32mI (1674) SHT3x: Temperature: 28.75 °C, Humidity: 76.79 %[0m
+[0;32mI (2044) MQTT: MQTT_EVENT_CONNECTED[0m
+[0;32mI (2344) MQTT: MQTT_EVENT_PUBLISHED, msg_id=42526[0m
+I (2654) wifi:<ba-add>idx:0 (ifx:0, b2:7d:64:d8:92:71), tid:0, ssn:10, winSize:64
+[0;32mI (2664) MQTT: MQTT_EVENT_PUBLISHED, msg_id=43077[0m
+[0;32mI (3054) POWER MODE: Entering deep sleep again
+[0m
+ets Jun  8 2016 00:22:57
+
+rst:0x5 (DEEPSLEEP_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7284
+load:0x40078000,len:15884
+load:0x40080400,len:4
+load:0x40080404,len:3880
+entry 0x4008064c
+[0;32mI (29) boot: ESP-IDF v5.1-dirty 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Aug 17 2023 15:00:07[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (34) boot: chip revision: v1.0[0m
+[0;32mI (38) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (42) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (47) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (52) boot: Enabling RNG early entropy source...[0m
+[0;32mI (57) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=30aa4h (199332) map[0m
+[0;32mI (65) esp_image: segment 1: paddr=00040acc vaddr=3ff80063 size=00008h (     8) [0m
+[0;32mI (73) esp_image: segment 2: paddr=00040adc vaddr=3ffb0000 size=03870h ( 14448) load[0m
+[0;32mI (84) esp_image: segment 3: paddr=00044354 vaddr=40080000 size=0bcc4h ( 48324) load[0m
+[0;32mI (98) esp_image: segment 4: paddr=00050020 vaddr=400d0020 size=b1d44h (728388) map[0m
+[0;32mI (98) esp_image: segment 5: paddr=00101d6c vaddr=4008bcc4 size=0bdfch ( 48636) load[0m
+[0;32mI (115) esp_image: segment 6: paddr=0010db70 vaddr=400c0000 size=00064h (   100) [0m
+[0;32mI (115) esp_image: segment 7: paddr=0010dbdc vaddr=50000200 size=00018h (    24) [0m
+[0;32mI (123) boot: Fast booting app from partition at offset 0x10000[0m
+[0;32mI (130) boot: Disabling RNG early entropy source...[0m
+[0;32mI (147) cpu_start: Multicore app[0m
+[0;32mI (147) cpu_start: Pro cpu up.[0m
+[0;32mI (147) cpu_start: Starting app cpu, entry point is 0x400815e0[0m
+[0;32mI (0) cpu_start: App cpu up.[0m
+[0;32mI (165) cpu_start: Pro cpu start user code[0m
+[0;32mI (165) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (165) cpu_start: Application information:[0m
+[0;32mI (170) cpu_start: Project name:     SHT3x_Powersave[0m
+[0;32mI (175) cpu_start: App version:      177945f-dirty[0m
+[0;32mI (181) cpu_start: Compile time:     Aug 17 2023 14:59:53[0m
+[0;32mI (187) cpu_start: ELF file SHA256:  46946461adb0e089...[0m
+[0;32mI (193) cpu_start: ESP-IDF:          v5.1-dirty[0m
+[0;32mI (198) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (203) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (207) cpu_start: Chip rev:         v1.0[0m
+[0;32mI (212) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (220) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (226) heap_init: At 3FFB7FE0 len 00028020 (160 KiB): DRAM[0m
+[0;32mI (232) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (238) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (245) heap_init: At 40097AC0 len 00008540 (33 KiB): IRAM[0m
+[0;32mI (252) spi_flash: detected chip: generic[0m
+[0;32mI (255) spi_flash: flash io: dio[0m
+[0;32mI (260) app_start: Starting scheduler on CPU0[0m
+[0;32mI (264) app_start: Starting scheduler on CPU1[0m
+[0;32mI (264) main_task: Started on CPU0[0m
+[0;32mI (274) main_task: Calling app_main()[0m
+I (314) wifi:wifi driver task: 3ffc1764, prio:23, stack:6656, core=0
+I (324) wifi:wifi firmware version: b2f1f86
+I (324) wifi:wifi certification version: v7.0
+I (324) wifi:config NVS flash: enabled
+I (324) wifi:config nano formating: disabled
+I (334) wifi:Init data frame dynamic rx buffer num: 32
+I (334) wifi:Init management frame dynamic rx buffer num: 32
+I (344) wifi:Init management short buffer num: 32
+I (344) wifi:Init dynamic tx buffer num: 32
+I (354) wifi:Init static rx buffer size: 1600
+I (354) wifi:Init static rx buffer num: 10
+I (354) wifi:Init dynamic rx buffer num: 32
+[0;32mI (364) wifi_init: rx ba win: 6[0m
+[0;32mI (364) wifi_init: tcpip mbox: 32[0m
+[0;32mI (374) wifi_init: udp mbox: 6[0m
+[0;32mI (374) wifi_init: tcp mbox: 6[0m
+[0;32mI (374) wifi_init: tcp tx win: 5744[0m
+[0;32mI (384) wifi_init: tcp rx win: 5744[0m
+[0;32mI (384) wifi_init: tcp mss: 1440[0m
+[0;32mI (384) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (394) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (394) Wifi prov: Already provisioned, starting Wi-Fi STA[0m
+[0;32mI (404) phy_init: phy_version 4670,719f9f6,Feb 18 2021,17:07:07[0m
+I (424) wifi:mode : sta (c8:c9:a3:d0:65:bc)
+I (424) wifi:enable tsf
+I (434) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+I (434) wifi:state: init -> auth (b0)
+I (454) wifi:state: auth -> assoc (0)
+I (454) wifi:state: assoc -> run (10)
+I (964) wifi:connected with TUPEO, aid = 5, channel 1, BW20, bssid = b2:7d:64:d8:92:71
+I (964) wifi:security: WPA2-PSK, phy: bgn, rssi: -41
+I (964) wifi:pm start, type: 1
+
+I (1024) wifi:AP's beacon interval = 102400 us, DTIM period = 3
+[0;32mI (2474) Wifi prov: Connected with IP Address:192.168.137.138[0m
+[0;32mI (2474) esp_netif_handlers: sta ip: 192.168.137.138, mask: 255.255.255.0, gw: 192.168.137.1[0m
+[0;32mI (2474) MQTT: Other event id:7[0m
+[0;32mI (2484) MQTT: Topic publish: VB/DMP/VBEEON/CUSTOM/SMH/C8C9A3D065BC/telemetry
+[0m
+[0;32mI (2484) POWER MODE: Enabling timer wakeup, 30s
+[0m
+Wake up from GPIO 0
+[0;32mI (2494) POWER MODE: Entering normal mode
+[0m
+[0;32mI (2504) main_task: Returned from app_main()[0m
+[0;32mI (2664) SHT3x: Temperature: 28.75 °C, Humidity: 76.80 %[0m
+[0;32mI (2674) MQTT: MQTT_EVENT_CONNECTED[0m
+[0;32mI (2974) MQTT: MQTT_EVENT_PUBLISHED, msg_id=5124[0m
+I (3164) wifi:<ba-add>idx:0 (ifx:0, b2:7d:64:d8:92:71), tid:0, ssn:11, winSize:64
+[0;32mI (3174) MQTT: MQTT_EVENT_PUBLISHED, msg_id=62273[0m
+[0;32mI (3594) MQTT: MQTT_EVENT_PUBLISHED, msg_id=3802[0m
+[0;32mI (3684) POWER MODE: Entering deep sleep again
+[0m
+ets Jun  8 2016 00:22:57
+
+rst:0x5 (DEEPSLEEP_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7284
+load:0x40078000,len:15884
+load:0x40080400,len:4
+load:0x40080404,len:3880
+entry 0x4008064c
+[0;32mI (29) boot: ESP-IDF v5.1-dirty 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Aug 17 2023 15:00:07[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (34) boot: chip revision: v1.0[0m
+[0;32mI (38) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (42) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (47) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (52) boot: Enabling RNG early entropy source...[0m
+[0;32mI (57) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=30aa4h (199332) map[0m
+[0;32mI (65) esp_image: segment 1: paddr=00040acc vaddr=3ff80063 size=00008h (     8) [0m
+[0;32mI (73) esp_image: segment 2: paddr=00040adc vaddr=3ffb0000 size=03870h ( 14448) load[0m
+[0;32mI (84) esp_image: segment 3: paddr=00044354 vaddr=40080000 size=0bcc4h ( 48324) load[0m
+[0;32mI (98) esp_image: segment 4: paddr=00050020 vaddr=400d0020 size=b1d44h (728388) map[0m
+[0;32mI (98) esp_image: segment 5: paddr=00101d6c vaddr=4008bcc4 size=0bdfch ( 48636) load[0m
+[0;32mI (115) esp_image: segment 6: paddr=0010db70 vaddr=400c0000 size=00064h (   100) [0m
+[0;32mI (115) esp_image: segment 7: paddr=0010dbdc vaddr=50000200 size=00018h (    24) [0m
+[0;32mI (123) boot: Fast booting app from partition at offset 0x10000[0m
+[0;32mI (130) boot: Disabling RNG early entropy source...[0m
+[0;32mI (146) cpu_start: Multicore app[0m
+[0;32mI (147) cpu_start: Pro cpu up.[0m
+[0;32mI (147) cpu_start: Starting app cpu, entry point is 0x400815e0[0m
+[0;32mI (0) cpu_start: App cpu up.[0m
+[0;32mI (165) cpu_start: Pro cpu start user code[0m
+[0;32mI (165) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (165) cpu_start: Application information:[0m
+[0;32mI (170) cpu_start: Project name:     SHT3x_Powersave[0m
+[0;32mI (175) cpu_start: App version:      177945f-dirty[0m
+[0;32mI (181) cpu_start: Compile time:     Aug 17 2023 14:59:53[0m
+[0;32mI (187) cpu_start: ELF file SHA256:  46946461adb0e089...[0m
+[0;32mI (193) cpu_start: ESP-IDF:          v5.1-dirty[0m
+[0;32mI (198) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (203) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (207) cpu_start: Chip rev:         v1.0[0m
+[0;32mI (212) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (220) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (226) heap_init: At 3FFB7FE0 len 00028020 (160 KiB): DRAM[0m
+[0;32mI (232) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (238) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (245) heap_init: At 40097AC0 len 00008540 (33 KiB): IRAM[0m
+[0;32mI (252) spi_flash: detected chip: generic[0m
+[0;32mI (255) spi_flash: flash io: dio[0m
+[0;32mI (260) app_start: Starting scheduler on CPU0[0m
+[0;32mI (264) app_start: Starting scheduler on CPU1[0m
+[0;32mI (264) main_task: Started on CPU0[0m
+[0;32mI (274) main_task: Calling app_main()[0m
+I (314) wifi:wifi driver task: 3ffc1764, prio:23, stack:6656, core=0
+I (324) wifi:wifi firmware version: b2f1f86
+I (324) wifi:wifi certification version: v7.0
+I (324) wifi:config NVS flash: enabled
+I (324) wifi:config nano formating: disabled
+I (334) wifi:Init data frame dynamic rx buffer num: 32
+I (334) wifi:Init management frame dynamic rx buffer num: 32
+I (344) wifi:Init management short buffer num: 32
+I (344) wifi:Init dynamic tx buffer num: 32
+I (354) wifi:Init static rx buffer size: 1600
+I (354) wifi:Init static rx buffer num: 10
+I (354) wifi:Init dynamic rx buffer num: 32
+[0;32mI (364) wifi_init: rx ba win: 6[0m
+[0;32mI (364) wifi_init: tcpip mbox: 32[0m
+[0;32mI (374) wifi_init: udp mbox: 6[0m
+[0;32mI (374) wifi_init: tcp mbox: 6[0m
+[0;32mI (374) wifi_init: tcp tx win: 5744[0m
+[0;32mI (384) wifi_init: tcp rx win: 5744[0m
+[0;32mI (384) wifi_init: tcp mss: 1440[0m
+[0;32mI (384) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (394) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (394) Wifi prov: Already provisioned, starting Wi-Fi STA[0m
+[0;32mI (404) phy_init: phy_version 4670,719f9f6,Feb 18 2021,17:07:07[0m
+I (424) wifi:mode : sta (c8:c9:a3:d0:65:bc)
+I (424) wifi:enable tsf
+I (434) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+I (434) wifi:state: init -> auth (b0)
+I (444) wifi:state: auth -> assoc (0)
+I (454) wifi:state: assoc -> run (10)
+I (954) wifi:connected with TUPEO, aid = 6, channel 1, BW20, bssid = b2:7d:64:d8:92:71
+I (954) wifi:security: WPA2-PSK, phy: bgn, rssi: -40
+I (964) wifi:pm start, type: 1
+
+I (1024) wifi:AP's beacon interval = 102400 us, DTIM period = 3
+I (1744) wifi:<ba-add>idx:0 (ifx:0, b2:7d:64:d8:92:71), tid:0, ssn:6, winSize:64
+[0;32mI (2464) Wifi prov: Connected with IP Address:192.168.137.138[0m
+[0;32mI (2464) esp_netif_handlers: sta ip: 192.168.137.138, mask: 255.255.255.0, gw: 192.168.137.1[0m
+[0;32mI (2464) MQTT: Other event id:7[0m
+[0;32mI (2474) MQTT: Topic publish: VB/DMP/VBEEON/CUSTOM/SMH/C8C9A3D065BC/telemetry
+[0m
+[0;32mI (2474) POWER MODE: Enabling timer wakeup, 30s
+[0m
+Wake up from GPIO 0
+[0;32mI (2484) POWER MODE: Entering normal mode
+[0m
+[0;32mI (2494) main_task: Returned from app_main()[0m
+[0;32mI (2654) SHT3x: Temperature: 28.70 °C, Humidity: 76.69 %[0m
+[0;32mI (3084) MQTT: MQTT_EVENT_CONNECTED[0m
+[0;32mI (3164) MQTT: MQTT_EVENT_PUBLISHED, msg_id=6995[0m
+[0;32mI (3264) MQTT: MQTT_EVENT_PUBLISHED, msg_id=39929[0m
+[0;32mI (4094) POWER MODE: Entering deep sleep again
+[0m
+ets Jun  8 2016 00:22:57
+
+rst:0x5 (DEEPSLEEP_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7284
+load:0x40078000,len:15884
+load:0x40080400,len:4
+load:0x40080404,len:3880
+entry 0x4008064c
+[0;32mI (29) boot: ESP-IDF v5.1-dirty 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Aug 17 2023 15:00:07[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (34) boot: chip revision: v1.0[0m
+[0;32mI (38) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (42) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (47) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (52) boot: Enabling RNG early entropy source...[0m
+[0;32mI (57) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=30aa4h (199332) map[0m
+[0;32mI (65) esp_image: segment 1: paddr=00040acc vaddr=3ff80063 size=00008h (     8) [0m
+[0;32mI (73) esp_image: segment 2: paddr=00040adc vaddr=3ffb0000 size=03870h ( 14448) load[0m
+[0;32mI (84) esp_image: segment 3: paddr=00044354 vaddr=40080000 size=0bcc4h ( 48324) load[0m
+[0;32mI (98) esp_image: segment 4: paddr=00050020 vaddr=400d0020 size=b1d44h (728388) map[0m
+[0;32mI (98) esp_image: segment 5: paddr=00101d6c vaddr=4008bcc4 size=0bdfch ( 48636) load[0m
+[0;32mI (115) esp_image: segment 6: paddr=0010db70 vaddr=400c0000 size=00064h (   100) [0m
+[0;32mI (115) esp_image: segment 7: paddr=0010dbdc vaddr=50000200 size=00018h (    24) [0m
+[0;32mI (123) boot: Fast booting app from partition at offset 0x10000[0m
+[0;32mI (130) boot: Disabling RNG early entropy source...[0m
+[0;32mI (146) cpu_start: Multicore app[0m
+[0;32mI (147) cpu_start: Pro cpu up.[0m
+[0;32mI (147) cpu_start: Starting app cpu, entry point is 0x400815e0[0m
+[0;32mI (0) cpu_start: App cpu up.[0m
+[0;32mI (165) cpu_start: Pro cpu start user code[0m
+[0;32mI (165) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (165) cpu_start: Application information:[0m
+[0;32mI (170) cpu_start: Project name:     SHT3x_Powersave[0m
+[0;32mI (175) cpu_start: App version:      177945f-dirty[0m
+[0;32mI (181) cpu_start: Compile time:     Aug 17 2023 14:59:53[0m
+[0;32mI (187) cpu_start: ELF file SHA256:  46946461adb0e089...[0m
+[0;32mI (193) cpu_start: ESP-IDF:          v5.1-dirty[0m
+[0;32mI (198) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (203) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (207) cpu_start: Chip rev:         v1.0[0m
+[0;32mI (212) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (220) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (226) heap_init: At 3FFB7FE0 len 00028020 (160 KiB): DRAM[0m
+[0;32mI (232) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (238) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (245) heap_init: At 40097AC0 len 00008540 (33 KiB): IRAM[0m
+[0;32mI (252) spi_flash: detected chip: generic[0m
+[0;32mI (255) spi_flash: flash io: dio[0m
+[0;32mI (260) app_start: Starting scheduler on CPU0[0m
+[0;32mI (264) app_start: Starting scheduler on CPU1[0m
+[0;32mI (264) main_task: Started on CPU0[0m
+[0;32mI (274) main_task: Calling app_main()[0m
+I (314) wifi:wifi driver task: 3ffc1764, prio:23, stack:6656, core=0
+I (324) wifi:wifi firmware version: b2f1f86
+I (324) wifi:wifi certification version: v7.0
+I (324) wifi:config NVS flash: enabled
+I (324) wifi:config nano formating: disabled
+I (334) wifi:Init data frame dynamic rx buffer num: 32
+I (334) wifi:Init management frame dynamic rx buffer num: 32
+I (344) wifi:Init management short buffer num: 32
+I (344) wifi:Init dynamic tx buffer num: 32
+I (354) wifi:Init static rx buffer size: 1600
+I (354) wifi:Init static rx buffer num: 10
+I (354) wifi:Init dynamic rx buffer num: 32
+[0;32mI (364) wifi_init: rx ba win: 6[0m
+[0;32mI (364) wifi_init: tcpip mbox: 32[0m
+[0;32mI (374) wifi_init: udp mbox: 6[0m
+[0;32mI (374) wifi_init: tcp mbox: 6[0m
+[0;32mI (374) wifi_init: tcp tx win: 5744[0m
+[0;32mI (384) wifi_init: tcp rx win: 5744[0m
+[0;32mI (384) wifi_init: tcp mss: 1440[0m
+[0;32mI (384) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (394) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (394) Wifi prov: Already provisioned, starting Wi-Fi STA[0m
+[0;32mI (404) phy_init: phy_version 4670,719f9f6,Feb 18 2021,17:07:07[0m
+I (424) wifi:mode : sta (c8:c9:a3:d0:65:bc)
+I (424) wifi:enable tsf
+I (434) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+I (444) wifi:state: init -> auth (b0)
+I (1444) wifi:state: auth -> init (200)
+I (1444) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+[0;32mI (1444) Wifi prov: Disconnected. Connecting to the AP again...[0m
+[0;32mI (3864) Wifi prov: Disconnected. Connecting to the AP again...[0m
+I (3874) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+I (3884) wifi:state: init -> auth (b0)
+I (3884) wifi:state: auth -> assoc (0)
+I (3894) wifi:state: assoc -> run (10)
+I (3904) wifi:connected with TUPEO, aid = 7, channel 1, BW20, bssid = b2:7d:64:d8:92:71
+I (3914) wifi:security: WPA2-PSK, phy: bgn, rssi: -46
+I (3914) wifi:pm start, type: 1
+
+I (3974) wifi:AP's beacon interval = 102400 us, DTIM period = 3
+[0;32mI (4924) Wifi prov: Connected with IP Address:192.168.137.138[0m
+[0;32mI (4924) esp_netif_handlers: sta ip: 192.168.137.138, mask: 255.255.255.0, gw: 192.168.137.1[0m
+[0;32mI (4924) MQTT: Other event id:7[0m
+[0;32mI (4934) MQTT: Topic publish: VB/DMP/VBEEON/CUSTOM/SMH/C8C9A3D065BC/telemetry
+[0m
+[0;32mI (4934) POWER MODE: Enabling timer wakeup, 30s
+[0m
+Wake up from GPIO 0
+[0;32mI (4944) POWER MODE: Entering normal mode
+[0m
+[0;32mI (4954) main_task: Returned from app_main()[0m
+[0;32mI (5104) MQTT: MQTT_EVENT_CONNECTED[0m
+[0;32mI (5114) SHT3x: Temperature: 28.67 °C, Humidity: 76.30 %[0m
+I (5194) wifi:<ba-add>idx:0 (ifx:0, b2:7d:64:d8:92:71), tid:0, ssn:9, winSize:64
+[0;32mI (5204) MQTT: MQTT_EVENT_PUBLISHED, msg_id=31354[0m
+[0;32mI (5304) MQTT: MQTT_EVENT_PUBLISHED, msg_id=31297[0m
+[0;32mI (5934) MQTT: MQTT_EVENT_PUBLISHED, msg_id=18411[0m
+[0;32mI (6124) POWER MODE: Entering deep sleep again
+[0m
+ets Jun  8 2016 00:22:57
+
+rst:0x5 (DEEPSLEEP_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7284
+load:0x40078000,len:15884
+load:0x40080400,len:4
+load:0x40080404,len:3880
+entry 0x4008064c
+[0;32mI (29) boot: ESP-IDF v5.1-dirty 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Aug 17 2023 15:00:07[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (34) boot: chip revision: v1.0[0m
+[0;32mI (38) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (42) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (47) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (52) boot: Enabling RNG early entropy source...[0m
+[0;32mI (57) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=30aa4h (199332) map[0m
+[0;32mI (65) esp_image: segment 1: paddr=00040acc vaddr=3ff80063 size=00008h (     8) [0m
+[0;32mI (73) esp_image: segment 2: paddr=00040adc vaddr=3ffb0000 size=03870h ( 14448) load[0m
+[0;32mI (84) esp_image: segment 3: paddr=00044354 vaddr=40080000 size=0bcc4h ( 48324) load[0m
+[0;32mI (98) esp_image: segment 4: paddr=00050020 vaddr=400d0020 size=b1d44h (728388) map[0m
+[0;32mI (98) esp_image: segment 5: paddr=00101d6c vaddr=4008bcc4 size=0bdfch ( 48636) load[0m
+[0;32mI (115) esp_image: segment 6: paddr=0010db70 vaddr=400c0000 size=00064h (   100) [0m
+[0;32mI (115) esp_image: segment 7: paddr=0010dbdc vaddr=50000200 size=00018h (    24) [0m
+[0;32mI (123) boot: Fast booting app from partition at offset 0x10000[0m
+[0;32mI (130) boot: Disabling RNG early entropy source...[0m
+[0;32mI (146) cpu_start: Multicore app[0m
+[0;32mI (147) cpu_start: Pro cpu up.[0m
+[0;32mI (147) cpu_start: Starting app cpu, entry point is 0x400815e0[0m
+[0;32mI (0) cpu_start: App cpu up.[0m
+[0;32mI (165) cpu_start: Pro cpu start user code[0m
+[0;32mI (165) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (165) cpu_start: Application information:[0m
+[0;32mI (170) cpu_start: Project name:     SHT3x_Powersave[0m
+[0;32mI (175) cpu_start: App version:      177945f-dirty[0m
+[0;32mI (181) cpu_start: Compile time:     Aug 17 2023 14:59:53[0m
+[0;32mI (187) cpu_start: ELF file SHA256:  46946461adb0e089...[0m
+[0;32mI (193) cpu_start: ESP-IDF:          v5.1-dirty[0m
+[0;32mI (198) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (203) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (207) cpu_start: Chip rev:         v1.0[0m
+[0;32mI (212) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (220) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (226) heap_init: At 3FFB7FE0 len 00028020 (160 KiB): DRAM[0m
+[0;32mI (232) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (238) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (245) heap_init: At 40097AC0 len 00008540 (33 KiB): IRAM[0m
+[0;32mI (252) spi_flash: detected chip: generic[0m
+[0;32mI (255) spi_flash: flash io: dio[0m
+[0;32mI (260) app_start: Starting scheduler on CPU0[0m
+[0;32mI (264) app_start: Starting scheduler on CPU1[0m
+[0;32mI (264) main_task: Started on CPU0[0m
+[0;32mI (274) main_task: Calling app_main()[0m
+I (314) wifi:wifi driver task: 3ffc1764, prio:23, stack:6656, core=0
+I (324) wifi:wifi firmware version: b2f1f86
+I (324) wifi:wifi certification version: v7.0
+I (324) wifi:config NVS flash: enabled
+I (324) wifi:config nano formating: disabled
+I (334) wifi:Init data frame dynamic rx buffer num: 32
+I (334) wifi:Init management frame dynamic rx buffer num: 32
+I (344) wifi:Init management short buffer num: 32
+I (344) wifi:Init dynamic tx buffer num: 32
+I (354) wifi:Init static rx buffer size: 1600
+I (354) wifi:Init static rx buffer num: 10
+I (354) wifi:Init dynamic rx buffer num: 32
+[0;32mI (364) wifi_init: rx ba win: 6[0m
+[0;32mI (364) wifi_init: tcpip mbox: 32[0m
+[0;32mI (374) wifi_init: udp mbox: 6[0m
+[0;32mI (374) wifi_init: tcp mbox: 6[0m
+[0;32mI (374) wifi_init: tcp tx win: 5744[0m
+[0;32mI (384) wifi_init: tcp rx win: 5744[0m
+[0;32mI (384) wifi_init: tcp mss: 1440[0m
+[0;32mI (384) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (394) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (394) Wifi prov: Already provisioned, starting Wi-Fi STA[0m
+[0;32mI (404) phy_init: phy_version 4670,719f9f6,Feb 18 2021,17:07:07[0m
+I (424) wifi:mode : sta (c8:c9:a3:d0:65:bc)
+I (424) wifi:enable tsf
+I (434) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+I (434) wifi:state: init -> auth (b0)
+I (454) wifi:state: auth -> assoc (0)
+I (454) wifi:state: assoc -> run (10)
+I (464) wifi:connected with TUPEO, aid = 8, channel 1, BW20, bssid = b2:7d:64:d8:92:71
+I (464) wifi:security: WPA2-PSK, phy: bgn, rssi: -41
+I (474) wifi:pm start, type: 1
+
+I (514) wifi:AP's beacon interval = 102400 us, DTIM period = 3
+I (1014) wifi:<ba-add>idx:0 (ifx:0, b2:7d:64:d8:92:71), tid:0, ssn:4, winSize:64
+[0;32mI (1474) Wifi prov: Connected with IP Address:192.168.137.138[0m
+[0;32mI (1474) esp_netif_handlers: sta ip: 192.168.137.138, mask: 255.255.255.0, gw: 192.168.137.1[0m
+[0;32mI (1484) MQTT: Other event id:7[0m
+[0;32mI (1484) MQTT: Topic publish: VB/DMP/VBEEON/CUSTOM/SMH/C8C9A3D065BC/telemetry
+[0m
+[0;32mI (1484) POWER MODE: Enabling timer wakeup, 30s
+[0m
+Wake up from GPIO 0
+[0;32mI (1494) POWER MODE: Entering normal mode
+[0m
+[0;32mI (1504) main_task: Returned from app_main()[0m
+[0;32mI (1664) SHT3x: Temperature: 28.69 °C, Humidity: 76.21 %[0m
+[0;32mI (2974) MQTT: MQTT_EVENT_CONNECTED[0m
+[0;32mI (3064) MQTT: MQTT_EVENT_PUBLISHED, msg_id=51776[0m
+[0;32mI (3174) MQTT: MQTT_EVENT_PUBLISHED, msg_id=31340[0m
+[0;32mI (3984) POWER MODE: Entering deep sleep again
+[0m
+ets Jun  8 2016 00:22:57
+
+rst:0x5 (DEEPSLEEP_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7284
+load:0x40078000,len:15884
+load:0x40080400,len:4
+load:0x40080404,len:3880
+entry 0x4008064c
+[0;32mI (29) boot: ESP-IDF v5.1-dirty 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Aug 17 2023 15:00:07[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (34) boot: chip revision: v1.0[0m
+[0;32mI (38) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (42) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (47) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (52) boot: Enabling RNG early entropy source...[0m
+[0;32mI (57) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=30aa4h (199332) map[0m
+[0;32mI (65) esp_image: segment 1: paddr=00040acc vaddr=3ff80063 size=00008h (     8) [0m
+[0;32mI (73) esp_image: segment 2: paddr=00040adc vaddr=3ffb0000 size=03870h ( 14448) load[0m
+[0;32mI (84) esp_image: segment 3: paddr=00044354 vaddr=40080000 size=0bcc4h ( 48324) load[0m
+[0;32mI (98) esp_image: segment 4: paddr=00050020 vaddr=400d0020 size=b1d44h (728388) map[0m
+[0;32mI (98) esp_image: segment 5: paddr=00101d6c vaddr=4008bcc4 size=0bdfch ( 48636) load[0m
+[0;32mI (115) esp_image: segment 6: paddr=0010db70 vaddr=400c0000 size=00064h (   100) [0m
+[0;32mI (115) esp_image: segment 7: paddr=0010dbdc vaddr=50000200 size=00018h (    24) [0m
+[0;32mI (123) boot: Fast booting app from partition at offset 0x10000[0m
+[0;32mI (130) boot: Disabling RNG early entropy source...[0m
+[0;32mI (147) cpu_start: Multicore app[0m
+[0;32mI (147) cpu_start: Pro cpu up.[0m
+[0;32mI (147) cpu_start: Starting app cpu, entry point is 0x400815e0[0m
+[0;32mI (0) cpu_start: App cpu up.[0m
+[0;32mI (165) cpu_start: Pro cpu start user code[0m
+[0;32mI (165) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (165) cpu_start: Application information:[0m
+[0;32mI (170) cpu_start: Project name:     SHT3x_Powersave[0m
+[0;32mI (175) cpu_start: App version:      177945f-dirty[0m
+[0;32mI (181) cpu_start: Compile time:     Aug 17 2023 14:59:53[0m
+[0;32mI (187) cpu_start: ELF file SHA256:  46946461adb0e089...[0m
+[0;32mI (193) cpu_start: ESP-IDF:          v5.1-dirty[0m
+[0;32mI (198) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (203) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (208) cpu_start: Chip rev:         v1.0[0m
+[0;32mI (212) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (220) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (226) heap_init: At 3FFB7FE0 len 00028020 (160 KiB): DRAM[0m
+[0;32mI (232) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (238) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (245) heap_init: At 40097AC0 len 00008540 (33 KiB): IRAM[0m
+[0;32mI (252) spi_flash: detected chip: generic[0m
+[0;32mI (255) spi_flash: flash io: dio[0m
+[0;32mI (260) app_start: Starting scheduler on CPU0[0m
+[0;32mI (264) app_start: Starting scheduler on CPU1[0m
+[0;32mI (264) main_task: Started on CPU0[0m
+[0;32mI (274) main_task: Calling app_main()[0m
+I (314) wifi:wifi driver task: 3ffc1764, prio:23, stack:6656, core=0
+I (324) wifi:wifi firmware version: b2f1f86
+I (324) wifi:wifi certification version: v7.0
+I (324) wifi:config NVS flash: enabled
+I (324) wifi:config nano formating: disabled
+I (334) wifi:Init data frame dynamic rx buffer num: 32
+I (334) wifi:Init management frame dynamic rx buffer num: 32
+I (344) wifi:Init management short buffer num: 32
+I (344) wifi:Init dynamic tx buffer num: 32
+I (354) wifi:Init static rx buffer size: 1600
+I (354) wifi:Init static rx buffer num: 10
+I (354) wifi:Init dynamic rx buffer num: 32
+[0;32mI (364) wifi_init: rx ba win: 6[0m
+[0;32mI (364) wifi_init: tcpip mbox: 32[0m
+[0;32mI (374) wifi_init: udp mbox: 6[0m
+[0;32mI (374) wifi_init: tcp mbox: 6[0m
+[0;32mI (374) wifi_init: tcp tx win: 5744[0m
+[0;32mI (384) wifi_init: tcp rx win: 5744[0m
+[0;32mI (384) wifi_init: tcp mss: 1440[0m
+[0;32mI (384) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (394) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (394) Wifi prov: Already provisioned, starting Wi-Fi STA[0m
+[0;32mI (404) phy_init: phy_version 4670,719f9f6,Feb 18 2021,17:07:07[0m
+I (424) wifi:mode : sta (c8:c9:a3:d0:65:bc)
+I (424) wifi:enable tsf
+I (434) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1
+I (434) wifi:state: init -> auth (b0)
+I (624) wifi:state: auth -> assoc (0)
+I (644) wifi:state: assoc -> run (10)
+I (1164) wifi:connected with TUPEO, aid = 9, channel 1, BW20, bssid = b2:7d:64:d8:92:71
+I (1164) wifi:security: WPA2-PSK, phy: bgn, rssi: -40
+I (1174) wifi:pm start, type: 1
+
+I (1224) wifi:AP's beacon interval = 102400 us, DTIM period = 3

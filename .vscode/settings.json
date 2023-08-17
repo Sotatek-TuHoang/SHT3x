@@ -1,3 +1,8 @@
 {
-    "idf.adapterTargetName": "esp32"
+    "idf.adapterTargetName": "esp32",
+    "files.associations": {
+        "bee_deep_sleep.h": "c",
+        "esp_err.h": "c",
+        "bee_sht3x.h": "c"
+    }
 }

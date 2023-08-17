@@ -19,11 +19,10 @@
 #include <esp_wifi.h>
 #include <esp_event.h>
 #include <wifi_provisioning/manager.h>
-#include <wifi_provisioning/scheme_ble.h>
-#include "bee_wifi.h"
+#include <wifi_provisioning/scheme_softap.h>
 
+#include "bee_wifi.h"
 #include "bee_nvs.h"
-#include "bee_deep_sleep.h"
 
 extern TaskHandle_t sleep_task_handle;
 
@@ -33,7 +32,7 @@ extern TaskHandle_t sleep_task_handle;
 static const char *TAG = "Wifi prov";
 const int WIFI_CONNECTED_EVENT = BIT0;
 
-static bool bProv = false; 
+bool bProv = false; 
 
 static char cReceived_ssid[32];
 static char cReceived_password[64];
@@ -48,7 +47,6 @@ static TaskHandle_t prov_fail_handle = NULL;
 /****************************************************************************/
 /***        Event Handler                                                 ***/
 /****************************************************************************/
-
 static void event_handler(void* arg, esp_event_base_t event_base,
                           int32_t event_id, void* event_data)
 {
@@ -105,9 +103,9 @@ static void event_handler(void* arg, esp_event_base_t event_base,
                 break;
             case WIFI_PROV_END:
                 /* De-initialize manager once provisioning is finished */
-                wifi_prov_mgr_stop_provisioning();
-
+                wifi_prov_mgr_deinit();
                 bProv = false;
+                //vTaskResume(sleep_task_handle);
                 break;
             default:
                 break;
@@ -121,10 +119,16 @@ static void event_handler(void* arg, esp_event_base_t event_base,
                 esp_wifi_connect();
                 break;
             case WIFI_EVENT_STA_DISCONNECTED:
-                esp_wifi_connect();
-                //esp_deep_sleep_start();
                 ESP_LOGI(TAG, "Disconnected. Connecting to the AP again...");
-                //
+                esp_wifi_connect();
+                break;
+            case WIFI_EVENT_AP_STACONNECTED:
+                ESP_LOGI(TAG, "SoftAP transport: Connected!");
+                break;
+            case WIFI_EVENT_AP_STADISCONNECTED:
+                ESP_LOGI(TAG, "SoftAP transport: Disconnected!");
+                break;
+            default:
                 break;
         }
     }
@@ -135,44 +139,11 @@ static void event_handler(void* arg, esp_event_base_t event_base,
         /* Signal main application to continue execution */
         xEventGroupSetBits(wifi_event_group, WIFI_CONNECTED_EVENT);
     }
-    else if (event_base == PROTOCOMM_TRANSPORT_BLE_EVENT)
-    {
-        switch (event_id)
-        {
-            case PROTOCOMM_TRANSPORT_BLE_CONNECTED:
-                ESP_LOGI(TAG, "BLE transport: Connected!");
-                break;
-            case PROTOCOMM_TRANSPORT_BLE_DISCONNECTED:
-                ESP_LOGI(TAG, "BLE transport: Disconnected!");
-                break;
-            default:
-                break;
-        }
-    }
-}
-
-esp_err_t custom_prov_data_handler(uint32_t session_id, const uint8_t *inbuf, ssize_t inlen,
-                                          uint8_t **outbuf, ssize_t *outlen, void *priv_data)
-{
-    if (inbuf)
-    {
-        ESP_LOGI(TAG, "Received data: %.*s", inlen, (char *)inbuf);
-    }
-    char response[] = "SUCCESS";
-    *outbuf = (uint8_t *)strdup(response);
-    if (*outbuf == NULL)
-    {
-        ESP_LOGE(TAG, "System out of memory");
-        return ESP_ERR_NO_MEM;
-    }
-    *outlen = strlen(response) + 1; /* +1 for NULL terminating byte */
-    return ESP_OK;
 }
 
 /****************************************************************************/
 /***        Locale Functions                                              ***/
 /****************************************************************************/
-
 static void wifi_init_sta(void)
 {
     /* Start Wi-Fi in station mode */
@@ -189,14 +160,6 @@ static void get_device_service_name(char *service_name, size_t max)
              ssid_prefix, u8eth_mac[3], u8eth_mac[4], u8eth_mac[5]);
 }
 
-/**
- * @brief   Reconnect to a previously configured Wi-Fi network.
- *
- * This function attempts to reconnect to a Wi-Fi network using the SSID and password that were previously saved in the
- * Non-Volatile Storage (NVS). It reads the saved SSID and password, sets up the Wi-Fi configuration, initializes Wi-Fi in
- * STA mode, and then initiates the connection process to the Wi-Fi network.
- *
- * @note    If no saved SSID is found, the function will not attempt to reconnect. **/
 static void reconnect_old_wifi(void)
 {
     wifi_config_t wifi_sta_cfg;
@@ -238,9 +201,30 @@ static void cnt_timeout(uint8_t *u8time)
 }
 
 /****************************************************************************/
+/***        Event handler                                                 ***/
+/****************************************************************************/
+esp_err_t custom_prov_data_handler(uint32_t session_id, const uint8_t *inbuf, ssize_t inlen,
+                                          uint8_t **outbuf, ssize_t *outlen, void *priv_data)
+{
+    if (inbuf)
+    {
+        ESP_LOGI(TAG, "Received data: %.*s", inlen, (char *)inbuf);
+    }
+    char response[] = "SUCCESS";
+    *outbuf = (uint8_t *)strdup(response);
+    if (*outbuf == NULL)
+    {
+        ESP_LOGE(TAG, "System out of memory");
+        return ESP_ERR_NO_MEM;
+    }
+    *outlen = strlen(response) + 1; /* +1 for NULL terminating byte */
+    return ESP_OK;
+}
+/****************************************************************************/
 /***        initializing wifi function                                    ***/
 /****************************************************************************/
-
+/** @brief Hàm kiểm soát việc cài đặt cấu hình TCP/IP, đăng ký event handle
+ *         Init các cấu hình liên quan phục vụ cho cấu hình cho wifi        */
 void wifi_func_init(void)
 {
     ESP_ERROR_CHECK(esp_netif_init()); /* Initialize TCP/IP */
@@ -251,21 +235,21 @@ void wifi_func_init(void)
 
     /* Register our event handler for Wi-Fi, IP and Provisioning related events */
     ESP_ERROR_CHECK(esp_event_handler_register(WIFI_PROV_EVENT, ESP_EVENT_ANY_ID, &event_handler, NULL));
-    ESP_ERROR_CHECK(esp_event_handler_register(PROTOCOMM_TRANSPORT_BLE_EVENT, ESP_EVENT_ANY_ID, &event_handler, NULL));
     ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &event_handler, NULL));
     ESP_ERROR_CHECK(esp_event_handler_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &event_handler, NULL));
 
     /* Initialize Wi-Fi including netif with default config */
     esp_netif_create_default_wifi_sta();
- 
+    esp_netif_create_default_wifi_ap();
+
     wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
     ESP_ERROR_CHECK(esp_wifi_init(&cfg));
 
     /* Configuration for the provisioning manager */
     wifi_prov_mgr_config_t config =
     {
-        .scheme = wifi_prov_scheme_ble,
-        .scheme_event_handler = WIFI_PROV_SCHEME_BLE_EVENT_HANDLER_FREE_BTDM
+        .scheme = wifi_prov_scheme_softap,
+        .scheme_event_handler = WIFI_PROV_EVENT_HANDLER_NONE
     };
 
     /*Kiểm tra trạng thái cấu hình wifi đã tồn tại hay chưa*/
@@ -275,57 +259,42 @@ void wifi_func_init(void)
     if (provisioned)
     {
         ESP_LOGI(TAG, "Already provisioned, starting Wi-Fi STA");
-        wifi_prov_mgr_stop_provisioning();
+        wifi_prov_mgr_deinit();
         wifi_init_sta();
     }
     else
     {
-      wifi_prov_mgr_stop_provisioning();
+      wifi_prov_mgr_deinit();  
     }
-    
-    xEventGroupWaitBits(wifi_event_group, WIFI_CONNECTED_EVENT, true, true, 500);
+    xEventGroupWaitBits(wifi_event_group, WIFI_CONNECTED_EVENT, true, true, portMAX_DELAY);
 }
 
 /****************************************************************************/
 /***        Global Functions                                              ***/
 /****************************************************************************/
-
-/**Hàm kiểm soát việc cấu hình wifi */
+/** @brief Hàm kiểm soát việc cấu hình wifi */
 void wifi_prov(void)
 {
     if (!bProv)
     {
-        ESP_LOGI(TAG, "Start prov\n");
+        //vTaskSuspend(sleep_task_handle);
+
         bProv = true;
 
+        /* Configuration for the provisioning manager */
+        wifi_prov_mgr_config_t config =
+        {
+            .scheme = wifi_prov_scheme_softap,
+            .scheme_event_handler = WIFI_PROV_EVENT_HANDLER_NONE
+        };
+
+        ESP_ERROR_CHECK(wifi_prov_mgr_init(config));
         char service_name[12];
         get_device_service_name(service_name, sizeof(service_name));
         wifi_prov_security_t security = WIFI_PROV_SECURITY_1;
         const char *pop = "Bee@1234"; /*Mật khẩu cho việc thực hiện cấu hình qua*/
         wifi_prov_security1_params_t *sec_params = pop;
         const char *service_key = NULL;
-
-        /* This step is only useful when scheme is wifi_prov_scheme_ble. This will
-         * set a custom 128 bit UUID which will be included in the BLE advertisement
-         * and will correspond to the primary GATT service that provides provisioning
-         * endpoints as GATT characteristics. Each GATT characteristic will be
-         * formed using the primary service UUID as base, with different auto assigned
-         * 12th and 13th bytes (assume counting starts from 0th byte). The client side
-         * applications must identify the endpoints by reading the User Characteristic
-         * Description descriptor (0x2901) for each characteristic, which contains the
-         * endpoint name of the characteristic */
-        uint8_t custom_service_uuid[] = {
-            /* LSB <---------------------------------------
-             * ---------------------------------------> MSB */
-            0xb4, 0xdf, 0x5a, 0x1c, 0x3f, 0x6b, 0xf4, 0xbf,
-            0xea, 0x4a, 0x82, 0x03, 0x04, 0x90, 0x1a, 0x02,
-        };
-
-        /* If your build fails with linker errors at this point, then you may have
-         * forgotten to enable the BT stack or BTDM BLE settings in the SDK (e.g. see
-         * the sdkconfig.defaults in the example project) */
-        wifi_prov_scheme_ble_set_service_uuid(custom_service_uuid);
-
         wifi_prov_mgr_endpoint_create("custom-data");
         /* Start provisioning service */
         ESP_ERROR_CHECK(wifi_prov_mgr_start_provisioning(security, (const void *) sec_params, service_name, service_key));
@@ -338,8 +307,7 @@ void wifi_prov(void)
 /****************************************************************************/
 /***        Tasks                                                         ***/
 /****************************************************************************/
-
-/**Đếm thời gian tối đa cho việc cấu hình wifi là 60s
+/** @brief Đếm thời gian tối đa cho việc cấu hình wifi là 60s
  * Hết thời gian tự động cấu hình lại bằng thông số wifi cũ */
 void prov_timeout_task(void* pvParameters)
 {
@@ -351,8 +319,8 @@ void prov_timeout_task(void* pvParameters)
     vTaskDelete(prov_timeout_handle); // Xóa task khi hoàn thành
 }
 
-/**Đếm thời gian tối đa cho việc cấu hình wifi thất bại là 60s
-*  Hết thời gian thì ngừng cấu hình*/
+/** @brief Đếm thời gian tối đa cho việc cấu hình wifi thất bại là 60s
+*          Hết thời gian thì ngừng cấu hình*/
 void prov_fail_task(void* pvParameters)
 {
     wifi_prov_mgr_reset_sm_state_on_failure();
@@ -366,7 +334,6 @@ void prov_fail_task(void* pvParameters)
 
     vTaskDelete(prov_fail_handle); // Xóa task khi hoàn thành
 }
-
 /****************************************************************************/
 /***        END OF FILE                                                   ***/
 /****************************************************************************/

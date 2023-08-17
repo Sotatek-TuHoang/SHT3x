@@ -419,6 +419,16 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("E:/SHT3x_Powersave/build/esp-idf/bee_wifi/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("E:/SHT3x_Powersave/build/esp-idf/bee_button/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("E:/SHT3x_Powersave/build/esp-idf/bee_i2c/cmake_install.cmake")
 endif()
 
@@ -435,15 +445,5 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
   include("E:/SHT3x_Powersave/build/esp-idf/bee_deep_sleep/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("E:/SHT3x_Powersave/build/esp-idf/bee_wifi/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("E:/SHT3x_Powersave/build/esp-idf/bee_button/cmake_install.cmake")
 endif()
 
