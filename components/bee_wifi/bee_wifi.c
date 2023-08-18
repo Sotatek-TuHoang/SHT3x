@@ -143,6 +143,7 @@ static void event_handler(void* arg, esp_event_base_t event_base,
 /****************************************************************************/
 /***        Locale Functions                                              ***/
 /****************************************************************************/
+
 static void wifi_init_sta(void)
 {
     /* Start Wi-Fi in station mode */
@@ -222,8 +223,7 @@ esp_err_t custom_prov_data_handler(uint32_t session_id, const uint8_t *inbuf, ss
 /****************************************************************************/
 /***        initializing wifi function                                    ***/
 /****************************************************************************/
-/** @brief Hàm kiểm soát việc cài đặt cấu hình TCP/IP, đăng ký event handle
- *         Init các cấu hình liên quan phục vụ cho cấu hình cho wifi        */
+
 void wifi_func_init(void)
 {
     ESP_ERROR_CHECK(esp_netif_init()); /* Initialize TCP/IP */
@@ -271,7 +271,7 @@ void wifi_func_init(void)
 /****************************************************************************/
 /***        Global Functions                                              ***/
 /****************************************************************************/
-/** @brief Hàm kiểm soát việc cấu hình wifi */
+
 void wifi_prov(void)
 {
     if (!bProv)
@@ -304,31 +304,23 @@ void wifi_prov(void)
 /****************************************************************************/
 /***        Tasks                                                         ***/
 /****************************************************************************/
-/** @brief Đếm thời gian tối đa cho việc cấu hình wifi là 60s
- * Hết thời gian tự động cấu hình lại bằng thông số wifi cũ */
+
 void prov_timeout_task(void* pvParameters)
 {
     uint8_t u8timeout_set = 60; // Đơn vị tính bằng giây
     cnt_timeout(&u8timeout_set);
     wifi_prov_mgr_stop_provisioning();
     reconnect_old_wifi();
-    
     vTaskDelete(prov_timeout_handle); // Xóa task khi hoàn thành
 }
 
-/** @brief Đếm thời gian tối đa cho việc cấu hình wifi thất bại là 60s
-*          Hết thời gian thì ngừng cấu hình*/
 void prov_fail_task(void* pvParameters)
 {
     wifi_prov_mgr_reset_sm_state_on_failure();
-
     uint8_t u8timeout_set = 60; // Đơn vị tính bằng giây
     cnt_timeout(&u8timeout_set);
-    
     wifi_prov_mgr_stop_provisioning();
-
     reconnect_old_wifi();
-
     vTaskDelete(prov_fail_handle); // Xóa task khi hoàn thành
 }
 /****************************************************************************/
