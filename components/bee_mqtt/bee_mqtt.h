@@ -3,7 +3,7 @@
  * @file 	bee_mqtt.h
  * @author 	tuha
  * @date 	5 July 2023
-* @brief	module for send data through mqtt
+ * @brief	module for send data through mqtt
  * @brief	and receive command from host main through mqtt
  ***************************************************************************/
 

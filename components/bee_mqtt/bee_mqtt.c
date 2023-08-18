@@ -24,10 +24,11 @@
 /***        Local Variables                                               ***/
 /****************************************************************************/
 
+static RTC_DATA_ATTR uint8_t u8trans_code = 0;
 static RTC_DATA_ATTR uint8_t u8warning_values;
+
 static char cMac_str[13];
 static char cTopic_pub[64] = "VB/DMP/VBEEON/CUSTOM/SMH/DeviceID/telemetry";
-static RTC_DATA_ATTR uint8_t u8trans_code = 0;
 
 static const char *TAG_MQTT = "MQTT";
 
@@ -116,50 +117,12 @@ void check_warning(void)
     extern float fHumi;
     extern bool bSHT3x_status;
 
-    bool bH_Temp_threshold = 0;
-    bool bH_Humi_threshold = 0;
-    bool bL_Temp_threshold = 0;
-    bool bL_Humi_threshold = 0;
+    bool bH_Temp_threshold = fTemp > H_TEMP_THRESHOLD;
+    bool bL_Temp_threshold = fTemp < L_TEMP_THRESHOLD;
+    bool bH_Humi_threshold = fHumi > H_HUMI_THRESHOLD;
+    bool bL_Humi_threshold = fHumi < L_HUMI_THRESHOLD;
 
-    uint8_t u8tmp_warning_values;
-
-    if (fTemp > H_TEMP_THRESHOLD)
-    {
-        bH_Temp_threshold = 1;
-    }
-    else
-    {
-        bH_Temp_threshold = 0;
-    }
-
-    if (fTemp < L_TEMP_THRESHOLD)
-    {
-        bL_Temp_threshold = 1;
-    }
-    else
-    {
-        bL_Temp_threshold = 0;
-    }
-
-    if (fHumi > H_HUMI_THRESHOLD)
-    {
-        bH_Humi_threshold = 1;
-    }
-    else
-    {
-        bH_Humi_threshold = 0;
-    }
-
-    if (fHumi < L_HUMI_THRESHOLD)
-    {
-        bL_Humi_threshold = 1;
-    }
-    else
-    {
-        bL_Humi_threshold = 0;
-    }
-
-    u8tmp_warning_values = (bSHT3x_status << 4) | (bH_Temp_threshold << 3) | (bL_Temp_threshold << 2) | (bH_Humi_threshold << 1) | bL_Humi_threshold;
+    uint8_t u8tmp_warning_values = (bSHT3x_status << 4) | (bH_Temp_threshold << 3) | (bL_Temp_threshold << 2) | (bH_Humi_threshold << 1) | bL_Humi_threshold;
 
     if (u8tmp_warning_values != u8warning_values)
     {

@@ -128,7 +128,7 @@ void deep_sleep_task(void *args)
             if (wakeup_pin_mask != 0) {
                 int pin = __builtin_ffsll(wakeup_pin_mask) - 1;
                 ESP_LOGI(TAG_PM, "Wake up from GPIO %d\n", pin);
-                wifi_prov();
+                wifi_prov(); //if wake up by gpio num 2, start provisioning wifi
             } else {
                 ESP_LOGI(TAG_PM, "Wake up from GPIO\n");
             }
