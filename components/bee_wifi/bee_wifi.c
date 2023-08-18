@@ -105,7 +105,6 @@ static void event_handler(void* arg, esp_event_base_t event_base,
                 /* De-initialize manager once provisioning is finished */
                 wifi_prov_mgr_deinit();
                 bProv = false;
-                //vTaskResume(sleep_task_handle);
                 break;
             default:
                 break;
@@ -195,7 +194,7 @@ static void cnt_timeout(uint8_t *u8time)
 
     while ((xTaskGetTickCount() - prov_current_time) < prov_timeout)
     {
-        vTaskDelay(pdMS_TO_TICKS(1000));
+        vTaskDelay(pdMS_TO_TICKS(100));
     }
     ESP_LOGI(TAG,"TIMEOUT!!!\n");
 }
@@ -277,8 +276,6 @@ void wifi_prov(void)
 {
     if (!bProv)
     {
-        //vTaskSuspend(sleep_task_handle);
-
         bProv = true;
 
         /* Configuration for the provisioning manager */
