@@ -1,3 +1,13 @@
+/*****************************************************************************
+ *
+ * @file     bee_main.c
+ * @author   tuha
+ * @date     21 August 2023
+ * @brief    Control program for a device measuring temperature and humidity,
+ *           connecting to Wi-Fi, sending data via MQTT, and managing deep sleep mode.
+ *
+ *****************************************************************************/
+
 #include "bee_sht3x.h"
 #include "bee_i2c.h"
 #include "bee_wifi.h"

@@ -120,7 +120,7 @@ sht3x_sensor_t* sht3x_init_sensor(uint8_t bus, uint8_t addr)
     return device;
 }
 
-uint32_t sdk_system_get_time()
+static uint32_t sdk_system_get_time()
 {
     struct timeval time;
     gettimeofday(&time,0);

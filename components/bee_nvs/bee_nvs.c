@@ -41,75 +41,58 @@ void nvs_flash_func_init()
 void save_wifi_cred_to_nvs(const char *cSsid, const char *cPassword)
 {
     nvs_handle_t nvs_handle;
-    esp_err_t err;
+    esp_err_t err = nvs_open(NVS_WIFI_CRED, NVS_READWRITE, &nvs_handle);
 
-    // Mở NVS
-    err = nvs_open(NVS_WIFI_CRED, NVS_READWRITE, &nvs_handle);
-    if (err != ESP_OK)
+    if (err == ESP_OK)
     {
-        ESP_LOGE(TAG,"Error opening NVS handle! (%s)\n", esp_err_to_name(err));
-        return;
-    }
+        err = nvs_set_str(nvs_handle, NVS_WIFI_SSID, cSsid);
+        err |= nvs_set_str(nvs_handle, NVS_WIFI_PASS, cPassword);
 
-    // Lưu ssid wifi vào NVS
-    err = nvs_set_str(nvs_handle, NVS_WIFI_SSID, cSsid);
-    if (err != ESP_OK)
+        if (err != ESP_OK)
+        {
+            ESP_LOGE(TAG, "Error saving wifi credentials to NVS! (%s)\n", esp_err_to_name(err));
+        }
+
+        nvs_close(nvs_handle);
+    }
+    else
     {
-        ESP_LOGE(TAG,"Error saving wifi SSID to NVS! (%s)\n", esp_err_to_name(err));
+        ESP_LOGE(TAG, "Error opening NVS handle! (%s)\n", esp_err_to_name(err));
     }
-
-    // Lưu password wifi vào NVS
-    err = nvs_set_str(nvs_handle, NVS_WIFI_PASS, cPassword);
-    if (err != ESP_OK)
-    {
-        ESP_LOGE(TAG,"Error saving wifi password to NVS! (%s)\n", esp_err_to_name(err));
-    }
-
-    // Đóng NVS handle
-    nvs_close(nvs_handle);
 }
 
 void load_old_wifi_cred(char *cSsid, char *cPassword)
 {
     nvs_handle_t nvs_handle;
-    esp_err_t err;
+    esp_err_t err = nvs_open(NVS_WIFI_CRED, NVS_READONLY, &nvs_handle);
 
-    // Mở NVS
-    err = nvs_open(NVS_WIFI_CRED, NVS_READONLY, &nvs_handle);
-    if (err != ESP_OK)
+    if (err == ESP_OK)
     {
-        ESP_LOGE(TAG,"Error opening NVS handle! (%s)\n", esp_err_to_name(err));
-        return;
+        size_t ssid_len = 32;
+        size_t password_len = 64;
+
+        err = nvs_get_str(nvs_handle, NVS_WIFI_SSID, cSsid, &ssid_len);
+        err |= nvs_get_str(nvs_handle, NVS_WIFI_PASS, cPassword, &password_len);
+
+        if (err == ESP_OK)
+        {
+            // Process loaded data, if necessary
+        }
+        else if (err == ESP_ERR_NVS_NOT_FOUND)
+        {
+            ESP_LOGE(TAG, "SSID or password not found in NVS\n");
+        }
+        else
+        {
+            ESP_LOGE(TAG, "Error reading wifi credentials from NVS! (%s)\n", esp_err_to_name(err));
+        }
+
+        nvs_close(nvs_handle);
     }
-
-    // Đọc SSID wifi từ NVS
-    size_t ssid_len = 32;
-    err = nvs_get_str(nvs_handle, NVS_WIFI_SSID, cSsid, &ssid_len);
-
-    if (err == ESP_ERR_NVS_NOT_FOUND)
+    else
     {
-        ESP_LOGE(TAG,"Error reading old SSID wifi from NVS! (%s)\n", esp_err_to_name(err));
+        ESP_LOGE(TAG, "Error opening NVS handle! (%s)\n", esp_err_to_name(err));
     }
-    else if (err != ESP_OK)
-    {
-        ESP_LOGE(TAG,"Error reading wifi SSID from NVS! (%s)\n", esp_err_to_name(err));
-    }
-
-    // Đọc password wifi từ NVS
-    size_t password_len = 64;
-    err = nvs_get_str(nvs_handle, NVS_WIFI_PASS, cPassword, &password_len);
-
-    if (err == ESP_ERR_NVS_NOT_FOUND)
-    {
-        ESP_LOGE(TAG,"Error reading old wifi password from NVS! (%s)\n", esp_err_to_name(err));
-    }
-    else if (err != ESP_OK)
-    {
-        ESP_LOGE(TAG,"Error reading wifi password from NVS! (%s)\n", esp_err_to_name(err));
-    }
-
-    // Đóng NVS handle
-    nvs_close(nvs_handle);
 }
 
 /****************************************************************************/

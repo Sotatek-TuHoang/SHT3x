@@ -7,7 +7,10 @@
  *
  *****************************************************************************/
 
-// Include headers and libraries
+/****************************************************************************/
+/***        Include                                                       ***/
+/****************************************************************************/
+
 #include <stdio.h>
 #include <time.h>
 #include <sys/time.h>
@@ -64,12 +67,18 @@ static void send_data(void)
             pub_data("bee_humi", fHumi);
             check_warning();
         }
+        else
+        {
+            bSHT3x_status = true;
+            check_warning();
+            ESP_LOGI(TAG_SHT3x, "Can't measure SHT3x");
+        }
     }
     else 
     {
         bSHT3x_status = true;
         check_warning();
-        ESP_LOGI(TAG_SHT3x, "Can't read SHT3x");
+        ESP_LOGI(TAG_SHT3x, "Can't init SHT3x");
     }
 }
 
