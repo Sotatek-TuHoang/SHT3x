@@ -1,4 +1,4 @@
-# ESP32 IoT Project with SHT3x Sensor, Smart Config, and MQTT
+# ESP32 IoT Project with SHT3x Sensor, Smart Config, Power Save, and MQTT
 
 ## Introduction
 
