@@ -5,6 +5,6 @@
         "esp_err.h": "c",
         "bee_sht3x.h": "c"
     },
-    "idf.portWin": "COM3",
+    "idf.portWin": "COM6",
     "idf.flashType": "UART"
 }

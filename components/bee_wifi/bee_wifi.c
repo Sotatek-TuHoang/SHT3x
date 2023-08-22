@@ -38,8 +38,9 @@ static char cReceived_ssid[32];
 static char cReceived_password[64];
 
 /****************************************************************************/
-/***        List of handle                                      ***/
+/***        List of handle                                                ***/
 /****************************************************************************/
+
 static EventGroupHandle_t wifi_event_group;
 static TaskHandle_t prov_timeout_handle = NULL;
 static TaskHandle_t prov_fail_handle = NULL;
@@ -47,6 +48,7 @@ static TaskHandle_t prov_fail_handle = NULL;
 /****************************************************************************/
 /***        Event Handler                                                 ***/
 /****************************************************************************/
+
 static void event_handler(void* arg, esp_event_base_t event_base,
                           int32_t event_id, void* event_data)
 {
@@ -203,6 +205,7 @@ static void cnt_timeout(uint8_t *u8time)
 /****************************************************************************/
 /***        Event handler                                                 ***/
 /****************************************************************************/
+
 esp_err_t custom_prov_data_handler(uint32_t session_id, const uint8_t *inbuf, ssize_t inlen,
                                           uint8_t **outbuf, ssize_t *outlen, void *priv_data)
 {
@@ -265,7 +268,9 @@ void wifi_func_init(void)
     {
       wifi_prov_mgr_deinit();  
     }
-    xEventGroupWaitBits(wifi_event_group, WIFI_CONNECTED_EVENT, true, true, portMAX_DELAY);
+
+    TickType_t xMaxWaitTime = pdMS_TO_TICKS(3000); // Thời gian chờ kết nối wifi tối đa là 3s
+    xEventGroupWaitBits(wifi_event_group, WIFI_CONNECTED_EVENT, pdTRUE, pdTRUE, xMaxWaitTime);
 }
 
 /****************************************************************************/

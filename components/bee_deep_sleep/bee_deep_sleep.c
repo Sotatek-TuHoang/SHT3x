@@ -93,30 +93,7 @@ static void send_keep_alive()
     }
 }
 
-/****************************************************************************/
-/***        Exported Functions                                            ***/
-/****************************************************************************/
-
-void deep_sleep_register_rtc_timer_wakeup(void)
-{
-    const int wakeup_time_sec = 30;
-    ESP_LOGI(TAG_PM, "Enabling timer wakeup, %ds\n", wakeup_time_sec);
-    ESP_ERROR_CHECK(esp_sleep_enable_timer_wakeup(wakeup_time_sec * 1000000));
-}
-
-void deep_sleep_register_ext1_wakeup(int gpio_wakeup)
-{
-    const int ext_wakeup_pin = gpio_wakeup;
-    const uint64_t ext_wakeup_pin_mask = 1ULL << ext_wakeup_pin;
-    
-    ESP_ERROR_CHECK(esp_sleep_enable_ext1_wakeup(ext_wakeup_pin_mask, ESP_EXT1_WAKEUP_ANY_HIGH));
-}
-
-/****************************************************************************/
-/***        Task                                                          ***/
-/****************************************************************************/
-
-void deep_sleep_task(void *args)
+static void check_cause_wake_up(void)
 {
     // Get current time and calculate sleep time
     struct timeval now;
@@ -151,6 +128,34 @@ void deep_sleep_task(void *args)
         default:
             ESP_LOGI(TAG_PM, "Not a deep sleep reset\n");
     }
+}
+
+/****************************************************************************/
+/***        Exported Functions                                            ***/
+/****************************************************************************/
+
+void deep_sleep_register_rtc_timer_wakeup(void)
+{
+    const int wakeup_time_sec = 30;
+
+    ESP_ERROR_CHECK(esp_sleep_enable_timer_wakeup(wakeup_time_sec * 1000000));
+}
+
+void deep_sleep_register_ext1_wakeup(int gpio_wakeup)
+{
+    const int ext_wakeup_pin = gpio_wakeup;
+    const uint64_t ext_wakeup_pin_mask = 1ULL << ext_wakeup_pin;
+    
+    ESP_ERROR_CHECK(esp_sleep_enable_ext1_wakeup(ext_wakeup_pin_mask, ESP_EXT1_WAKEUP_ANY_HIGH));
+}
+
+/****************************************************************************/
+/***        Task                                                          ***/
+/****************************************************************************/
+
+void deep_sleep_task(void *args)
+{
+    check_cause_wake_up();
 
     // Handle different operational modes
     ESP_LOGI(TAG_PM, "Entering normal mode\n");
