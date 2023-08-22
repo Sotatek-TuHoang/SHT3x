@@ -147,6 +147,10 @@ void deep_sleep_register_ext1_wakeup(int gpio_wakeup)
     const uint64_t ext_wakeup_pin_mask = 1ULL << ext_wakeup_pin;
     
     ESP_ERROR_CHECK(esp_sleep_enable_ext1_wakeup(ext_wakeup_pin_mask, ESP_EXT1_WAKEUP_ANY_HIGH));
+
+    ESP_ERROR_CHECK(esp_sleep_pd_config(ESP_PD_DOMAIN_RTC_PERIPH, ESP_PD_OPTION_ON));
+    ESP_ERROR_CHECK(rtc_gpio_pullup_dis(ext_wakeup_pin));
+    ESP_ERROR_CHECK(rtc_gpio_pulldown_en(ext_wakeup_pin));
 }
 
 /****************************************************************************/

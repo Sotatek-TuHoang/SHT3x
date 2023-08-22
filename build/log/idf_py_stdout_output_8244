@@ -1,0 +1,86 @@
+[0;31mE (472) esp_image: invalid segment length 0xffffffff[0m
+[0;31mE (472) boot: Factory app partition is not bootable[0m
+[0;31mE (472) boot: No bootable app partitions in the partition table[0m
+ets Jun  8 2016 00:22:57
+
+rst:0x3 (SW_RESET),boot:0x12 (SPI_FAST_FLASH_BOOT)
+flash read err, 1000
+ets_main.c 371 
+ets Jun  8 2016 00:22:57
+
+rst:0x7 (TG0WDT_SYS_RESET),boot:0x12 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7284
+load:0x40078000,len:15884
+load:0x40080400,len:4
+load:0x40080404,len:3880
+entry 0x4008064c
+[0;32mI (58) boot: ESP-IDF v5.1-dirty 2nd stage bootloader[0m
+[0;32mI (58) boot: compile time Aug 21 2023 10:55:46[0m
+[0;32mI (58) boot: Multicore bootloader[0m
+[0;32mI (63) boot: chip revision: v1.0[0m
+[0;32mI (67) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (72) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (76) boot.esp32: SPI Flash Size : 4MB[0m
+[0;33mW (81) boot.esp32: PRO CPU has been reset by WDT.[0m
+[0;33mW (86) boot.esp32: WDT reset info: PRO CPU PC=0x40079b7d[0m
+[0;33mW (92) boot.esp32: WDT reset info: APP CPU PC=0x5466c33a[0m
+[0;32mI (98) boot: Enabling RNG early entropy source...[0m
+[0;32mI (103) boot: Partition Table:[0m
+[0;32mI (107) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (115) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (122) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (130) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (137) boot: End of partition table[0m
+[0;32mI (141) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=308bch (198844) map[0m
+[0;31mE (222) esp_image: invalid segment length 0xffff9fff[0m
+[0;31mE (222) boot: Factory app partition is not bootable[0m
+[0;31mE (222) boot: No bootable app partitions in the partition table[0m
+ets Jun  8 2016 00:22:57
+
+rst:0x3 (SW_RESET),boot:0x12 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7284
+load:0x40078000,len:15884
+load:0x40080400,len:4
+load:0x40080404,len:3880
+load:0x00000000,len:0
+ho 12 tail 0 room 4
+load:0x5a000000,len:1193088436
+1162 mmu set 00010000, pos 00010000
+1162 mmu set 00020000, pos 00020000
+1162 mmu set 00030000, pos 00030000
+1162 mmu set 00040000, pos 00040000
+1162 mmu set 00050000, pos 00050000
+1162 mmu set 00060000, pos 00060000
+1162 mmu set 00070000, pos 00070000
+1162 mmu set 00080000, pos 00080000
+1162 mmu set 00090000, pos 00090000
+1162 mmu set 000a0000, pos 000a0000
+1162 mmu set 000b0000, pos 000b0000
+1162 mmu set 000c0000, pos 000c0000
+1162 mmu set 000d0000, pos 000d0000
+1162 mmu set 000e0000, pos 000e0000
+1162 mmu set 000f0000, pos 000f0000
+1162 mmu set 00100000, pos 00100000
+1162 mmu set 00110000, pos 00110000
+1162 mmu set 00120000, pos 00120000
+1162 mmu set 00130000, pos 00130000
+1162 mmu set 00140000, pos 00140000
+1162 mmu set 00150000, pos 00150000
+1162 mmu set 00160000, pos 00160000
+ets Jun  8 2016 00:22:57
+
+rst:0x7 (TG0WDT_SYS_RESET),boot:0x12 (SPI_FAST_FLASH_BOOT)
+flash read err, 1000
+ets_main.c 371 
+ets Jun  8 2016 00:22:57
+
+rst:0x7 (TG0WDT_SYS_RESET),boot:0x12 (SPI_FAST_FLASH_BOOT)
+flash read err, 1000
+ets_main.c 371 
+ets
