@@ -263,7 +263,7 @@ void wifi_func_init(void)
         ESP_LOGI(TAG, "Already provisioned, starting Wi-Fi STA");
         wifi_prov_mgr_deinit();
         wifi_init_sta();
-        TickType_t xMaxWaitTime = pdMS_TO_TICKS(4000); // Thời gian chờ kết nối wifi tối đa là 3s
+        TickType_t xMaxWaitTime = pdMS_TO_TICKS(4000); // Thời gian chờ kết nối wifi tối đa là 4s
         xEventGroupWaitBits(wifi_event_group, WIFI_CONNECTED_EVENT, true, true, xMaxWaitTime);
     }
     else
