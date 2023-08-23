@@ -94,7 +94,27 @@ void mqtt_func_init(void)
 /***        Exported Functions                                            ***/
 /****************************************************************************/
 
-void pub_data(const char *object, float values)
+void pub_data(const char *object, float temp, float humi)
+{
+    cJSON *json_data = cJSON_CreateObject();
+    cJSON_AddStringToObject(json_data, "thing_token", cMac_str);
+    cJSON_AddStringToObject(json_data, "cmd_name", "Bee.data");
+    cJSON_AddStringToObject(json_data, "object_type", object);
+    
+    cJSON *values = cJSON_AddObjectToObject(json_data, "values");
+    cJSON_AddNumberToObject(values, "temperature", temp);
+    cJSON_AddNumberToObject(values, "humidity", humi);
+    
+    cJSON_AddNumberToObject(json_data, "trans_code", u8trans_code++);
+
+    char *json_str = cJSON_Print(json_data);
+    esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, 1, 0);
+
+    cJSON_Delete(json_data);
+    free(json_str);
+}
+
+void pub_warning(const char *object, float values)
 {
 
     cJSON *json_data = cJSON_CreateObject();
@@ -127,7 +147,7 @@ void check_warning(void)
     if (u8tmp_warning_values != u8warning_values)
     {
         u8warning_values = u8tmp_warning_values;
-        pub_data("bee_warnings", u8warning_values);
+        pub_warning("bee_warnings", u8warning_values);
     }
 }
 

@@ -63,8 +63,9 @@ static void send_data(void)
         {
             bSHT3x_status = false;
             ESP_LOGI(TAG_SHT3x, "Temperature: %.2f °C, Humidity: %.2f %%", fTemp, fHumi);
-            pub_data("bee_temp", fTemp);
-            pub_data("bee_humi", fHumi);
+            
+            pub_data("bee_data", fTemp, fHumi);
+
             check_warning();
         }
         else

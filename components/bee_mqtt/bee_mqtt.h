@@ -34,7 +34,7 @@
  */
 void mqtt_func_init(void);
 
-void pub_data(const char *object, float values);
+void pub_data(const char *object, float temp, float humi);
 
 /**
  * @brief Checks sensor warnings and sends a warning message if conditions are met.
