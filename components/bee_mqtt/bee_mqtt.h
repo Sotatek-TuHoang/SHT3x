@@ -13,10 +13,6 @@
 #define BEE_MQTT_H
 
 #define MAC_ADDR_SIZE        6
-#define H_TEMP_THRESHOLD       30
-#define H_HUMI_THRESHOLD       80
-#define L_TEMP_THRESHOLD       25
-#define L_HUMI_THRESHOLD       60
 
 #define BROKER_ADDRESS_URI  "mqtt://61.28.238.97:1993"
 #define USERNAME            "VBeeHome"
@@ -34,17 +30,7 @@
  */
 void mqtt_func_init(void);
 
-void pub_data(const char *object, float temp, float humi);
-
-/**
- * @brief Checks sensor warnings and sends a warning message if conditions are met.
- * This function evaluates sensor error conditions and threshold crossings for temperature and humidity.
- * Depending on the conditions, it sets warning flags and triggers sending a warning message.
- * The warning values are composed into a byte, and if they differ from the previous state,
- * a warning message is sent using the `send_warning()` function.
- */
-void check_warning();
-
+void pub_data(float temp, float humi);
 
 /**
  * @brief Sends a keep-alive MQTT message to indicate device status.
@@ -56,6 +42,8 @@ void check_warning();
  * @note The MQTT client (client) and topic (cTopic_pub) must be properly configured before calling this function.
  */
 void pub_keep_alive(void);
+
+void pub_warning(uint8_t u8Values);
 
 #endif /* BEE_MQTT_H */
 

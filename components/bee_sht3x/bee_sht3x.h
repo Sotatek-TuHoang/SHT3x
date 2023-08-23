@@ -41,8 +41,11 @@
 /****************************************************************************/
 
 /**Define variable*/
-#define u8max_error_cnt 10
-#define num_readings 5
+#define H_TEMP_THRESHOLD 30
+#define H_HUMI_THRESHOLD 80
+#define L_TEMP_THRESHOLD 25
+#define L_HUMI_THRESHOLD 60
+#define NO_WARNNG 31 //Because warning value can't reach 00011111 = 31
 
 // definition of possible I2C slave addresses
 #define SHT3x_ADDR_1 0x44        // ADDR pin connected to GND/VSS (default)
@@ -130,6 +133,8 @@ typedef struct {
 /****************************************************************************/
 /***        Exported Functions                                            ***/
 /****************************************************************************/
+
+uint32_t sdk_system_get_time();
 
 /**
  * @brief	Initialize a SHT3x sensor
@@ -262,6 +267,8 @@ bool sht3x_compute_values (sht3x_raw_data_t raw_data,
  */
 bool sht3x_get_results (sht3x_sensor_t* device, 
                         float* fTemp, float* fHumi);
+
+uint8_t check_warning(bool bSHT3x_status, float fTemp, float fHumi);
 
 #endif /* __SHT3x_H__ */
 /****************************************************************************/

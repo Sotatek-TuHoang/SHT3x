@@ -25,7 +25,6 @@
 /****************************************************************************/
 
 static RTC_DATA_ATTR uint8_t u8trans_code = 0;
-static RTC_DATA_ATTR uint8_t u8warning_values;
 
 static char cMac_str[13];
 static char cTopic_pub[64] = "VB/DMP/VBEEON/CUSTOM/SMH/DeviceID/telemetry";
@@ -94,16 +93,14 @@ void mqtt_func_init(void)
 /***        Exported Functions                                            ***/
 /****************************************************************************/
 
-void pub_data(const char *object, float temp, float humi)
+void pub_data(float fTemp, float fHumi)
 {
     cJSON *json_data = cJSON_CreateObject();
     cJSON_AddStringToObject(json_data, "thing_token", cMac_str);
     cJSON_AddStringToObject(json_data, "cmd_name", "Bee.data");
-    cJSON_AddStringToObject(json_data, "object_type", object);
-    
     cJSON *values = cJSON_AddObjectToObject(json_data, "values");
-    cJSON_AddNumberToObject(values, "temperature", temp);
-    cJSON_AddNumberToObject(values, "humidity", humi);
+    cJSON_AddNumberToObject(values, "temperature", fTemp);
+    cJSON_AddNumberToObject(values, "humidity", fHumi);
     
     cJSON_AddNumberToObject(json_data, "trans_code", u8trans_code++);
 
@@ -114,14 +111,14 @@ void pub_data(const char *object, float temp, float humi)
     free(json_str);
 }
 
-void pub_warning(const char *object, float values)
+void pub_warning(uint8_t u8Values)
 {
 
     cJSON *json_data = cJSON_CreateObject();
     cJSON_AddStringToObject(json_data, "thing_token", cMac_str);
     cJSON_AddStringToObject(json_data, "cmd_name", "Bee.data");
-    cJSON_AddStringToObject(json_data, "object_type", object);
-    cJSON_AddNumberToObject(json_data, "values", values);
+    cJSON_AddStringToObject(json_data, "object_type", "Bee.warning");
+    cJSON_AddNumberToObject(json_data, "values", u8Values);
     cJSON_AddNumberToObject(json_data, "trans_code", u8trans_code++);
 
     char *json_str = cJSON_Print(json_data);
@@ -129,26 +126,6 @@ void pub_warning(const char *object, float values)
 
     cJSON_Delete(json_data);
     free(json_str);
-}
-
-void check_warning(void)
-{
-    extern float fTemp;
-    extern float fHumi;
-    extern bool bSHT3x_status;
-
-    bool bH_Temp_threshold = fTemp > H_TEMP_THRESHOLD;
-    bool bL_Temp_threshold = fTemp < L_TEMP_THRESHOLD;
-    bool bH_Humi_threshold = fHumi > H_HUMI_THRESHOLD;
-    bool bL_Humi_threshold = fHumi < L_HUMI_THRESHOLD;
-
-    uint8_t u8tmp_warning_values = (bSHT3x_status << 4) | (bH_Temp_threshold << 3) | (bL_Temp_threshold << 2) | (bH_Humi_threshold << 1) | bL_Humi_threshold;
-
-    if (u8tmp_warning_values != u8warning_values)
-    {
-        u8warning_values = u8tmp_warning_values;
-        pub_warning("bee_warnings", u8warning_values);
-    }
 }
 
 void pub_keep_alive(void)

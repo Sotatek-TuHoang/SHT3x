@@ -120,7 +120,144 @@ sht3x_sensor_t* sht3x_init_sensor(uint8_t bus, uint8_t addr)
     return device;
 }
 
-static uint32_t sdk_system_get_time()
+/****************************************************************************/
+/***        Local Functions                                               ***/
+/****************************************************************************/
+
+static bool sht3x_is_measuring (sht3x_sensor_t* device)
+{
+    if (!device) return false;
+
+    device->error_code = SHT3x_OK;
+
+    // not running if measurement is not started at all or 
+    // it is not the first measurement in periodic mode
+    if (!device->meas_started || !device->meas_first)
+      return false;
+    
+    // not running if time elapsed is greater than duration
+    uint32_t elapsed = sdk_system_get_time() - device->meas_start_time;
+
+    return elapsed < SHT3x_MEAS_DURATION_US[device->repeatability];
+}
+
+static bool sht3x_send_command(sht3x_sensor_t* device, uint16_t cmd)
+{
+    if (!device) return false;
+
+    uint8_t data[2] = { cmd >> 8, cmd & 0xff };
+
+    debug_device ("send command MSB=%02x LSB=%02x", __FUNCTION__, device, data[0], data[1]);
+
+    int err = i2c_slave_write(device->bus, device->addr, 0, data, 2);
+  
+    if (err)
+    {
+        device->error_code |= (err == -EBUSY) ? SHT3x_I2C_BUSY : SHT3x_I2C_SEND_CMD_FAILED;
+        error_device ("i2c error %d on write command %02x", __FUNCTION__, device, err, cmd);
+        return false;
+    }
+
+    return true;
+}
+
+static bool sht3x_read_data(sht3x_sensor_t* device, uint8_t *data,  uint32_t len)
+{
+    if (!device) return false;
+    int err = i2c_slave_read(device->bus, device->addr, 0, data, len);
+        
+    if (err)
+    {
+        device->error_code |= (err == -EBUSY) ? SHT3x_I2C_BUSY : SHT3x_I2C_READ_FAILED;
+        error_device ("error %d on read %lu byte", __FUNCTION__, device, err, (unsigned long)len);
+        return false;
+    }
+
+    #ifdef SHT3x_DEBUG_LEVEL_2
+    printf("SHT3x %s: bus %d, addr %02x - read following bytes: ", 
+           __FUNCTION__, device->bus, device->addr);
+    for (int i=0; i < len; i++)
+        printf("%02x ", data[i]);
+    printf("\n");
+    #endif // ifdef SHT3x_DEBUG_LEVEL_2
+
+    return true;
+}
+
+static bool sht3x_reset (sht3x_sensor_t* device)
+{
+    if (!device) return false;
+
+    debug_device ("soft-reset triggered", __FUNCTION__, device);
+    
+    device->error_code = SHT3x_OK;
+
+    // send reset command
+    if (!sht3x_send_command(device, SHT3x_RESET_CMD))
+    {
+        device->error_code |= SHT3x_SEND_RESET_CMD_FAILED;
+        return false;
+    }   
+    // wait for small amount of time needed (according to datasheet 0.5ms)
+    vTaskDelay (100 / portTICK_PERIOD_MS);
+    
+    uint16_t status;
+
+    // check the status after reset
+    if (!sht3x_get_status(device, &status))
+        return false;
+        
+    return true;    
+}
+
+static bool sht3x_get_status (sht3x_sensor_t* device, uint16_t* status)
+{
+    if (!device || !status) return false;
+
+    device->error_code = SHT3x_OK;
+
+    uint8_t  data[3];
+
+    if (!sht3x_send_command(device, SHT3x_STATUS_CMD) || !sht3x_read_data(device, data, 3))
+    {
+        device->error_code |= SHT3x_SEND_STATUS_CMD_FAILED;
+        return false;
+    }
+
+    *status = data[0] << 8 | data[1];
+    debug_device ("status=%02x", __FUNCTION__, device, *status);
+    return true;
+}
+
+
+const uint8_t g_polynom = 0x31;
+
+static uint8_t crc8 (uint8_t data[], int len)
+{
+    // initialization value
+    uint8_t crc = 0xff;
+    
+    // iterate over all bytes
+    for (int i=0; i < len; i++)
+    {
+        crc ^= data[i];  
+    
+        for (int i = 0; i < 8; i++)
+        {
+            bool xor = crc & 0x80;
+            crc = crc << 1;
+            crc = xor ? crc ^ g_polynom : crc;
+        }
+    }
+
+    return crc;
+}
+
+/****************************************************************************/
+/***        Exported Functions                                            ***/
+/****************************************************************************/
+
+uint32_t sdk_system_get_time()
 {
     struct timeval time;
     gettimeofday(&time,0);
@@ -264,135 +401,25 @@ bool sht3x_get_results (sht3x_sensor_t* device, float* fTemp, float* fHumi)
     return sht3x_compute_values (raw_data, fTemp, fHumi);
 }
 
-/* Functions for internal use only */
-
-static bool sht3x_is_measuring (sht3x_sensor_t* device)
+RTC_DATA_ATTR uint8_t u8warning_values;
+uint8_t check_warning(bool bSHT3x_status, float fTemp, float fHumi)
 {
-    if (!device) return false;
+    bool bH_Temp_threshold = fTemp > H_TEMP_THRESHOLD;
+    bool bL_Temp_threshold = fTemp < L_TEMP_THRESHOLD;
+    bool bH_Humi_threshold = fHumi > H_HUMI_THRESHOLD;
+    bool bL_Humi_threshold = fHumi < L_HUMI_THRESHOLD;
 
-    device->error_code = SHT3x_OK;
+    uint8_t u8tmp_warning_values = (bSHT3x_status << 4) | (bH_Temp_threshold << 3) | (bL_Temp_threshold << 2) | (bH_Humi_threshold << 1) | bL_Humi_threshold;
 
-    // not running if measurement is not started at all or 
-    // it is not the first measurement in periodic mode
-    if (!device->meas_started || !device->meas_first)
-      return false;
-    
-    // not running if time elapsed is greater than duration
-    uint32_t elapsed = sdk_system_get_time() - device->meas_start_time;
-
-    return elapsed < SHT3x_MEAS_DURATION_US[device->repeatability];
-}
-
-static bool sht3x_send_command(sht3x_sensor_t* device, uint16_t cmd)
-{
-    if (!device) return false;
-
-    uint8_t data[2] = { cmd >> 8, cmd & 0xff };
-
-    debug_device ("send command MSB=%02x LSB=%02x", __FUNCTION__, device, data[0], data[1]);
-
-    int err = i2c_slave_write(device->bus, device->addr, 0, data, 2);
-  
-    if (err)
+    if (u8tmp_warning_values != u8warning_values)
     {
-        device->error_code |= (err == -EBUSY) ? SHT3x_I2C_BUSY : SHT3x_I2C_SEND_CMD_FAILED;
-        error_device ("i2c error %d on write command %02x", __FUNCTION__, device, err, cmd);
-        return false;
+        u8warning_values = u8tmp_warning_values;
+        return u8warning_values;
     }
-
-    return true;
-}
-
-static bool sht3x_read_data(sht3x_sensor_t* device, uint8_t *data,  uint32_t len)
-{
-    if (!device) return false;
-    int err = i2c_slave_read(device->bus, device->addr, 0, data, len);
-        
-    if (err)
+    else
     {
-        device->error_code |= (err == -EBUSY) ? SHT3x_I2C_BUSY : SHT3x_I2C_READ_FAILED;
-        error_device ("error %d on read %lu byte", __FUNCTION__, device, err, (unsigned long)len);
-        return false;
+        return NO_WARNNG;
     }
-
-    #ifdef SHT3x_DEBUG_LEVEL_2
-    printf("SHT3x %s: bus %d, addr %02x - read following bytes: ", 
-           __FUNCTION__, device->bus, device->addr);
-    for (int i=0; i < len; i++)
-        printf("%02x ", data[i]);
-    printf("\n");
-    #endif // ifdef SHT3x_DEBUG_LEVEL_2
-
-    return true;
-}
-
-static bool sht3x_reset (sht3x_sensor_t* device)
-{
-    if (!device) return false;
-
-    debug_device ("soft-reset triggered", __FUNCTION__, device);
-    
-    device->error_code = SHT3x_OK;
-
-    // send reset command
-    if (!sht3x_send_command(device, SHT3x_RESET_CMD))
-    {
-        device->error_code |= SHT3x_SEND_RESET_CMD_FAILED;
-        return false;
-    }   
-    // wait for small amount of time needed (according to datasheet 0.5ms)
-    vTaskDelay (100 / portTICK_PERIOD_MS);
-    
-    uint16_t status;
-
-    // check the status after reset
-    if (!sht3x_get_status(device, &status))
-        return false;
-        
-    return true;    
-}
-
-static bool sht3x_get_status (sht3x_sensor_t* device, uint16_t* status)
-{
-    if (!device || !status) return false;
-
-    device->error_code = SHT3x_OK;
-
-    uint8_t  data[3];
-
-    if (!sht3x_send_command(device, SHT3x_STATUS_CMD) || !sht3x_read_data(device, data, 3))
-    {
-        device->error_code |= SHT3x_SEND_STATUS_CMD_FAILED;
-        return false;
-    }
-
-    *status = data[0] << 8 | data[1];
-    debug_device ("status=%02x", __FUNCTION__, device, *status);
-    return true;
-}
-
-
-const uint8_t g_polynom = 0x31;
-
-static uint8_t crc8 (uint8_t data[], int len)
-{
-    // initialization value
-    uint8_t crc = 0xff;
-    
-    // iterate over all bytes
-    for (int i=0; i < len; i++)
-    {
-        crc ^= data[i];  
-    
-        for (int i = 0; i < 8; i++)
-        {
-            bool xor = crc & 0x80;
-            crc = crc << 1;
-            crc = xor ? crc ^ g_polynom : crc;
-        }
-    }
-
-    return crc;
 }
 
 /****************************************************************************/

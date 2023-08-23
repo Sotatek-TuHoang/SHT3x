@@ -22,6 +22,7 @@
 #include "driver/rtc_io.h"
 #include "driver/gpio.h"
 
+#include "bee_nvs.h"
 #include "bee_deep_sleep.h"
 #include "bee_mqtt.h"
 #include "bee_sht3x.h"
@@ -46,13 +47,25 @@ static const char *TAG_PM = "POWER MODE";
 float fTemp;
 float fHumi;
 bool bSHT3x_status;
+static bool bInit;
 
 /****************************************************************************/
 /***        Local Functions                                               ***/
 /****************************************************************************/
 
+static void init_resource_pub_mqtt()
+{
+    if (!bInit)
+    {
+        nvs_flash_func_init();
+        wifi_func_init();
+        mqtt_func_init();
+        bInit = true;
+    }
+}
+
 // Function to send sensor data
-static void send_data(void)
+static void read_data(void)
 {
     // Initialize and measure using the SHT3x sensor
     sht3x_sensor_t* sensor;
@@ -63,34 +76,32 @@ static void send_data(void)
         {
             bSHT3x_status = false;
             ESP_LOGI(TAG_SHT3x, "Temperature: %.2f °C, Humidity: %.2f %%", fTemp, fHumi);
-            
-            pub_data("bee_data", fTemp, fHumi);
-
-            check_warning();
+            uint8_t u8Warning_value = check_warning(bSHT3x_status, fTemp, fHumi);
+            if (u8Warning_value != NO_WARNNG)
+            {
+                init_resource_pub_mqtt();
+                pub_warning(u8Warning_value);
+                vTaskDelay(1000 / portTICK_PERIOD_MS);
+            }
         }
         else
         {
             bSHT3x_status = true;
-            check_warning();
+            uint8_t u8Warning_value = check_warning(bSHT3x_status, fTemp, fHumi);
+            init_resource_pub_mqtt();
+            pub_warning(u8Warning_value);
+            vTaskDelay(1000 / portTICK_PERIOD_MS);
             ESP_LOGI(TAG_SHT3x, "Can't measure SHT3x");
         }
     }
     else 
     {
         bSHT3x_status = true;
-        check_warning();
+        uint8_t u8Warning_value = check_warning(bSHT3x_status, fTemp, fHumi);
+        init_resource_pub_mqtt();
+        pub_warning(u8Warning_value);
+        vTaskDelay(1000 / portTICK_PERIOD_MS);
         ESP_LOGI(TAG_SHT3x, "Can't init SHT3x");
-    }
-}
-
-// Function to send keep-alive message per 70s (2 times sleep)
-static void send_keep_alive()
-{
-    ++u8cnt_sleep;
-    if (u8cnt_sleep >= 2)
-    {
-        u8cnt_sleep = 0;
-        pub_keep_alive();
     }
 }
 
@@ -107,6 +118,29 @@ static void check_cause_wake_up(void)
         case ESP_SLEEP_WAKEUP_TIMER:
         {
             ESP_LOGI(TAG_PM, "Wake up from timer. Time spent in deep sleep: %dms\n", sleep_time_ms);
+
+            if (u8cnt_sleep == 6)
+            {
+                init_resource_pub_mqtt();
+                read_data();
+                pub_data(fTemp, fHumi);
+                pub_keep_alive();
+                u8cnt_sleep = 0;
+                vTaskDelay(1000 / portTICK_PERIOD_MS);
+            }
+            else if (u8cnt_sleep == 3)
+            {
+                u8cnt_sleep++;
+                init_resource_pub_mqtt();
+                read_data();
+                pub_data(fTemp, fHumi);
+                vTaskDelay(1000 / portTICK_PERIOD_MS);
+            }
+            else
+            {   
+                u8cnt_sleep++;
+                read_data();
+            }
             break;
         }
 
@@ -116,7 +150,7 @@ static void check_cause_wake_up(void)
             {
                 int pin = __builtin_ffsll(wakeup_pin_mask) - 1;
                 ESP_LOGI(TAG_PM, "Wake up from GPIO %d\n", pin);
-                wifi_prov(); //if wake up by gpio num 2, start provisioning wifi
+                //wifi_prov(); //if wake up by gpio num 2, start provisioning wifi
             }
             else
             {
@@ -137,7 +171,7 @@ static void check_cause_wake_up(void)
 
 void deep_sleep_register_rtc_timer_wakeup(void)
 {
-    const int wakeup_time_sec = 30;
+    const int wakeup_time_sec = 10;
 
     ESP_ERROR_CHECK(esp_sleep_enable_timer_wakeup(wakeup_time_sec * 1000000));
 }
@@ -159,40 +193,17 @@ void deep_sleep_register_ext1_wakeup(int gpio_wakeup)
 /****************************************************************************/
 
 void deep_sleep_task(void *args)
-{
-    check_cause_wake_up();
-
+{    
     // Handle different operational modes
     ESP_LOGI(TAG_PM, "Entering normal mode\n");
 
-    extern bool bProv;
-
-    if (bProv == true)
-    {
-        // If in provisioning mode, delay the task until WiFi provisioning is complete or a timeout occurs.
-        // This ensures that the device remains in the provisioning state until the process is finished.
-        while (bProv == true)
-        {
-            vTaskDelay(100);
-        }        
-    }
-    else
-    {
-        // If not in provisioning mode, perform the following actions:
-        send_data();         // Send temperature and humidity data using MQTT.
-        send_keep_alive();   // Send a keep-alive message to maintain the MQTT connection.
-        vTaskDelay(pdMS_TO_TICKS(1000)); // Delay for 1 second before entering deep sleep.
-    }
-
+    check_cause_wake_up();
 
     // Prepare for deep sleep and enter
     ESP_LOGI(TAG_PM, "Entering deep sleep again\n");
 
     // Get deep sleep enter time
     gettimeofday(&sleep_enter_time, NULL);
-
-    // Enable timer-based wake-up for the next sleep cycle
-    deep_sleep_register_rtc_timer_wakeup();
     
     // Enter deep sleep
     esp_deep_sleep_start();
