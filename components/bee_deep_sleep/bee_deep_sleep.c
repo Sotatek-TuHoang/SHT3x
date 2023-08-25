@@ -64,6 +64,17 @@ static void init_resource_pub_mqtt()
     }
 }
 
+static void check_and_pub_warning()
+{
+    uint8_t u8Warning_value = check_warning(bSHT3x_status, fTemp, fHumi);
+    if (u8Warning_value != NO_WARNNG)
+    {
+        init_resource_pub_mqtt();
+        pub_warning(u8Warning_value);
+        vTaskDelay(1000 / portTICK_PERIOD_MS);
+    }
+}
+
 // Function to send sensor data
 static void read_data(void)
 {
@@ -76,31 +87,19 @@ static void read_data(void)
         {
             bSHT3x_status = false;
             ESP_LOGI(TAG_SHT3x, "Temperature: %.2f °C, Humidity: %.2f %%", fTemp, fHumi);
-            uint8_t u8Warning_value = check_warning(bSHT3x_status, fTemp, fHumi);
-            if (u8Warning_value != NO_WARNNG)
-            {
-                init_resource_pub_mqtt();
-                pub_warning(u8Warning_value);
-                vTaskDelay(1000 / portTICK_PERIOD_MS);
-            }
+            check_and_pub_warning();
         }
         else
         {
             bSHT3x_status = true;
-            uint8_t u8Warning_value = check_warning(bSHT3x_status, fTemp, fHumi);
-            init_resource_pub_mqtt();
-            pub_warning(u8Warning_value);
-            vTaskDelay(1000 / portTICK_PERIOD_MS);
+            check_and_pub_warning();
             ESP_LOGI(TAG_SHT3x, "Can't measure SHT3x");
         }
     }
     else 
     {
         bSHT3x_status = true;
-        uint8_t u8Warning_value = check_warning(bSHT3x_status, fTemp, fHumi);
-        init_resource_pub_mqtt();
-        pub_warning(u8Warning_value);
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
+        check_and_pub_warning();
         ESP_LOGI(TAG_SHT3x, "Can't init SHT3x");
     }
 }
@@ -150,7 +149,12 @@ static void check_cause_wake_up(void)
             {
                 int pin = __builtin_ffsll(wakeup_pin_mask) - 1;
                 ESP_LOGI(TAG_PM, "Wake up from GPIO %d\n", pin);
-                //wifi_prov(); //if wake up by gpio num 2, start provisioning wifi
+
+                nvs_flash_func_init();
+                wifi_func_init();
+                wifi_prov();
+
+                vTaskDelay (20000 / portTICK_PERIOD_MS);
             }
             else
             {
@@ -169,10 +173,8 @@ static void check_cause_wake_up(void)
 /***        Exported Functions                                            ***/
 /****************************************************************************/
 
-void deep_sleep_register_rtc_timer_wakeup(void)
+void deep_sleep_register_rtc_timer_wakeup(uint8_t wakeup_time_sec)
 {
-    const int wakeup_time_sec = 10;
-
     ESP_ERROR_CHECK(esp_sleep_enable_timer_wakeup(wakeup_time_sec * 1000000));
 }
 

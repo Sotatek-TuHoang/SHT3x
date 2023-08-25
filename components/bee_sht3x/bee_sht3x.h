@@ -45,7 +45,7 @@
 #define H_HUMI_THRESHOLD 80
 #define L_TEMP_THRESHOLD 25
 #define L_HUMI_THRESHOLD 60
-#define NO_WARNNG 31 //Because warning value can't reach 00011111 = 31
+#define NO_WARNNG 255
 
 // definition of possible I2C slave addresses
 #define SHT3x_ADDR_1 0x44        // ADDR pin connected to GND/VSS (default)

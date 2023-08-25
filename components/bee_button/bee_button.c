@@ -7,58 +7,68 @@
  *
  ***************************************************************************/
 
-#include "bee_button.h"
+#include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "freertos/queue.h"
 #include "driver/gpio.h"
-#include <esp_log.h>
 
 #include "bee_button.h"
 #include "bee_wifi.h"
+#include "bee_ota.h"
 
-static const char *TAG = "Button";
+static bool button_pressed = false;
+static TickType_t button_press_time = 0;
+static TickType_t current_time = 0;
 
-QueueHandle_t       wifi_prov_evt_queue;
-
-static void IRAM_ATTR wifi_prov_button_isr_handler(void* arg)
+static void IRAM_ATTR gpio_isr_handler(void* arg)
 {
-    uint32_t gpio_num = (uint32_t)arg;
-    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
-    xQueueSendFromISR(wifi_prov_evt_queue, &gpio_num, &xHigherPriorityTaskWoken);
-    if (xHigherPriorityTaskWoken)
+    button_pressed = !button_pressed;
+    if (button_pressed)
     {
-        portYIELD_FROM_ISR();
+        button_press_time = xTaskGetTickCount();
+        xTaskCreate(button_task, "button_task", 2048, NULL, 10, NULL);
     }
 }
 
-void wifi_prov_button_isr(void* arg)
+void button_task(void* arg)
 {
-    uint8_t gpio_num;
-    for (;;) {
-        if (xQueueReceive(wifi_prov_evt_queue, &gpio_num, portMAX_DELAY))
-        {
-            wifi_prov();
-            ESP_LOGI(TAG, "Wifi prov button clicked");
-        }
-    }
-}
+    while (button_pressed)
+    {
+        current_time = xTaskGetTickCount();
+        TickType_t press_duration = (current_time - button_press_time) * portTICK_PERIOD_MS;
 
+        printf("Button pressed for %lu ms\n", (uint32_t)press_duration);
+        vTaskDelay(1000 / portTICK_PERIOD_MS);
+    }
+
+    TickType_t press_duration = (current_time - button_press_time) * portTICK_PERIOD_MS;
+    if (press_duration >= 5000 && press_duration <= 10000)
+    {
+        printf("Enter Prov WiFi Mode\n");
+        wifi_prov();
+    }
+    else if (press_duration > 10000)
+    {
+        printf("Enter OTA Mode\n");
+    }
+
+    vTaskDelete(NULL);
+}
 
 void button_init(int gpio_num)
 {
-    gpio_install_isr_service(0);
-    gpio_isr_handler_add(gpio_num, wifi_prov_button_isr_handler, (void*) gpio_num);
+    gpio_config_t io_conf = {};
+    io_conf.intr_type = GPIO_INTR_POSEDGE;
+    io_conf.pin_bit_mask = (1ULL << gpio_num);
+    io_conf.mode = GPIO_MODE_INPUT;
+    io_conf.pull_up_en = 1;
+    gpio_config(&io_conf);
 
-    esp_rom_gpio_pad_select_gpio(gpio_num);
-
-    gpio_set_direction(gpio_num, GPIO_MODE_INPUT);
     gpio_set_pull_mode(gpio_num, GPIO_PULLUP_ONLY);
-
-    gpio_set_intr_type(gpio_num, GPIO_INTR_POSEDGE);
-
-    wifi_prov_evt_queue = xQueueCreate(5, sizeof(uint8_t));
+    gpio_install_isr_service(ESP_INTR_FLAG_DEFAULT);
+    gpio_isr_handler_add(gpio_num, gpio_isr_handler, NULL);
 }
+
 
 /****************************************************************************/
 /***        END OF FILE                                                   ***/

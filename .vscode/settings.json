@@ -3,7 +3,13 @@
     "files.associations": {
         "bee_deep_sleep.h": "c",
         "esp_err.h": "c",
-        "bee_sht3x.h": "c"
+        "bee_sht3x.h": "c",
+        "bee_button.h": "c",
+        "esp_log.h": "c",
+        "esp_system.h": "c",
+        "esp_event.h": "c",
+        "bee_ota.h": "c",
+        "bee_mqtt.h": "c"
     },
     "idf.portWin": "COM3",
     "idf.flashType": "UART"

@@ -1,0 +1,25 @@
+[1/11] Performing build step for 'bootloader'
+[1/1] cmd.exe /C "cd /D E:\SHT3x_Powersave\build\bootloader\esp-idf\esptool_py && C:\Espressif\python_env\idf5.1_py3.11_env\Scripts\python.exe C:/Espressif/frameworks/esp-idf-v5.1/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 E:/SHT3x_Powersave/build/bootloader/bootloader.bin"
+Bootloader binary size 0x6a10 bytes. 0x5f0 bytes (5%) free.
+[2/9] Building C object esp-idf/bee_button/CMakeFiles/__idf_bee_button.dir/bee_button.c.obj
+E:/SHT3x_Powersave/components/bee_button/bee_button.c: In function 'button_isr_handler':
+E:/SHT3x_Powersave/components/bee_button/bee_button.c:39:24: warning: unused variable 'button_press_duration' [-Wunused-variable]
+   39 |             TickType_t button_press_duration = button_release_time - button_press_start_time;
+      |                        ^~~~~~~~~~~~~~~~~~~~~
+E:/SHT3x_Powersave/components/bee_button/bee_button.c: At top level:
+E:/SHT3x_Powersave/components/bee_button/bee_button.c:19:20: warning: 'TAG' defined but not used [-Wunused-variable]
+   19 | static const char *TAG = "Button";
+      |                    ^~~
+[3/9] Linking C static library esp-idf\bee_button\libbee_button.a
+[4/9] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/bee_main.c.obj
+[5/9] Linking C static library esp-idf\main\libmain.a
+[6/9] Generating ld/sections.ld
+[7/9] Linking CXX executable SHT3x_Powersave.elf
+[8/9] Generating binary image from built executable
+esptool.py v4.6.2
+Creating esp32 image...
+Merged 25 ELF sections
+Successfully created esp32 image.
+Generated E:/SHT3x_Powersave/build/SHT3x_Powersave.bin
+[9/9] cmd.exe /C "cd /D E:\SHT3x_Powersave\build\esp-idf\esptool_py && C:\Espressif\python_env\idf5.1_py3.11_env\Scripts\python.exe C:/Espressif/frameworks/esp-idf-v5.1/components/partition_table/check_sizes.py --offset 0x8000 partition --type app E:/SHT3x_Powersave/build/partition_table/partition-table.bin E:/SHT3x_Powersave/build/SHT3x_Powersave.bin"
+SHT3x_Powersave.bin binary size 0xf0bd0 bytes. Smallest app partition is 0x100000 bytes. 0xf430 bytes (6%) free.

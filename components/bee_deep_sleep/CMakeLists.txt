@@ -4,4 +4,4 @@ idf_component_register(SRCS "${component_srcs}"
                        INCLUDE_DIRS "."
                        PRIV_INCLUDE_DIRS ""
                        PRIV_REQUIRES "driver" "soc"
-                       REQUIRES "bee_sht3x" "bee_i2c" "bee_mqtt" "bee_wifi" "bee_nvs")
+                       REQUIRES "bee_sht3x" "bee_i2c" "bee_mqtt" "bee_wifi" "bee_nvs" "bee_button")

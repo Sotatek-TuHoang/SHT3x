@@ -22,19 +22,11 @@ void app_main(void)
 {
     i2c_init(I2C_BUS, I2C_SCL_PIN, I2C_SDA_PIN, I2C_FREQ);
 
-    //button_init(GPIO_NUM_2);
+    button_init(GPIO_NUM_15);
 
-    //xTaskCreate(wifi_prov_button_isr, "wifi_prov_button_isr", 4096, NULL, 3, NULL);
-    
-    //nvs_flash_func_init();
+    deep_sleep_register_rtc_timer_wakeup(SECOND_10S);
 
-    //wifi_func_init();
-
-    //mqtt_func_init();
-
-    deep_sleep_register_rtc_timer_wakeup();
-
-    deep_sleep_register_ext1_wakeup(GPIO_NUM_2);
+    deep_sleep_register_ext1_wakeup(GPIO_NUM_15);
 
     xTaskCreate(deep_sleep_task, "deep_sleep_task", 4096, NULL, 19, &sleep_task_handle);
 }

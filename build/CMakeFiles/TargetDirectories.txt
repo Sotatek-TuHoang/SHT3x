@@ -157,6 +157,13 @@ E:/SHT3x_Powersave/build/esp-idf/esp_partition/CMakeFiles/install.dir
 E:/SHT3x_Powersave/build/esp-idf/esp_partition/CMakeFiles/install/local.dir
 E:/SHT3x_Powersave/build/esp-idf/esp_partition/CMakeFiles/install/strip.dir
 E:/SHT3x_Powersave/build/esp-idf/app_update/CMakeFiles/__idf_app_update.dir
+E:/SHT3x_Powersave/build/esp-idf/app_update/CMakeFiles/blank_ota_data.dir
+E:/SHT3x_Powersave/build/esp-idf/app_update/CMakeFiles/read-otadata.dir
+E:/SHT3x_Powersave/build/esp-idf/app_update/CMakeFiles/read_otadata.dir
+E:/SHT3x_Powersave/build/esp-idf/app_update/CMakeFiles/erase-otadata.dir
+E:/SHT3x_Powersave/build/esp-idf/app_update/CMakeFiles/erase_otadata.dir
+E:/SHT3x_Powersave/build/esp-idf/app_update/CMakeFiles/otadata-flash.dir
+E:/SHT3x_Powersave/build/esp-idf/app_update/CMakeFiles/encrypted-otadata-flash.dir
 E:/SHT3x_Powersave/build/esp-idf/app_update/CMakeFiles/edit_cache.dir
 E:/SHT3x_Powersave/build/esp-idf/app_update/CMakeFiles/rebuild_cache.dir
 E:/SHT3x_Powersave/build/esp-idf/app_update/CMakeFiles/list_install_components.dir
@@ -629,6 +636,13 @@ E:/SHT3x_Powersave/build/esp-idf/bee_wifi/CMakeFiles/list_install_components.dir
 E:/SHT3x_Powersave/build/esp-idf/bee_wifi/CMakeFiles/install.dir
 E:/SHT3x_Powersave/build/esp-idf/bee_wifi/CMakeFiles/install/local.dir
 E:/SHT3x_Powersave/build/esp-idf/bee_wifi/CMakeFiles/install/strip.dir
+E:/SHT3x_Powersave/build/esp-idf/bee_ota/CMakeFiles/__idf_bee_ota.dir
+E:/SHT3x_Powersave/build/esp-idf/bee_ota/CMakeFiles/edit_cache.dir
+E:/SHT3x_Powersave/build/esp-idf/bee_ota/CMakeFiles/rebuild_cache.dir
+E:/SHT3x_Powersave/build/esp-idf/bee_ota/CMakeFiles/list_install_components.dir
+E:/SHT3x_Powersave/build/esp-idf/bee_ota/CMakeFiles/install.dir
+E:/SHT3x_Powersave/build/esp-idf/bee_ota/CMakeFiles/install/local.dir
+E:/SHT3x_Powersave/build/esp-idf/bee_ota/CMakeFiles/install/strip.dir
 E:/SHT3x_Powersave/build/esp-idf/bee_button/CMakeFiles/__idf_bee_button.dir
 E:/SHT3x_Powersave/build/esp-idf/bee_button/CMakeFiles/edit_cache.dir
 E:/SHT3x_Powersave/build/esp-idf/bee_button/CMakeFiles/rebuild_cache.dir

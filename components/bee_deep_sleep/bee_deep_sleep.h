@@ -12,6 +12,8 @@
 
 #include "driver/gpio.h"
 
+#define SECOND_10S 10
+
 /**
  * @brief Task executed upon waking up from deep sleep.
  *
@@ -26,8 +28,10 @@ void deep_sleep_task(void *args);
  *
  * This function enables the RTC timer wake-up source for the ESP32 deep sleep mode.
  * It configures the wake-up time interval in seconds and sets up the RTC timer for wake-up.
+ * 
+ * @param wakeup_time_sec time deep sleep
  */
-void deep_sleep_register_rtc_timer_wakeup(void);
+void deep_sleep_register_rtc_timer_wakeup(uint8_t wakeup_time_sec);
 
 /**
  * @brief Register external GPIO wake-up source for deep sleep.

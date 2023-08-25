@@ -401,7 +401,7 @@ bool sht3x_get_results (sht3x_sensor_t* device, float* fTemp, float* fHumi)
     return sht3x_compute_values (raw_data, fTemp, fHumi);
 }
 
-RTC_DATA_ATTR uint8_t u8warning_values;
+RTC_DATA_ATTR int u8warning_values;
 uint8_t check_warning(bool bSHT3x_status, float fTemp, float fHumi)
 {
     bool bH_Temp_threshold = fTemp > H_TEMP_THRESHOLD;
