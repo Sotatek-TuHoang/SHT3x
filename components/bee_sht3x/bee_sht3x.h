@@ -268,7 +268,7 @@ bool sht3x_compute_values (sht3x_raw_data_t raw_data,
 bool sht3x_get_results (sht3x_sensor_t* device, 
                         float* fTemp, float* fHumi);
 
-uint8_t check_warning(bool bSHT3x_status, float fTemp, float fHumi);
+uint8_t check_warning(float fTemp, float fHumi);
 
 #endif /* __SHT3x_H__ */
 /****************************************************************************/

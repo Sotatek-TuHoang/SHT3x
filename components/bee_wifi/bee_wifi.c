@@ -268,7 +268,7 @@ void wifi_func_init(void)
     {
       wifi_prov_mgr_deinit();  
     }
-    TickType_t xMaxWaitTime = pdMS_TO_TICKS(4000); // Thời gian chờ kết nối wifi tối đa là 4s
+    TickType_t xMaxWaitTime = pdMS_TO_TICKS(3000); // Thời gian chờ kết nối wifi tối đa là 3s
     xEventGroupWaitBits(wifi_event_group, WIFI_CONNECTED_EVENT, true, true, xMaxWaitTime);
 }
 

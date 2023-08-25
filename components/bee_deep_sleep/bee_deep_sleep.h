@@ -13,6 +13,8 @@
 #include "driver/gpio.h"
 
 #define SECOND_10S 10
+#define SECOND_20S 20
+
 
 /**
  * @brief Task executed upon waking up from deep sleep.

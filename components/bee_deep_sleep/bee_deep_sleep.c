@@ -46,7 +46,6 @@ static const char *TAG_PM = "POWER MODE";
 
 float fTemp;
 float fHumi;
-bool bSHT3x_status;
 static bool bInit;
 
 /****************************************************************************/
@@ -66,7 +65,7 @@ static void init_resource_pub_mqtt()
 
 static void check_and_pub_warning()
 {
-    uint8_t u8Warning_value = check_warning(bSHT3x_status, fTemp, fHumi);
+    uint8_t u8Warning_value = check_warning(fTemp, fHumi);
     if (u8Warning_value != NO_WARNNG)
     {
         init_resource_pub_mqtt();
@@ -76,7 +75,7 @@ static void check_and_pub_warning()
 }
 
 // Function to send sensor data
-static void read_data(void)
+static bool read_data(void)
 {
     // Initialize and measure using the SHT3x sensor
     sht3x_sensor_t* sensor;
@@ -85,22 +84,20 @@ static void read_data(void)
         vTaskDelay (sht3x_get_measurement_duration(sht3x_high));
         if (sht3x_measure (sensor, &fTemp, &fHumi))
         {
-            bSHT3x_status = false;
             ESP_LOGI(TAG_SHT3x, "Temperature: %.2f °C, Humidity: %.2f %%", fTemp, fHumi);
             check_and_pub_warning();
+            return true;
         }
         else
         {
-            bSHT3x_status = true;
-            check_and_pub_warning();
             ESP_LOGI(TAG_SHT3x, "Can't measure SHT3x");
+            return false;
         }
     }
     else 
     {
-        bSHT3x_status = true;
-        check_and_pub_warning();
         ESP_LOGI(TAG_SHT3x, "Can't init SHT3x");
+        return false;
     }
 }
 
@@ -121,8 +118,11 @@ static void check_cause_wake_up(void)
             if (u8cnt_sleep == 6)
             {
                 init_resource_pub_mqtt();
-                read_data();
-                pub_data(fTemp, fHumi);
+                if (read_data() == true)
+                {
+                    pub_data(fTemp, fHumi);
+                    vTaskDelay(1000 / portTICK_PERIOD_MS);                    
+                }
                 pub_keep_alive();
                 u8cnt_sleep = 0;
                 vTaskDelay(1000 / portTICK_PERIOD_MS);
@@ -130,10 +130,12 @@ static void check_cause_wake_up(void)
             else if (u8cnt_sleep == 3)
             {
                 u8cnt_sleep++;
-                init_resource_pub_mqtt();
-                read_data();
-                pub_data(fTemp, fHumi);
-                vTaskDelay(1000 / portTICK_PERIOD_MS);
+                if (read_data() == false)
+                {
+                    init_resource_pub_mqtt();
+                    pub_data(fTemp, fHumi);
+                    vTaskDelay(1000 / portTICK_PERIOD_MS);                    
+                }
             }
             else
             {   
@@ -143,23 +145,10 @@ static void check_cause_wake_up(void)
             break;
         }
 
-        case ESP_SLEEP_WAKEUP_EXT1: {
-            uint64_t wakeup_pin_mask = esp_sleep_get_ext1_wakeup_status();
-            if (wakeup_pin_mask != 0)
-            {
-                int pin = __builtin_ffsll(wakeup_pin_mask) - 1;
-                ESP_LOGI(TAG_PM, "Wake up from GPIO %d\n", pin);
-
-                nvs_flash_func_init();
-                wifi_func_init();
-                wifi_prov();
-
-                vTaskDelay (20000 / portTICK_PERIOD_MS);
-            }
-            else
-            {
-                ESP_LOGI(TAG_PM, "Wake up from GPIO\n");
-            }
+        case ESP_SLEEP_WAKEUP_EXT1:
+        {
+            ESP_LOGI(TAG_PM, "Wakeup from GPIO 0\n");
+            vTaskDelay (60000 / portTICK_PERIOD_MS);
             break;
         }
 
@@ -183,11 +172,11 @@ void deep_sleep_register_ext1_wakeup(int gpio_wakeup)
     const int ext_wakeup_pin = gpio_wakeup;
     const uint64_t ext_wakeup_pin_mask = 1ULL << ext_wakeup_pin;
     
-    ESP_ERROR_CHECK(esp_sleep_enable_ext1_wakeup(ext_wakeup_pin_mask, ESP_EXT1_WAKEUP_ANY_HIGH));
+    ESP_ERROR_CHECK(esp_sleep_enable_ext1_wakeup(ext_wakeup_pin_mask, ESP_EXT1_WAKEUP_ALL_LOW));
 
     ESP_ERROR_CHECK(esp_sleep_pd_config(ESP_PD_DOMAIN_RTC_PERIPH, ESP_PD_OPTION_ON));
-    ESP_ERROR_CHECK(rtc_gpio_pullup_dis(ext_wakeup_pin));
-    ESP_ERROR_CHECK(rtc_gpio_pulldown_en(ext_wakeup_pin));
+    ESP_ERROR_CHECK(rtc_gpio_pullup_en(ext_wakeup_pin));
+    ESP_ERROR_CHECK(rtc_gpio_pulldown_dis(ext_wakeup_pin));
 }
 
 /****************************************************************************/
@@ -206,7 +195,7 @@ void deep_sleep_task(void *args)
 
     // Get deep sleep enter time
     gettimeofday(&sleep_enter_time, NULL);
-    
+
     // Enter deep sleep
     esp_deep_sleep_start();
 }

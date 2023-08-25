@@ -9,7 +9,11 @@
         "esp_system.h": "c",
         "esp_event.h": "c",
         "bee_ota.h": "c",
-        "bee_mqtt.h": "c"
+        "bee_mqtt.h": "c",
+        "freertos.h": "c",
+        "gpio.h": "c",
+        "bee_wifi.h": "c",
+        "task.h": "c"
     },
     "idf.portWin": "COM3",
     "idf.flashType": "UART"

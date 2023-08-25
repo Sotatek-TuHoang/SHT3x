@@ -15,6 +15,7 @@
 #include "bee_button.h"
 #include "bee_wifi.h"
 #include "bee_ota.h"
+#include "bee_nvs.h"
 
 static bool button_pressed = false;
 static TickType_t button_press_time = 0;
@@ -26,7 +27,7 @@ static void IRAM_ATTR gpio_isr_handler(void* arg)
     if (button_pressed)
     {
         button_press_time = xTaskGetTickCount();
-        xTaskCreate(button_task, "button_task", 2048, NULL, 10, NULL);
+        xTaskCreate(button_task, "button_task", 4096, NULL, 10, NULL);
     }
 }
 
@@ -36,19 +37,23 @@ void button_task(void* arg)
     {
         current_time = xTaskGetTickCount();
         TickType_t press_duration = (current_time - button_press_time) * portTICK_PERIOD_MS;
-
         printf("Button pressed for %lu ms\n", (uint32_t)press_duration);
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
+        vTaskDelay(500 / portTICK_PERIOD_MS);
     }
 
     TickType_t press_duration = (current_time - button_press_time) * portTICK_PERIOD_MS;
-    if (press_duration >= 5000 && press_duration <= 10000)
+    if (press_duration >= 3000 && press_duration <= 6000)
     {
         printf("Enter Prov WiFi Mode\n");
+        nvs_flash_func_init();
+        wifi_func_init();
         wifi_prov();
     }
-    else if (press_duration > 10000)
+    else if (press_duration > 6000)
     {
+        nvs_flash_func_init();
+        wifi_func_init();
+        xTaskCreate (start_ota_task, "start_ota_task", 4096, NULL, 20, NULL );
         printf("Enter OTA Mode\n");
     }
 
@@ -58,7 +63,7 @@ void button_task(void* arg)
 void button_init(int gpio_num)
 {
     gpio_config_t io_conf = {};
-    io_conf.intr_type = GPIO_INTR_POSEDGE;
+    io_conf.intr_type = GPIO_INTR_ANYEDGE;
     io_conf.pin_bit_mask = (1ULL << gpio_num);
     io_conf.mode = GPIO_MODE_INPUT;
     io_conf.pull_up_en = 1;

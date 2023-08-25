@@ -402,14 +402,14 @@ bool sht3x_get_results (sht3x_sensor_t* device, float* fTemp, float* fHumi)
 }
 
 RTC_DATA_ATTR int u8warning_values;
-uint8_t check_warning(bool bSHT3x_status, float fTemp, float fHumi)
+uint8_t check_warning(float fTemp, float fHumi)
 {
     bool bH_Temp_threshold = fTemp > H_TEMP_THRESHOLD;
     bool bL_Temp_threshold = fTemp < L_TEMP_THRESHOLD;
     bool bH_Humi_threshold = fHumi > H_HUMI_THRESHOLD;
     bool bL_Humi_threshold = fHumi < L_HUMI_THRESHOLD;
 
-    uint8_t u8tmp_warning_values = (bSHT3x_status << 4) | (bH_Temp_threshold << 3) | (bL_Temp_threshold << 2) | (bH_Humi_threshold << 1) | bL_Humi_threshold;
+    uint8_t u8tmp_warning_values = (bH_Temp_threshold << 3) | (bL_Temp_threshold << 2) | (bH_Humi_threshold << 1) | bL_Humi_threshold;
 
     if (u8tmp_warning_values != u8warning_values)
     {
