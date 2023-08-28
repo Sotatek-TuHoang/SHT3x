@@ -10,6 +10,7 @@
 #include "bee_ota.h"
 #include "bee_nvs.h"
 #include "bee_wifi.h"
+#include "bee_mqtt.h"
 
 static const char *TAG = "OTA";
 extern const uint8_t server_cert_pem_start[] asm("_binary_ca_cert_pem_start");
@@ -64,11 +65,14 @@ void start_ota(char *cUrl)
     esp_err_t ret = esp_https_ota(&ota_config);
     if (ret == ESP_OK)
     {
+        pub_ota_status("Succeed");
         ESP_LOGI(TAG, "OTA Succeed, Rebooting...");
         esp_restart();
     }
     else
     {
+        pub_ota_status("Failed");
         ESP_LOGE(TAG, "Firmware upgrade failed");
+        esp_restart();
     }
 }

@@ -167,6 +167,23 @@ void pub_keep_alive(void)
     free(json_str);
 }
 
+void pub_ota_status(char *values)
+{
+    cJSON *json_ota_status = cJSON_CreateObject();
+    cJSON_AddStringToObject(json_ota_status, "thing_token", cMac_str);
+    cJSON_AddStringToObject(json_ota_status, "enity_type", "module_sht3x");
+    cJSON_AddStringToObject(json_ota_status, "cmd_name", "Bee_ota");
+    cJSON_AddStringToObject(json_ota_status, "object_type", "Bee.ota_info");
+    cJSON_AddStringToObject(json_ota_status, "values", values);
+    cJSON_AddNumberToObject(json_ota_status, "trans_code", u8trans_code++);
+
+    char *json_str = cJSON_Print(json_ota_status);
+    esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, 1, 0);
+
+    cJSON_Delete(json_ota_status);
+    free(json_str);
+}
+
 void rx_mqtt_ota_task(void *pvParameters)
 {
     for (;;)

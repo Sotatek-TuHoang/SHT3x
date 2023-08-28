@@ -147,7 +147,7 @@ static void check_cause_wake_up(void)
         case ESP_SLEEP_WAKEUP_EXT1:
         {
             ESP_LOGI(TAG_PM, "Wakeup from GPIO 0\n");
-            vTaskDelay (10000 / portTICK_PERIOD_MS);
+            vTaskDelay (12000 / portTICK_PERIOD_MS);
             extern bool bButton_task;
             while (bButton_task) //Delay sleep to complete config wifi or OTA
             {

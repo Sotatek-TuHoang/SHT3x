@@ -47,6 +47,8 @@ void pub_warning(uint8_t u8Values);
 
 void rx_mqtt_ota_task(void *pvParameters);
 
+void pub_ota_status(char *values);
+
 #endif /* BEE_MQTT_H */
 
 /****************************************************************************/
