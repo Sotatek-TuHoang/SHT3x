@@ -19,7 +19,7 @@
 #include "stdint.h"
 #include "esp_log.h"
 
-static const char *TAG= "NVS";
+static const char *TAG = "NVS";
 /****************************************************************************/
 /***        Init Functions in App main                                    ***/
 /****************************************************************************/

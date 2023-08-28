@@ -30,23 +30,24 @@
 #include "bee_wifi.h"
 
 /****************************************************************************/
+/***        Global Variables                                              ***/
+/****************************************************************************/
+
+bool bInit;
+
+/****************************************************************************/
 /***        Static Variables                                              ***/
 /****************************************************************************/
 // storage variables to rtc memory, so variables dont reset after wake up from deep sleep
 static RTC_DATA_ATTR struct timeval sleep_enter_time; 
 static RTC_DATA_ATTR uint8_t u8cnt_sleep = 0;
 
+static float fTemp;
+static float fHumi;
+
 // Define tags for log messages
 static const char *TAG_SHT3x = "SHT3x";
 static const char *TAG_PM = "POWER MODE";
-
-/****************************************************************************/
-/***        Exported Variables                                            ***/
-/****************************************************************************/
-
-float fTemp;
-float fHumi;
-static bool bInit;
 
 /****************************************************************************/
 /***        Local Functions                                               ***/
@@ -74,7 +75,7 @@ static void check_and_pub_warning()
     }
 }
 
-// Function to send sensor data
+// Function to read sensor data
 static bool read_data(void)
 {
     // Initialize and measure using the SHT3x sensor
@@ -108,8 +109,7 @@ static void check_cause_wake_up(void)
     gettimeofday(&now, NULL);
     int sleep_time_ms = (now.tv_sec - sleep_enter_time.tv_sec) * 1000 + (now.tv_usec - sleep_enter_time.tv_usec) / 1000;
 
-    // Handle different wake-up causes
-    switch (esp_sleep_get_wakeup_cause())
+    switch (esp_sleep_get_wakeup_cause()) // Handle different wake-up causes
     {
         case ESP_SLEEP_WAKEUP_TIMER:
         {
@@ -120,8 +120,7 @@ static void check_cause_wake_up(void)
                 init_resource_pub_mqtt();
                 if (read_data() == true)
                 {
-                    pub_data(fTemp, fHumi);
-                    vTaskDelay(1000 / portTICK_PERIOD_MS);                    
+                    pub_data(fTemp, fHumi);                   
                 }
                 pub_keep_alive();
                 u8cnt_sleep = 0;
@@ -130,7 +129,7 @@ static void check_cause_wake_up(void)
             else if (u8cnt_sleep == 3)
             {
                 u8cnt_sleep++;
-                if (read_data() == false)
+                if (read_data() == true)
                 {
                     init_resource_pub_mqtt();
                     pub_data(fTemp, fHumi);
@@ -148,7 +147,12 @@ static void check_cause_wake_up(void)
         case ESP_SLEEP_WAKEUP_EXT1:
         {
             ESP_LOGI(TAG_PM, "Wakeup from GPIO 0\n");
-            vTaskDelay (60000 / portTICK_PERIOD_MS);
+            vTaskDelay (10000 / portTICK_PERIOD_MS);
+            extern bool bButton_task;
+            while (bButton_task) //Delay sleep to complete config wifi or OTA
+            {
+                vTaskDelay (1000 / portTICK_PERIOD_MS);
+            }
             break;
         }
 
@@ -173,7 +177,6 @@ void deep_sleep_register_ext1_wakeup(int gpio_wakeup)
     const uint64_t ext_wakeup_pin_mask = 1ULL << ext_wakeup_pin;
     
     ESP_ERROR_CHECK(esp_sleep_enable_ext1_wakeup(ext_wakeup_pin_mask, ESP_EXT1_WAKEUP_ALL_LOW));
-
     ESP_ERROR_CHECK(esp_sleep_pd_config(ESP_PD_DOMAIN_RTC_PERIPH, ESP_PD_OPTION_ON));
     ESP_ERROR_CHECK(rtc_gpio_pullup_en(ext_wakeup_pin));
     ESP_ERROR_CHECK(rtc_gpio_pulldown_dis(ext_wakeup_pin));
@@ -185,19 +188,11 @@ void deep_sleep_register_ext1_wakeup(int gpio_wakeup)
 
 void deep_sleep_task(void *args)
 {    
-    // Handle different operational modes
     ESP_LOGI(TAG_PM, "Entering normal mode\n");
-
     check_cause_wake_up();
-
-    // Prepare for deep sleep and enter
     ESP_LOGI(TAG_PM, "Entering deep sleep again\n");
-
-    // Get deep sleep enter time
-    gettimeofday(&sleep_enter_time, NULL);
-
-    // Enter deep sleep
-    esp_deep_sleep_start();
+    gettimeofday(&sleep_enter_time, NULL); // Get deep sleep enter time
+    esp_deep_sleep_start(); // Enter deep sleep
 }
 /****************************************************************************/
 /***        END OF FILE                                                   ***/

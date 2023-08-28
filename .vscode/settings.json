@@ -13,7 +13,8 @@
         "freertos.h": "c",
         "gpio.h": "c",
         "bee_wifi.h": "c",
-        "task.h": "c"
+        "task.h": "c",
+        "bee_nvs.h": "c"
     },
     "idf.portWin": "COM3",
     "idf.flashType": "UART"

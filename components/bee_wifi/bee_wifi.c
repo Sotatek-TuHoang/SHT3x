@@ -24,8 +24,6 @@
 #include "bee_wifi.h"
 #include "bee_nvs.h"
 
-extern TaskHandle_t sleep_task_handle;
-
 /****************************************************************************/
 /***        Local Variables                                               ***/
 /****************************************************************************/
@@ -57,6 +55,7 @@ static void event_handler(void* arg, esp_event_base_t event_base,
         switch (event_id) {
             case WIFI_PROV_START:
                 ESP_LOGI(TAG, "Provisioning started");
+
                 break;
             case WIFI_PROV_CRED_RECV:
             {
@@ -73,7 +72,6 @@ static void event_handler(void* arg, esp_event_base_t event_base,
             }
             case WIFI_PROV_CRED_FAIL:
             {   
-
                 wifi_prov_sta_fail_reason_t *reason = (wifi_prov_sta_fail_reason_t *)event_data;
                 ESP_LOGE(TAG, "Provisioning failed!\n\tReason : %s"
                          "\n\tPlease reset to factory and retry provisioning",
@@ -107,6 +105,8 @@ static void event_handler(void* arg, esp_event_base_t event_base,
                 /* De-initialize manager once provisioning is finished */
                 wifi_prov_mgr_deinit();
                 bProv = false;
+                extern bool bButton_task;
+                bButton_task = false;
                 break;
             default:
                 break;
@@ -143,7 +143,7 @@ static void event_handler(void* arg, esp_event_base_t event_base,
 }
 
 /****************************************************************************/
-/***        Locale Functions                                              ***/
+/***        Local Functions                                               ***/
 /****************************************************************************/
 
 static void wifi_init_sta(void)
@@ -156,7 +156,7 @@ static void wifi_init_sta(void)
 static void get_device_service_name(char *service_name, size_t max)
 {
     uint8_t u8eth_mac[6];
-    const char *ssid_prefix = "BEE_";
+    const char *ssid_prefix = PRE_FIX;
     esp_wifi_get_mac(WIFI_IF_STA, u8eth_mac);
     snprintf(service_name, max, "%s%02X%02X%02X",
              ssid_prefix, u8eth_mac[3], u8eth_mac[4], u8eth_mac[5]);
@@ -223,8 +223,9 @@ esp_err_t custom_prov_data_handler(uint32_t session_id, const uint8_t *inbuf, ss
     *outlen = strlen(response) + 1; /* +1 for NULL terminating byte */
     return ESP_OK;
 }
+
 /****************************************************************************/
-/***        initializing wifi function                                    ***/
+/***        Exported Functions                                            ***/
 /****************************************************************************/
 
 void wifi_func_init(void)
@@ -268,13 +269,9 @@ void wifi_func_init(void)
     {
       wifi_prov_mgr_deinit();  
     }
-    TickType_t xMaxWaitTime = pdMS_TO_TICKS(3000); // Thời gian chờ kết nối wifi tối đa là 3s
+    TickType_t xMaxWaitTime = pdMS_TO_TICKS(5000); // Thời gian chờ kết nối wifi tối đa là 5s
     xEventGroupWaitBits(wifi_event_group, WIFI_CONNECTED_EVENT, true, true, xMaxWaitTime);
 }
-
-/****************************************************************************/
-/***        Exported Functions                                            ***/
-/****************************************************************************/
 
 void wifi_prov(void)
 {
@@ -293,7 +290,7 @@ void wifi_prov(void)
         char service_name[12];
         get_device_service_name(service_name, sizeof(service_name));
         wifi_prov_security_t security = WIFI_PROV_SECURITY_1;
-        const char *pop = "Bee@1234"; /*Mật khẩu cho việc thực hiện cấu hình qua*/
+        const char *pop = PASS_PROV; /*Mật khẩu cho việc thực hiện cấu hình qua*/
         wifi_prov_security1_params_t *sec_params = pop;
         const char *service_key = NULL;
         wifi_prov_mgr_endpoint_create("custom-data");

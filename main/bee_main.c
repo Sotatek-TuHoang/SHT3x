@@ -20,7 +20,7 @@ TaskHandle_t sleep_task_handle = NULL;
 
 void app_main(void)
 {
-    printf("Firmware ver 1.5\n");
+    printf("Firmware ver 2.8\n");
 
     i2c_init(I2C_BUS, I2C_SCL_PIN, I2C_SDA_PIN, I2C_FREQ);
 

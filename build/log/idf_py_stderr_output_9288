@@ -1,0 +1,1708 @@
+[0;33m--- WARNING: GDB cannot open serial ports accessed as COMx[0m
+[0;33m--- Using \\.\COM10 instead...[0m
+[0;33m--- idf_monitor on \\.\COM10 115200 ---[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is ef6391e950e6fe7de9d22bbde00c66f72759cee43000b9542df74fc2fcbf9da2[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 3082545688b2a827e4996e78fd3f729719cdde68f19517449b710f5172473847[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400815f8: call_start_cpu1 at C:/Espressif/frameworks/esp-idf-v5.1/components/esp_system/port/cpu_start.c:154
+[0m
+[0;33mWarning: checksum mismatch between flashed and built applications. Checksum of built application is 8fc24ffeb13624f810ae392050f0c8b2cdae5305605acbed5dee371e174a22b6[0m
+[0m
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Espressif\python_env\idf5.1_py3.11_env\Lib\site-packages\esp_idf_monitor\__main__.py", line 4, in <module>
+    main()
+  File "C:\Espressif\python_env\idf5.1_py3.11_env\Lib\site-packages\esp_idf_monitor\idf_monitor.py", line 389, in main
+    monitor.main_loop()
+  File "C:\Espressif\python_env\idf5.1_py3.11_env\Lib\site-packages\esp_idf_monitor\idf_monitor.py", line 174, in main_loop
+    self._main_loop()
+  File "C:\Espressif\python_env\idf5.1_py3.11_env\Lib\site-packages\esp_idf_monitor\idf_monitor.py", line 280, in _main_loop
+    super()._main_loop()
+  File "C:\Espressif\python_env\idf5.1_py3.11_env\Lib\site-packages\esp_idf_monitor\idf_monitor.py", line 219, in _main_loop
+    self.serial_handler.handle_serial_input(data, self.console_parser, self.coredump,  # type: ignore
+  File "C:\Espressif\python_env\idf5.1_py3.11_env\Lib\site-packages\esp_idf_monitor\base\serial_handler.py", line 116, in handle_serial_input
+    self.logger.handle_possible_pc_address_in_line(line_strip)
+  File "C:\Espressif\python_env\idf5.1_py3.11_env\Lib\site-packages\esp_idf_monitor\base\logger.py", line 133, in handle_possible_pc_address_in_line
+    translation = lookup_pc_address(num, self.toolchain_prefix, self.elf_file)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\python_env\idf5.1_py3.11_env\Lib\site-packages\esp_idf_monitor\base\output_helpers.py", line 36, in lookup_pc_address
+    translation = subprocess.check_output(cmd, cwd='.')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "subprocess.py", line 466, in check_output
+  File "subprocess.py", line 571, in run
+subprocess.CalledProcessError: Command '['xtensa-esp32-elf-addr2line', '-pfiaC', '-e', 'E:\\SHT3x_Powersave\\build\\SHT3x_Powersave.elf', '0x40080400']' returned non-zero exit status 1.

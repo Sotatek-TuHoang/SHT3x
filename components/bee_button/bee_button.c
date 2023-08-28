@@ -11,53 +11,75 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "driver/gpio.h"
+#include "esp_log.h"
 
 #include "bee_button.h"
 #include "bee_wifi.h"
 #include "bee_ota.h"
 #include "bee_nvs.h"
+#include "bee_mqtt.h"
 
 static bool button_pressed = false;
 static TickType_t button_press_time = 0;
 static TickType_t current_time = 0;
 
+extern bool bInit;
+
+TaskHandle_t button_task_handle;
+bool bButton_task = false;
+
+static const char *TAG = "BUTTON";
+
 static void IRAM_ATTR gpio_isr_handler(void* arg)
 {
     button_pressed = !button_pressed;
-    if (button_pressed)
+    if (button_pressed && !bButton_task)
     {
         button_press_time = xTaskGetTickCount();
-        xTaskCreate(button_task, "button_task", 4096, NULL, 10, NULL);
+        xTaskCreate(button_task, "button_task", 8000, NULL, 10, &button_task_handle);
     }
 }
 
 void button_task(void* arg)
 {
-    while (button_pressed)
+    while (button_pressed && !bButton_task)
     {
         current_time = xTaskGetTickCount();
         TickType_t press_duration = (current_time - button_press_time) * portTICK_PERIOD_MS;
-        printf("Button pressed for %lu ms\n", (uint32_t)press_duration);
+        ESP_LOGI(TAG, "Button pressed for %lu ms\n", (uint32_t)press_duration);
         vTaskDelay(500 / portTICK_PERIOD_MS);
     }
 
     TickType_t press_duration = (current_time - button_press_time) * portTICK_PERIOD_MS;
     if (press_duration >= 3000 && press_duration <= 6000)
     {
-        printf("Enter Prov WiFi Mode\n");
-        nvs_flash_func_init();
-        wifi_func_init();
+        bButton_task = true;
+        ESP_LOGI(TAG, "Enter Prov WiFi Mode\n");
+        if (!bInit)
+        {
+            nvs_flash_func_init();
+            wifi_func_init();            
+        }
         wifi_prov();
+        vTaskDelete(NULL);
     }
     else if (press_duration > 6000)
     {
-        nvs_flash_func_init();
-        wifi_func_init();
-        xTaskCreate (start_ota_task, "start_ota_task", 4096, NULL, 20, NULL );
-        printf("Enter OTA Mode\n");
+        bButton_task = true;
+        ESP_LOGI(TAG, "Enter OTA Mode\n");
+        if (!bInit)
+        {
+            nvs_flash_func_init();
+            wifi_func_init();     
+            mqtt_func_init();       
+        }
+        xTaskCreate(rx_mqtt_ota_task, "rx_mqtt_ota_task", 8192, NULL, 10, NULL);
+        vTaskDelete(NULL); 
     }
-
-    vTaskDelete(NULL);
+    else
+    {
+        vTaskDelete(NULL);
+    }
 }
 
 void button_init(int gpio_num)

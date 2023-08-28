@@ -44,12 +44,12 @@ esp_err_t _http_event_handler(esp_http_client_event_t *evt) {
     return ESP_OK;
 }
 
-void start_ota_task(void *pvParameter)
+void start_ota(char *cUrl)
 {
     ESP_LOGI(TAG, "Starting OTA example task");
     esp_http_client_config_t config =
     {
-        .url = "http://192.168.0.114:8000/OTA_SHT3x_PowerSave/SHT3x_Powersave_Vx.y.bin",
+        .url = cUrl,
         .cert_pem = (char *)server_cert_pem_start,
         .event_handler = _http_event_handler,
         .keep_alive_enable = true,
@@ -62,14 +62,13 @@ void start_ota_task(void *pvParameter)
     };
     ESP_LOGI(TAG, "Attempting to download update from %s", config.url);
     esp_err_t ret = esp_https_ota(&ota_config);
-    if (ret == ESP_OK) {
+    if (ret == ESP_OK)
+    {
         ESP_LOGI(TAG, "OTA Succeed, Rebooting...");
         esp_restart();
-    } else {
+    }
+    else
+    {
         ESP_LOGE(TAG, "Firmware upgrade failed");
     }
-    while (1) {
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
-    }
-    vTaskDelete(NULL);
 }

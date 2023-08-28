@@ -19,6 +19,7 @@
 #include "driver/gpio.h"
 
 #include "bee_mqtt.h"
+#include "bee_ota.h"
 
 /****************************************************************************/
 /***        Local Variables                                               ***/
@@ -28,6 +29,9 @@ static RTC_DATA_ATTR uint8_t u8trans_code = 0;
 
 static char cMac_str[13];
 static char cTopic_pub[64] = "VB/DMP/VBEEON/CUSTOM/SMH/DeviceID/telemetry";
+static char cTopic_sub[64] = "VB/DMP/VBEEON/CUSTOM/SMH/DeviceID/Command";
+static char rxBuffer_MQTT[800];
+static QueueHandle_t mqtt_cmd_queue;
 
 static const char *TAG_MQTT = "MQTT";
 
@@ -40,19 +44,39 @@ static esp_mqtt_client_handle_t client = NULL;
 void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data)
 {
     esp_mqtt_event_handle_t event = event_data;
-    
+    esp_mqtt_client_handle_t client = event->client;
+
     switch ((esp_mqtt_event_id_t)event_id)
     {
         case MQTT_EVENT_CONNECTED:
             ESP_LOGI(TAG_MQTT, "MQTT_EVENT_CONNECTED");
+            esp_mqtt_client_subscribe(client, cTopic_sub, 0);
             break;
 
         case MQTT_EVENT_DISCONNECTED:
             ESP_LOGI(TAG_MQTT, "MQTT_EVENT_DISCONNECTED");
             break;
 
+        case MQTT_EVENT_SUBSCRIBED:
+            ESP_LOGI(TAG_MQTT, "MQTT_EVENT_SUBSCRIBED, msg_id=%d", event->msg_id);
+            break;
+
+        case MQTT_EVENT_UNSUBSCRIBED:
+            ESP_LOGI(TAG_MQTT, "MQTT_EVENT_UNSUBSCRIBED, msg_id=%d", event->msg_id);
+            break;
+
         case MQTT_EVENT_PUBLISHED:
             ESP_LOGI(TAG_MQTT, "MQTT_EVENT_PUBLISHED, msg_id=%d", event->msg_id);
+            break;
+
+        case MQTT_EVENT_DATA:
+            if ((event->data) != NULL)
+            {
+                ESP_LOGI(TAG_MQTT, "MQTT_EVENT_DATA");
+                snprintf(rxBuffer_MQTT, event->data_len + 1, event->data);
+                xQueueSend(mqtt_cmd_queue, &rxBuffer_MQTT, portMAX_DELAY);
+            }
+
             break;
 
         case MQTT_EVENT_ERROR:
@@ -66,7 +90,7 @@ void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event
 }
 
 /****************************************************************************/
-/***        Init Functions in App main                                    ***/
+/***        Exported Functions                                            ***/
 /****************************************************************************/
 
 void mqtt_func_init(void)
@@ -86,12 +110,11 @@ void mqtt_func_init(void)
     esp_wifi_get_mac(ESP_IF_WIFI_STA, u8mac);
     snprintf(cMac_str, sizeof(cMac_str), "%02X%02X%02X%02X%02X%02X", u8mac[0], u8mac[1], u8mac[2], u8mac[3], u8mac[4], u8mac[5]);
     snprintf(cTopic_pub, sizeof(cTopic_pub), "VB/DMP/VBEEON/CUSTOM/SMH/%s/telemetry", cMac_str);
+    snprintf(cTopic_sub, sizeof(cTopic_sub), "VB/DMP/VBEEON/CUSTOM/SMH/%s/Command", cMac_str);
     ESP_LOGI(TAG_MQTT, "Topic publish: %s\n", cTopic_pub);
+    ESP_LOGI(TAG_MQTT, "Topic subscribe: %s\n", cTopic_sub);
+    mqtt_cmd_queue = xQueueCreate(2, sizeof(cJSON*));
 }
-
-/****************************************************************************/
-/***        Exported Functions                                            ***/
-/****************************************************************************/
 
 void pub_data(float fTemp, float fHumi)
 {
@@ -143,6 +166,44 @@ void pub_keep_alive(void)
     cJSON_Delete(json_keep_alive);
     free(json_str);
 }
+
+void rx_mqtt_ota_task(void *pvParameters)
+{
+    for (;;)
+    {
+        if (xQueueReceive(mqtt_cmd_queue, &rxBuffer_MQTT, portMAX_DELAY))
+        {
+            cJSON *root = cJSON_Parse(rxBuffer_MQTT);
+            if (root != NULL)
+            {
+                char *cThing_token = cJSON_GetObjectItemCaseSensitive(root, "thing_token")->valuestring;
+                char *cEntity_type = cJSON_GetObjectItemCaseSensitive(root, "enity_type")->valuestring;
+                char *cCmd_name = cJSON_GetObjectItemCaseSensitive(root, "cmd_name")->valuestring;
+                char *cObject_type = cJSON_GetObjectItemCaseSensitive(root, "object_type")->valuestring;
+                cJSON *values = cJSON_GetObjectItemCaseSensitive(root, "values");
+                char *cUrl = cJSON_GetObjectItemCaseSensitive(values, "url")->valuestring;
+                float fVersion = (float)cJSON_GetObjectItemCaseSensitive(values, "version")->valuedouble;
+                int trans_code = cJSON_GetObjectItemCaseSensitive(root, "trans_code")->valueint;
+
+                ESP_LOGI(TAG_MQTT, "\n Received MQTT command:");
+                ESP_LOGI(TAG_MQTT, "thing_token: %s", cThing_token);
+                ESP_LOGI(TAG_MQTT, "enity_type: %s", cEntity_type);
+                ESP_LOGI(TAG_MQTT, "cmd_name: %s", cCmd_name);
+                ESP_LOGI(TAG_MQTT, "object: %s", cObject_type);
+                ESP_LOGI(TAG_MQTT, "url: %s", cUrl);
+                ESP_LOGI(TAG_MQTT, "version: %f", fVersion);
+                ESP_LOGI(TAG_MQTT, "trans_code: %d\n", trans_code);
+
+                if ((strcmp(cEntity_type, "module_sht3x") == 0) && (strcmp(cCmd_name, "Bee.ota") == 0) && fVersion > VERSION )
+                {
+                    start_ota(cUrl);
+                }
+                cJSON_Delete(root);
+            }
+        }
+    }
+}
+
 
 /****************************************************************************/
 /***        END OF FILE                                                   ***/

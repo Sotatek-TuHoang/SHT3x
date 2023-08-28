@@ -65,8 +65,9 @@ E:/SHT3x_Powersave/build/esp-idf/main/libmain.a
 E:/SHT3x_Powersave/build/esp-idf/bee_nvs/libbee_nvs.a
 E:/SHT3x_Powersave/build/esp-idf/bee_wifi/libbee_wifi.a
 E:/SHT3x_Powersave/build/esp-idf/bee_ota/libbee_ota.a
+E:/SHT3x_Powersave/build/esp-idf/bee_mqtt/libbee_mqtt.a
 E:/SHT3x_Powersave/build/esp-idf/bee_button/libbee_button.a
 E:/SHT3x_Powersave/build/esp-idf/bee_i2c/libbee_i2c.a
 E:/SHT3x_Powersave/build/esp-idf/bee_sht3x/libbee_sht3x.a
-E:/SHT3x_Powersave/build/esp-idf/bee_mqtt/libbee_mqtt.a
 E:/SHT3x_Powersave/build/esp-idf/bee_deep_sleep/libbee_deep_sleep.a
+E:/SHT3x_Powersave/build/esp-idf/bee_led/libbee_led.a

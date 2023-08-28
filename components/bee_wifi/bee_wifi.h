@@ -13,6 +13,9 @@
 #ifndef BEE_WIFI_H_
 #define BEE_WIFI_H_
 
+#define PRE_FIX "BEE_"
+#define PASS_PROV "Bee@1234"
+
 /**
  * @brief   Initialize Wi-Fi functionality, event handlers, and provisioning.
  *
