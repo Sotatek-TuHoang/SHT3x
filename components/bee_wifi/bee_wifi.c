@@ -27,7 +27,7 @@
 /****************************************************************************/
 /***        Local Variables                                               ***/
 /****************************************************************************/
-static const char *TAG = "Wifi prov";
+static const char *TAG = "Wifi";
 const int WIFI_CONNECTED_EVENT = BIT0;
 
 bool bProv = false; 
@@ -269,7 +269,7 @@ void wifi_func_init(void)
     {
       wifi_prov_mgr_deinit();  
     }
-    TickType_t xMaxWaitTime_Wifi = pdMS_TO_TICKS(5000); // Thời gian chờ kết nối wifi tối đa là 5s
+    TickType_t xMaxWaitTime_Wifi = pdMS_TO_TICKS(8000); // Thời gian chờ kết nối wifi tối đa là 8s
     xEventGroupWaitBits(wifi_event_group, WIFI_CONNECTED_EVENT, true, true, xMaxWaitTime_Wifi);
 }
 
