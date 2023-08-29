@@ -3,7 +3,7 @@
 * @author 	tuha
 * @date 	5 July 2023
 * @brief	module for send data through mqtt
-* @brief	and receive command from host main through mqtt
+*       	and receive command from host main through mqtt
 ***************************************************************************/
 
 /****************************************************************************/
@@ -76,7 +76,6 @@ void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event
                 snprintf(rxBuffer_MQTT, event->data_len + 1, event->data);
                 xQueueSend(mqtt_cmd_queue, &rxBuffer_MQTT, portMAX_DELAY);
             }
-
             break;
 
         case MQTT_EVENT_ERROR:
@@ -118,35 +117,31 @@ void mqtt_func_init(void)
 
 void pub_data(float fTemp, float fHumi)
 {
-    cJSON *json_data = cJSON_CreateObject();
+    cJSON *json_data = cJSON_CreateObject(); // Create a JSON object for the data
     cJSON_AddStringToObject(json_data, "thing_token", cMac_str);
     cJSON_AddStringToObject(json_data, "cmd_name", "Bee.data");
-    cJSON *values = cJSON_AddObjectToObject(json_data, "values");
+    cJSON *values = cJSON_AddObjectToObject(json_data, "values"); // Create a nested JSON object for the 'values' field
     cJSON_AddNumberToObject(values, "temperature", fTemp);
     cJSON_AddNumberToObject(values, "humidity", fHumi);
-    
     cJSON_AddNumberToObject(json_data, "trans_code", u8trans_code++);
-
-    char *json_str = cJSON_Print(json_data);
-    esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, 1, 0);
-
+    
+    char *json_str = cJSON_Print(json_data); // Convert the JSON object to a string
+    esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, QoS_0, 0); // Publish the JSON string via MQTT
     cJSON_Delete(json_data);
     free(json_str);
 }
 
 void pub_warning(uint8_t u8Values)
 {
-
-    cJSON *json_data = cJSON_CreateObject();
+    cJSON *json_data = cJSON_CreateObject();// Create a JSON object for the warning
     cJSON_AddStringToObject(json_data, "thing_token", cMac_str);
     cJSON_AddStringToObject(json_data, "cmd_name", "Bee.data");
     cJSON_AddStringToObject(json_data, "object_type", "Bee.warning");
     cJSON_AddNumberToObject(json_data, "values", u8Values);
     cJSON_AddNumberToObject(json_data, "trans_code", u8trans_code++);
 
-    char *json_str = cJSON_Print(json_data);
-    esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, 1, 0);
-
+    char *json_str = cJSON_Print(json_data); // Convert the JSON object to a string
+    esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, QoS_1, 0); // Publish the JSON string via MQTT
     cJSON_Delete(json_data);
     free(json_str);
 }
@@ -161,7 +156,7 @@ void pub_keep_alive(void)
     cJSON_AddNumberToObject(json_keep_alive, "trans_code", u8trans_code++);
 
     char *json_str = cJSON_Print(json_keep_alive);
-    esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, 1, 0);
+    esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, QoS_1, 0);
 
     cJSON_Delete(json_keep_alive);
     free(json_str);
@@ -169,7 +164,7 @@ void pub_keep_alive(void)
 
 void pub_ota_status(char *values)
 {
-    cJSON *json_ota_status = cJSON_CreateObject();
+    cJSON *json_ota_status = cJSON_CreateObject(); // Create a JSON object for the OTA status
     cJSON_AddStringToObject(json_ota_status, "thing_token", cMac_str);
     cJSON_AddStringToObject(json_ota_status, "enity_type", "module_sht3x");
     cJSON_AddStringToObject(json_ota_status, "cmd_name", "Bee_ota");
@@ -177,8 +172,8 @@ void pub_ota_status(char *values)
     cJSON_AddStringToObject(json_ota_status, "values", values);
     cJSON_AddNumberToObject(json_ota_status, "trans_code", u8trans_code++);
 
-    char *json_str = cJSON_Print(json_ota_status);
-    esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, 1, 0);
+    char *json_str = cJSON_Print(json_ota_status); // Convert the JSON object to a string
+    esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, QoS_1, 0); // Publish the JSON string via MQTT
 
     cJSON_Delete(json_ota_status);
     free(json_str);
@@ -186,11 +181,13 @@ void pub_ota_status(char *values)
 
 void rx_mqtt_ota_task(void *pvParameters)
 {
+    TickType_t xMaxWaitTime_MQTT = pdMS_TO_TICKS(15000); // Max time to wait mqtt from server to ota is 15 sec
+    pub_ota_status("Check_ota");
     for (;;)
     {
-        if (xQueueReceive(mqtt_cmd_queue, &rxBuffer_MQTT, portMAX_DELAY))
+        if (xQueueReceive(mqtt_cmd_queue, &rxBuffer_MQTT, xMaxWaitTime_MQTT)) // Wait for an MQTT message to be received
         {
-            cJSON *root = cJSON_Parse(rxBuffer_MQTT);
+            cJSON *root = cJSON_Parse(rxBuffer_MQTT); // Parse the received MQTT message as a JSON object
             if (root != NULL)
             {
                 char *cThing_token = cJSON_GetObjectItemCaseSensitive(root, "thing_token")->valuestring;
@@ -200,27 +197,30 @@ void rx_mqtt_ota_task(void *pvParameters)
                 cJSON *values = cJSON_GetObjectItemCaseSensitive(root, "values");
                 char *cUrl = cJSON_GetObjectItemCaseSensitive(values, "url")->valuestring;
                 float fVersion = (float)cJSON_GetObjectItemCaseSensitive(values, "version")->valuedouble;
-                int trans_code = cJSON_GetObjectItemCaseSensitive(root, "trans_code")->valueint;
+                //int trans_code = cJSON_GetObjectItemCaseSensitive(root, "trans_code")->valueint;
 
-                ESP_LOGI(TAG_MQTT, "\n Received MQTT command:");
-                ESP_LOGI(TAG_MQTT, "thing_token: %s", cThing_token);
-                ESP_LOGI(TAG_MQTT, "enity_type: %s", cEntity_type);
-                ESP_LOGI(TAG_MQTT, "cmd_name: %s", cCmd_name);
-                ESP_LOGI(TAG_MQTT, "object: %s", cObject_type);
-                ESP_LOGI(TAG_MQTT, "url: %s", cUrl);
-                ESP_LOGI(TAG_MQTT, "version: %f", fVersion);
-                ESP_LOGI(TAG_MQTT, "trans_code: %d\n", trans_code);
-
-                if ((strcmp(cEntity_type, "module_sht3x") == 0) && (strcmp(cCmd_name, "Bee.ota") == 0) && fVersion > VERSION )
+                // Check if the received command is an OTA update and meets version requirements
+                if ((strcmp(cThing_token, cMac_str) == 0)       &&
+                    (strcmp(cEntity_type, "module_sht3x") == 0) &&
+                    (strcmp(cCmd_name, "Bee.ota") == 0)         &&
+                    (strcmp(cObject_type, "Bee.ota_info") == 0) && 
+                    (fVersion > VERSION) )
                 {
-                    start_ota(cUrl);
+                    start_ota(cUrl); // Perform OTA update
+                }
+                else 
+                {
+                    esp_restart();
                 }
                 cJSON_Delete(root);
             }
         }
+        else
+        {
+            esp_restart();
+        }
     }
 }
-
 
 /****************************************************************************/
 /***        END OF FILE                                                   ***/

@@ -25,6 +25,15 @@
  */
 void button_init(int gpio_num);
 
+/**
+ * @brief Task for handling button press events.
+ *
+ * This task monitors the button state and calculates the duration of button presses.
+ * Depending on the duration of the button press, it takes different actions:
+ * - If the button is held between 3 to 6 seconds, it enters Provisioning WiFi Mode.
+ * - If the button is held for more than 6 seconds, it enters OTA Mode.
+ * - Otherwise, the task exits without performing any action.
+ */
 void button_task(void* arg);
 
 #endif

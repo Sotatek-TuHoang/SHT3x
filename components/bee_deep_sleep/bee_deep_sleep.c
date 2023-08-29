@@ -75,7 +75,6 @@ static void check_and_pub_warning()
     }
 }
 
-// Function to read sensor data
 static bool read_data(void)
 {
     // Initialize and measure using the SHT3x sensor
@@ -115,7 +114,7 @@ static void check_cause_wake_up(void)
         {
             ESP_LOGI(TAG_PM, "Wake up from timer. Time spent in deep sleep: %dms\n", sleep_time_ms);
 
-            if (u8cnt_sleep == 6)
+            if (u8cnt_sleep == 6) // Six times wakeup, approximate wakeup time*6 
             {
                 init_resource_pub_mqtt();
                 if (read_data() == true)
@@ -126,7 +125,7 @@ static void check_cause_wake_up(void)
                 u8cnt_sleep = 0;
                 vTaskDelay(1000 / portTICK_PERIOD_MS);
             }
-            else if (u8cnt_sleep == 3)
+            else if (u8cnt_sleep == 3) // Three times wakeup, approximate wakeup time*3
             {
                 u8cnt_sleep++;
                 if (read_data() == true)
@@ -147,7 +146,7 @@ static void check_cause_wake_up(void)
         case ESP_SLEEP_WAKEUP_EXT1:
         {
             ESP_LOGI(TAG_PM, "Wakeup from GPIO 0\n");
-            vTaskDelay (12000 / portTICK_PERIOD_MS);
+            vTaskDelay (12000 / portTICK_PERIOD_MS); //Wait 12 sec for button press
             extern bool bButton_task;
             while (bButton_task) //Delay sleep to complete config wifi or OTA
             {

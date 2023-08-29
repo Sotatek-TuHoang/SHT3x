@@ -16,8 +16,6 @@
 #include "bee_deep_sleep.h"
 #include "bee_button.h"
 
-TaskHandle_t sleep_task_handle = NULL;
-
 void app_main(void)
 {
     i2c_init(I2C_BUS, I2C_SCL_PIN, I2C_SDA_PIN, I2C_FREQ);
@@ -28,5 +26,5 @@ void app_main(void)
 
     deep_sleep_register_ext1_wakeup(GPIO_NUM_0);
 
-    xTaskCreate(deep_sleep_task, "deep_sleep_task", 4096, NULL, 19, &sleep_task_handle);
+    xTaskCreate(deep_sleep_task, "deep_sleep_task", 4096, NULL, 19, NULL);
 }

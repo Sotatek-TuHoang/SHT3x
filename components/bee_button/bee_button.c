@@ -19,43 +19,53 @@
 #include "bee_nvs.h"
 #include "bee_mqtt.h"
 
+/****************************************************************************/
+/***        Global Variables                                              ***/
+/****************************************************************************/
+extern bool bInit;
+bool bButton_task = false;
+
+/****************************************************************************/
+/***        Local Variables                                               ***/
+/****************************************************************************/
+
 static bool button_pressed = false;
 static TickType_t button_press_time = 0;
 static TickType_t current_time = 0;
-
-extern bool bInit;
-
-TaskHandle_t button_task_handle;
-bool bButton_task = false;
-
 static const char *TAG = "BUTTON";
+
+/****************************************************************************/
+/***        Local Functions                                               ***/
+/****************************************************************************/
 
 static void IRAM_ATTR gpio_isr_handler(void* arg)
 {
-    button_pressed = !button_pressed;
-    if (button_pressed && !bButton_task)
+    button_pressed = !button_pressed; // Toggle the button_pressed state
+    if (button_pressed && !bButton_task) // Check if the button is pressed and no button_task is running
     {
-        button_press_time = xTaskGetTickCount();
-        xTaskCreate(button_task, "button_task", 8000, NULL, 10, &button_task_handle);
+        button_press_time = xTaskGetTickCount(); // Record the button press time
+        xTaskCreate(button_task, "button_task", 4096, NULL, 10, NULL); // Create a new task for handling the button press
     }
 }
 
 void button_task(void* arg)
 {
+    TickType_t press_duration = 0;
     while (button_pressed && !bButton_task)
     {
+        // Calculate the duration of the button press
         current_time = xTaskGetTickCount();
-        TickType_t press_duration = (current_time - button_press_time) * portTICK_PERIOD_MS;
+        press_duration = (current_time - button_press_time) * portTICK_PERIOD_MS;
         ESP_LOGI(TAG, "Button pressed for %lu ms\n", (uint32_t)press_duration);
         vTaskDelay(500 / portTICK_PERIOD_MS);
     }
 
-    TickType_t press_duration = (current_time - button_press_time) * portTICK_PERIOD_MS;
     if (press_duration >= 3000 && press_duration <= 6000)
     {
         bButton_task = true;
         ESP_LOGI(TAG, "Enter Prov WiFi Mode\n");
-        if (!bInit)
+
+        if (!bInit) //Check and init resource for Provisioning WiFi
         {
             nvs_flash_func_init();
             wifi_func_init();            
@@ -67,7 +77,8 @@ void button_task(void* arg)
     {
         bButton_task = true;
         ESP_LOGI(TAG, "Enter OTA Mode\n");
-        if (!bInit)
+
+        if (!bInit) //Check and init resource for OTA
         {
             nvs_flash_func_init();
             wifi_func_init();     
@@ -82,6 +93,10 @@ void button_task(void* arg)
     }
 }
 
+/****************************************************************************/
+/***        Exported Functions                                            ***/
+/****************************************************************************/
+
 void button_init(int gpio_num)
 {
     gpio_config_t io_conf = {};
@@ -95,7 +110,6 @@ void button_init(int gpio_num)
     gpio_install_isr_service(ESP_INTR_FLAG_DEFAULT);
     gpio_isr_handler_add(gpio_num, gpio_isr_handler, NULL);
 }
-
 
 /****************************************************************************/
 /***        END OF FILE                                                   ***/
