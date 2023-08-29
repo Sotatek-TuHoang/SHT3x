@@ -1,4 +1,4 @@
-/* * Data converted from E:/SHT3x_Powersave/server_certs/ca_cert.pem
+/* * Data converted from E:/Sotalab/SHT3x_Powersave/server_certs/ca_cert.pem
  * (null byte appended)
  */
 .data

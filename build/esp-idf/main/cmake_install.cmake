@@ -1,4 +1,4 @@
-# Install script for directory: E:/SHT3x_Powersave/main
+# Install script for directory: E:/Sotalab/SHT3x_Powersave/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

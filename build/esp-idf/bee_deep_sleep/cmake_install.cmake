@@ -1,4 +1,4 @@
-# Install script for directory: E:/SHT3x_Powersave/components/bee_deep_sleep
+# Install script for directory: E:/Sotalab/SHT3x_Powersave/components/bee_deep_sleep
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

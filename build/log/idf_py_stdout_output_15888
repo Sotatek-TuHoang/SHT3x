@@ -1,12 +1,0 @@
-[0/1] cmd.exe /C "cd /D E:\SHT3x_Powersave\build && C:\Espressif\tools\cmake\3.24.0\bin\cmake.exe -D IDF_SIZE_TOOL=C:/Espressif/python_env/idf5.1_py3.11_env/Scripts/python.exe;-m;esp_idf_size -D MAP_FILE=E:/SHT3x_Powersave/build/SHT3x_Powersave.map -D OUTPUT_JSON= -P C:/Espressif/frameworks/esp-idf-v5.1/tools/cmake/run_size_tool.cmake"
-Total sizes:
-Used static DRAM:   32760 bytes ( 147976 remain, 18.1% used)
-      .data size:   14448 bytes
-      .bss  size:   18312 bytes
-Used static IRAM:   96998 bytes (  34074 remain, 74.0% used)
-      .text size:   95971 bytes
-   .vectors size:    1027 bytes
-Used Flash size :  958981 bytes
-           .text:  741471 bytes
-         .rodata:  217254 bytes
-Total image size: 1070427 bytes (.bin may be padded larger)

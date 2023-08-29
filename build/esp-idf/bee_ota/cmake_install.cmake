@@ -1,4 +1,4 @@
-# Install script for directory: E:/SHT3x_Powersave/components/bee_ota
+# Install script for directory: E:/Sotalab/SHT3x_Powersave/components/bee_ota
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

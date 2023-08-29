@@ -210,6 +210,7 @@ void rx_mqtt_ota_task(void *pvParameters)
                 }
                 else 
                 {
+                    ESP_LOGI(TAG_MQTT, "WRONG CMD!!!");
                     esp_restart();
                 }
                 cJSON_Delete(root);
@@ -217,6 +218,7 @@ void rx_mqtt_ota_task(void *pvParameters)
         }
         else
         {
+            ESP_LOGI(TAG_MQTT, "TIME OUT!!!");
             esp_restart();
         }
     }

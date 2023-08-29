@@ -1,8 +1,8 @@
 {
     "project_name":       "bootloader",
     "project_path":       "C:/Espressif/frameworks/esp-idf-v5.1/components/bootloader/subproject",
-    "build_dir":          "E:/SHT3x_Powersave/build/bootloader",
-    "config_file":        "E:/SHT3x_Powersave/sdkconfig",
+    "build_dir":          "E:/Sotalab/SHT3x_Powersave/build/bootloader",
+    "config_file":        "E:/Sotalab/SHT3x_Powersave/sdkconfig",
     "config_defaults":    "",
     "bootloader_elf":     "",
     "app_elf":            "bootloader.elf",
