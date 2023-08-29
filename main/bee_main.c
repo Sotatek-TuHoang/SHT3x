@@ -26,5 +26,5 @@ void app_main(void)
 
     deep_sleep_register_ext1_wakeup(GPIO_NUM_0);
 
-    xTaskCreate(deep_sleep_task, "deep_sleep_task", 4096, NULL, 19, NULL);
+    xTaskCreate(deep_sleep_task, "deep_sleep_task", 4096, NULL, 10, NULL);
 }

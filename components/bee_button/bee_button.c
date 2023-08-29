@@ -84,7 +84,7 @@ void button_task(void* arg)
             wifi_func_init();     
             mqtt_func_init();       
         }
-        xTaskCreate(rx_mqtt_ota_task, "rx_mqtt_ota_task", 8192, NULL, 10, NULL);
+        xTaskCreate(rx_mqtt_ota_task, "rx_mqtt_ota_task", 8192, NULL, 9, NULL);
         vTaskDelete(NULL); 
     }
     else
