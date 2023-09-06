@@ -14,7 +14,12 @@
         "gpio.h": "c",
         "bee_wifi.h": "c",
         "task.h": "c",
-        "bee_nvs.h": "c"
+        "bee_nvs.h": "c",
+        "rtc_io.h": "c",
+        "time.h": "c",
+        "i2c.h": "c",
+        "esp_wifi.h": "c",
+        "bee_i2c.h": "c"
     },
     "idf.portWin": "COM3",
     "idf.flashType": "UART"

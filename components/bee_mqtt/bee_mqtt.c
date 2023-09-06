@@ -53,10 +53,6 @@ void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event
             esp_mqtt_client_subscribe(client, cTopic_sub, 0);
             break;
 
-        case MQTT_EVENT_DISCONNECTED:
-            ESP_LOGI(TAG_MQTT, "MQTT_EVENT_DISCONNECTED");
-            break;
-
         case MQTT_EVENT_SUBSCRIBED:
             ESP_LOGI(TAG_MQTT, "MQTT_EVENT_SUBSCRIBED, msg_id=%d", event->msg_id);
             break;
@@ -76,10 +72,6 @@ void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event
                 snprintf(rxBuffer_MQTT, event->data_len + 1, event->data);
                 xQueueSend(mqtt_cmd_queue, &rxBuffer_MQTT, portMAX_DELAY);
             }
-            break;
-
-        case MQTT_EVENT_ERROR:
-            ESP_LOGI(TAG_MQTT, "MQTT_EVENT_ERROR");
             break;
 
         default:
@@ -156,7 +148,7 @@ void pub_keep_alive(void)
     cJSON_AddNumberToObject(json_keep_alive, "trans_code", u8trans_code++);
 
     char *json_str = cJSON_Print(json_keep_alive);
-    esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, QoS_1, 0);
+    esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, QoS_0, 0);
 
     cJSON_Delete(json_keep_alive);
     free(json_str);

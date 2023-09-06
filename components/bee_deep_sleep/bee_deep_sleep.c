@@ -21,6 +21,10 @@
 #include "esp_log.h"
 #include "driver/rtc_io.h"
 #include "driver/gpio.h"
+#include "esp_wifi.h"
+#include "driver/i2c.h"
+#include <esp_system.h>
+#include <esp_system.h>
 
 #include "bee_nvs.h"
 #include "bee_deep_sleep.h"
@@ -71,7 +75,7 @@ static void check_and_pub_warning()
     {
         init_resource_pub_mqtt();
         pub_warning(u8Warning_value);
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
+        vTaskDelay(600 / portTICK_PERIOD_MS);
     }
 }
 
@@ -81,24 +85,18 @@ static bool read_data(void)
     sht3x_sensor_t* sensor;
     if ((sensor = sht3x_init_sensor (I2C_BUS, SHT3x_ADDR_1)))
     {
-        vTaskDelay (sht3x_get_measurement_duration(sht3x_high));
         if (sht3x_measure (sensor, &fTemp, &fHumi))
         {
             ESP_LOGI(TAG_SHT3x, "Temperature: %.2f °C, Humidity: %.2f %%", fTemp, fHumi);
             check_and_pub_warning();
             return true;
         }
-        else
-        {
-            ESP_LOGI(TAG_SHT3x, "Can't measure SHT3x");
-            return false;
-        }
     }
-    else 
-    {
-        ESP_LOGI(TAG_SHT3x, "Can't init SHT3x");
-        return false;
-    }
+    gpio_reset_pin(RESET_PIN);
+    gpio_set_pull_mode(RESET_PIN, GPIO_PULLUP_ONLY);
+    gpio_set_direction(RESET_PIN, GPIO_MODE_OUTPUT);
+    gpio_set_level(RESET_PIN, 0);
+    return false;
 }
 
 static void check_cause_wake_up(void)
@@ -114,25 +112,25 @@ static void check_cause_wake_up(void)
         {
             ESP_LOGI(TAG_PM, "Wake up from timer. Time spent in deep sleep: %dms\n", sleep_time_ms);
 
-            if (u8cnt_sleep == 6) // Six times wakeup, approximate wakeup time*6 
+            if (u8cnt_sleep == 4) // 4 times wakeup, approximate wakeup time*4 
             {
                 init_resource_pub_mqtt();
-                if (read_data() == true)
+                if (read_data())
                 {
                     pub_data(fTemp, fHumi);                   
                 }
                 pub_keep_alive();
                 u8cnt_sleep = 0;
-                vTaskDelay(1000 / portTICK_PERIOD_MS);
+                vTaskDelay(1400 / portTICK_PERIOD_MS);
             }
-            else if (u8cnt_sleep == 3) // Three times wakeup, approximate wakeup time*3
+            else if (u8cnt_sleep == 2) // 2 times wakeup, approximate wakeup time*2
             {
                 u8cnt_sleep++;
-                if (read_data() == true)
+                if (read_data())
                 {
                     init_resource_pub_mqtt();
                     pub_data(fTemp, fHumi);
-                    vTaskDelay(1000 / portTICK_PERIOD_MS);                    
+                    vTaskDelay(1200 / portTICK_PERIOD_MS);                
                 }
             }
             else
@@ -150,7 +148,7 @@ static void check_cause_wake_up(void)
             extern bool bButton_task;
             while (bButton_task) //Delay sleep to complete config wifi or OTA
             {
-                vTaskDelay (1000 / portTICK_PERIOD_MS);
+                vTaskDelay (500 / portTICK_PERIOD_MS);
             }
             break;
         }
@@ -189,8 +187,16 @@ void deep_sleep_task(void *args)
 {    
     ESP_LOGI(TAG_PM, "Entering normal mode\n");
     check_cause_wake_up();
-    ESP_LOGI(TAG_PM, "Entering deep sleep again\n");
+
     gettimeofday(&sleep_enter_time, NULL); // Get deep sleep enter time
+
+    wifi_ap_record_t ap_info;
+    if (esp_wifi_sta_get_ap_info(&ap_info) == ESP_OK)
+    {
+        esp_wifi_disconnect();
+    }
+
+    ESP_LOGI(TAG_PM, "Entering deep sleep again\n");
     esp_deep_sleep_start(); // Enter deep sleep
 }
 /****************************************************************************/

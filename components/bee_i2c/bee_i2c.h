@@ -21,8 +21,8 @@
 #define I2C_NACK_VAL 0x1
 #define I2C_FREQ     400000
 #define I2C_BUS      0
-#define I2C_SCL_PIN  22
-#define I2C_SDA_PIN  21
+#define I2C_SCL_PIN  19
+#define I2C_SDA_PIN  18
 
 /****************************************************************************/
 /***        Exported Functions                                            ***/
@@ -40,7 +40,7 @@
  * @param sda GPIO number for the SDA (data) line.
  * @param freq Clock frequency for the I2C bus.
  *
- * @return None
+ * @return ESP_OK if the operation was successful
  */
 void i2c_init(int bus, gpio_num_t scl, gpio_num_t sda, uint32_t freq);
 

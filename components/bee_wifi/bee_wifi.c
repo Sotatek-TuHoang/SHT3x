@@ -24,16 +24,16 @@
 #include "bee_wifi.h"
 #include "bee_nvs.h"
 
+extern bool bButton_task;
+
 /****************************************************************************/
 /***        Local Variables                                               ***/
 /****************************************************************************/
+
 static const char *TAG = "Wifi";
 const int WIFI_CONNECTED_EVENT = BIT0;
 
 bool bProv = false; 
-
-static char cReceived_ssid[32];
-static char cReceived_password[64];
 
 /****************************************************************************/
 /***        List of handle                                                ***/
@@ -64,10 +64,6 @@ static void event_handler(void* arg, esp_event_base_t event_base,
                          "\n\tSSID     : %s\n\tPassword : %s",
                          (const char *) wifi_sta_cfg->ssid,
                          (const char *) wifi_sta_cfg->password);
-
-                snprintf(cReceived_ssid, sizeof(cReceived_ssid), "%s", (const char *)wifi_sta_cfg->ssid);
-                snprintf(cReceived_password, sizeof(cReceived_password), "%s", (const char *)wifi_sta_cfg->password);
-
                 break;
             }
             case WIFI_PROV_CRED_FAIL:
@@ -91,7 +87,7 @@ static void event_handler(void* arg, esp_event_base_t event_base,
             }
             case WIFI_PROV_CRED_SUCCESS:
                 ESP_LOGI(TAG, "Provisioning successful");
-                save_wifi_cred_to_nvs(cReceived_ssid, cReceived_password);
+
                 if (xTaskGetHandle("prov_timeout") != NULL)
                 {
                     vTaskDelete(prov_timeout_handle);
@@ -105,7 +101,6 @@ static void event_handler(void* arg, esp_event_base_t event_base,
                 /* De-initialize manager once provisioning is finished */
                 wifi_prov_mgr_deinit();
                 bProv = false;
-                extern bool bButton_task;
                 bButton_task = false;
                 break;
             default:
@@ -120,8 +115,8 @@ static void event_handler(void* arg, esp_event_base_t event_base,
                 esp_wifi_connect();
                 break;
             case WIFI_EVENT_STA_DISCONNECTED:
-                ESP_LOGI(TAG, "Disconnected. Connecting to the AP again...");
-                esp_wifi_connect();
+                ESP_LOGI(TAG, "Disconnected");
+                //esp_wifi_connect();
                 break;
             case WIFI_EVENT_AP_STACONNECTED:
                 ESP_LOGI(TAG, "SoftAP transport: Connected!");
@@ -160,34 +155,6 @@ static void get_device_service_name(char *service_name, size_t max)
     esp_wifi_get_mac(WIFI_IF_STA, u8eth_mac);
     snprintf(service_name, max, "%s%02X%02X%02X",
              ssid_prefix, u8eth_mac[3], u8eth_mac[4], u8eth_mac[5]);
-}
-
-static void reconnect_old_wifi(void)
-{
-    wifi_config_t wifi_sta_cfg;
-
-    // Đọc thông tin SSID và Password từ NVS
-    char cSsid[32];
-    char cPassword[64];
-
-    load_old_wifi_cred(cSsid, cPassword);
-
-    if (strlen(cSsid) > 0)
-    {
-        // Thiết lập cấu hình Wi-Fi với thông tin từ NVS
-        memset(&wifi_sta_cfg, 0, sizeof(wifi_config_t));
-        strncpy((char*)wifi_sta_cfg.sta.ssid, cSsid, sizeof(wifi_sta_cfg.sta.ssid));
-        strncpy((char*)wifi_sta_cfg.sta.password, cPassword, sizeof(wifi_sta_cfg.sta.password));
-
-        wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
-        ESP_ERROR_CHECK(esp_wifi_init(&cfg));
-
-        // Khởi tạo Wi-Fi ở chế độ STA với cấu hình đã đọc từ NVS
-        ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
-        ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_sta_cfg));
-        ESP_ERROR_CHECK(esp_wifi_start());
-        ESP_ERROR_CHECK(esp_wifi_connect());
-    }
 }
 
 static void cnt_timeout(uint8_t *u8time)
@@ -264,13 +231,13 @@ void wifi_func_init(void)
         ESP_LOGI(TAG, "Already provisioned, starting Wi-Fi STA");
         wifi_prov_mgr_deinit();
         wifi_init_sta();
+        const TickType_t xMaxDelay = pdMS_TO_TICKS(5000);
+        xEventGroupWaitBits(wifi_event_group, WIFI_CONNECTED_EVENT, true, true, xMaxDelay);
     }
     else
     {
       wifi_prov_mgr_deinit();  
     }
-    TickType_t xMaxWaitTime_Wifi = pdMS_TO_TICKS(8000); // Thời gian chờ kết nối wifi tối đa là 8s
-    xEventGroupWaitBits(wifi_event_group, WIFI_CONNECTED_EVENT, true, true, xMaxWaitTime_Wifi);
 }
 
 void wifi_prov(void)
@@ -311,7 +278,7 @@ void prov_timeout_task(void* pvParameters)
     uint8_t u8timeout_set = 60; // Đơn vị tính bằng giây
     cnt_timeout(&u8timeout_set);
     wifi_prov_mgr_stop_provisioning();
-    reconnect_old_wifi();
+    bButton_task = false;
     vTaskDelete(prov_timeout_handle); // Xóa task khi hoàn thành
 }
 
@@ -321,7 +288,7 @@ void prov_fail_task(void* pvParameters)
     uint8_t u8timeout_set = 60; // Đơn vị tính bằng giây
     cnt_timeout(&u8timeout_set);
     wifi_prov_mgr_stop_provisioning();
-    reconnect_old_wifi();
+    bButton_task = false;
     vTaskDelete(prov_fail_handle); // Xóa task khi hoàn thành
 }
 /****************************************************************************/
