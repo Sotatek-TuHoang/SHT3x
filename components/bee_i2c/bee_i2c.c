@@ -32,6 +32,7 @@ void i2c_init (int bus, gpio_num_t scl, gpio_num_t sda, uint32_t freq)
     conf.master.clk_speed = freq;
     ESP_ERROR_CHECK(i2c_param_config(bus, &conf));
     ESP_ERROR_CHECK(i2c_driver_install(bus, I2C_MODE_MASTER, 0, 0, 0));
+    i2c_filter_enable(bus, 1);
 }
 
 int i2c_slave_write (uint8_t bus, uint8_t addr, const uint8_t *reg, 

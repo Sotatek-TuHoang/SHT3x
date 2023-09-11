@@ -21,6 +21,7 @@
 #include "bee_mqtt.h"
 #include "bee_ota.h"
 
+extern bool bButton_task;
 /****************************************************************************/
 /***        Local Variables                                               ***/
 /****************************************************************************/
@@ -50,7 +51,17 @@ void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event
     {
         case MQTT_EVENT_CONNECTED:
             ESP_LOGI(TAG_MQTT, "MQTT_EVENT_CONNECTED");
-            esp_mqtt_client_subscribe(client, cTopic_sub, 0);
+            if (bButton_task)
+            {
+                snprintf(cTopic_sub, sizeof(cTopic_sub),"VB/DMP/VBEEON/CUSTOM/SMH/%s/Command", cMac_str);
+                esp_mqtt_client_subscribe(client, cTopic_sub, 0);
+                ESP_LOGI(TAG_MQTT, "Topic subscribe: %s\n", cTopic_sub);
+            }
+            
+            break;
+
+        case MQTT_EVENT_DISCONNECTED:
+            ESP_LOGI(TAG_MQTT, "MQTT_EVENT_DISCONNECTED");
             break;
 
         case MQTT_EVENT_SUBSCRIBED:
@@ -72,6 +83,11 @@ void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event
                 snprintf(rxBuffer_MQTT, event->data_len + 1, event->data);
                 xQueueSend(mqtt_cmd_queue, &rxBuffer_MQTT, portMAX_DELAY);
             }
+
+            break;
+
+        case MQTT_EVENT_ERROR:
+            ESP_LOGI(TAG_MQTT, "MQTT_EVENT_ERROR");
             break;
 
         default:
@@ -101,9 +117,9 @@ void mqtt_func_init(void)
     esp_wifi_get_mac(ESP_IF_WIFI_STA, u8mac);
     snprintf(cMac_str, sizeof(cMac_str), "%02X%02X%02X%02X%02X%02X", u8mac[0], u8mac[1], u8mac[2], u8mac[3], u8mac[4], u8mac[5]);
     snprintf(cTopic_pub, sizeof(cTopic_pub), "VB/DMP/VBEEON/CUSTOM/SMH/%s/telemetry", cMac_str);
-    snprintf(cTopic_sub, sizeof(cTopic_sub), "VB/DMP/VBEEON/CUSTOM/SMH/%s/Command", cMac_str);
+
     ESP_LOGI(TAG_MQTT, "Topic publish: %s\n", cTopic_pub);
-    ESP_LOGI(TAG_MQTT, "Topic subscribe: %s\n", cTopic_sub);
+
     mqtt_cmd_queue = xQueueCreate(2, sizeof(cJSON*));
 }
 

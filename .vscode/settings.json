@@ -19,7 +19,9 @@
         "time.h": "c",
         "i2c.h": "c",
         "esp_wifi.h": "c",
-        "bee_i2c.h": "c"
+        "bee_i2c.h": "c",
+        "scheme_ble.h": "c",
+        "event_groups.h": "c"
     },
     "idf.portWin": "COM3",
     "idf.flashType": "UART"

@@ -75,7 +75,7 @@ static void check_and_pub_warning()
     {
         init_resource_pub_mqtt();
         pub_warning(u8Warning_value);
-        vTaskDelay(600 / portTICK_PERIOD_MS);
+        esp_wifi_disconnect();
     }
 }
 
@@ -91,7 +91,15 @@ static bool read_data(void)
             check_and_pub_warning();
             return true;
         }
+        else
+        {
+            ESP_LOGI(TAG_SHT3x, "cant read");
+        }
     }
+    else
+    {
+        ESP_LOGI(TAG_SHT3x, "cant init");
+    }  
     gpio_reset_pin(RESET_PIN);
     gpio_set_pull_mode(RESET_PIN, GPIO_PULLUP_ONLY);
     gpio_set_direction(RESET_PIN, GPIO_MODE_OUTPUT);
@@ -112,25 +120,15 @@ static void check_cause_wake_up(void)
         {
             ESP_LOGI(TAG_PM, "Wake up from timer. Time spent in deep sleep: %dms\n", sleep_time_ms);
 
-            if (u8cnt_sleep == 4) // 4 times wakeup, approximate wakeup time*4 
+            if (u8cnt_sleep == 4)
             {
-                init_resource_pub_mqtt();
-                if (read_data())
-                {
-                    pub_data(fTemp, fHumi);                   
-                }
-                pub_keep_alive();
                 u8cnt_sleep = 0;
-                vTaskDelay(1400 / portTICK_PERIOD_MS);
-            }
-            else if (u8cnt_sleep == 2) // 2 times wakeup, approximate wakeup time*2
-            {
-                u8cnt_sleep++;
+                
                 if (read_data())
                 {
                     init_resource_pub_mqtt();
                     pub_data(fTemp, fHumi);
-                    vTaskDelay(1200 / portTICK_PERIOD_MS);                
+                    esp_wifi_disconnect();                
                 }
             }
             else
@@ -189,13 +187,6 @@ void deep_sleep_task(void *args)
     check_cause_wake_up();
 
     gettimeofday(&sleep_enter_time, NULL); // Get deep sleep enter time
-
-    wifi_ap_record_t ap_info;
-    if (esp_wifi_sta_get_ap_info(&ap_info) == ESP_OK)
-    {
-        esp_wifi_disconnect();
-    }
-
     ESP_LOGI(TAG_PM, "Entering deep sleep again\n");
     esp_deep_sleep_start(); // Enter deep sleep
 }
