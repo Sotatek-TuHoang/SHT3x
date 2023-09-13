@@ -50,10 +50,6 @@ static void IRAM_ATTR gpio_isr_handler(void* arg)
 
 void button_task(void* arg)
 {
-    gpio_reset_pin (GPIO_NUM_2);
-    gpio_set_direction (GPIO_NUM_2, GPIO_MODE_OUTPUT);
-    gpio_set_level(GPIO_NUM_2, 0);
-
     TickType_t press_duration = 0;
     while (button_pressed && !bButton_task)
     {
@@ -63,11 +59,11 @@ void button_task(void* arg)
         ESP_LOGI(TAG, "Button pressed for %lu ms\n", (uint32_t)press_duration);
         if (press_duration >= 3000 && press_duration <= 6000)
         {
-            gpio_set_level(GPIO_NUM_2, 1);
+
         }
         else
         {
-            gpio_set_level(GPIO_NUM_2, 0);
+
         }
         vTaskDelay(200 / portTICK_PERIOD_MS);
     }

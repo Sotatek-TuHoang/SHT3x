@@ -16,7 +16,7 @@
 #define SECOND_20S 20
 #define SECOND_30S 30
 
-#define RESET_PIN 32
+#define RESET_PIN 10
 
 
 /**
@@ -42,10 +42,10 @@ void deep_sleep_register_rtc_timer_wakeup(uint8_t wakeup_time_sec);
  * @brief Register external GPIO wake-up source for deep sleep.
  *
  * This function enables the specified GPIO pin to trigger wake-up from deep sleep mode.
- * It configures the GPIO pin to trigger a wake-up event when its state changes to high.
+ * It configures the GPIO pin to trigger a wake-up event when its state changes to low.
  * @param gpio_wakeup gpio set to wake up program from deep sleep
  */
-void deep_sleep_register_ext1_wakeup(int gpio_wakeup);
+void deep_sleep_register_gpio_wakeup(uint8_t gpio_wakeup);
 
 #endif 
 /****************************************************************************/

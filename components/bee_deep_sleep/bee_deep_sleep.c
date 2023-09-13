@@ -75,6 +75,7 @@ static void check_and_pub_warning()
     {
         init_resource_pub_mqtt();
         pub_warning(u8Warning_value);
+        vTaskDelay (20 / portTICK_PERIOD_MS);
         esp_wifi_disconnect();
     }
 }
@@ -128,6 +129,7 @@ static void check_cause_wake_up(void)
                 {
                     init_resource_pub_mqtt();
                     pub_data(fTemp, fHumi);
+                    vTaskDelay (20 / portTICK_PERIOD_MS);
                     esp_wifi_disconnect();                
                 }
             }
@@ -139,9 +141,9 @@ static void check_cause_wake_up(void)
             break;
         }
 
-        case ESP_SLEEP_WAKEUP_EXT1:
+        case ESP_SLEEP_WAKEUP_GPIO:
         {
-            ESP_LOGI(TAG_PM, "Wakeup from GPIO 0\n");
+            ESP_LOGI(TAG_PM, "Wakeup from GPIO\n");
             vTaskDelay (12000 / portTICK_PERIOD_MS); //Wait 12 sec for button press
             extern bool bButton_task;
             while (bButton_task) //Delay sleep to complete config wifi or OTA
@@ -166,15 +168,17 @@ void deep_sleep_register_rtc_timer_wakeup(uint8_t wakeup_time_sec)
     ESP_ERROR_CHECK(esp_sleep_enable_timer_wakeup(wakeup_time_sec * 1000000));
 }
 
-void deep_sleep_register_ext1_wakeup(int gpio_wakeup)
+void deep_sleep_register_gpio_wakeup(uint8_t gpio_wakeup)
 {
-    const int ext_wakeup_pin = gpio_wakeup;
-    const uint64_t ext_wakeup_pin_mask = 1ULL << ext_wakeup_pin;
-    
-    ESP_ERROR_CHECK(esp_sleep_enable_ext1_wakeup(ext_wakeup_pin_mask, ESP_EXT1_WAKEUP_ALL_LOW));
-    ESP_ERROR_CHECK(esp_sleep_pd_config(ESP_PD_DOMAIN_RTC_PERIPH, ESP_PD_OPTION_ON));
-    ESP_ERROR_CHECK(rtc_gpio_pullup_en(ext_wakeup_pin));
-    ESP_ERROR_CHECK(rtc_gpio_pulldown_dis(ext_wakeup_pin));
+    const gpio_config_t config = {
+        .pin_bit_mask = BIT(gpio_wakeup),
+        .mode = GPIO_MODE_INPUT,
+    };
+
+    ESP_ERROR_CHECK(gpio_config(&config));
+    ESP_ERROR_CHECK(esp_deep_sleep_enable_gpio_wakeup(BIT(gpio_wakeup), 0));
+
+    printf("Enabling GPIO wakeup on pins GPIO%d\n", gpio_wakeup);
 }
 
 /****************************************************************************/

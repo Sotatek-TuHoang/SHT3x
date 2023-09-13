@@ -134,6 +134,7 @@ void pub_data(float fTemp, float fHumi)
     cJSON_AddNumberToObject(json_data, "trans_code", u8trans_code++);
     
     char *json_str = cJSON_Print(json_data); // Convert the JSON object to a string
+    vTaskDelay (20 / portTICK_PERIOD_MS);
     esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, QoS_0, 0); // Publish the JSON string via MQTT
     cJSON_Delete(json_data);
     free(json_str);
@@ -149,6 +150,7 @@ void pub_warning(uint8_t u8Values)
     cJSON_AddNumberToObject(json_data, "trans_code", u8trans_code++);
 
     char *json_str = cJSON_Print(json_data); // Convert the JSON object to a string
+    vTaskDelay (20 / portTICK_PERIOD_MS);
     esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, QoS_1, 0); // Publish the JSON string via MQTT
     cJSON_Delete(json_data);
     free(json_str);
