@@ -25,7 +25,7 @@ extern bool bButton_task;
 /****************************************************************************/
 /***        Local Variables                                               ***/
 /****************************************************************************/
-
+static bool bMQTT_connected = false;
 static RTC_DATA_ATTR uint8_t u8trans_code = 0;
 
 static char cMac_str[13];
@@ -51,6 +51,8 @@ void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event
     {
         case MQTT_EVENT_CONNECTED:
             ESP_LOGI(TAG_MQTT, "MQTT_EVENT_CONNECTED");
+            bMQTT_connected = true;
+            
             if (bButton_task)
             {
                 snprintf(cTopic_sub, sizeof(cTopic_sub),"VB/DMP/VBEEON/CUSTOM/SMH/%s/Command", cMac_str);
@@ -62,6 +64,7 @@ void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event
 
         case MQTT_EVENT_DISCONNECTED:
             ESP_LOGI(TAG_MQTT, "MQTT_EVENT_DISCONNECTED");
+            bMQTT_connected = false;
             break;
 
         case MQTT_EVENT_SUBSCRIBED:
@@ -94,6 +97,17 @@ void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event
             ESP_LOGI(TAG_MQTT, "Other event id:%d", event->event_id);
             break;
     }
+}
+
+static void wait_MQTT_connect()
+{
+    uint8_t wait_cnt = 0;
+    while (!bMQTT_connected && (wait_cnt < 8))
+    {
+        ++wait_cnt;
+        vTaskDelay(10 / portTICK_PERIOD_MS);
+    }
+    wait_cnt = 0;
 }
 
 /****************************************************************************/
@@ -134,7 +148,7 @@ void pub_data(float fTemp, float fHumi)
     cJSON_AddNumberToObject(json_data, "trans_code", u8trans_code++);
     
     char *json_str = cJSON_Print(json_data); // Convert the JSON object to a string
-    vTaskDelay (20 / portTICK_PERIOD_MS);
+    wait_MQTT_connect();
     esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, QoS_0, 0); // Publish the JSON string via MQTT
     cJSON_Delete(json_data);
     free(json_str);
@@ -150,7 +164,7 @@ void pub_warning(uint8_t u8Values)
     cJSON_AddNumberToObject(json_data, "trans_code", u8trans_code++);
 
     char *json_str = cJSON_Print(json_data); // Convert the JSON object to a string
-    vTaskDelay (20 / portTICK_PERIOD_MS);
+    wait_MQTT_connect();
     esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, QoS_1, 0); // Publish the JSON string via MQTT
     cJSON_Delete(json_data);
     free(json_str);
@@ -183,8 +197,8 @@ void pub_ota_status(char *values)
     cJSON_AddNumberToObject(json_ota_status, "trans_code", u8trans_code++);
 
     char *json_str = cJSON_Print(json_ota_status); // Convert the JSON object to a string
-    esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, QoS_1, 0); // Publish the JSON string via MQTT
-
+    wait_MQTT_connect();
+    esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, QoS_0, 0); // Publish the JSON string via MQTT
     cJSON_Delete(json_ota_status);
     free(json_str);
 }
