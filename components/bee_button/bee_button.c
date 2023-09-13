@@ -18,6 +18,7 @@
 #include "bee_ota.h"
 #include "bee_nvs.h"
 #include "bee_mqtt.h"
+#include "bee_ledc.h"
 
 /****************************************************************************/
 /***        Global Variables                                              ***/
@@ -50,6 +51,9 @@ static void IRAM_ATTR gpio_isr_handler(void* arg)
 
 void button_task(void* arg)
 {
+    ledc_init(GREEN_LEDC, LEDC_CHANNEL_0);
+    ledc_init(BLUE_LEDC, LEDC_CHANNEL_1);
+
     TickType_t press_duration = 0;
     while (button_pressed && !bButton_task)
     {
@@ -59,11 +63,12 @@ void button_task(void* arg)
         ESP_LOGI(TAG, "Button pressed for %lu ms\n", (uint32_t)press_duration);
         if (press_duration >= 3000 && press_duration <= 6000)
         {
-
+            ledc_on(LEDC_CHANNEL_0, LEDC_DUTY_10);
         }
-        else
+        else if (press_duration > 6000)
         {
-
+            ledc_on(LEDC_CHANNEL_1, LEDC_DUTY_10);
+            ledc_off(LEDC_CHANNEL_0);
         }
         vTaskDelay(200 / portTICK_PERIOD_MS);
     }
