@@ -102,10 +102,10 @@ void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event
 static void wait_MQTT_connect()
 {
     uint8_t wait_cnt = 0;
-    while (!bMQTT_connected && (wait_cnt < 8))
+    while (!bMQTT_connected && (wait_cnt <= 10))
     {
         ++wait_cnt;
-        vTaskDelay(10 / portTICK_PERIOD_MS);
+        vTaskDelay(20 / portTICK_PERIOD_MS);
     }
     wait_cnt = 0;
 }
@@ -113,6 +113,11 @@ static void wait_MQTT_connect()
 /****************************************************************************/
 /***        Exported Functions                                            ***/
 /****************************************************************************/
+
+void mqtt_disconnect()
+{
+    esp_mqtt_client_disconnect(client);
+}
 
 void mqtt_func_init(void)
 {
@@ -154,19 +159,22 @@ void pub_data(float fTemp, float fHumi)
     free(json_str);
 }
 
-void pub_warning(uint8_t u8Values)
+void pub_warning(uint8_t u8Values, float fTemp, float fHumi)
 {
-    cJSON *json_data = cJSON_CreateObject();// Create a JSON object for the warning
-    cJSON_AddStringToObject(json_data, "thing_token", cMac_str);
-    cJSON_AddStringToObject(json_data, "cmd_name", "Bee.data");
-    cJSON_AddStringToObject(json_data, "object_type", "Bee.warning");
-    cJSON_AddNumberToObject(json_data, "values", u8Values);
-    cJSON_AddNumberToObject(json_data, "trans_code", u8trans_code++);
+    cJSON *json_warnings = cJSON_CreateObject();// Create a JSON object for the warning
+    cJSON_AddStringToObject(json_warnings, "thing_token", cMac_str);
+    cJSON_AddStringToObject(json_warnings, "cmd_name", "Bee.data");
+    cJSON_AddStringToObject(json_warnings, "object_type", "Bee.warning");
+    cJSON *json_values = cJSON_AddObjectToObject(json_warnings, "values");
+    cJSON_AddNumberToObject(json_values, "warnings_values", u8Values);
+    cJSON_AddNumberToObject(json_values, "temperature", fTemp);
+    cJSON_AddNumberToObject(json_values, "humidity", fHumi);
+    cJSON_AddNumberToObject(json_warnings, "trans_code", u8trans_code++);
 
-    char *json_str = cJSON_Print(json_data); // Convert the JSON object to a string
+    char *json_str = cJSON_Print(json_warnings); // Convert the JSON object to a string
     wait_MQTT_connect();
     esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, QoS_1, 0); // Publish the JSON string via MQTT
-    cJSON_Delete(json_data);
+    cJSON_Delete(json_warnings);
     free(json_str);
 }
 

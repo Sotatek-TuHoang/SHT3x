@@ -21,6 +21,8 @@
 #define USERNAME            "VBeeHome"
 #define PASSWORD            "123abcA@!"
 
+void mqtt_disconnect();
+
 /**
  * @brief   Initialize MQTT functionality.
  *
@@ -61,7 +63,7 @@ void pub_keep_alive(void);
  * 
  * @param u8Values The value associated with the warning.
  */
-void pub_warning(uint8_t u8Values);
+void pub_warning(uint8_t u8Values, float fTemp, float fHumi);
 
 /**
  * @brief Publishes an OTA status message via MQTT.

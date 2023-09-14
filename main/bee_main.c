@@ -20,7 +20,7 @@
 void app_main(void)
 {
     i2c_init(I2C_BUS, I2C_SCL_PIN, I2C_SDA_PIN, I2C_FREQ);
-    deep_sleep_register_rtc_timer_wakeup(SECOND_10S);
+    deep_sleep_register_rtc_timer_wakeup(SECOND_30S);
     deep_sleep_register_gpio_wakeup(GPIO_NUM_2);
     button_init(GPIO_NUM_2);
     xTaskCreate(deep_sleep_task, "deep_sleep_task", 4096, NULL, 10, NULL);

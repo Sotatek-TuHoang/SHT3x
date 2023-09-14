@@ -74,8 +74,9 @@ static void check_and_pub_warning()
     if (u8Warning_value != NO_WARNNG)
     {
         init_resource_pub_mqtt();
-        pub_warning(u8Warning_value);
-        vTaskDelay (20 / portTICK_PERIOD_MS);
+        pub_warning(u8Warning_value, fTemp, fHumi);
+        vTaskDelay (30 / portTICK_PERIOD_MS);
+        mqtt_disconnect();
         esp_wifi_disconnect();
     }
 }
@@ -89,18 +90,9 @@ static bool read_data(void)
         if (sht3x_measure (sensor, &fTemp, &fHumi))
         {
             ESP_LOGI(TAG_SHT3x, "Temperature: %.2f °C, Humidity: %.2f %%", fTemp, fHumi);
-            check_and_pub_warning();
             return true;
         }
-        else
-        {
-            ESP_LOGI(TAG_SHT3x, "cant read");
-        }
     }
-    else
-    {
-        ESP_LOGI(TAG_SHT3x, "cant init");
-    }  
     gpio_reset_pin(RESET_PIN);
     gpio_set_pull_mode(RESET_PIN, GPIO_PULLUP_ONLY);
     gpio_set_direction(RESET_PIN, GPIO_MODE_OUTPUT);
@@ -130,13 +122,17 @@ static void check_cause_wake_up(void)
                     init_resource_pub_mqtt();
                     pub_data(fTemp, fHumi);
                     vTaskDelay (20 / portTICK_PERIOD_MS);
+                    mqtt_disconnect();
                     esp_wifi_disconnect();                
                 }
             }
             else
             {   
                 u8cnt_sleep++;
-                read_data();
+                if (read_data())
+                {
+                    check_and_pub_warning();
+                } 
             }
             break;
         }
