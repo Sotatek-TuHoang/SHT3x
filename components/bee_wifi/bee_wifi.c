@@ -99,7 +99,7 @@ static void event_handler(void* arg, esp_event_base_t event_base,
             case WIFI_PROV_END:
                 /* De-initialize manager once provisioning is finished */
                 wifi_prov_mgr_stop_provisioning();
-                wifi_prov_mgr_deinit();
+        
                 bProv = false;
                 bButton_task = false;
                 break;
@@ -226,24 +226,20 @@ void wifi_func_init(void)
     ESP_ERROR_CHECK(wifi_prov_mgr_init(config));
     bool provisioned = false;
     ESP_ERROR_CHECK(wifi_prov_mgr_is_provisioned(&provisioned));
-    if (provisioned && !bButton_task)
+    if (provisioned)
     {
         ESP_LOGI(TAG, "Already provisioned, starting Wi-Fi STA");
         wifi_prov_mgr_stop_provisioning();
-        wifi_prov_mgr_deinit();
+
         wifi_init_sta();
 
         const TickType_t xMaxDelay = pdMS_TO_TICKS(5000);
         xEventGroupWaitBits(wifi_event_group, WIFI_CONNECTED_EVENT, true, true, xMaxDelay);
     }
-    else if (provisioned && bButton_task)
-    {
-
-    }
     else
     {
         wifi_prov_mgr_stop_provisioning();
-        wifi_prov_mgr_deinit();
+
     }
 }
 
@@ -290,6 +286,7 @@ void prov_timeout_task(void* pvParameters)
 {
     uint8_t u8timeout_set = 60; // Đơn vị tính bằng giây
     cnt_timeout(&u8timeout_set);
+    wifi_prov_mgr_stop_provisioning();
     bButton_task = false;
     vTaskDelete(prov_timeout_handle); // Xóa task khi hoàn thành
 }
@@ -299,6 +296,7 @@ void prov_fail_task(void* pvParameters)
     wifi_prov_mgr_reset_sm_state_on_failure();
     uint8_t u8timeout_set = 60; // Đơn vị tính bằng giây
     cnt_timeout(&u8timeout_set);
+    wifi_prov_mgr_stop_provisioning();
     bButton_task = false;
     vTaskDelete(prov_fail_handle); // Xóa task khi hoàn thành
 }

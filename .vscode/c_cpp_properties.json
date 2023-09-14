@@ -10,7 +10,8 @@
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compileCommands": "${workspaceFolder}/build/compile_commands.json"
+            "compileCommands": "${workspaceFolder}/build/compile_commands.json",
+            "compilerPath": "C:\\Espressif\\tools\\xtensa-esp32s3-elf\\esp-12.2.0_20230208\\xtensa-esp32s3-elf\\bin\\xtensa-esp32s3-elf-gcc.exe"
         }
     ],
     "version": 4

@@ -1,5 +1,5 @@
 {
-    "idf.adapterTargetName": "esp32",
+    "idf.adapterTargetName": "esp32s3",
     "files.associations": {
         "bee_deep_sleep.h": "c",
         "esp_err.h": "c",
@@ -23,6 +23,9 @@
         "scheme_ble.h": "c",
         "event_groups.h": "c"
     },
-    "idf.portWin": "COM3",
-    "idf.flashType": "UART"
+    "idf.portWin": "COM20",
+    "idf.flashType": "UART",
+    "idf.openOcdConfigs": [
+        "board/esp32s3-bridge.cfg"
+    ]
 }

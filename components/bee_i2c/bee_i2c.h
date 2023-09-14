@@ -19,10 +19,10 @@
 
 #define I2C_ACK_VAL  0x0
 #define I2C_NACK_VAL 0x1
-#define I2C_FREQ     400000
+#define I2C_FREQ     100000
 #define I2C_BUS      0
-#define I2C_SCL_PIN  GPIO_NUM_22
-#define I2C_SDA_PIN  GPIO_NUM_21
+#define I2C_SCL_PIN  GPIO_NUM_15
+#define I2C_SDA_PIN  GPIO_NUM_16
 
 /****************************************************************************/
 /***        Exported Functions                                            ***/
