@@ -45,7 +45,7 @@ static void IRAM_ATTR gpio_isr_handler(void* arg)
     if (button_pressed && !bButton_task) // Check if the button is pressed and no button_task is running
     {
         button_press_time = xTaskGetTickCount(); // Record the button press time
-        xTaskCreate(button_task, "button_task", 4096, NULL, 10, NULL); // Create a new task for handling the button press
+        xTaskCreate(button_task, "button_task", 8192, NULL, 10, NULL); // Create a new task for handling the button press
     }
 }
 

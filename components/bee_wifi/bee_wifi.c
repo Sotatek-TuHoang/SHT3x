@@ -45,6 +45,9 @@ static TaskHandle_t prov_fail_handle = NULL;
 /****************************************************************************/
 /***        Event Handler                                                 ***/
 /****************************************************************************/
+char cReceived_ssid[32];
+char cReceived_password[64];
+uint8_t u8Received_channel;
 
 static void event_handler(void* arg, esp_event_base_t event_base,
                           int32_t event_id, void* event_data)
@@ -62,6 +65,10 @@ static void event_handler(void* arg, esp_event_base_t event_base,
                          "\n\tSSID     : %s\n\tPassword : %s",
                          (const char *) wifi_sta_cfg->ssid,
                          (const char *) wifi_sta_cfg->password);
+
+                snprintf(cReceived_ssid, sizeof(cReceived_ssid), "%s", (const char *)wifi_sta_cfg->ssid);
+                snprintf(cReceived_password, sizeof(cReceived_password), "%s", (const char *)wifi_sta_cfg->password);
+
                 break;
             }
             case WIFI_PROV_CRED_FAIL:
@@ -87,6 +94,11 @@ static void event_handler(void* arg, esp_event_base_t event_base,
             case WIFI_PROV_CRED_SUCCESS:
                 ESP_LOGI(TAG, "Provisioning successful");
 
+                wifi_ap_record_t ap_info;
+                esp_wifi_sta_get_ap_info(&ap_info);
+                u8Received_channel = ap_info.primary;
+                save_wifi_cred_to_nvs(cReceived_ssid, cReceived_password, u8Received_channel);
+
                 if (xTaskGetHandle("prov_timeout") != NULL)
                 {
                     vTaskDelete(prov_timeout_handle);
@@ -97,9 +109,8 @@ static void event_handler(void* arg, esp_event_base_t event_base,
                 }
                 break;
             case WIFI_PROV_END:
-                /* De-initialize manager once provisioning is finished */
                 wifi_prov_mgr_stop_provisioning();
-        
+                esp_wifi_disconnect();
                 bProv = false;
                 bButton_task = false;
                 break;
@@ -163,13 +174,6 @@ esp_err_t custom_prov_data_handler(uint32_t session_id, const uint8_t *inbuf, ss
 /***        Locale Functions                                              ***/
 /****************************************************************************/
 
-static void wifi_init_sta(void)
-{
-    /* Start Wi-Fi in station mode */
-    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
-    ESP_ERROR_CHECK(esp_wifi_start());
-}
-
 static void get_device_service_name(char *service_name, size_t max)
 {
     uint8_t u8eth_mac[6];
@@ -191,14 +195,45 @@ static void cnt_timeout(uint8_t *u8time)
     ESP_LOGI(TAG,"TIMEOUT!!!\n");
 }
 
+static void connect_wifi(void)
+{
+    wifi_config_t wifi_sta_cfg;
+
+    char cSsid[32];
+    char cPassword[64];
+    uint8_t u8channel;
+
+    load_old_wifi_cred(cSsid, cPassword, &u8channel );
+
+    if (strlen(cSsid) > 0)
+    {
+        // Thiết lập cấu hình Wi-Fi với thông tin từ NVS
+        memset(&wifi_sta_cfg, 0, sizeof(wifi_config_t));
+        strncpy((char*)wifi_sta_cfg.sta.ssid, cSsid, sizeof(wifi_sta_cfg.sta.ssid));
+        strncpy((char*)wifi_sta_cfg.sta.password, cPassword, sizeof(wifi_sta_cfg.sta.password));
+        wifi_sta_cfg.sta.channel = u8channel;
+
+        wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
+        ESP_ERROR_CHECK(esp_wifi_init(&cfg));
+
+        // Khởi tạo Wi-Fi ở chế độ STA với cấu hình đã đọc từ NVS
+        ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
+        ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_sta_cfg));
+        ESP_ERROR_CHECK(esp_wifi_start());
+    }
+}
+
 /****************************************************************************/
 /***        Exported Functions                                            ***/
 /****************************************************************************/
 
+//TickType_t wifi_start_time = 0;
+//TickType_t wifi_end_time = 0;
 void wifi_func_init(void)
 {
-    ESP_ERROR_CHECK(esp_netif_init()); /* Initialize TCP/IP */
+    //wifi_start_time = xTaskGetTickCount();
 
+    ESP_ERROR_CHECK(esp_netif_init()); /* Initialize TCP/IP */
     /* Initialize the event loop */
     ESP_ERROR_CHECK(esp_event_loop_create_default());
     wifi_event_group = xEventGroupCreate();
@@ -230,17 +265,19 @@ void wifi_func_init(void)
     {
         ESP_LOGI(TAG, "Already provisioned, starting Wi-Fi STA");
         wifi_prov_mgr_stop_provisioning();
-
-        wifi_init_sta();
-
-        const TickType_t xMaxDelay = pdMS_TO_TICKS(5000);
+        connect_wifi();
+        const TickType_t xMaxDelay = pdMS_TO_TICKS(6000);
         xEventGroupWaitBits(wifi_event_group, WIFI_CONNECTED_EVENT, true, true, xMaxDelay);
     }
     else
     {
         wifi_prov_mgr_stop_provisioning();
-
     }
+
+    //wifi_end_time = xTaskGetTickCount();
+    //TickType_t wifi_connect_duration = wifi_end_time - wifi_start_time;
+    //double seconds = (double)wifi_connect_duration / configTICK_RATE_HZ;
+    //printf ("wifi_connect_duration: %.2f seconds\n", seconds);
 }
 
 void wifi_prov(void)
@@ -286,6 +323,7 @@ void prov_timeout_task(void* pvParameters)
 {
     uint8_t u8timeout_set = 60; // Đơn vị tính bằng giây
     cnt_timeout(&u8timeout_set);
+    wifi_prov_mgr_stop_provisioning();
     bButton_task = false;
     vTaskDelete(prov_timeout_handle); // Xóa task khi hoàn thành
 }
@@ -295,6 +333,7 @@ void prov_fail_task(void* pvParameters)
     wifi_prov_mgr_reset_sm_state_on_failure();
     uint8_t u8timeout_set = 60; // Đơn vị tính bằng giây
     cnt_timeout(&u8timeout_set);
+    wifi_prov_mgr_stop_provisioning();
     bButton_task = false;
     vTaskDelete(prov_fail_handle); // Xóa task khi hoàn thành
 }

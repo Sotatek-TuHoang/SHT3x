@@ -59,7 +59,6 @@ void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event
                 esp_mqtt_client_subscribe(client, cTopic_sub, 0);
                 ESP_LOGI(TAG_MQTT, "Topic subscribe: %s\n", cTopic_sub);
             }
-            
             break;
 
         case MQTT_EVENT_DISCONNECTED:
@@ -99,17 +98,17 @@ void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event
     }
 }
 
-static void wait_MQTT_connect()
+static void wait_MQTT_connect(uint16_t wait_max_ms)
 {
-    uint8_t wait_cnt = 0;
-    while (!bMQTT_connected && (wait_cnt <= 10))
-    {
-        ++wait_cnt;
-        vTaskDelay(20 / portTICK_PERIOD_MS);
-    }
-    wait_cnt = 0;
-}
+    TickType_t start_time = xTaskGetTickCount();
+    TickType_t wait_duration = 0;
 
+    while (!bMQTT_connected && (wait_duration <= wait_max_ms))
+    {
+        wait_duration = xTaskGetTickCount() - start_time;
+        vTaskDelay(pdMS_TO_TICKS(20));
+    }
+}
 /****************************************************************************/
 /***        Exported Functions                                            ***/
 /****************************************************************************/
@@ -153,7 +152,7 @@ void pub_data(float fTemp, float fHumi)
     cJSON_AddNumberToObject(json_data, "trans_code", u8trans_code++);
     
     char *json_str = cJSON_Print(json_data); // Convert the JSON object to a string
-    wait_MQTT_connect();
+    wait_MQTT_connect(200);
     esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, QoS_0, 0); // Publish the JSON string via MQTT
     cJSON_Delete(json_data);
     free(json_str);
@@ -172,7 +171,7 @@ void pub_warning(uint8_t u8Values, float fTemp, float fHumi)
     cJSON_AddNumberToObject(json_warnings, "trans_code", u8trans_code++);
 
     char *json_str = cJSON_Print(json_warnings); // Convert the JSON object to a string
-    wait_MQTT_connect();
+    wait_MQTT_connect(500);
     esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, QoS_1, 0); // Publish the JSON string via MQTT
     cJSON_Delete(json_warnings);
     free(json_str);
@@ -205,7 +204,7 @@ void pub_ota_status(char *values)
     cJSON_AddNumberToObject(json_ota_status, "trans_code", u8trans_code++);
 
     char *json_str = cJSON_Print(json_ota_status); // Convert the JSON object to a string
-    wait_MQTT_connect();
+    wait_MQTT_connect(500);
     esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, QoS_0, 0); // Publish the JSON string via MQTT
     cJSON_Delete(json_ota_status);
     free(json_str);

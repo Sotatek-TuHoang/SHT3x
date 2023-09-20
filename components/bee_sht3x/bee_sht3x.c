@@ -19,386 +19,292 @@
 #include "esp_log.h"
 #include "math.h"
 #include <sys/time.h>
+#include "math.h"
+#include "esp_log.h"
+#include "rom/ets_sys.h"
 
 #include "bee_i2c.h"
 #include "bee_sht3x.h"
 
-#define SHT3x_STATUS_CMD               0xF32D
-#define SHT3x_CLEAR_STATUS_CMD         0x3041
-#define SHT3x_RESET_CMD                0x30A2
-#define SHT3x_FETCH_DATA_CMD           0xE000
-#define SHT3x_HEATER_OFF_CMD           0x3066
+static const char *SHT3X_TAG = "sht3x";
 
-const uint16_t SHT3x_MEASURE_CMD[6][3] = { 
-        {0x2400,0x240b,0x2416},    // [SINGLE_SHOT][H,M,L] without clock stretching
-        {0x2032,0x2024,0x202f},    // [PERIODIC_05][H,M,L]
-        {0x2130,0x2126,0x212d},    // [PERIODIC_1 ][H,M,L]
-        {0x2236,0x2220,0x222b},    // [PERIODIC_2 ][H,M,L]
-        {0x2234,0x2322,0x2329},    // [PERIODIC_4 ][H,M,L]
-        {0x2737,0x2721,0x272a} };  // [PERIODIC_10][H,M,L]
+typedef struct measurements {
+    sht3x_sensor_value_t temperature;
+    sht3x_sensor_value_t humidity;
+} measurements_t;
 
-// due to the fact that ticks can be smaller than portTICK_PERIOD_MS, one and
-// a half tick period added to the duration to be sure that waiting time for 
-// the results is long enough
-#define TIME_TO_TICKS(ms) (1 + ((ms) + (portTICK_PERIOD_MS-1) + portTICK_PERIOD_MS/2 ) / portTICK_PERIOD_MS)
+// Single Shot Data Acquisition
+uint8_t clock_stretching_enabled_repeatability_high[]     = {0x2C, 0x06};
+uint8_t clock_stretching_enabled_repeatability_medium[]   = {0x2C, 0x0D};
+uint8_t clock_stretching_enabled_repeatability_low[]      = {0x2C, 0x10};
+uint8_t clock_stretching_disabled_repeatability_high[]    = {0x24, 0x00};
+uint8_t clock_stretching_disabled_repeatability_medium[]  = {0x24, 0x0B};
+uint8_t clock_stretching_disabled_repeatability_low[]     = {0x24, 0x16};
 
-#define SHT3x_MEAS_DURATION_REP_HIGH   15
-#define SHT3x_MEAS_DURATION_REP_MEDIUM 6
-#define SHT3x_MEAS_DURATION_REP_LOW    4
+// Periodic Data Acquisition Mode
+uint8_t mps_0_5_repeatability_high[]    = {0x20, 0x32};
+uint8_t mps_0_5_repeatability_medium[]  = {0x20, 0x24};
+uint8_t mps_0_5_repeatability_low[]     = {0x20, 0x2F};
+uint8_t mps_1_repeatability_high[]      = {0x21, 0x30};
+uint8_t mps_1_repeatability_medium[]    = {0x21, 0x26};
+uint8_t mps_1_repeatability_low[]       = {0x21, 0x2D};
+uint8_t mps_2_repeatability_high[]      = {0x22, 0x36};
+uint8_t mps_2_repeatability_medium[]    = {0x22, 0x20};
+uint8_t mps_2_repeatability_low[]       = {0x22, 0x2B};
+uint8_t mps_4_repeatability_high[]      = {0x23, 0x34};
+uint8_t mps_4_repeatability_medium[]    = {0x23, 0x22};
+uint8_t mps_4_repeatability_low[]       = {0x23, 0x29};
+uint8_t mps_10_repeatability_high[]     = {0x27, 0x37};
+uint8_t mps_10_repeatability_medium[]   = {0x27, 0x21};
+uint8_t mps_10_repeatability_low[]      = {0x27, 0x2A};
 
-// measurement durations in us 
-const uint16_t SHT3x_MEAS_DURATION_US[3] = { SHT3x_MEAS_DURATION_REP_HIGH   * 1000, 
-                                             SHT3x_MEAS_DURATION_REP_MEDIUM * 1000, 
-                                             SHT3x_MEAS_DURATION_REP_LOW    * 1000 };
+// Commands
+uint8_t read_measurement[]              = {0xE0, 0x00};
+uint8_t periodic_measurement_with_art[] = {0x2B, 0x32};
+uint8_t stop_periodic_measurement[]     = {0x30, 0x93};
+uint8_t soft_reset[]                    = {0x30, 0xA2};
+uint8_t general_call_reset[]            = {0x00, 0x06};
+uint8_t heater_enable[]                 = {0x30, 0x6D};
+uint8_t heater_disable[]                = {0x30, 0x66};
+uint8_t read_status_register[]          = {0xF3, 0x2D};
+uint8_t clear_status_register[]         = {0x30, 0x41};
 
-// measurement durations in RTOS ticks
-const uint8_t SHT3x_MEAS_DURATION_TICKS[3] = { TIME_TO_TICKS(SHT3x_MEAS_DURATION_REP_HIGH), 
-                                               TIME_TO_TICKS(SHT3x_MEAS_DURATION_REP_MEDIUM), 
-                                               TIME_TO_TICKS(SHT3x_MEAS_DURATION_REP_LOW) };
-
-#if defined(SHT3x_DEBUG_LEVEL_2)
-#define debug(s, f, ...) printf("%s %s: " s "\n", "SHT3x", f, ## __VA_ARGS__)
-#define debug_device(s, f, d, ...) printf("%s %s: bus %d, addr %02x - " s "\n", "SHT3x", f, d->bus, d->addr, ## __VA_ARGS__)
-#else
-#define debug(s, f, ...)
-#define debug_device(s, f, d, ...)
-#endif
-
-#if defined(SHT3x_DEBUG_LEVEL_1) || defined(SHT3x_DEBUG_LEVEL_2)
-#define error(s, f, ...) printf("%s %s: " s "\n", "SHT3x", f, ## __VA_ARGS__)
-#define error_device(s, f, d, ...) printf("%s %s: bus %d, addr %02x - " s "\n", "SHT3x", f, d->bus, d->addr, ## __VA_ARGS__)
-
-#else
-#define error(s, f, ...)
-#define error_device(s, f, d, ...)
-#endif
-
-/** Forward declaration of function for internal use */
-
-static bool sht3x_is_measuring  (sht3x_sensor_t*);
-static bool sht3x_send_command  (sht3x_sensor_t*, uint16_t);
-static bool sht3x_read_data     (sht3x_sensor_t*, uint8_t*,  uint32_t);
-static bool sht3x_get_status    (sht3x_sensor_t*, uint16_t*);
-static bool sht3x_reset         (sht3x_sensor_t*);
-
-static uint8_t crc8 (uint8_t data[], int len);
-
-/** ------------------------------------------------ */
-
-sht3x_sensor_t* sht3x_init_sensor(uint8_t bus, uint8_t addr)
-{
-    sht3x_sensor_t* device;
-
-    if ((device = malloc (sizeof(sht3x_sensor_t))) == NULL)
-        return NULL;
-    
-    // inititalize sensor data structure
-    device->bus  = bus;
-    device->addr = addr;
-    device->mode = sht3x_single_shot;
-    device->meas_start_time = 0;
-    device->meas_started = false;
-    device->meas_first = false;
-
-    uint16_t status;
-
-    // try to reset the sensor
-    if (!sht3x_reset(device))
-    {
-        debug_device ("could not reset the sensor", __FUNCTION__, device);
-    }
-    
-    // check again the status after clear status command
-    if (!sht3x_get_status(device, &status))
-    {
-        error_device ("could not get sensor status", __FUNCTION__, device);
-        free(device);
-        return NULL;       
-    }
-    
-    debug_device ("sensor initialized", __FUNCTION__, device);
-    return device;
+/*
+* Delay the execution in ms
+*/
+void delay_ms(uint16_t delay) {
+    ets_delay_us(delay * 1000);
 }
 
-/****************************************************************************/
-/***        Local Functions                                               ***/
-/****************************************************************************/
+/*
+* The 8-bit CRC checksum transmitted after each data word is generated by a CRC algorithm.
+* The CRC covers the contents of the two previously transmitted data bytes.
+* To calculate the checksum only these two previously transmitted data bytes are used.
+* Note that command words are not followed by CRC.
+*/
+uint8_t sht3x_generate_crc(const uint8_t* data, uint16_t count) {
+    uint16_t current_byte;
+    uint8_t crc = CRC8_INIT;
+    uint8_t crc_bit;
 
-static bool sht3x_is_measuring (sht3x_sensor_t* device)
-{
-    if (!device) return false;
+    for(current_byte = 0; current_byte < count; ++current_byte) {
+        crc ^= (data[current_byte]);
+        for(crc_bit = 8; crc_bit > 0; --crc_bit) {
 
-    device->error_code = SHT3x_OK;
-
-    // not running if measurement is not started at all or 
-    // it is not the first measurement in periodic mode
-    if (!device->meas_started || !device->meas_first)
-      return false;
-    
-    // not running if time elapsed is greater than duration
-    uint32_t elapsed = sdk_system_get_time() - device->meas_start_time;
-
-    return elapsed < SHT3x_MEAS_DURATION_US[device->repeatability];
-}
-
-static bool sht3x_send_command(sht3x_sensor_t* device, uint16_t cmd)
-{
-    if (!device) return false;
-
-    uint8_t data[2] = { cmd >> 8, cmd & 0xff };
-
-    debug_device ("send command MSB=%02x LSB=%02x", __FUNCTION__, device, data[0], data[1]);
-
-    int err = i2c_slave_write(device->bus, device->addr, 0, data, 2);
-  
-    if (err)
-    {
-        device->error_code |= (err == -EBUSY) ? SHT3x_I2C_BUSY : SHT3x_I2C_SEND_CMD_FAILED;
-        error_device ("i2c error %d on write command %02x", __FUNCTION__, device, err, cmd);
-        return false;
-    }
-
-    return true;
-}
-
-static bool sht3x_read_data(sht3x_sensor_t* device, uint8_t *data,  uint32_t len)
-{
-    if (!device) return false;
-    int err = i2c_slave_read(device->bus, device->addr, 0, data, len);
-        
-    if (err)
-    {
-        device->error_code |= (err == -EBUSY) ? SHT3x_I2C_BUSY : SHT3x_I2C_READ_FAILED;
-        error_device ("error %d on read %lu byte", __FUNCTION__, device, err, (unsigned long)len);
-        return false;
-    }
-
-    #ifdef SHT3x_DEBUG_LEVEL_2
-    printf("SHT3x %s: bus %d, addr %02x - read following bytes: ", 
-           __FUNCTION__, device->bus, device->addr);
-    for (int i=0; i < len; i++)
-        printf("%02x ", data[i]);
-    printf("\n");
-    #endif // ifdef SHT3x_DEBUG_LEVEL_2
-
-    return true;
-}
-
-static bool sht3x_reset (sht3x_sensor_t* device)
-{
-    if (!device) return false;
-
-    debug_device ("soft-reset triggered", __FUNCTION__, device);
-    
-    device->error_code = SHT3x_OK;
-
-    // send reset command
-    if (!sht3x_send_command(device, SHT3x_RESET_CMD))
-    {
-        device->error_code |= SHT3x_SEND_RESET_CMD_FAILED;
-        return false;
-    }   
-    // wait for small amount of time needed (according to datasheet 0.5ms)
-    vTaskDelay (100 / portTICK_PERIOD_MS);
-    
-    uint16_t status;
-
-    // check the status after reset
-    if (!sht3x_get_status(device, &status))
-        return false;
-        
-    return true;    
-}
-
-static bool sht3x_get_status (sht3x_sensor_t* device, uint16_t* status)
-{
-    if (!device || !status) return false;
-
-    device->error_code = SHT3x_OK;
-
-    uint8_t  data[3];
-
-    if (!sht3x_send_command(device, SHT3x_STATUS_CMD) || !sht3x_read_data(device, data, 3))
-    {
-        device->error_code |= SHT3x_SEND_STATUS_CMD_FAILED;
-        return false;
-    }
-
-    *status = data[0] << 8 | data[1];
-    debug_device ("status=%02x", __FUNCTION__, device, *status);
-    return true;
-}
-
-
-const uint8_t g_polynom = 0x31;
-
-static uint8_t crc8 (uint8_t data[], int len)
-{
-    // initialization value
-    uint8_t crc = 0xff;
-    
-    // iterate over all bytes
-    for (int i=0; i < len; i++)
-    {
-        crc ^= data[i];  
-    
-        for (int i = 0; i < 8; i++)
-        {
-            bool xor = crc & 0x80;
-            crc = crc << 1;
-            crc = xor ? crc ^ g_polynom : crc;
+            if (crc & 0x80) {
+                crc = (crc << 1) ^ CRC8_POLYNOMIAL;
+            } else {
+                crc = (crc << 1);
+            }
         }
     }
-
     return crc;
 }
 
-/****************************************************************************/
-/***        Exported Functions                                            ***/
-/****************************************************************************/
+/*
+* For the send command sequences, after writing the address and/or data to the sensor
+* and sending the ACK bit, the sensor needs the execution time to respond to the I2C read header with an ACK bit.
+* Hence, it is required to wait the command execution time before issuing the read header.
+* Commands must not be sent while a previous command is being processed.
+*/
+esp_err_t sht3x_send_command(uint8_t *command) {
+    i2c_cmd_handle_t cmd = i2c_cmd_link_create();
 
-uint32_t sdk_system_get_time()
-{
-    struct timeval time;
-    gettimeofday(&time,0);
-    return time.tv_sec*1e6 + time.tv_usec;
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_start(cmd));
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_write_byte(cmd, (SHT3X_SENSOR_ADDR << 1) | I2C_MASTER_WRITE, I2C_ACK_CHECK_EN));
+
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_write(cmd, command, sizeof(command), I2C_ACK_CHECK_EN));
+
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_stop(cmd));
+    esp_err_t err = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+
+    i2c_cmd_link_delete(cmd);
+    return err;
 }
 
-bool sht3x_measure (sht3x_sensor_t* device, float* fTemp, float* fHumi)
-{
-    if (!device || (!fTemp && !fHumi)) return false;
+/*
+* Data sent to and received from the sensor consists of a sequence of 16-bit commands and/or 16-bit words
+* (each to be interpreted as unsigned integer, most significant byte transmitted first). Each data word is
+* immediately succeeded by an 8-bit CRC. In write direction it is mandatory to transmit the checksum.
+* In read direction it is up to the master to decide if it wants to process the checksum.
+*/
+esp_err_t sht3x_read(uint8_t *hex_code, uint8_t *measurements, uint8_t size) {
+    i2c_cmd_handle_t cmd = i2c_cmd_link_create();
 
-    if (!sht3x_start_measurement (device, sht3x_single_shot, sht3x_high))
-        return false;
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_start(cmd));
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_write_byte(cmd, (SHT3X_SENSOR_ADDR << 1) | I2C_MASTER_WRITE, I2C_ACK_CHECK_EN));
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_write(cmd, hex_code, SHT3X_HEX_CODE_SIZE, I2C_ACK_CHECK_EN));
 
-    vTaskDelay (SHT3x_MEAS_DURATION_TICKS[sht3x_high]);
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_start(cmd));
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_write_byte(cmd, (SHT3X_SENSOR_ADDR << 1) | I2C_MASTER_READ, I2C_ACK_CHECK_EN));
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_read(cmd, measurements, size, I2C_MASTER_LAST_NACK));
 
-    sht3x_raw_data_t raw_data;
-    
-    if (!sht3x_get_raw_data (device, raw_data))
-        return false;
-        
-    return sht3x_compute_values (raw_data, fTemp, fHumi);
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_stop(cmd));
+    esp_err_t err = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+
+    i2c_cmd_link_delete(cmd);
+    return err;
 }
 
+/*
+* Data sent to and received from the sensor consists of a sequence of 16-bit commands and/or 16-bit words
+* (each to be interpreted as unsigned integer, most significant byte transmitted first). Each data word is
+* immediately succeeded by an 8-bit CRC. In write direction it is mandatory to transmit the checksum.
+* In read direction it is up to the master to decide if it wants to process the checksum.
+*/
+esp_err_t sht3x_write(uint8_t *hex_code, uint8_t *measurements, uint8_t size) {
+    i2c_cmd_handle_t cmd = i2c_cmd_link_create();
 
-bool sht3x_start_measurement (sht3x_sensor_t* device, sht3x_mode_t mode, sht3x_repeat_t repeat)
-{
-    if (!device) return false;
-    
-    device->error_code = SHT3x_OK;
-    device->mode = mode;
-    device->repeatability = repeat;
-    
-    // start measurement according to selected mode and return an duration estimate
-    if (!sht3x_send_command(device, SHT3x_MEASURE_CMD[mode][repeat]))
-    {
-        error_device ("could not send start measurment command", __FUNCTION__, device);
-        device->error_code |= SHT3x_SEND_MEAS_CMD_FAILED;
-        return false;
-    }
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_start(cmd));
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_write_byte(cmd, (SHT3X_SENSOR_ADDR << 1) | I2C_MASTER_WRITE, I2C_ACK_CHECK_EN));
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_write(cmd, hex_code, SHT3X_HEX_CODE_SIZE, I2C_ACK_CHECK_EN));
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_write(cmd, measurements, size, I2C_ACK_CHECK_EN));
 
-    device->meas_start_time = sdk_system_get_time ();
-    device->meas_started = true;
-    device->meas_first = true;
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_stop(cmd));
+    esp_err_t err = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
 
-    return true;
+    i2c_cmd_link_delete(cmd);
+    return err;
 }
 
+/*
+* For the send command and fetch results sequences, after writing the address and/or data to the sensor
+* and sending the ACK bit, the sensor needs the execution time to respond to the I2C read header with an ACK bit.
+* Hence, it is required to wait the command execution time before issuing the read header.
+* Commands must not be sent while a previous command is being processed.
+*/
+esp_err_t sht3x_send_command_and_fetch_result(uint8_t *command, uint8_t *measurements, uint8_t size) {
+    i2c_cmd_handle_t cmd = i2c_cmd_link_create();
 
-uint8_t sht3x_get_measurement_duration (sht3x_repeat_t repeat)
-{
-    return SHT3x_MEAS_DURATION_TICKS[repeat];  // in RTOS ticks
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_start(cmd));
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_write_byte(cmd, (SHT3X_SENSOR_ADDR << 1) | I2C_MASTER_WRITE, I2C_ACK_CHECK_EN));
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_write(cmd, command, sizeof(command), I2C_ACK_CHECK_EN));
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_stop(cmd));
+
+    delay_ms(1000);
+
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_write(cmd, measurements, size, I2C_ACK_CHECK_EN));
+
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_start(cmd));
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_write_byte(cmd, (SHT3X_SENSOR_ADDR << 1) | I2C_MASTER_READ, I2C_ACK_CHECK_EN));
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_read(cmd, measurements, size, I2C_MASTER_LAST_NACK));
+
+    ESP_ERROR_CHECK_WITHOUT_ABORT(i2c_master_stop(cmd));
+    esp_err_t err = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+
+    i2c_cmd_link_delete(cmd);
+    return err;
 }
 
-
-bool sht3x_get_raw_data(sht3x_sensor_t* device, sht3x_raw_data_t raw_data)
-{
-    if (!device || !raw_data) return false;
-
-    device->error_code = SHT3x_OK;
-
-    if (!device->meas_started)
-    {
-        debug_device ("measurement is not started", __FUNCTION__, device);
-        device->error_code = SHT3x_MEAS_NOT_STARTED;
-        return sht3x_is_measuring (device);
-    }
-
-    if (sht3x_is_measuring(device))
-    {
-        error_device ("measurement is still running", __FUNCTION__, device);
-        device->error_code = SHT3x_MEAS_STILL_RUNNING;
-        return false;
-    }
-
-    // send fetch command in any periodic mode (mode > 0) before read raw data
-    if (device->mode && !sht3x_send_command(device, SHT3x_FETCH_DATA_CMD))
-    {
-        debug_device ("send fetch command failed", __FUNCTION__, device);
-        device->error_code |= SHT3x_SEND_FETCH_CMD_FAILED;
-        return false;
-    }
-
-    // read raw data
-    if (!sht3x_read_data(device, raw_data, sizeof(sht3x_raw_data_t)))
-    {
-        error_device ("read raw data failed", __FUNCTION__, device);
-        device->error_code |= SHT3x_READ_RAW_DATA_FAILED;
-        return false;
-    }
-
-    // reset first measurement flag
-    device->meas_first = false;
-    
-    // reset measurement started flag in single shot mode
-    if (device->mode == sht3x_single_shot)
-        device->meas_started = false;
-    
-    // check temperature crc
-    if (crc8(raw_data,2) != raw_data[2])
-    {
-        error_device ("CRC check for fTemp data failed", __FUNCTION__, device);
-        device->error_code |= SHT3x_WRONG_CRC_TEMPERATURE;
-        return false;
-    }
-
-    // check humidity crc
-    if (crc8(raw_data+3,2) != raw_data[5])
-    {
-        error_device ("CRC check for fHumi data failed", __FUNCTION__, device);
-        device->error_code |= SHT3x_WRONG_CRC_HUMIDITY;
-        return false;
-    }
-
-    return true;
+/*
+* Start periodic measurement, signal update interval is 5 seconds.
+*/
+esp_err_t sht3x_start_periodic_measurement() {
+    return sht3x_send_command(mps_4_repeatability_high);
 }
 
-
-bool sht3x_compute_values (sht3x_raw_data_t raw_data, float* fTemp, float* fHumi)
-{
-    if (!raw_data) return false;
-
-    if (fTemp) 
-        *fTemp = ((((raw_data[0] * 256.0) + raw_data[1]) * 175) / 65535.0) - 45;
-
-    if (fHumi)
-        *fHumi = ((((raw_data[3] * 256.0) + raw_data[4]) * 100) / 65535.0);
-  
-    return true;    
+/*
+* Start periodic measurement with the accelerated response time (ART) feature.
+*/
+esp_err_t sht3x_start_periodic_measurement_with_art() {
+    return sht3x_send_command(periodic_measurement_with_art);
 }
 
+/*
+* Read sensor output. The measurement data can only be read out once per signal update interval
+* as the buffer is emptied upon read-out.
+*/
+esp_err_t sht3x_read_measurement(sht3x_sensors_values_t *sensors_values) {
+    measurements_t measurements = {
+        .temperature = {{0x00, 0x00}, 0x00},
+        .humidity = {{0x00, 0x00}, 0x00}
+    };
 
-bool sht3x_get_results (sht3x_sensor_t* device, float* fTemp, float* fHumi)
-{
-    if (!device || (!fTemp && !fHumi)) return false;
+    esp_err_t err = sht3x_read(read_measurement, (uint8_t *) &measurements, sizeof(measurements));
 
-    sht3x_raw_data_t raw_data;
-    
-    if (!sht3x_get_raw_data (device, raw_data))
-        return false;
-        
-    return sht3x_compute_values (raw_data, fTemp, fHumi);
+    sensors_values->temperature = (175.0 * (((measurements.temperature.value.msb << 8) + measurements.temperature.value.lsb) / 65535.0)) - 45.0;
+    sensors_values->humidity = 100.0 * ((measurements.humidity.value.msb << 8) + measurements.humidity.value.lsb) / 65535.0;
+    return err;
+}
+
+/*
+* Stop periodic measurement to change the sensor configuration or to save power. Note that the sensor will only
+* respond to other commands after waiting 500 ms after issuing the stop_periodic_measurement command.
+*/
+esp_err_t sht3x_stop_periodic_measurement() {
+    return sht3x_send_command(stop_periodic_measurement);
+}
+
+/*
+* The SHT3x provides a soft reset mechanism that forces the system into a well-defined state without removing
+* the power supply. When the system is in idle state the soft reset command can be sent to the SHT3x.
+* This triggers the sensor to reset its system controller and reloads calibration data from the memory.
+*/
+esp_err_t sht3x_soft_reset() {
+    return sht3x_send_command(soft_reset);
+}
+
+/*
+* Additionally, a reset of the sensor can also be generated using the "general call" mode according to
+* I2C-bus specification. This generates a reset which is functionally identical to using the nReset pin.
+*/
+esp_err_t sht3x_general_call_reset() {
+    return sht3x_send_command(general_call_reset);
+}
+
+/*
+* Switch the internal heater on.
+*/
+esp_err_t sht3x_enable_heater() {
+    return sht3x_send_command(heater_enable);
+}
+
+/*
+* Switch the internal heater off.
+*/
+esp_err_t sht3x_disable_heater() {
+    return sht3x_send_command(heater_disable);
+}
+
+/*
+* The status register contains information on the operational status of the heater, the alert mode
+* and on the execution status of the last command and the last write sequence.
+*/
+esp_err_t sht3x_read_status_register(sht3x_sensor_value_t *sensors_value) {
+    sht3x_sensor_value_t status_register = {
+        .value = {0x00, 0x00},
+        .crc = 0x00
+    };
+
+    esp_err_t err = sht3x_read(read_status_register, (uint8_t *) &status_register, sizeof(status_register));
+
+    if(err != ESP_OK) {
+        ESP_LOGE(SHT3X_TAG, "read_status_register failed with status code: %s", esp_err_to_name(err));
+        return SHT3X_READ_ERROR;
+    }
+    return err;
+}
+
+/*
+* Clear all flags in the status register.
+*/
+esp_err_t sht3x_clear_status_register() {
+    return sht3x_send_command(clear_status_register);
+}
+
+esp_err_t sht3x_read_singleshot(sht3x_sensors_values_t *sensors_values) {
+    // Bắt đầu một đo lường single shot với độ chính xác và clock stretching tùy chọn
+    esp_err_t err = sht3x_send_command(clock_stretching_enabled_repeatability_high);
+    if (err != ESP_OK) {
+        ESP_LOGE(SHT3X_TAG, "sht3x_send_command failed with status code: %s", esp_err_to_name(err));
+        return err;
+    }
+
+    // Đợi cho cảm biến hoàn thành đo lường
+    vTaskDelay(pdMS_TO_TICKS(40));
+
+    // Đọc kết quả từ cảm biến
+    return sht3x_read_measurement(sensors_values);
 }
 
 RTC_DATA_ATTR int u8warning_values;

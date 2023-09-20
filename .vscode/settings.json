@@ -24,7 +24,7 @@
         "event_groups.h": "c",
         "mqtt_client.h": "c"
     },
-    "idf.portWin": "COM6",
+    "idf.portWin": "COM9",
     "idf.flashType": "UART",
     "idf.openOcdConfigs": [
         "board/esp32c3-bridge.cfg"

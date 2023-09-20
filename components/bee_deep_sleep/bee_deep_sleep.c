@@ -53,6 +53,10 @@ static float fHumi;
 static const char *TAG_SHT3x = "SHT3x";
 static const char *TAG_PM = "POWER MODE";
 
+//static TickType_t start_time = 0;
+//static TickType_t end_time = 0;
+int duration = 0;
+
 /****************************************************************************/
 /***        Local Functions                                               ***/
 /****************************************************************************/
@@ -83,25 +87,28 @@ static void check_and_pub_warning()
 
 static bool read_data(void)
 {
-    // Initialize and measure using the SHT3x sensor
-    sht3x_sensor_t* sensor;
-    if ((sensor = sht3x_init_sensor (I2C_BUS, SHT3x_ADDR_1)))
+    sht3x_sensors_values_t sensors_values = {
+    .temperature = 0x00,
+    .humidity = 0x00
+    };
+
+    if(sht3x_read_singleshot(&sensors_values) != ESP_OK)
     {
-        if (sht3x_measure (sensor, &fTemp, &fHumi))
-        {
-            ESP_LOGI(TAG_SHT3x, "Temperature: %.2f °C, Humidity: %.2f %%", fTemp, fHumi);
-            return true;
-        }
+        ESP_LOGE(TAG_SHT3x, "Sensors read measurement error!");
+        sht3x_soft_reset();
+        return false;
     }
-    gpio_reset_pin(RESET_PIN);
-    gpio_set_pull_mode(RESET_PIN, GPIO_PULLUP_ONLY);
-    gpio_set_direction(RESET_PIN, GPIO_MODE_OUTPUT);
-    gpio_set_level(RESET_PIN, 0);
-    return false;
+
+    fTemp = sensors_values.temperature;
+    fHumi = sensors_values.humidity;
+
+    ESP_LOGI(TAG_SHT3x, "Temperature %2.1f °C - Humidity %2.1f%%", fTemp, fHumi);
+    return true;
 }
 
 static void check_cause_wake_up(void)
 {
+    //start_time = xTaskGetTickCount();
     // Get current time and calculate sleep time
     struct timeval now;
     gettimeofday(&now, NULL);
@@ -113,7 +120,7 @@ static void check_cause_wake_up(void)
         {
             ESP_LOGI(TAG_PM, "Wake up from timer. Time spent in deep sleep: %dms\n", sleep_time_ms);
 
-            if (u8cnt_sleep == 4)
+            if (u8cnt_sleep == 10)
             {
                 u8cnt_sleep = 0;
                 
@@ -173,8 +180,6 @@ void deep_sleep_register_gpio_wakeup(uint8_t gpio_wakeup)
 
     ESP_ERROR_CHECK(gpio_config(&config));
     ESP_ERROR_CHECK(esp_deep_sleep_enable_gpio_wakeup(BIT(gpio_wakeup), 0));
-
-    printf("Enabling GPIO wakeup on pins GPIO%d\n", gpio_wakeup);
 }
 
 /****************************************************************************/
@@ -185,9 +190,13 @@ void deep_sleep_task(void *args)
 {    
     ESP_LOGI(TAG_PM, "Entering normal mode\n");
     check_cause_wake_up();
-
     gettimeofday(&sleep_enter_time, NULL); // Get deep sleep enter time
     ESP_LOGI(TAG_PM, "Entering deep sleep again\n");
+
+    //end_time = xTaskGetTickCount();
+    //duration = end_time - start_time;
+    //double seconds = (double)duration / configTICK_RATE_HZ;
+    //printf ("Duration: %.2f seconds\n", seconds);
     esp_deep_sleep_start(); // Enter deep sleep
 }
 /****************************************************************************/

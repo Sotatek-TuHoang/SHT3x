@@ -16,7 +16,7 @@
 #define SECOND_20S 20
 #define SECOND_30S 30
 
-#define RESET_PIN 10
+#define RESET_PIN 7
 
 
 /**
