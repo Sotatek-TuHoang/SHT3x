@@ -27,7 +27,7 @@ void app_main(void)
     };
     i2c_init(&i2c_config);
 
-    deep_sleep_register_rtc_timer_wakeup(SECOND_20S);
+    deep_sleep_register_rtc_timer_wakeup(SECOND_30S);
 
     deep_sleep_register_gpio_wakeup(GPIO_NUM_2);
 
