@@ -21,18 +21,19 @@
 /***        Exported Functions                                            ***/
 /****************************************************************************/
 
-void i2c_init (int bus, gpio_num_t scl, gpio_num_t sda, uint32_t freq)
+void i2c_init(const i2c_cfg_init_t* config) 
 {
-    static i2c_config_t conf;
-    conf.mode = I2C_MODE_MASTER;
-    conf.sda_io_num = sda;
-    conf.scl_io_num = scl;
-    conf.sda_pullup_en = GPIO_PULLUP_ENABLE;
-    conf.scl_pullup_en = GPIO_PULLUP_ENABLE;
-    conf.master.clk_speed = freq;
-    ESP_ERROR_CHECK(i2c_param_config(bus, &conf));
-    ESP_ERROR_CHECK(i2c_driver_install(bus, I2C_MODE_MASTER, 0, 0, 0));
-    i2c_filter_enable(bus, 1);
+    i2c_config_t i2c_conf;
+    i2c_conf.mode = I2C_MODE_MASTER;
+    i2c_conf.sda_io_num = config->sda_pin;
+    i2c_conf.scl_io_num = config->scl_pin;
+    i2c_conf.sda_pullup_en = GPIO_PULLUP_ENABLE;
+    i2c_conf.scl_pullup_en = GPIO_PULLUP_ENABLE;
+    i2c_conf.master.clk_speed = config->frequency;
+    
+    ESP_ERROR_CHECK(i2c_param_config(config->bus, &i2c_conf));
+    ESP_ERROR_CHECK(i2c_driver_install(config->bus, I2C_MODE_MASTER, 0, 0, 0));
+    i2c_filter_enable(config->bus, 1);
 }
 
 /****************************************************************************/

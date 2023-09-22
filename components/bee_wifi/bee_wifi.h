@@ -24,10 +24,10 @@
  * If the device is already provisioned, it starts the Wi-Fi station; otherwise, it stops provisioning.
  * The function blocks until the device is connected to Wi-Fi.
  *
- * @param   None
+ * @param   timeout_connect_wifi max time in sec to connect wifi
  * @return  None
  */
-void wifi_func_init(void);
+void wifi_func_init();
 
 /**
  * @brief   Start the Wi-Fi provisioning process.

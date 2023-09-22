@@ -53,8 +53,8 @@ static float fHumi;
 static const char *TAG_SHT3x = "SHT3x";
 static const char *TAG_PM = "POWER MODE";
 
-//static TickType_t start_time = 0;
-//static TickType_t end_time = 0;
+static TickType_t start_time = 0;
+static TickType_t end_time = 0;
 int duration = 0;
 
 /****************************************************************************/
@@ -75,21 +75,23 @@ static void init_resource_pub_mqtt()
 static void check_and_pub_warning()
 {
     uint8_t u8Warning_value = check_warning(fTemp, fHumi);
-    if (u8Warning_value != NO_WARNNG)
+    if (u8Warning_value != NO_WARNING)
     {
         init_resource_pub_mqtt();
         pub_warning(u8Warning_value, fTemp, fHumi);
         vTaskDelay (30 / portTICK_PERIOD_MS);
         mqtt_disconnect();
         esp_wifi_disconnect();
+        vTaskDelay (10 / portTICK_PERIOD_MS);
     }
 }
 
 static bool read_data(void)
 {
-    sht3x_sensors_values_t sensors_values = {
-    .temperature = 0x00,
-    .humidity = 0x00
+    sht3x_sensors_values_t sensors_values =
+    {
+        .temperature = 0x00,
+        .humidity = 0x00
     };
 
     if(sht3x_read_singleshot(&sensors_values) != ESP_OK)
@@ -108,7 +110,7 @@ static bool read_data(void)
 
 static void check_cause_wake_up(void)
 {
-    //start_time = xTaskGetTickCount();
+    start_time = xTaskGetTickCount();
     // Get current time and calculate sleep time
     struct timeval now;
     gettimeofday(&now, NULL);
@@ -130,7 +132,8 @@ static void check_cause_wake_up(void)
                     pub_data(fTemp, fHumi);
                     vTaskDelay (20 / portTICK_PERIOD_MS);
                     mqtt_disconnect();
-                    esp_wifi_disconnect();                
+                    esp_wifi_disconnect();
+                    vTaskDelay (10 / portTICK_PERIOD_MS);                
                 }
             }
             else
@@ -193,10 +196,10 @@ void deep_sleep_task(void *args)
     gettimeofday(&sleep_enter_time, NULL); // Get deep sleep enter time
     ESP_LOGI(TAG_PM, "Entering deep sleep again\n");
 
-    //end_time = xTaskGetTickCount();
-    //duration = end_time - start_time;
-    //double seconds = (double)duration / configTICK_RATE_HZ;
-    //printf ("Duration: %.2f seconds\n", seconds);
+    end_time = xTaskGetTickCount();
+    duration = end_time - start_time;
+    double seconds = (double)duration / configTICK_RATE_HZ;
+    ESP_LOGI(TAG_PM,"\nDuration: %.2f seconds\n", seconds);
     esp_deep_sleep_start(); // Enter deep sleep
 }
 /****************************************************************************/

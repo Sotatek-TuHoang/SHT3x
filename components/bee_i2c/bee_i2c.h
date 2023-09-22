@@ -19,8 +19,6 @@
 
 #define I2C_ACK_VAL  0x0
 #define I2C_NACK_VAL 0x1
-#define I2C_FREQ     100000
-#define I2C_BUS      0
 #define I2C_SCL_PIN  GPIO_NUM_3
 #define I2C_SDA_PIN  GPIO_NUM_4
 
@@ -28,6 +26,12 @@
 /***        Exported Functions                                            ***/
 /****************************************************************************/
 
+typedef struct {
+    int bus;
+    gpio_num_t scl_pin;
+    gpio_num_t sda_pin;
+    uint32_t frequency;
+} i2c_cfg_init_t;
 
 /**
  * @brief Initialize the I2C bus with the specified configuration.
@@ -42,7 +46,7 @@
  *
  * @return ESP_OK if the operation was successful
  */
-void i2c_init(int bus, gpio_num_t scl, gpio_num_t sda, uint32_t freq);
+void i2c_init(const i2c_cfg_init_t* config);
 
 
 #endif

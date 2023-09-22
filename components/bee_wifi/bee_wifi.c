@@ -227,11 +227,11 @@ static void connect_wifi(void)
 /***        Exported Functions                                            ***/
 /****************************************************************************/
 
-//TickType_t wifi_start_time = 0;
-//TickType_t wifi_end_time = 0;
-void wifi_func_init(void)
+TickType_t wifi_start_time = 0;
+TickType_t wifi_end_time = 0;
+void wifi_func_init()
 {
-    //wifi_start_time = xTaskGetTickCount();
+    wifi_start_time = xTaskGetTickCount();
 
     ESP_ERROR_CHECK(esp_netif_init()); /* Initialize TCP/IP */
     /* Initialize the event loop */
@@ -274,10 +274,10 @@ void wifi_func_init(void)
         wifi_prov_mgr_stop_provisioning();
     }
 
-    //wifi_end_time = xTaskGetTickCount();
-    //TickType_t wifi_connect_duration = wifi_end_time - wifi_start_time;
-    //double seconds = (double)wifi_connect_duration / configTICK_RATE_HZ;
-    //printf ("wifi_connect_duration: %.2f seconds\n", seconds);
+    wifi_end_time = xTaskGetTickCount();
+    TickType_t wifi_connect_duration = wifi_end_time - wifi_start_time;
+    double seconds = (double)wifi_connect_duration / configTICK_RATE_HZ;
+    ESP_LOGI(TAG,"wifi_connect_duration: %.2f seconds\n", seconds);
 }
 
 void wifi_prov(void)

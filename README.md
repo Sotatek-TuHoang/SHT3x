@@ -1,4 +1,4 @@
-# ESP32 IoT Project with SHT3x Sensor, Smart Config, Power Save, and MQTT
+# ESP32-C3 IoT Project with SHT3x Sensor, Smart Config, Power Save, OTA, and MQTT
 
 ## Introduction
 
@@ -10,11 +10,12 @@ This project demonstrates an IoT application using the ESP32 microcontroller, ES
 - Send collected data to an MQTT server for remote monitoring.
 - Utilize Smart Config (SofAP or BLE) for convenient WiFi configuration.
 - Configure WiFi settings using GPIO.
-- Designed for ESP32 development boards.
+- Designed for ESP32-C3 development boards.
 - Requires the ESP-IDF Framework to be installed.
 - Integrates SHT3x temperature and humidity sensor.
 - MQTT server to receive and transmit data.
 - Developed with ESP-IDF development environment and tools.
+- Update firmware OTA.
 
 ## Installation and Configuration
 
@@ -36,9 +37,9 @@ For detailed technical specifications and information about the SHT3x temperatur
 
 ## Usage
 
-1. Compile and upload the project to an ESP32 development kit.
+1. Compile and upload the project to an ESP32-C3 development kit.
 
-2. The ESP32 will collect temperature and humidity data from the SHT3x sensor and send it to the MQTT server.
+2. The ESP32-C3 will collect temperature and humidity data from the SHT3x sensor and send it to the MQTT server.
 
 3. Monitor temperature and humidity data remotely using the MQTT server.
 
@@ -46,8 +47,16 @@ For detailed technical specifications and information about the SHT3x temperatur
 
 ## Important Note
 
-This project serves as a foundation for building IoT applications. Ensure that you review and customize the code to suit your specific use case and requirements.
+- This project serves as a foundation for building IoT applications. Ensure that you review and customize the code to suit your specific use case and requirements.
+- Setting in the sdkconfig
+    + Enable BLE 5.0 (NimBLE Only).
+    + BLE default Tx power level: -3 dBm
+    + Skip image validation when exiting deep sleep: y.
+    + Use custom Partition Table CSV.
+    + Max WiFi TX power: 17 dBm.
+    + Reduce PHY TX power when brownout reset: y.
+    + Hardware brownout detect & reset: y.
+    + Wifi Provisioning Scan Method: Fast scan.
+    + Skip publish MQTT if disconnected: y.
 
-## Credits
-SHT3x lib was created with inspiration from the [sht3x-esp-idf](https://github.com/gschorcht/sht3x-esp-idf) repository. It is provided as-is without any warranty. Feel free to modify and extend it to match your project needs.
 
