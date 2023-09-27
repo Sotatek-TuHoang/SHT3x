@@ -152,7 +152,7 @@ void pub_data(float fTemp, float fHumi)
     cJSON_AddNumberToObject(json_data, "trans_code", u8trans_code++);
     
     char *json_str = cJSON_Print(json_data); // Convert the JSON object to a string
-    wait_MQTT_connect(200);
+    wait_MQTT_connect(100);
     esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, QoS_0, 0); // Publish the JSON string via MQTT
     cJSON_Delete(json_data);
     free(json_str);
@@ -165,13 +165,13 @@ void pub_warning(uint8_t u8Values, float fTemp, float fHumi)
     cJSON_AddStringToObject(json_warnings, "cmd_name", "Bee.data");
     cJSON_AddStringToObject(json_warnings, "object_type", "Bee.warning");
     cJSON *json_values = cJSON_AddObjectToObject(json_warnings, "values");
-    cJSON_AddNumberToObject(json_values, "warnings_values", u8Values);
+    cJSON_AddNumberToObject(json_values, "warning_values", u8Values);
     cJSON_AddNumberToObject(json_values, "temperature", fTemp);
     cJSON_AddNumberToObject(json_values, "humidity", fHumi);
     cJSON_AddNumberToObject(json_warnings, "trans_code", u8trans_code++);
 
     char *json_str = cJSON_Print(json_warnings); // Convert the JSON object to a string
-    wait_MQTT_connect(500);
+    wait_MQTT_connect(200);
     esp_mqtt_client_publish(client, cTopic_pub, json_str, 0, QoS_1, 0); // Publish the JSON string via MQTT
     cJSON_Delete(json_warnings);
     free(json_str);
@@ -200,7 +200,7 @@ void pub_ota_status(char *values)
     cJSON_AddStringToObject(json_ota_status, "enity_type", "module_sht3x");
     cJSON_AddStringToObject(json_ota_status, "cmd_name", "Bee_ota");
     cJSON_AddStringToObject(json_ota_status, "object_type", "Bee.ota_info");
-    cJSON_AddStringToObject(json_ota_status, "values", values);
+    cJSON_AddStringToObject(json_ota_status, "status", values);
     cJSON_AddNumberToObject(json_ota_status, "trans_code", u8trans_code++);
 
     char *json_str = cJSON_Print(json_ota_status); // Convert the JSON object to a string
@@ -225,17 +225,13 @@ void rx_mqtt_ota_task(void *pvParameters)
                 char *cEntity_type = cJSON_GetObjectItemCaseSensitive(root, "enity_type")->valuestring;
                 char *cCmd_name = cJSON_GetObjectItemCaseSensitive(root, "cmd_name")->valuestring;
                 char *cObject_type = cJSON_GetObjectItemCaseSensitive(root, "object_type")->valuestring;
-                cJSON *values = cJSON_GetObjectItemCaseSensitive(root, "values");
-                char *cUrl = cJSON_GetObjectItemCaseSensitive(values, "url")->valuestring;
-                float fVersion = (float)cJSON_GetObjectItemCaseSensitive(values, "version")->valuedouble;
-                //int trans_code = cJSON_GetObjectItemCaseSensitive(root, "trans_code")->valueint;
+                char *cUrl = cJSON_GetObjectItemCaseSensitive(root, "url")->valuestring;
 
-                // Check if the received command is an OTA update and meets version requirements
+                // Check if the received command is an OTA update
                 if ((strcmp(cThing_token, cMac_str) == 0)       &&
                     (strcmp(cEntity_type, "module_sht3x") == 0) &&
                     (strcmp(cCmd_name, "Bee.ota") == 0)         &&
-                    (strcmp(cObject_type, "Bee.ota_info") == 0) && 
-                    (fVersion > VERSION) )
+                    (strcmp(cObject_type, "Bee.ota_info") == 0) &&)
                 {
                     start_ota(cUrl); // Perform OTA update
                 }

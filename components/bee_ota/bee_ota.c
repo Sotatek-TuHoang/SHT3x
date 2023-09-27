@@ -63,7 +63,8 @@ esp_err_t _http_event_handler(esp_http_client_event_t *evt) {
 
 void start_ota(char *cUrl)
 {
-    ESP_LOGI(TAG, "Starting OTA example task");
+    ESP_LOGI(TAG, "Starting OTA task");
+    pub_ota_status(VERSION);
 
     // Configure the HTTP client for OTA update
     esp_http_client_config_t config =

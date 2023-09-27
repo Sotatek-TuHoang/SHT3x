@@ -41,10 +41,20 @@ static const char *TAG = "BUTTON";
 
 static void IRAM_ATTR gpio_isr_handler(void* arg)
 {
-    button_pressed = !button_pressed; // Toggle the button_pressed state
-    if (button_pressed && !bButton_task) // Check if the button is pressed and no button_task is running
+    TickType_t last_button_press_time = 0;
+    TickType_t current_time = xTaskGetTickCount();
+    
+    // Check if the current button press is too close to the previous one (debouncing)
+    if ((current_time - last_button_press_time) < pdMS_TO_TICKS(50))
     {
-        button_press_time = xTaskGetTickCount(); // Record the button press time
+        return; // Ignore the button press
+    }
+    last_button_press_time = current_time;
+    button_pressed = !button_pressed;
+
+    if (button_pressed && !bButton_task)
+    {
+        button_press_time = current_time; // Record the button press time
         xTaskCreate(button_task, "button_task", 8192, NULL, 10, NULL); // Create a new task for handling the button press
     }
 }

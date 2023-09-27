@@ -22,7 +22,8 @@
         "bee_i2c.h": "c",
         "scheme_ble.h": "c",
         "event_groups.h": "c",
-        "mqtt_client.h": "c"
+        "mqtt_client.h": "c",
+        "cjson.h": "c"
     },
     "idf.portWin": "COM7",
     "idf.flashType": "UART",
